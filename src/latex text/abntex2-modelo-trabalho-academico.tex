@@ -1,3 +1,6 @@
+%% (pdf)latex + bibtex + (pdf)latex + (pdf)latex [+ preview]
+%%  F6 + F11 + F6 + F6 [+ F7]
+
 %% abtex2-modelo-trabalho-academico.tex, v-1.9.6 laurocesar
 %% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
 %%
@@ -66,11 +69,24 @@
 % ---
 
 % ---
+% Pacotes para escrita matemática
+% ---
+\usepackage{amsmath}
+
+\usepackage{amssymb}	 % qed
+\usepackage{amsthm}      % Teoremas
+\usepackage{thmtools}    % Front end para amsthm (\declaretheorem)
+
+\declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
+\declaretheorem[style=plain,name=Teorema,qed=\textnormal{\textemdash}]{teorema}
+\declaretheorem[style=plain,name=Axioma,qed=\textnormal{\textemdash}]{axioma}
+\declaretheorem[style=plain,name=Lema]{lema}
+
+% ---
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
@@ -168,6 +184,8 @@ Curso de Matemática}
 
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
+
+\iffalse
 
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
@@ -475,6 +493,7 @@ contribuirão para a evolução do \abnTeX.
 % ----------------------------------------------------------
 \textual
 
+
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
@@ -561,25 +580,104 @@ Equipe \abnTeX
 Lauro César Araujo
 %_______________________________________________________________
 
+\fi
+
+\chapter{Contexto Histórico}
+%\addcontentsline{toc}{chapter}{Contexto Histórico}
+
+\section{Máximos e Mínimos e o Cálculo Variacional}
+
+Os problemas de máximo e mínimo são corriqueiros na vida cotidiana, por exemplo, quando se quer encontrar o caminho com menor distância entre dois lugares para se caminhar uma menor distância, dentre vários outros problemas mais elaborados. Para esse exemplo específico não é necessário o uso de matemática avançada, porém, quanto mais complexidades são adicionadas aos problemas, mais a matemática é necessária para a resolução, exata ou aproximada. Para simplificar estes processos, surgem os métodos para o cálculo de máximos e mínimos das funções.
+
+Uma das primeiras formulações matemáticas próxima das atuais para os problemas de máximos e mínimos foi feita por Pierre de Fermat (1601-1665) em 1629 considerando curvas $y=f(x)$. Ele fez comparações de $f(x)$ e $f(x+E)$ para pontos próximos. Esses valores geralmente são diferentes, porém, próximo de máximos ou mínimos a diferença se torna pequena. Deste modo, para achar os pontos de máximo ou mínimo, Fermat fazia $$\frac{f(x+E)-f(x)}{E}=0$$ e considerava $E=0$, após realizar a divisão, para encontrar o valor das abscissas dos pontos de máximos e mínimos. Note que isso é o principio básico da diferenciação. \cite{boyer}
+
+É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton (1642-1727) em 1665-1666 e Gottfried Wilhelm Leibniz (1646-1716) em 1676, de forma independente. \cite{boyer}
+
+
+% Falar aqui sobre o problema da problema da Braquistócrona proposto por Johann Bernoulli
+
+% Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
+
+
+\chapter{Cálculo Variacional}
+
+As definições matemáticas apresentadas neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
+
+\begin{lema}
+Sejam $x_1 < x_2$ fixos e $G(x)$ uma função contínua particular para $x_1 \leqslant x \leqslant x_2$. Se $$\int_{x_1}^{x_2} \eta (x) G(x) dx = 0$$
+para cada função diferenciável $\eta (x)$ tal que $\eta (x_1)=\eta (x_2)=0$, concluímos que $G(x)=0$, para todo $x$ de modo que $x_1 \leqslant x \leqslant x_2$.
+
+\begin{proof}
+Suponha que existe $\overline{x}$ tal que $x_1\ < \overline{x} < x_2$ e $G(\overline{x})\neq 0$. Podemos supor, sem perda de generalidade, que $G(\overline{x})>0$. Como $G$ é contínua, existe uma vizinhança $\overline{x_1} \leqslant \overline{x} \leqslant \overline{x_2}$ onde $G(x)>0$ em toda a vizinhança.
+
+Podemos construir a seguinte função $\eta (x)$:
+$$
+\eta (x) = 
+	\begin{cases}
+		0 											& \mbox{para } x_1 \leqslant x < \overline{x_1}\\
+		(x-\overline{x_1})^2(x-\overline{x_2})^2	& \mbox{para } \overline{x_1} \leqslant x \leqslant \overline{x_2}\\
+		0											& \mbox{para } \overline{x_2} < x \leqslant x_2
+	\end{cases}
+$$
+e então reescrever a integral do seguinte modo:
+$$\int_{x_1}^{x_2}\eta (x) G(x)dx =\int_{\overline{x_1}}^{\overline{x_2}}(x-\overline{x_1})^2(x-\overline{x_2})^2G(x)dx$$
+
+Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a integral do lado direito é estritamente positiva, contradizendo a hipótese. Portanto, não vale para todo $\eta (x)$, de onde $G(\overline{x})=0$. A demonstração considerando $G(\overline{x})<0$ é análogo.
+\end{proof}
+\end{lema}
+
+\section{Equação de Euler-Lagrange}
+
+O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a seguinte integral:
+\begin{equation}
+	\label{eqn:int_funcional}
+	\int_{x_1}^{x_2} f(x,y,y')dx
+\end{equation}
+Para para encontrar a equação $y=y(x)$ procurada precisamos de algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange que será deduzida aqui.
+
+Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. Precisamos construir uma família de funções aproximadoras. Denotaremos esta família por $Y(x)$ e a definimos por
+$$
+	Y(x)=y(x)+\epsilon \eta (x)
+$$
+onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\epsilon$ é o parâmetro da família.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=1.3]{../figuras/png/calculo_variacional/figura_001.png}
+	\end{center}
+	\caption{\label{fig:001}Representação gráfica da família de funções aproximadoras}
+\end{figure}
+
+Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, temos
+\begin{equation}
+\label{eqn:int_funcional_approx}
+I(\epsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx
+\end{equation}
+onde $Y'=Y'(x)=y'(x)+\epsilon \eta '(x)$. Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\epsilon = 0$. Ou seja, se $\epsilon = 0$ podemos substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral \ref{eqn:int_funcional_approx} fornece os mesmos extremos que a \ref{eqn:int_funcional} quando $\epsilon=0$.
+
+A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, precisamos que
+$$I'(0)=0$$
+
 
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
-\part{Preparação da pesquisa}
+%\part{Preparação da pesquisa}
 % ----------------------------------------------------------
 
 % ---
 % Capitulo com exemplos de comandos inseridos de arquivo externo 
 % ---
-\include{abntex2-modelo-include-comandos}
+%\include{abntex2-modelo-include-comandos}
 % ---
 
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
-\part{Referenciais teóricos}
+%\part{Referenciais teóricos}
 % ----------------------------------------------------------
 
+\iffalse
 % ---
 % Capitulo de revisão de literatura
 % ---
@@ -668,6 +766,8 @@ elementum}
 
 \lipsum[31-33]
 
+\fi
+
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
@@ -678,6 +778,8 @@ elementum}
 % Referências bibliográficas
 % ----------------------------------------------------------
 \bibliography{abntex2-modelo-references}
+
+\iffalse
 
 % ----------------------------------------------------------
 % Glossário
@@ -746,6 +848,8 @@ parturient montes nascetur ridiculus mus}
 \lipsum[32]
 
 \end{anexosenv}
+
+\fi
 
 %---------------------------------------------------------------------
 % INDICE REMISSIVO
