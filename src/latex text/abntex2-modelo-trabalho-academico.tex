@@ -111,12 +111,12 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{\textbf{Título do trabalho de curso (negrito)}}
-\autor{NOME DO AUTOR (em caixa alta)}
+\titulo{\textbf{Método dos Elementos Finitos (Alterar)}}
+\autor{EDUARDO JOSÉ DE OLIVEIRA}
 \local{Anápolis}
 \data{2018}
-\orientador{Títulação e Nome do orientador}
-\coorientador{Titulação e Nome do coorientador}
+\orientador{Prof. Me. Tiago de Lima Bento Pereira}
+%\coorientador{Titulação e Nome do coorientador}
 \instituicao{%
 Universidade Estadual de Goiás
   \par
@@ -595,9 +595,9 @@ Uma das primeiras formulações matemáticas próxima das atuais para os problem
 
 O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$. É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton (1642-1727) em 1665-1666 e Gottfried Wilhelm Leibniz (1646-1716) em 1676, de forma independente. \cite{boyer}
 
-\textit{\color{red}Citar algo sobre o problema da Braquistócrona proposto por Johann Bernoulli}
+\textit{\color{red}Citar algo sobre o problema da Braquistócrona proposto por Johann Bernoulli que seria o ponto inicial do cálculo variacional}
 
-\textit{\color{red}Falar de modo geral sobre o "pontapé inicial" de Euler e Lagrange no cálculo variacional}
+\textit{\color{red}Falar de modo geral que as maiores contribuições foram de Euler e Lagrange no cálculo variacional}
 
 % Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
 
@@ -632,7 +632,7 @@ $$
 	\end{cases}
 $$
 e então reescrever a integral do seguinte modo:
-$$\int_{x_1}^{x_2}\eta (x) G(x)dx =\int_{\overline{x_1}}^{\overline{x_2}}(x-\overline{x_1})^2(x-\overline{x_2})^2G(x)dx$$
+$$\int_{x_1}^{x_2}\eta (x) G(x)dx =\int_{\overline{x_1}}^{\overline{x_2}}(x-\overline{x_1})^2(x-\overline{x_2})^2G(x)dx\text{.}$$
 
 Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a integral do lado direito é estritamente positiva, contradizendo a hipótese. Portanto, não vale para todo $\eta (x)$, de onde $G(\overline{x})=0$. A demonstração considerando $G(\overline{x})<0$ é análogo.
 \end{proof}
@@ -640,58 +640,60 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 
 \section{Equação de Euler-Lagrange}
 
-O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a seguinte integral:
+O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
 \begin{equation}
 	\label{eqn:int_funcional}
-	\int_{x_1}^{x_2} f(x,y,y')dx
+	\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
 \end{equation}
 
 Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange.
 
 Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. Precisamos construir uma família de funções aproximadoras. Denotaremos esta família por $Y(x)$ e a definimos por
 $$
-	Y(x)=y(x)+\epsilon \eta (x)
+	Y(x)=y(x)+\epsilon \eta (x)\text{,}
 $$
 onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\epsilon$ é o parâmetro da família.
 
-\begin{figure}[h]
+\textit{\color{red} Inserir uma imagem da representação gráfica das famílias de funções aproximadoras.}
+
+\iffalse \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=1.2]{../figuras/png/calculo_variacional/figura_001.png}
 	\end{center}
 	\caption{\label{fig:001}Representação gráfica da família de funções aproximadoras}
-\end{figure}
+\end{figure} \fi
 
 Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, temos
 \begin{equation}
 \label{eqn:int_funcional_approx}
-I(\epsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx
+I(\epsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{,}
 \end{equation}
-onde $Y'=Y'(x)=y'(x)+\epsilon \eta '(x)$. Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\epsilon = 0$. Ou seja, se $\epsilon = 0$ podemos substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral \ref{eqn:int_funcional_approx} fornece os mesmos extremos que a \ref{eqn:int_funcional} quando $\epsilon=0$.
+onde $Y'=Y'(x)=y'(x)+\epsilon \eta '(x)$. Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\epsilon = 0$. Ou seja, se $\epsilon = 0$ podemos substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:int_funcional}) quando $\epsilon=0$.
 
 A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, precisamos que
 \begin{equation}
 \label{eqn:cap_calcvar_condition}
-I'(0)=0
+I'(0)=0\text{.}
 \end{equation}
 
-Utilizando a \textbf{Regra de Leibniz} e aplicando regra da cadeira, podemos escrever a derivada de (\ref{eqn:int_funcional_approx}) como
-$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx$$
-donde fazemos $\frac{\partial Y}{\partial \epsilon}=\eta$ e $\frac{\partial Y'}{\partial \epsilon}=\eta '$ e obtemos a seguinte integral:
+Utilizando a \textbf{\color{red}Regra de Leibniz (enunciar/provar o teorema de derivação sob o sinal de integração)} e aplicando regra da cadeira, podemos escrever a derivada de (\ref{eqn:int_funcional_approx}) como
+$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx\text{,}$$
+de onde, fazendo $\frac{\partial Y}{\partial \epsilon}=\eta$ e $\frac{\partial Y'}{\partial \epsilon}=\eta '$, obtemos a integral
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
 	\frac{\partial f}{\partial Y'} \eta '
-\right )dx
+\right )dx \text{.}
 $$
 
-Como $\epsilon=0$, podemos trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, então
+Para calcular $I'(0)$, temos que $\epsilon=0$ e, então, podemos trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, obtendo
 \begin{equation}
 \label{eqn:cap_calcvar_int_partial_y_eta}
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} \eta +
 	\frac{\partial f}{\partial y'} \eta '
-\right )dx
+\right )dx \text{, }
 \end{equation}
-donde podemos integrar o segundo membro por partes e a partir da condição necessária (\ref{eqn:cap_calcvar_condition}), temos
+de onde, integrando o segundo membro por partes e, a partir da condição necessária (\ref{eqn:cap_calcvar_condition}), temos
 $$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} -
@@ -699,17 +701,19 @@ I'(0)=\int_{x_1}^{x_2}\left (
 	\left (
 		\frac{\partial f}{\partial y'}
 	\right )
-\right )\eta dx = 0
+\right )\eta dx = 0		\text{,}
 $$
 permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 \begin{equation}
 \label{eqn:cap_calcvar_euler_lagrange}
-\frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0
+\frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
 \end{equation}
 
 A equação diferencial parcial (\ref{eqn:cap_calcvar_euler_lagrange}) é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:int_funcional}).
 
-\textit{\color{red}Falar sobre a generalização da equação de Euler-Lagrange para $n$ variáveis.}
+\textit{\color{red}(Necessário?) Falar sobre a generalização da equação de Euler-Lagrange para $n$ variáveis.}
+
+\textit{\color{red}Ver a necessidade de se definir um operador variacional. Caso não seja necessário, rever/mudar a notação de \cite{mefassan}. Depende também da leitura dos PDF's dos Colóquio Brasileiros de Matemática. }
 
 % ----------------------------------------------------------
 % PARTE
