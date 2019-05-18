@@ -77,6 +77,12 @@
 \usepackage{amsthm}      % Teoremas
 \usepackage{thmtools}    % Front end para amsthm (\declaretheorem)
 
+% TIKZ PLOT PACKAGE
+\usepackage{tikz}
+\usetikzlibrary{datavisualization}
+\usetikzlibrary{datavisualization.formats.functions}
+\usetikzlibrary{babel}
+
 \declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
 \declaretheorem[style=plain, name=Teorema]{teorema}
 \declaretheorem[style=plain, name=Axioma,qed=\textnormal{\textemdash}]{axioma}
@@ -90,6 +96,8 @@
 \numberwithin{teorema}{chapter}
 \numberwithin{axioma}{chapter}
 \numberwithin{definicao}{chapter}
+% Idem aos anteriores com o ambiente figure
+\numberwithin{figure}{chapter}
 
 % ---
 % Pacotes de citações
@@ -621,7 +629,19 @@ O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$
 
 \chapter{Cálculo Variacional}
 
-Para adentrar o estudo do Método dos Elementos Finitos, faz-se necessário a compreensão dos fundamentos básicos do Cálculo Variacional. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
+Para adentrar o estudo do {\color{red}Método dos Elementos Finitos}, faz-se necessário a compreensão dos fundamentos básicos do Cálculo Variacional. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
+
+O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
+\begin{equation}
+	\label{eqn:int_funcional}
+	\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
+\end{equation}
+
+Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange.
+
+\section{Equação de Euler-Lagrange}
+
+De ínicio, é preciso demonstrar um lema que servirá como base para a dedução da equação de Euler-Lagrange.
 
 \begin{lema}
 \label{lema:cap_calcvar_lema_1}
@@ -647,16 +667,6 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{proof}
 \end{lema}
 
-\section{Equação de Euler-Lagrange}
-
-O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
-\begin{equation}
-	\label{eqn:int_funcional}
-	\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
-\end{equation}
-
-Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange.
-
 Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. Precisamos construir uma família de funções aproximadoras. Denotaremos esta família por $Y(x)$ e a definimos por
 $$
 	Y(x)=y(x)+\epsilon \eta (x)\text{,}
@@ -664,6 +674,29 @@ $$
 onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\epsilon$ é o parâmetro da família.
 
 \textit{\color{red} Inserir uma imagem da representação gráfica das famílias de funções aproximadoras.}
+
+\iffalse
+\begin{figure}[h]
+	\begin{center}
+		\begin{tikzpicture}
+		\datavisualization [school book axes,
+    	    	            visualize as smooth line/.list={y,appr},
+        		            y axis={label={$y=x^2$}},
+    	        	        x axis={label},
+    	        	        data/format=function ]
+		data [set=y] {
+			var x : interval [2.5:4.6] samples 7;
+   			func y = - pow(e, - \value x + 3.2) + 4;
+		};
+		data [set=appr] {
+			var x : interval [2.5:4.6] samples 7;
+			func y = -0.18 * pow(\value x, 2) + 1.29 * \value x - 2.09;
+		};
+		\end{tikzpicture}
+	\end{center}
+	\caption{\label{fig:family_approx_functions} Interpretação gráfica da família de funções aproximadoras}
+\end{figure}
+\fi
 
 \iffalse \begin{figure}[h]
 	\begin{center}
@@ -685,8 +718,12 @@ A condição necessária para que uma função de uma variável real tenha um ex
 I'(0)=0\text{.}
 \end{equation}
 
-Utilizando a \textbf{\color{red}Regra de Leibniz (enunciar/provar o teorema de derivação sob o sinal de integração)} e aplicando regra da cadeira, podemos escrever a derivada de (\ref{eqn:int_funcional_approx}) como
-$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx\text{,}$$
+Utilizando a \textbf{\color{red}Regra de Leibniz (enunciar/provar o teorema de derivação sob o sinal de integração)}, a derivada de (\ref{eqn:int_funcional_approx}) pode ser escrita como
+$$I'(\epsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \epsilon} (x, Y, Y') dx \text{,}$$
+e, aplicando regra da cadeira, temos
+$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \epsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx\text{,}$$
+onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\epsilon$, portanto $\dfrac{\partial x}{\partial \epsilon}=0$, ou seja,
+$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \epsilon} \right ) dx \text{,}$$
 de onde, fazendo $\frac{\partial Y}{\partial \epsilon}=\eta$ e $\frac{\partial Y'}{\partial \epsilon}=\eta '$, obtemos a integral
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
