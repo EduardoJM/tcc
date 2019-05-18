@@ -78,9 +78,18 @@
 \usepackage{thmtools}    % Front end para amsthm (\declaretheorem)
 
 \declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
-\declaretheorem[style=plain,name=Teorema,qed=\textnormal{\textemdash}]{teorema}
-\declaretheorem[style=plain,name=Axioma,qed=\textnormal{\textemdash}]{axioma}
-\declaretheorem[style=plain,name=Lema]{lema}
+\declaretheorem[style=plain, name=Teorema]{teorema}
+\declaretheorem[style=plain, name=Axioma,qed=\textnormal{\textemdash}]{axioma}
+\declaretheorem[style=plain, name=Lema]{lema}
+
+% Resetar o numberador de lemas no fim de todo capítulo
+% Isso faz com que a numeração seja indexada por capítulos e não
+% pelo documento todo
+\numberwithin{lema}{chapter}
+% Idem ao de cima, com teoremas/axiomas/definições
+\numberwithin{teorema}{chapter}
+\numberwithin{axioma}{chapter}
+\numberwithin{definicao}{chapter}
 
 % ---
 % Pacotes de citações
@@ -637,6 +646,13 @@ $$\int_{x_1}^{x_2}\eta (x) G(x)dx =\int_{\overline{x_1}}^{\overline{x_2}}(x-\ove
 Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a integral do lado direito é estritamente positiva, contradizendo a hipótese. Portanto, não vale para todo $\eta (x)$, de onde $G(\overline{x})=0$. A demonstração considerando $G(\overline{x})<0$ é análogo.
 \end{proof}
 \end{lema}
+
+\begin{teorema}
+	Enunciado do teorema qqq
+	\begin{proof}
+		GOOL
+	\end{proof}
+\end{teorema}
 
 \section{Equação de Euler-Lagrange}
 
