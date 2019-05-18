@@ -720,11 +720,15 @@ I'(0)=0\text{.}
 
 Utilizando a \textbf{\color{red}Regra de Leibniz (enunciar/provar o teorema de derivação sob o sinal de integração)}, a derivada de (\ref{eqn:int_funcional_approx}) pode ser escrita como
 $$I'(\epsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \epsilon} (x, Y, Y') dx \text{,}$$
-e, aplicando regra da cadeira, temos
+e, aplicando regra da cadeia, temos
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \epsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx\text{,}$$
 onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\epsilon$, portanto $\dfrac{\partial x}{\partial \epsilon}=0$, ou seja,
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \epsilon} \right ) dx \text{,}$$
-de onde, fazendo $\frac{\partial Y}{\partial \epsilon}=\eta$ e $\frac{\partial Y'}{\partial \epsilon}=\eta '$, obtemos a integral
+de onde, fazendo $\frac{\partial Y}{\partial \epsilon}=\eta$
+\footnote{Derivando $Y=y+\epsilon\eta$ em função de $\epsilon$, temos $\frac{\partial Y}{\partial \epsilon}=\frac{\partial y}{\partial \epsilon} + \frac{\partial}{\partial \epsilon}(\epsilon \eta)$, ou seja, $\frac{\partial Y}{\partial \epsilon}=\eta$, pois $y$ e $\eta$ independem de $\epsilon$.}
+e $\frac{\partial Y'}{\partial \epsilon}=\eta '$
+\footnote{Derivando $Y'=y'+\epsilon \eta'$ em função de $\epsilon$ ocorre que $\frac{\partial Y'}{\partial \epsilon}=\eta'$, pois $y'$ e $\eta'$ independem de $\epsilon$.}
+, obtemos a integral
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
 	\frac{\partial f}{\partial Y'} \eta '
@@ -737,9 +741,43 @@ Para calcular $I'(0)$, temos que $\epsilon=0$ e, então, podemos trocar $Y$ e $Y
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} \eta +
 	\frac{\partial f}{\partial y'} \eta '
-\right )dx \text{, }
+\right )dx \text{.}
 \end{equation}
-de onde, integrando o segundo membro por partes e, a partir da condição necessária (\ref{eqn:cap_calcvar_condition}), temos
+
+De (\ref{eqn:cap_calcvar_int_partial_y_eta}) podemos separar a integral da soma de modo que,
+$$
+I'(0)=
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+	+
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{,}
+$$
+e integrar a segunda equação, por partes, chamando $u=\frac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtemos $du=\frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, portanto,
+$$
+I'(0)=
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+	+
+	\left (
+	uv \Big|_{x_1}^{x_2} - \int_{x_1}^{x_2}vdu
+	\right )
+$$
+\begin{equation}
+\label{eqn:cap_calcvar_part_integration}
+I'(0)=
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+	+
+	\left (
+		\frac{\partial f}{\partial y'}\eta \Biggr|_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right ) \eta dx
+	\right )
+\end{equation}
+
+Sabe-se que $\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, (\ref{eqn:cap_calcvar_part_integration}) pode ser reescrita como
+$$
+I'(0)=
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+	-
+	\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx \text{,}
+$$
+de onde podemos reagrupar as integrais, obtendo
 $$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} -
@@ -747,7 +785,17 @@ I'(0)=\int_{x_1}^{x_2}\left (
 	\left (
 		\frac{\partial f}{\partial y'}
 	\right )
-\right )\eta dx = 0		\text{,}
+\right )\eta dx
+$$
+que, a partir da condição necessária (\ref{eqn:cap_calcvar_condition}), deve ser igualada a $0$:
+$$
+I'(0)=\int_{x_1}^{x_2}\left (
+	\frac{\partial f}{\partial y} -
+	\frac{d}{dx}
+	\left (
+		\frac{\partial f}{\partial y'}
+	\right )
+\right )\eta dx = 0	\text{.}
 $$
 permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 \begin{equation}
