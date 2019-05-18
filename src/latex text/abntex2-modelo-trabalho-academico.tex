@@ -647,13 +647,6 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{proof}
 \end{lema}
 
-\begin{teorema}
-	Enunciado do teorema qqq
-	\begin{proof}
-		GOOL
-	\end{proof}
-\end{teorema}
-
 \section{Equação de Euler-Lagrange}
 
 O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
@@ -851,8 +844,6 @@ elementum}
 % ----------------------------------------------------------
 \bibliography{abntex2-modelo-references}
 
-\iffalse
-
 % ----------------------------------------------------------
 % Glossário
 % ----------------------------------------------------------
@@ -873,22 +864,36 @@ elementum}
 % Imprime uma página indicando o início dos apêndices
 \partapendices
 
-% ----------------------------------------------------------
-\chapter{Quisque libero justo}
-% ----------------------------------------------------------
+% Apêndice A
+\chapter{Regra de Leibniz}
+{
+	Para encontrar a equação de Euler-Lagrande foi preciso derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz ou Derivação sob o sinal de integral e será enunciado e demonstrado neste Apêndice.
+	
+	\begin{teorema}
+		\label{teorema:regra_de_leibniz}
+		Considere uma função $f:[a,b]\times [c,d] \longrightarrow \mathbb{R}$ e suponha que a derivada parcial $\frac{\partial f}{\partial p}(x,p)$ existe e é contínua em $[a,b]\times [c,d]$. Se a integral
+		$$F(p)=\int_a^b f(x, p)dx$$
+		existe para todo $p\in [c,d]$, então $F(p)$ é diferenciável e
+		$$F'(p)=\int_a^b \frac{\partial f}{\partial p} (x, p)dx \text{.}$$
+		\textit{\color{red} Estudar, entender e demonstrar a regra de Leibiniz.}
+	\end{teorema}
+}
 
-\lipsum[50]
 
+
+\iffalse
 % ----------------------------------------------------------
 \chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
 ac pretium ante justo a nulla curabitur tristique arcu eu metus}
 % ----------------------------------------------------------
 \lipsum[55-57]
+\fi
 
 \end{apendicesenv}
 % ---
 
 
+\iffalse
 % ----------------------------------------------------------
 % Anexos
 % ----------------------------------------------------------
