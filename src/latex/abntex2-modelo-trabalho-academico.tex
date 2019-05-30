@@ -49,6 +49,7 @@
 	brazil				% o último idioma é o principal do documento
 	]{abntex2}
 
+
 % ---
 % Pacotes básicos 
 % ---
@@ -75,18 +76,13 @@
 
 \usepackage{amssymb}	 % qed
 \usepackage{amsthm}      % Teoremas
-\usepackage{thmtools}    % Front end para amsthm (\declaretheorem)
 
-% TIKZ PLOT PACKAGE
-\usepackage{tikz}
-\usetikzlibrary{datavisualization}
-\usetikzlibrary{datavisualization.formats.functions}
-\usetikzlibrary{babel}
-
-\declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
-\declaretheorem[style=plain, name=Teorema]{teorema}
-\declaretheorem[style=plain, name=Axioma,qed=\textnormal{\textemdash}]{axioma}
-\declaretheorem[style=plain, name=Lema]{lema}
+%\declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
+%\declaretheorem[style=plain, name=Teorema]{teorema}
+%\declaretheorem[style=plain, name=Axioma,qed=\textnormal{\textemdash}]{axioma}
+%\declaretheorem[style=plain, name=Lema]{lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{lema}{Lema}
 
 % Resetar o numberador de lemas no fim de todo capítulo
 % Isso faz com que a numeração seja indexada por capítulos e não
@@ -94,10 +90,17 @@
 \numberwithin{lema}{chapter}
 % Idem ao de cima, com teoremas/axiomas/definições
 \numberwithin{teorema}{chapter}
-\numberwithin{axioma}{chapter}
-\numberwithin{definicao}{chapter}
+%\numberwithin{axioma}{chapter}
+%\numberwithin{definicao}{chapter}
 % Idem aos anteriores com o ambiente figure
 \numberwithin{figure}{chapter}
+
+% PGF
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{standalone}
 
 % ---
 % Pacotes de citações
@@ -128,7 +131,7 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{\textbf{Método dos Elementos Finitos (Alterar)}}
+\titulo{\textbf{Cálculo Variacional}}
 \autor{EDUARDO JOSÉ DE OLIVEIRA}
 \local{Anápolis}
 \data{2018}
@@ -616,28 +619,29 @@ O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$
 
 \textit{\color{red}Falar de modo geral que as maiores contribuições foram de Euler e Lagrange no cálculo variacional}
 
+
+
 % Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
 
- \section{Método dos Elementos Finitos}
+% \section{Método dos Elementos Finitos}
 
-\textit{\color{red}Falar sobre o ínicio do uso de funções aproximadas para a resolução de equações}
+%\textit{\color{red}Falar sobre o ínicio do uso de funções aproximadas para a resolução de equações}
 
-\textit{\color{red}Historico do método dos elementos finitos}
+%\textit{\color{red}Historico do método dos elementos finitos}
 
-\textit{\color{red}O método dos elementos finitos no contexto atual (Procurar aplicações em artigos e falar sobre os seus diversos usos).}
+%\textit{\color{red}O método dos elementos finitos no contexto atual (Procurar aplicações em artigos e falar sobre os seus diversos usos).}
 
 
 \chapter{Cálculo Variacional}
 
-Para adentrar o estudo do {\color{red}Método dos Elementos Finitos}, faz-se necessário a compreensão dos fundamentos básicos do Cálculo Variacional. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
+%Para adentrar o estudo do {\color{red}Método dos Elementos Finitos}, faz-se necessário a compreensão dos fundamentos básicos do Cálculo Variacional. 
 
 O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
-\begin{equation}
-	\label{eqn:int_funcional}
+\begin{equation}\label{eqn:int_funcional}
 	\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
 \end{equation}
 
-Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange.
+Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
 
 \section{Equação de Euler-Lagrange}
 
@@ -667,91 +671,68 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{proof}
 \end{lema}
 
-Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. Precisamos construir uma família de funções aproximadoras. Denotaremos esta família por $Y(x)$ e a definimos por
-$$
+Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções aproximadoras, que será denotada por $Y(x)$. Essa família é definida por:
+\begin{equation}\label{eqn:cap_calcvar_eq_approx}
 	Y(x)=y(x)+\epsilon \eta (x)\text{,}
-$$
-onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\epsilon$ é o parâmetro da família.
-
-\textit{\color{red} Inserir uma imagem da representação gráfica das famílias de funções aproximadoras.}
-
-\iffalse
-\begin{figure}[h]
-	\begin{center}
-		\begin{tikzpicture}
-		\datavisualization [school book axes,
-    	    	            visualize as smooth line/.list={y,appr},
-        		            y axis={label={$y=x^2$}},
-    	        	        x axis={label},
-    	        	        data/format=function ]
-		data [set=y] {
-			var x : interval [2.5:4.6] samples 7;
-   			func y = - pow(e, - \value x + 3.2) + 4;
-		};
-		data [set=appr] {
-			var x : interval [2.5:4.6] samples 7;
-			func y = -0.18 * pow(\value x, 2) + 1.29 * \value x - 2.09;
-		};
-		\end{tikzpicture}
-	\end{center}
-	\caption{\label{fig:family_approx_functions} Interpretação gráfica da família de funções aproximadoras}
-\end{figure}
-\fi
-
-\iffalse \begin{figure}[h]
-	\begin{center}
-		\includegraphics[scale=1.2]{../figuras/png/calculo_variacional/figura_001.png}
-	\end{center}
-	\caption{\label{fig:001}Representação gráfica da família de funções aproximadoras}
-\end{figure} \fi
-
-Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, temos
-\begin{equation}
-\label{eqn:int_funcional_approx}
-I(\epsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{,}
 \end{equation}
-onde $Y'=Y'(x)=y'(x)+\epsilon \eta '(x)$. Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\epsilon = 0$. Ou seja, se $\epsilon = 0$ podemos substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:int_funcional}) quando $\epsilon=0$.
+onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\epsilon$ é o parâmetro da família. É possível escrever, também, a derivada de $Y$ como
+\begin{equation}\label{eqn:cap_calcvar_eq_approx_diff}
+	Y'(x)=y(x)+\epsilon \eta (x)\text{.}
+\end{equation}
 
-A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, precisamos que
-\begin{equation}
-\label{eqn:cap_calcvar_condition}
+%\textit{\color{red} Inserir uma imagem da representação gráfica das famílias de funções aproximadoras.}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.35]{figuras/calcvar/figura_001}
+	\label{fig:test_01}
+	\caption{Representação gráfica das funções aproximadoras.}
+	\legend{Fonte: Elaborada pelo autor.}
+\end{figure}
+
+Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
+\begin{equation}\label{eqn:int_funcional_approx}
+I(\epsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
+\end{equation}
+
+Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\epsilon = 0$. Ou seja, se $\epsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:int_funcional}) quando $\epsilon=0$.
+
+A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
+\begin{equation}\label{eqn:cap_calcvar_condition}
 I'(0)=0\text{.}
 \end{equation}
 
-Utilizando a \textbf{\color{red}Regra de Leibniz (enunciar/provar o teorema de derivação sob o sinal de integração)}, a derivada de (\ref{eqn:int_funcional_approx}) pode ser escrita como
+Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:int_funcional_approx}) pode ser escrita como
 $$I'(\epsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \epsilon} (x, Y, Y') dx \text{,}$$
-e, aplicando regra da cadeia, temos
+e, aplicando regra da cadeia, obtêm-se
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \epsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx\text{,}$$
 onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\epsilon$, portanto $\dfrac{\partial x}{\partial \epsilon}=0$, ou seja,
-$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \epsilon} \right ) dx \text{,}$$
-de onde, fazendo $\frac{\partial Y}{\partial \epsilon}=\eta$
-\footnote{Derivando $Y=y+\epsilon\eta$ em função de $\epsilon$, temos $\frac{\partial Y}{\partial \epsilon}=\frac{\partial y}{\partial \epsilon} + \frac{\partial}{\partial \epsilon}(\epsilon \eta)$, ou seja, $\frac{\partial Y}{\partial \epsilon}=\eta$, pois $y$ e $\eta$ independem de $\epsilon$.}
-e $\frac{\partial Y'}{\partial \epsilon}=\eta '$
-\footnote{Derivando $Y'=y'+\epsilon \eta'$ em função de $\epsilon$ ocorre que $\frac{\partial Y'}{\partial \epsilon}=\eta'$, pois $y'$ e $\eta'$ independem de $\epsilon$.}
-, obtemos a integral
+\begin{equation}\label{eqn:cap_calcvar_chain_rule}
+I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \epsilon} \right ) dx \text{.}
+\end{equation}
+
+Derivando \eqref{eqn:cap_calcvar_eq_approx} em função de $\epsilon$, tem-se $\frac{\partial Y}{\partial \epsilon}=\frac{\partial y}{\partial \epsilon}+\frac{\partial}{\partial \epsilon}(\epsilon \eta)$, de onde conclui-se que $\frac{\partial Y}{\partial \epsilon}=\eta$, pois $y$ e $\eta$ independem de $\epsilon$. O mesmo acontece com \eqref{eqn:cap_calcvar_eq_approx_diff}, donde verifica-se que $\frac{\partial Y'}{\partial \epsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calcvar_chain_rule}, obtêm-se a integral
 $$I'(\epsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
 	\frac{\partial f}{\partial Y'} \eta '
 \right )dx \text{.}
 $$
 
-Para calcular $I'(0)$, temos que $\epsilon=0$ e, então, podemos trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, obtendo
-\begin{equation}
-\label{eqn:cap_calcvar_int_partial_y_eta}
+Para calcular $I'(0)$, tem-se que $\epsilon=0$ e, então, podemos trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, obtendo
+$$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} \eta +
 	\frac{\partial f}{\partial y'} \eta '
-\right )dx \text{.}
-\end{equation}
-
-De (\ref{eqn:cap_calcvar_int_partial_y_eta}) podemos separar a integral da soma de modo que,
+\right )dx
+$$
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 	+
-	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{,}
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{.}
 $$
-e integrar a segunda equação, por partes, chamando $u=\frac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtemos $du=\frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, portanto,
+
+Integrando o segundo membro, por partes, tomando $u=\frac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtêm-se $du=\frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, portanto,
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
@@ -760,8 +741,7 @@ I'(0)=
 	uv \Big|_{x_1}^{x_2} - \int_{x_1}^{x_2}vdu
 	\right )
 $$
-\begin{equation}
-\label{eqn:cap_calcvar_part_integration}
+\begin{equation}\label{eqn:cap_calcvar_part_integration}
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 	+
@@ -770,14 +750,13 @@ I'(0)=
 	\right )
 \end{equation}
 
-Sabe-se que $\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, (\ref{eqn:cap_calcvar_part_integration}) pode ser reescrita como
+Sabe-se que $\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, \eqref{eqn:cap_calcvar_part_integration} pode ser reescrita como
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 	-
-	\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx \text{,}
+	\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx
 $$
-de onde podemos reagrupar as integrais, obtendo
 $$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} -
@@ -798,16 +777,16 @@ I'(0)=\int_{x_1}^{x_2}\left (
 \right )\eta dx = 0	\text{.}
 $$
 permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
-\begin{equation}
-\label{eqn:cap_calcvar_euler_lagrange}
+\begin{equation}\label{eqn:cap_calcvar_euler_lagrange}
 \frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
 \end{equation}
 
-A equação diferencial parcial (\ref{eqn:cap_calcvar_euler_lagrange}) é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:int_funcional}).
+A equação diferencial parcial \eqref{eqn:cap_calcvar_euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:int_funcional}).
 
 \textit{\color{red}(Necessário?) Falar sobre a generalização da equação de Euler-Lagrange para $n$ variáveis.}
 
 \textit{\color{red}Ver a necessidade de se definir um operador variacional. Caso não seja necessário, rever/mudar a notação de \cite{mefassan}. Depende também da leitura dos PDF's dos Colóquio Brasileiros de Matemática. }
+
 
 % ----------------------------------------------------------
 % PARTE
@@ -951,6 +930,7 @@ elementum}
 
 % Apêndice A
 \chapter{Regra de Leibniz}
+\label{apend:regra_de_leibniz}
 {
 	Para encontrar a equação de Euler-Lagrande foi preciso derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz ou Derivação sob o sinal de integral e será enunciado e demonstrado neste Apêndice.
 	
