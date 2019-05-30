@@ -244,3 +244,4 @@ TSWLatexianTemp*
 # other external archives
 *.docx
 *.pdf
+*.out.ps
