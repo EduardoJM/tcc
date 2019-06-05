@@ -206,11 +206,10 @@ Curso de Matemática}
 \frenchspacing 
 
 \iffalse
-
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
-% \pretextual
+\pretextual
 
 % ---
 % Capa
@@ -605,8 +604,41 @@ Lauro César Araujo
 \chapter{Contexto Histórico}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
 
-\input{capitulos/cap1_contexto_historico}
+Para elucidar a história do Cálculo Variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema pertinente ao cálculo variacional.
 
+\section{Máximos e Mínimos}
+
+Os problemas de máximo e mínimo são corriqueiros na vida cotidiana, por exemplo, quando se quer encontrar o caminho com menor distância entre dois lugares para se caminhar uma menor distância, dentre vários outros problemas mais elaborados. Para esse exemplo específico não é necessário o uso de matemática avançada, porém, quanto mais complexidades são adicionadas aos problemas, mais a matemática é necessária para a resolução, exata ou aproximada. Para simplificar estes processos, surgem os métodos para o cálculo de máximos e mínimos das funções.
+
+Uma das primeiras formulações matemáticas próxima das atuais para os problemas de máximos e mínimos foi feita por Pierre de Fermat (1601-1665) em 1629 considerando curvas $y=f(x)$. Ele fez comparações de $f(x)$ e $f(x+E)$ para pontos próximos. Esses valores geralmente são diferentes, porém, próximo de máximos ou mínimos a diferença se torna pequena. Deste modo, para achar os pontos de máximo ou mínimo, Fermat fazia $$\frac{f(x+E)-f(x)}{E}$$ e, após realizar a divisão, considerava $E=0$. Após considerar o valor de $E$ igual a $0$, Fermat igualava a expressão obtida a $0$, de onde conseguia extrair os valores das abscissas dos pontos de máximos e mínimos da função. \cite{boyer}
+
+O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$. É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton (1642-1727) em 1665-1666 e Gottfried Wilhelm Leibniz (1646-1716) em 1676, de forma independente. \cite{boyer}
+
+%\textit{\color{red}Falar de modo geral que as maiores contribuições foram de Euler e Lagrange no cálculo variacional}
+
+\section{O Cálculo Variacional}
+
+%Johann Bernoulli, em 1969, deu ínicio ao estudo de uma classe de problemas cujo um dos mais antigos é o problema isoperimétrico. \cite{hist_courant}. O problema isoperimétrico consiste em "[d]ado um comprimento $L>0$, encontrar, dentre todas as curvas do plano de comprimento $L$, aquela que engloba a maior área" \cite[p. 1]{cbm_isoperimetrico}.
+
+O ponto de partida do cálculo variacional se deu com Johann Bernoulli, em 1696, com a publicação do problema da braquistócrona no jornal científico \textit{Acta Eruditorium}. \cite{hist_courant}
+
+O problema pode ser enunciado como:
+\begin{citacao}
+Sejam $A$ e $B$ dois pontos dados em um plano vertical. O problema da braquistócrona consiste em encontrar a curva que uma partícula M precisa descrever para sair de A e chegar em B no menor tempo possível, somente sob a ação da força da gravidade \cite[p. 3]{calcvar}.
+\end{citacao}
+
+O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli (1697), L'Hôpital (1697), Leibniz (1697), e Newton (1697) \cite{hist_still}.
+
+\textit{\color{red} Falar sobre a solução de Bernoulli mostrar o lado da curva variável}
+
+O fato de que neste problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, torna necessária a construção de novas ferramentas matemáticas. 
+
+
+
+%Os primeiros métodos para a solução destes problemas eram de caráter específico, sendo adaptados sempre a necessidade do problema em que se queria resolver até que Euler e Lagrange se envolveram no estudo destes problemas introduzindo métodos gerais para suas resoluções. \cite{hist_courant}
+
+
+% Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
 
 
 \chapter{Cálculo Variacional}
@@ -661,14 +693,14 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 %\textit{\color{red} Inserir uma imagem da representação gráfica das famílias de funções aproximadoras.}
 
 \begin{figure}[!h]
-	\centering
-	\includegraphics[scale=0.35]{figuras/calcvar/figura_001}
-	\label{fig:test_01}
 	\caption{Representação gráfica das funções aproximadoras.}
-	\legend{Fonte: Elaborada pelo autor.}
+	\centering
+	\includegraphics[width=0.7\textwidth, angle=0]{figuras/cap_calcvar/figura_001.pdf}
+	\label{fig:test_01}
+	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-\textit{\color{red}Substituir essa imagem por um desenho plotado com O Tikz/PGF.}
+%\textit{\color{red}Substituir essa imagem por um desenho plotado com O Tikz/PGF.}
 
 Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
 \begin{equation}\label{eqn:int_funcional_approx}
@@ -910,8 +942,121 @@ elementum}
 \chapter{Regra de Leibniz}
 \label{apend:regra_de_leibniz}
 {
-	Para encontrar a equação de Euler-Lagrande faz-se necessário derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz ou Derivação sob o sinal de integral e será enunciada e demonstrada neste Apêndice.
+	Para encontrar a equação de Euler-Lagrande faz-se necessário derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz (Ou Derivação sob o sinal de integral) e será enunciada e demonstrada neste Apêndice. O texto deste apêndice foi elaborado com base em \citeonline{analise_elon2}.
+
+	\begin{teorema}
+		\label{teorema:func_uniformemente}
+		Seja $f:X\times K \longrightarrow \mathbb{R}^n$ contínua, onde $K$ é compacto. Fixemos $x_0 \in X$. Para todo $\varepsilon > 0$, existe um $\delta > 0$ tal que $x\in X$, $|x-x_0|<\delta \Longrightarrow |f(x, \alpha)-f(x_0,\alpha)|<\varepsilon$, seja qual for $\alpha \in K$.
+		\begin{proof}
+		Suponha que o teorema não seja válido, então existiriam $\varepsilon > 0$ e sequências de pontos $x_k\in X$, $\alpha_k \in K$ tais que $|x_k-x_0|<\frac{1}{k}$ e $|f(x_k,\alpha_k)-f(x_0,\alpha_k)|\geqslant \varepsilon$. Passando a uma subsequência, se necessário e adimitindo que $lim \alpha_k=\alpha \in K$. Como $lim x_k=x_0$, devido a continuidade de $f$ tem-se $\varepsilon \leqslant lim |f(x_k,\alpha_k)-f(x_0,\alpha _k)|=|f(x_0,\alpha)-f(x_0,\alpha)|$, uma contradição, pois da hipótese $\varepsilon >0$.
+		\end{proof}
+	\end{teorema}
 	
+	\begin{teorema}[Derivação sob o sinal de integral]
+		\label{teorema:regra_de_leibniz}
+		Dado $U\subset \mathbb{R}^n$, aberto, seja $f:U\times[a,b]\longrightarrow \mathbb{R}$ uma função com as seguintes propriedades:
+		\begin{enumerate}
+			\item Para todo $x \in U$, a função $x \longmapsto f(x,t)$ é integrável em $a \leqslant t \leqslant b$.
+			\item A $i$-ésima derivada parcial $\frac{\partial f}{\partial x_i}(x,t)$ existe para cada $(x,t)\in U\times [a,b]$ e a função $\frac{\partial f}{\partial x_i}:U\times [a,b]\longrightarrow \mathbb{R}$ assim definida é contínua.
+		\end{enumerate}
+		Então a função $\varphi: U\longrightarrow \mathbb{R}$ dada por
+		$$\varphi(x)=\int_a^b f(x,t)dt\text{,}$$
+		possui $i$-ésima derivada parcial em cada ponto $x\in U$, sendo
+		$$\frac{\partial \varphi}{\partial x_i}(x)=\int_a^b \frac{\partial f}{\partial x_i}(x,t)dt\text{.}$$
+
+		\begin{proof}
+			Considere
+			$$
+			\frac{\varphi(x+se_i)-\varphi(x)}{s}
+			=
+			\int_a^b \frac{f(x+se_i, t)-f(x,t)}{s} dt\text{,}
+			$$
+			de onde subtraindo $\int_a^b \frac{\partial f}{\partial x_i}(x,t) dt$ de ambos os lados, tem-se
+			\begin{equation}
+			\label{eqn:anexo_leibniz_r1}
+			\frac{\varphi(x+se_i)-\varphi(x)}{s}
+			- \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
+			=
+			\int_a^b \left [ 
+				\frac{f(x+se_i, t)-f(x,t)}{s} 
+				- \frac{\partial f}{\partial x_i}(x,t)
+			\right ] dt
+			\end{equation}
+			
+			Usando o \textbf{\color{red}Teorema (do Valor Médio?)} pode-se escrever \eqref{eqn:anexo_leibniz_r1} como
+			\begin{equation}
+				\label{eqn:anexo_leibniz_voltas}
+				\frac{\varphi(x+se_i)-\varphi(x)}{s}
+				- \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
+				=
+				\int_a^b \left [
+					\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+				\right ] dt\text{,}
+			\end{equation}
+			onde $\theta \in [0,1]$. Como $\frac{\partial f}{\partial x_i}$ é contínua e $[a,b]$ é compacto, pelo Teorema \ref{teorema:func_uniformemente}, para todo $\varepsilon > 0$, existe um $\delta > 0$, de modo que
+			\begin{equation}
+				\label{eqn:anexo_leibniz_ineq_func_unif}
+				|s|<\delta \Longrightarrow
+				\left | 
+					\frac{\partial f}{\partial x_i} (x+\theta s e_i, t) - \frac{\partial f}{\partial x_i}(x,t)
+				\right | < \frac{\varepsilon}{b-a}
+			\end{equation}
+			seja qual for $t \in [a,b]$.
+			
+			Usando o fato de que $|\int_a^b f(x)dx \leqslant \int_a^b |f(x)| dx$, obtêm-se
+			$$
+			\left |
+				\int_a^b \left [
+					\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+				\right ] dt
+			\right |
+			\leqslant
+			\int_a^b\left |
+				\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+			\right | dt\text{,}
+			$$
+			e, utilizando \eqref{eqn:anexo_leibniz_ineq_func_unif}, pode-se escrever a inequação como
+			$$
+			\left |
+				\int_a^b \left [
+					\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+				\right ] dt
+			\right |
+			<
+			\int_a^b \frac{\varepsilon}{b-a} dt \text{,}
+			$$
+			ou, desenvolvendo a integral da direita, como
+			\begin{equation}
+				\label{eqn:anexo_leibniz_ineq_limit}
+				\left |
+					\int_a^b \left [
+						\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+					\right ] dt
+				\right |
+				< \varepsilon \text{.}
+			\end{equation}
+			
+			De \eqref{eqn:anexo_leibniz_voltas} e \eqref{eqn:anexo_leibniz_ineq_limit}, tem-se que
+			$$
+				|s|<\delta \Longrightarrow
+				\left |
+					\frac{\varphi(x+se_i)-\varphi(x)}{s}
+					- \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
+				\right |
+				< \epsilon\text{,}
+			$$
+			que é, a definição formal do limite
+			$$
+				 \lim_{s\to 0} \frac{\varphi (x+se_i)-\varphi(x)}{s}= \int_a^b \frac{\partial f}{\partial x_i} (x, t)dt \text{,}
+			$$
+			ou seja,
+			$$
+				\frac{\partial \varphi}{\partial x_i}(x)=\int _a^b \frac{\partial f}{\partial x_i}(x,t)dt\text{.}
+			$$
+		\end{proof}
+	\end{teorema}
+	
+	\iffalse
 	\begin{teorema}
 		\label{teorema:regra_de_leibniz}
 		Considere uma função $f:[a,b]\times [c,d] \longrightarrow \mathbb{R}$ e suponha que a derivada parcial $\frac{\partial f}{\partial p}(x,p)$ existe e é contínua em $[a,b]\times [c,d]$. Se a integral
@@ -920,6 +1065,7 @@ elementum}
 		$$F'(p)=\int_a^b \frac{\partial f}{\partial p} (x, p)dx \text{.}$$
 		\textit{\color{red} Estudar, entender e demonstrar a regra de Leibiniz.}
 	\end{teorema}
+	\fi
 }
 
 
