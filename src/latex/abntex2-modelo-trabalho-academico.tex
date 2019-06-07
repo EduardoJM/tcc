@@ -627,11 +627,9 @@ O problema pode ser enunciado como:
 Sejam $A$ e $B$ dois pontos dados em um plano vertical. O problema da braquistócrona consiste em encontrar a curva que uma partícula M precisa descrever para sair de A e chegar em B no menor tempo possível, somente sob a ação da força da gravidade \cite[p. 3]{calcvar}.
 \end{citacao}
 
-O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli (1697), L'Hôpital (1697), Leibniz (1697), e Newton (1697) \cite{hist_still}.
+O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jacob Bernoulli (1697), L'Hôpital (1697), Leibniz (1697), e Newton (1697) \cite{hist_still}.
 
-\textit{\color{red} Falar sobre a solução de Bernoulli mostrar o lado da curva variável}
-
-O fato de que neste problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, torna necessária a construção de novas ferramentas matemáticas. 
+A solução de Jacob Bernoulli considerava o aspecto da curva variável, sendo considerado o primeiro grande passo para o desenvolvimento do cálculo variacional \cite{hist_still}. Nesse problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, o que torna necessária a construção de novas ferramentas matemáticas. 
 
 
 
@@ -683,11 +681,11 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 
 Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções aproximadoras, que será denotada por $Y(x)$. Essa família é definida por:
 \begin{equation}\label{eqn:cap_calcvar_eq_approx}
-	Y(x)=y(x)+\epsilon \eta (x)\text{,}
+	Y(x)=y(x)+\varepsilon \eta (x)\text{,}
 \end{equation}
-onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\epsilon$ é o parâmetro da família. É possível escrever, também, a derivada de $Y$ como
+onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\varepsilon$ é o parâmetro da família. É possível escrever, também, a derivada de $Y$ como
 \begin{equation}\label{eqn:cap_calcvar_eq_approx_diff}
-	Y'(x)=y(x)+\epsilon \eta (x)\text{.}
+	Y'(x)=y(x)+\varepsilon \eta (x)\text{.}
 \end{equation}
 
 %\textit{\color{red} Inserir uma imagem da representação gráfica das famílias de funções aproximadoras.}
@@ -695,7 +693,7 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 \begin{figure}[!h]
 	\caption{Representação gráfica das funções aproximadoras.}
 	\centering
-	\includegraphics[width=0.7\textwidth, angle=0]{../figuras/cap_calcvar/figura_001.pdf}
+	\includegraphics[width=0.5\textwidth, angle=0]{../figuras/cap_calcvar/figura_001.pdf}
 	\label{fig:test_01}
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
@@ -704,10 +702,10 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 
 Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
 \begin{equation}\label{eqn:int_funcional_approx}
-I(\epsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
+I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
 \end{equation}
 
-Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\epsilon = 0$. Ou seja, se $\epsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:int_funcional}) quando $\epsilon=0$.
+Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:int_funcional}) quando $\varepsilon=0$.
 
 A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
 \begin{equation}\label{eqn:cap_calcvar_condition}
@@ -715,22 +713,22 @@ I'(0)=0\text{.}
 \end{equation}
 
 Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:int_funcional_approx}) pode ser escrita como
-$$I'(\epsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \epsilon} (x, Y, Y') dx \text{,}$$
+$$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y, Y') dx \text{,}$$
 e, aplicando regra da cadeia, obtêm-se
-$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \epsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \epsilon} \right )dx\text{,}$$
-onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\epsilon$, portanto $\dfrac{\partial x}{\partial \epsilon}=0$, ou seja,
+$$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{,}$$
+onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\varepsilon$, portanto $\dfrac{\partial x}{\partial \varepsilon}=0$, ou seja,
 \begin{equation}\label{eqn:cap_calcvar_chain_rule}
-I'(\epsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \epsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \epsilon} \right ) dx \text{.}
+I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
 \end{equation}
 
-Derivando \eqref{eqn:cap_calcvar_eq_approx} em função de $\epsilon$, tem-se $\frac{\partial Y}{\partial \epsilon}=\frac{\partial y}{\partial \epsilon}+\frac{\partial}{\partial \epsilon}(\epsilon \eta)$, de onde conclui-se que $\frac{\partial Y}{\partial \epsilon}=\eta$, pois $y$ e $\eta$ independem de $\epsilon$. O mesmo acontece com \eqref{eqn:cap_calcvar_eq_approx_diff}, donde verifica-se que $\frac{\partial Y'}{\partial \epsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calcvar_chain_rule}, obtêm-se a integral
-$$I'(\epsilon)=\int_{x_1}^{x_2}\left ( 
+Derivando \eqref{eqn:cap_calcvar_eq_approx} em função de $\varepsilon$, tem-se $\frac{\partial Y}{\partial \varepsilon}=\frac{\partial y}{\partial \varepsilon}+\frac{\partial}{\partial \varepsilon}(\varepsilon \eta)$, de onde conclui-se que $\frac{\partial Y}{\partial \varepsilon}=\eta$, pois $y$ e $\eta$ independem de $\varepsilon$. O mesmo acontece com \eqref{eqn:cap_calcvar_eq_approx_diff}, donde verifica-se que $\frac{\partial Y'}{\partial \varepsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calcvar_chain_rule}, obtêm-se a integral
+$$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
 	\frac{\partial f}{\partial Y'} \eta '
 \right )dx \text{.}
 $$
 
-Para calcular $I'(0)$, tem-se que $\epsilon=0$ e, então, podemos trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, obtendo
+Para calcular $I'(0)$, tem-se que $\varepsilon=0$ e, então, podemos trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, obtendo
 $$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} \eta +
@@ -795,7 +793,8 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 
 A equação diferencial parcial \eqref{eqn:cap_calcvar_euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:int_funcional}).
 
-\textit{\color{red}(Necessário?) Falar sobre a generalização da equação de Euler-Lagrange para $n$ variáveis.}
+%\textit{\color{red}(Necessário?) Falar sobre a generalização da equação de Euler-Lagrange para $n$ variáveis.}
+%\section{Generalização da Equação de Euler-Lagrange}
 
 
 % ----------------------------------------------------------
@@ -1043,7 +1042,7 @@ elementum}
 					\frac{\varphi(x+se_i)-\varphi(x)}{s}
 					- \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
 				\right |
-				< \epsilon\text{,}
+				< \varepsilon\text{,}
 			$$
 			que é, a definição formal do limite
 			$$
