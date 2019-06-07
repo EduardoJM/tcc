@@ -631,10 +631,7 @@ O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da
 
 A solução de Jacob Bernoulli considerava o aspecto da curva variável, sendo considerado o primeiro grande passo para o desenvolvimento do cálculo variacional \cite{hist_still}. Nesse problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, o que torna necessária a construção de novas ferramentas matemáticas. 
 
-
-
-%Os primeiros métodos para a solução destes problemas eram de caráter específico, sendo adaptados sempre a necessidade do problema em que se queria resolver até que Euler e Lagrange se envolveram no estudo destes problemas introduzindo métodos gerais para suas resoluções. \cite{hist_courant}
-
+Os métodos para a resolução de problemas deste tipo eram específicos com adaptações para cada caso, sendo que os métodos gerais para a resolução só foram desenvolvidos com o envolvimento dos matemáticos Euler e Lagrange nos estudos desses problemas \cite{hist_courant}.
 
 % Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
 
@@ -942,7 +939,7 @@ elementum}
 \label{apend:regra_de_leibniz}
 {
 	Para encontrar a equação de Euler-Lagrande faz-se necessário derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz (Ou Derivação sob o sinal de integral) e será enunciada e demonstrada neste Apêndice. O texto deste apêndice foi elaborado com base em \citeonline{analise_elon2}.
-
+	
 	\begin{teorema}
 		\label{teorema:func_uniformemente}
 		Seja $f:X\times K \longrightarrow \mathbb{R}^n$ contínua, onde $K$ é compacto. Fixemos $x_0 \in X$. Para todo $\varepsilon > 0$, existe um $\delta > 0$ tal que $x\in X$, $|x-x_0|<\delta \Longrightarrow |f(x, \alpha)-f(x_0,\alpha)|<\varepsilon$, seja qual for $\alpha \in K$.
@@ -950,6 +947,8 @@ elementum}
 		Suponha que o teorema não seja válido, então existiriam $\varepsilon > 0$ e sequências de pontos $x_k\in X$, $\alpha_k \in K$ tais que $|x_k-x_0|<\frac{1}{k}$ e $|f(x_k,\alpha_k)-f(x_0,\alpha_k)|\geqslant \varepsilon$. Passando a uma subsequência, se necessário e adimitindo que $lim \alpha_k=\alpha \in K$. Como $lim x_k=x_0$, devido a continuidade de $f$ tem-se $\varepsilon \leqslant lim |f(x_k,\alpha_k)-f(x_0,\alpha _k)|=|f(x_0,\alpha)-f(x_0,\alpha)|$, uma contradição, pois da hipótese $\varepsilon >0$.
 		\end{proof}
 	\end{teorema}
+	
+	Isso equivale a dizer que uma função $f$ satisfazendo a hipótese do Teorema \ref{teorema:func_uniformemente} é uniformemente contínua.
 	
 	\begin{teorema}[Derivação sob o sinal de integral]
 		\label{teorema:regra_de_leibniz}
@@ -982,7 +981,11 @@ elementum}
 			\right ] dt
 			\end{equation}
 			
-			Usando o \textbf{\color{red}Teorema (do Valor Médio?)} pode-se escrever \eqref{eqn:anexo_leibniz_r1} como
+			Pelo \textbf{\color{red}Teorema (do Valor Médio?)}, existe $\theta \in [0,1]$ de modo que
+			$$
+				\frac{f(x+se_i,t)-f(x,t)}{s}=\frac{\partial f}{\partial x_i}(x+\theta s e_i,t)\text{,}
+			$$
+			donde pode-se escrever \eqref{eqn:anexo_leibniz_r1} como
 			\begin{equation}
 				\label{eqn:anexo_leibniz_voltas}
 				\frac{\varphi(x+se_i)-\varphi(x)}{s}
@@ -990,9 +993,10 @@ elementum}
 				=
 				\int_a^b \left [
 					\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
-				\right ] dt\text{,}
+				\right ] dt\text{.}
 			\end{equation}
-			onde $\theta \in [0,1]$. Como $\frac{\partial f}{\partial x_i}$ é contínua e $[a,b]$ é compacto, pelo Teorema \ref{teorema:func_uniformemente}, para todo $\varepsilon > 0$, existe um $\delta > 0$, de modo que
+			
+			Como $\frac{\partial f}{\partial x_i}$ é contínua e $[a,b]$ é compacto, pelo Teorema \ref{teorema:func_uniformemente}, para todo $\varepsilon > 0$, existe um $\delta > 0$, de modo que
 			\begin{equation}
 				\label{eqn:anexo_leibniz_ineq_func_unif}
 				|s|<\delta \Longrightarrow
@@ -1002,7 +1006,7 @@ elementum}
 			\end{equation}
 			seja qual for $t \in [a,b]$.
 			
-			Usando o fato de que $|\int_a^b f(x)dx \leqslant \int_a^b |f(x)| dx$, obtêm-se
+			Usando o fato de que $|\int_a^b f(x)dx| \leqslant \int_a^b |f(x)| dx$, obtêm-se
 			$$
 			\left |
 				\int_a^b \left [
@@ -1066,16 +1070,6 @@ elementum}
 	\end{teorema}
 	\fi
 }
-
-
-
-\iffalse
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
-\fi
 
 \end{apendicesenv}
 % ---
