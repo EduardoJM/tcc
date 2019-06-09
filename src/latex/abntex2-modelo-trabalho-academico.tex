@@ -77,21 +77,17 @@
 \usepackage{amssymb}	 % qed
 \usepackage{amsthm}      % Teoremas
 
-%\declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
-%\declaretheorem[style=plain, name=Teorema]{teorema}
-%\declaretheorem[style=plain, name=Axioma,qed=\textnormal{\textemdash}]{axioma}
-%\declaretheorem[style=plain, name=Lema]{lema}
 \newtheorem{teorema}{Teorema}
 \newtheorem{lema}{Lema}
+\newtheorem{definicao}{Definição}
 
 % Resetar o numberador de lemas no fim de todo capítulo
 % Isso faz com que a numeração seja indexada por capítulos e não
 % pelo documento todo
 \numberwithin{lema}{chapter}
-% Idem ao de cima, com teoremas/axiomas/definições
+% Idem ao de cima, com teoremas/definições
 \numberwithin{teorema}{chapter}
-%\numberwithin{axioma}{chapter}
-%\numberwithin{definicao}{chapter}
+\numberwithin{definicao}{chapter}
 % Idem aos anteriores com o ambiente figure
 \numberwithin{figure}{chapter}
 
@@ -940,15 +936,19 @@ elementum}
 {
 	Para encontrar a equação de Euler-Lagrande faz-se necessário derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz (Ou Derivação sob o sinal de integral) e será enunciada e demonstrada neste Apêndice. O texto deste apêndice foi elaborado com base em \citeonline{analise_elon2}.
 
+	\begin{definicao}
+		Um conjunto $K\subset \mathbb{R}^n$ é compacto se, e somente se, toda sequência de pontos em $K$ possui uma subsequência que converge para um ponto de $K$.
+	\end{definicao}
+
 	\begin{teorema}
 		\label{teorema:func_uniformemente}
 		Seja $f:X\times K \longrightarrow \mathbb{R}^n$ contínua, onde $K$ é compacto. Fixemos $x_0 \in X$. Para todo $\varepsilon > 0$, existe um $\delta > 0$ tal que $x\in X$, $|x-x_0|<\delta \Longrightarrow |f(x, \alpha)-f(x_0,\alpha)|<\varepsilon$, seja qual for $\alpha \in K$.
 		\begin{proof}
-		Suponha que o teorema não seja válido, então existiriam $\varepsilon > 0$ e sequências de pontos $x_k\in X$, $\alpha_k \in K$ tais que $|x_k-x_0|<\frac{1}{k}$ e $|f(x_k,\alpha_k)-f(x_0,\alpha_k)|\geqslant \varepsilon$. Passando a uma subsequência, se necessário e adimitindo que $lim \alpha_k=\alpha \in K$. Como $lim x_k=x_0$, devido a continuidade de $f$ tem-se $\varepsilon \leqslant lim |f(x_k,\alpha_k)-f(x_0,\alpha _k)|=|f(x_0,\alpha)-f(x_0,\alpha)|$, uma contradição, pois da hipótese $\varepsilon >0$.
+		Suponha que o teorema não seja válido, então existiriam $\varepsilon > 0$ e sequências de pontos $x_k\in X$, $\alpha_k \in K$ tais que $|x_k-x_0|<\frac{1}{k}$ e $|f(x_k,\alpha_k)-f(x_0,\alpha_k)|\geqslant \varepsilon$. Passando a uma subsequência, se necessário e admitindo que $\lim \alpha_k=\alpha \in K$, devido ao fato de que o conjunto $K$ é compacto.
+		
+		Como, $|x_k-x_0|<\frac{1}{k}$, $-\frac{1}{k}<x_k-x_0<\frac{1}{k}$, então, $x_0-\frac{1}{k}<x_k<x_0+\frac{1}{k}$, e, como $\lim \left (x_0-\frac{1}{k} \right ) = x_0$ e $\lim \left ( x_0 + \frac{1}{k} \right )=x_0$, então, $\lim x_k=x_0$. Devido a continuidade de $f$ tem-se $\varepsilon \leqslant \lim |f(x_k,\alpha_k)-f(x_0,\alpha _k)|=|f(x_0,\alpha)-f(x_0,\alpha)|=0$, uma contradição, pois da hipótese $\varepsilon >0$.
 		\end{proof}
 	\end{teorema}
-	
-	Isso equivale a dizer que uma função $f$ satisfazendo a hipótese do Teorema \ref{teorema:func_uniformemente} é uniformemente contínua.
 	
 	\begin{teorema}[Derivação sob o sinal de integral ou Regra de Leibniz]
 		\label{teorema:regra_de_leibniz}
@@ -981,11 +981,12 @@ elementum}
 			\right ] dt
 			\end{equation}
 			
-			Pelo \textbf{\color{red}Teorema (do Valor Médio?)}, existe $\theta \in [0,1]$ de modo que
+			Pelo Teorema do Valor Médio para funções reais, existe $\theta \in [0,1]$ de modo que
 			$$
 				\frac{f(x+se_i,t)-f(x,t)}{s}=\frac{\partial f}{\partial x_i}(x+\theta s e_i,t)\text{,}
 			$$
-			donde pode-se escrever \eqref{eqn:anexo_leibniz_r1} como
+			onde $\theta \in [0,1]$ garante que $\theta s$ esteja entre $]0, s[$, satisfazendo as condições do Teorema do Valor Médio. Assim, de \eqref{eqn:anexo_leibniz_r1} tem-se
+			%donde pode-se escrever \eqref{eqn:anexo_leibniz_r1} como
 			\begin{equation}
 				\label{eqn:anexo_leibniz_voltas}
 				\frac{\varphi(x+se_i)-\varphi(x)}{s}
@@ -1018,7 +1019,7 @@ elementum}
 				\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
 			\right | dt\text{,}
 			$$
-			e, utilizando \eqref{eqn:anexo_leibniz_ineq_func_unif}, pode-se escrever a inequação como
+			e, utilizando \eqref{eqn:anexo_leibniz_ineq_func_unif}, tem-se a inequação
 			$$
 			\left |
 				\int_a^b \left [
@@ -1026,9 +1027,8 @@ elementum}
 				\right ] dt
 			\right |
 			<
-			\int_a^b \frac{\varepsilon}{b-a} dt \text{,}
+			\int_a^b \frac{\varepsilon}{b-a} dt
 			$$
-			ou, desenvolvendo a integral da direita, como
 			\begin{equation}
 				\label{eqn:anexo_leibniz_ineq_limit}
 				\left |
@@ -1039,7 +1039,7 @@ elementum}
 				< \varepsilon \text{.}
 			\end{equation}
 			
-			De \eqref{eqn:anexo_leibniz_voltas} e \eqref{eqn:anexo_leibniz_ineq_limit}, tem-se que
+			De \eqref{eqn:anexo_leibniz_voltas} e \eqref{eqn:anexo_leibniz_ineq_limit}, verifica-se que
 			$$
 				|s|<\delta \Longrightarrow
 				\left |
