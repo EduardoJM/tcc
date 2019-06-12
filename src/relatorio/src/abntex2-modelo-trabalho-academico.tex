@@ -1,0 +1,329 @@
+%% (pdf)latex + bibtex + (pdf)latex + (pdf)latex [+ preview]
+%%  F6 + F11 + F6 + F6 [+ F7]
+
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+    oneside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes para escrita matemática
+% ---
+\usepackage{amsmath}
+
+\usepackage{amssymb}	 % qed
+\usepackage{amsthm}      % Teoremas
+
+%\declaretheorem[style=definition,name=Definição,parent=chapter,qed=\textemdash]{definicao}
+%\declaretheorem[style=plain, name=Teorema]{teorema}
+%\declaretheorem[style=plain, name=Axioma,qed=\textnormal{\textemdash}]{axioma}
+%\declaretheorem[style=plain, name=Lema]{lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{lema}{Lema}
+\newtheorem{definicao}{Definição}
+
+% Resetar o numberador de lemas no fim de todo capítulo
+% Isso faz com que a numeração seja indexada por capítulos e não
+% pelo documento todo
+\numberwithin{lema}{chapter}
+% Idem ao de cima, com teoremas/axiomas/definições
+\numberwithin{teorema}{chapter}
+\numberwithin{definicao}{chapter}
+%\numberwithin{axioma}{chapter}
+%\numberwithin{definicao}{chapter}
+% Idem aos anteriores com o ambiente figure
+\numberwithin{figure}{chapter}
+
+% PGF
+\usepackage{pgf,tikz,pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usepackage{standalone}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Cálculo Variacional}
+\autor{EDUARDO JOSÉ DE OLIVEIRA}
+\local{ANÁPOLIS}
+\data{2019}
+\orientador{Prof. Me. Tiago de Lima Bento Pereira}
+%\coorientador{Titulação e Nome do coorientador}
+\instituicao{%
+Universidade Estadual de Goiás
+  \par
+Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo
+  \par
+Curso de Matemática}
+\tipotrabalho{Trabalho de Curso (Graduação)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Curso (TC) apresentado a Coordenação Adjunta de TC, como parte dos requisitos para obtenção do título de Graduado no Curso de Matemática da Universidade Estadual de Goiás.} %sob a orientação do Professor(a) titulação e nome do professor(a).}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=false,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+\usepackage{matematicaCCETrelatorio} %MEU 
+\usepackage{helvet} %Meu importa uma fonte nova "sem serifa"
+\usepackage{pdfpages}
+
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\usepackage{enumitem}
+\usepackage{geometry}
+\newgeometry{a4paper, head=95pt, left=3cm, top=4cm, right=2cm, bottom=2cm, foot=100pt}
+\usepackage{multirow} % Usado para compilar a tabela da sessão "Atividades Cumpridas do Cronograma do TC"
+
+\newcommand{\CompromissoItemOptions}{
+	\begin{center}
+		\begin{tabular}{c c c}
+			(\hspace{0.3cm}) Sim \hspace{1.5cm}  & (\hspace{0.3cm}) Parcialmente \hspace{1.5cm} & (\hspace{0.3cm}) Não
+		\end{tabular}
+	\end{center}
+}
+
+\newcommand{\notitleitem}[1]{
+	\item[\refstepcounter{enumi}\textbf{#1}]
+}
+
+\newcounter{apendice}[section]
+
+\newcommand{\referencias}{\notitleitem{Referências}}
+\newcommand{\apendice}[1]{
+	\refstepcounter{apendice}
+	\notitleitem{Apêndice~\Alph{apendice}:} #1
+}
+
+\renewcommand{\bibsection}{%
+    %\chapter*{\bibname}
+    \section*{REFERÊNCIAS BIBLIOGRÁFICAS}
+    \bibmark
+    %\ifnobibintoc\else
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{\bibname}}{\bibname}}
+    %\fi
+    \prebibhook
+}
+
+\makeoddhead{abntchapfirst}{}{}{}
+\makeoddhead{abntheadings}{\ABNTEXfontereduzida\textit\rightmark}{}{}
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+\pretextual
+{
+	% ---
+	% Capa
+	% ---
+	\imprimircapa
+	\clearpage
+}
+%
+% Relatório
+%
+\pagestyle{ueg_mat_heading}
+{
+	
+	%
+	% Estrutura do Trabalho de Curso
+	%
+	\section*{ESTRUTURA DO TC}
+
+	%Definir a estrutura inicial do TC, ou seja, quantos e quais capítulos estão previstos e o que poderá ter neste trabalho. Essa estrutura pode ser ajustada no decorrer do desenvolvimento do trabalho de curso.
+	A estrutura prevista para este trabalho de curso é a seguinte:
+	
+	%
+	% -> Ambiente Enumerate contendo a estrutura dos capítulos do TC
+	%
+	\begin{enumerate}[align=left,leftmargin=*,label=\textbf{Capítulo \arabic*}:]
+		\item Introdução
+		\item Contexto Histórico
+		\item Cálculo Variacional
+		\item Aplicações
+		% ...
+		\referencias
+		\apendice {Regra de Leibniz}
+	\end{enumerate}
+
+	%
+	% Atividades cumpridas do cronograma
+	%
+	\section*{ATIVIDADES CUMPRIDAS DO CRONOGRAMA DO TC}
+
+	%Neste item devem ser assinaladas com um \textbf{X} as atividades que já foram desenvolvidas para a realização do TC. Lembre-se que essas atividades foram listadas no Projeto de Trabalho de Curso, no entanto, podem ser feitas alterações nessas atividades, incluindo ou excluindo algumas dessas atividades.
+		
+	\input{tabela_cronograma.tex} % insere o conteúdo do arquivo "tabela_cronograma.tex" apenas para simplificar a exibição\edição destes documentos
+	
+	%
+	% Resultados Parciais
+	%
+	\section*{RESULTADOS PARCIAIS}
+	
+	Os resultados parciais são apresentados nas páginas subsequentes.
+}
+\clearpage
+%
+% Texto dos resultados parciais
+%
+% retoma os estilos de cabeçalho para o abntex
+\thispagestyle{abntheadings}
+\textual
+{
+	\input{texto.tex}
+	
+	% quebra a página para os próximos itens
+	\newpage
+	% retoma os estilos de cabeçalho para o modelo próprio do curso de matemática - ccet
+	\thispagestyle{ueg_mat_heading}
+	%
+	% Referências Bibliográficas
+	%
+	\bibliography{abntex2-modelo-references}
+	
+	%Incluir somente as referências pesquisadas até o momento.
+
+	%
+	% Folha de compromisso com a execução do trabalho de curso
+	%
+	\imprimirfolhacompromisso
+}
+
+\end{document}

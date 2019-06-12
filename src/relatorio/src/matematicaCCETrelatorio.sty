@@ -1,0 +1,175 @@
+%%
+%% Customiza��es do abnTeX2 (http://abnTeX2.googlecode.com) para o curso de Matemática da Universidade Estadual de Goiás.
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is SEU_NOME, SEU_EMAIL
+%%
+%% Further information about abnTeX2 are available on https://github.com/abntex/abntex2
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA O CURSO DE MATEMÁTICA - UNIVERSIDADE ESTADUAL DE GOIÁS
+% ---
+
+\ProvidesPackage{matematicaCCETrelatorio}[2014/09/01 Criacao desta customizacao do abnTeX2]
+
+\usepackage{enumitem}
+\usepackage{geometry}
+
+% alterando a capa
+\renewcommand{\imprimircapa}{%
+  \newgeometry{head=0pt,top=0.50cm,left=3cm,right=2cm,bottom=2cm}
+  \begin{capa}%
+    \center
+%    \ABNTEXchapterfont\Large UNIVERSIDADE ESTADUAL DE GOIÁS\\ Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\ Curso de Matemática
+		
+        {\begin{SingleSpace}\includegraphics[scale=0.07]{logo} \\ \ABNTEXchapterfont UNIVERSIDADE ESTADUAL DE GOIÁS\\ Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\ Coordenação do Curso de Matemática (Licenciatura)\\Coordenação Adjunta de Trabalho de Curso \end{SingleSpace}}
+
+    \vspace*{1cm}
+    
+%    {\ABNTEXchapterfont\large\imprimirautor}
+
+	\vfill
+	
+	\begin{center}
+	\ABNTEXchapterfont\bfseries\ABNTEXchapterfontsize Relatório do Trabalho de Curso I
+	\end{center}
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large \imprimirtitulo
+    \end{center}
+    \vfill
+
+	\vfill
+	\begin{flushright}
+		{\ABNTEXchapterfont\large\imprimirautor \\ \imprimirorientadorRotulo~\imprimirorientador}
+	\end{flushright}
+	\vfill
+    
+    \large\ABNTEXchapterfont\imprimirlocal
+
+    \large\ABNTEXchapterfont\imprimirdata
+    
+    \vspace*{1cm}
+  \end{capa}
+}
+\makeatletter
+
+%
+% Cria um novo estilo de cabeçalhos
+% 
+\makepagestyle{ueg_mat_heading}
+  % Cabeçalho
+  %% Página par (não usado devido ao fato de que a impressão está configurada para 'oneside')
+  \makeevenhead{ueg_mat_heading}
+     {} % esquerda
+     {} % centro
+     {} % direita
+  %% Página ímpar ou configurada para 'oneside'
+  \makeoddhead{ueg_mat_heading}
+     {} % esquerda
+     {\begin{SingleSpace}\includegraphics[scale=0.07]{logo}\\ \ABNTEXchapterfont UNIVERSIDADE ESTADUAL DE GOIÁS\\ Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\ Coordenação do Curso de Matemática (Licenciatura)\\Coordenação Adjunta de Trabalho de Curso\end{SingleSpace}} % centro
+     {} % direita
+  %% linha separando o cabeçalho (não usado nesse modelo)
+  % \makeheadrule{ueg_mat_heading}{\textwidth}{\normalrulethickness}
+
+\makeatletter
+
+%
+% Novo comando para imprimir a folha de compromisso
+%
+\newcommand{\imprimirfolhacompromisso}
+{
+	\newpage
+	\thispagestyle{ueg_mat_heading}
+	% Muda a configuração de fonte
+	\ABNTEXchapterfont
+	
+	% Título da página de compromisso
+	\begin{center}
+		\textbf{COMPROMISSO COM A EXECUÇÃO DO TRABALHO DE CURSO}
+	\end{center}
+	\vspace{1cm}
+	
+	%
+	% Preenchimento pelo acadêmico
+	%
+	\begin{SingleSpace}
+		\noindent \textbf{Preenchimento Obrigatório pelo Acadêmico Orientado}
+		\begin{enumerate}[align=left,leftmargin=*]
+			\item O Professor tem mostrado comprometimento com a orientação do trabalho de curso?
+			\CompromissoItemOptions
+			\item O Professor tem realizado encontros para discutir as atividades do trabalho de curso?
+			\CompromissoItemOptions
+		\end{enumerate}
+	\end{SingleSpace}
+	\vspace{1cm}
+
+	%
+	% Preenchimento pelo Orientador
+	%
+	\begin{SingleSpace}
+		\noindent \textbf{Preenchimento Obrigatório pelo Professor Orientador}
+		\begin{enumerate}[align=left,leftmargin=*]
+			\item O Acadêmico tem mostrado comprometimento com a execução do trabalho de curso?
+			\CompromissoItemOptions
+			\item O Acadêmico tem cumprido os prazos no desenvolvimento das atividades propostas?
+			\CompromissoItemOptions
+		\end{enumerate}
+	\end{SingleSpace}
+
+	%
+	% Ambiente pra assinatura do acadêmico e orientador
+	%
+	\setlength{\ABNTEXsignwidth}{7cm} % diminui o tamanho da barra de assinatura da ABNTEX para 7 cm (apenas por estética)
+	\begin{center}
+		\begin{tabular}{c c}
+		{
+			\assinatura{Acadêmico Orientado}
+		}
+		&
+		{
+			\assinatura{Professor Orientador}
+		}
+		\end{tabular}
+	\end{center}
+	\setlength{\ABNTEXsignwidth}{8cm} % retomar a largura original pra 8cm (https://github.com/abntex/abntex2/blob/15a981c300198ca59920eea17f02893490adf878/tex/latex/abntex2/abntex2.cls#L1004)
+
+	%
+	% Ambiente pra preenchimento de local e data
+	%
+	\begin{center}
+		\begin{tabular}{c c}
+			{Local: \underline{\hspace{5.8cm}}}
+			&
+			{
+				\hspace{2.6cm}
+				Data: \underline{\hspace{0.97cm}}/\underline{\hspace{0.97cm}}/\imprimirdata
+			}
+		\end{tabular}
+	\end{center}
+
+	%
+	% Aviso sobre rubrica das páginas
+	%
+	%\vspace{1cm}
+	%\begin{center}
+	%	{\color{red}Obs: Orientador(a) e Orientado(a) rubricar todas as folhas a partir da segunda, exceto a primeira.}
+	%\end{center}
+}
+\makeatletter
+
+
+% ---
+% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
+% ---
