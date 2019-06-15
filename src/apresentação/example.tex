@@ -5,6 +5,7 @@
 \usepackage{graphicx,hyperref,ru,url}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{ragged2e}
 
 % The title of the presentation:
 %  - first a short version which is visible at the bottom of each slide;
@@ -17,7 +18,7 @@
 % The author(s) of the presentation:
 %  - again first a short version to be displayed at the bottom;
 %  - next the full list of authors, which may include contact information;
-\author[Eduardo Oliveira]{Eduardo José de Oliveira}
+\author[Eduardo José de Oliveira]{Eduardo José de Oliveira\\Orientador: Prof. Me. Tiago de Lima Bento Pereira}
 
 % The institute:
 %  - to start the name of the university as displayed on the top of each slide
@@ -26,7 +27,7 @@
 \institute[Universidade Estadual de Goiás]{
 	UNIVERSIDADE ESTADUAL DE GOIÁS\\
   	Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\
-  	Licenciatura Em Matemática}
+  	Matemática}
 
 % Add a date and possibly the name of the event to the slides
 %  - again first a short version to be shown at the bottom of each slide
@@ -54,10 +55,12 @@
 	  \titlepage
 	\end{frame}
 
+\section{Objetivos}
 
 \begin{frame}
-  %\frametitle{Índice}
-  \tableofcontents
+	\frametitle{Objetivos}
+	
+	Lorem ipsum dolor sit amet.
 \end{frame}
 
 % Section titles are shown in at the top of the slides with the current section 
@@ -83,10 +86,16 @@
 
 	\begin{itemize}
 		\item Pierre de Fermat em 1629.
-		\item Comparações entre $f(x)$ e $f(x+E)$ próximo de máximos ou mínimos.
-		\item Considerar a divisão $\frac{f(x+E)-f(x)}{E}$.
-		\item Após a divisão, considerar $E=0$.
-		\item Por último, igualar o resultado a $0$, encontrando as abscissas dos máximos ou mínimos.
+		\pause
+		\begin{itemize}
+			\item Comparações entre $f(x)$ e $f(x+E)$ próximo de máximos ou mínimos.
+			\pause
+			\item Considerar a divisão $\frac{f(x+E)-f(x)}{E}$.
+			\pause
+			\item Após a divisão, considerar $E=0$.
+			\pause
+			\item Por último, igualar o resultado a $0$, encontrando as abscissas dos máximos ou mínimos.
+		\end{itemize}
 	\end{itemize}
 
 \end{frame}
@@ -120,6 +129,7 @@
 \begin{frame}
 	\frametitle{Funções Aproximadoras}
 	\begin{definicao}
+		\justify
 		Uma família de funções aproximadoras é definida como
 		$$Y(x)=y(x)+\varepsilon \eta (x)\text{,}$$
 		onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2)=0$. O número $\varepsilon$ é o parâmetro da família.
