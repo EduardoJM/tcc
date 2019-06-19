@@ -2,7 +2,7 @@
 
 \usepackage[brazil]{babel}
 \usepackage[alf]{abntex2cite}
-\usepackage{graphicx,hyperref,ru,url}
+\usepackage{graphicx,hyperref,uegCCETtheme,url}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e}
@@ -39,7 +39,7 @@
 
 \newcommand{\makesubtitleframe}[1]{
 	{
-		\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ueg_background_title}}
+		\usebackgroundtemplate{\includegraphics[width=\paperwidth]{graphics/ueg_background_title}}
 		\begin{frame}
 			\vfill
 			\begin{center}
@@ -163,7 +163,7 @@
 		\begin{figure}
 			\caption{Representação gráfica das funções aproximadoras.}
 			\begin{center}
-				\includegraphics[scale=0.25]{figura_001}\par
+				\includegraphics[scale=0.25]{../figuras/cap_calcvar/figura_001}\par
 				{\small Fonte: Elaborada pelo autor, 2019}
 			\end{center}
 			\label{fig:func_approx}
@@ -317,7 +317,7 @@
 \section{Referências}
 \begin{frame}
 	\frametitle{Referências}
-	\bibliography{references}
+	\bibliography{../references}
 \end{frame}
 
 \end{document}
