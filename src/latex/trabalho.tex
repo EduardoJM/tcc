@@ -91,12 +91,9 @@
 % Idem aos anteriores com o ambiente figure
 \numberwithin{figure}{chapter}
 
-% PGF
-\usepackage{pgf,tikz,pgfplots}
-\pgfplotsset{compat=1.15}
-\usepackage{mathrsfs}
-\usetikzlibrary{arrows}
-\usepackage{standalone}
+% Pacotes TIKZ
+\usepackage{tikz}
+\usepackage{tkz-fct}
 
 % ---
 % Pacotes de citações
@@ -686,12 +683,66 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 \begin{figure}[!h]
 	\caption{Representação gráfica das funções aproximadoras.}
 	\centering
+
+	\iffalse
 	\includegraphics[width=0.5\textwidth, angle=0]{../figuras/cap_calcvar/figura_001.pdf}
+	\fi
+	\begin{tikzpicture}
+		\tkzInit[xmin=-1, xmax=6, ymin=-1, ymax=6]
+		% draw axis without ticks
+		\tkzDrawX[noticks]
+		\tkzDrawY[noticks]
+		
+		% define extrems on y(x) curve
+		\tkzDefPoint[](2.5, 2.0){A}
+		\tkzDefPoint[](4.6, 3.76){B}		
+		% define helper points
+		\tkzDefPoint[](2.5, 0.0){C}
+		\tkzDefPoint[](4.6, 0.0){D}
+		\tkzDefPoint[](0.0, 2.0){E}
+		\tkzDefPoint[](0.0, 3.76){F}
+		% helper points to put labels
+		\tkzDefPoint[](3.4, 3.2){G}
+		\tkzDefPoint[](2.6, 1.7){H}
+		\tkzDefPoint[](3.7, 4.2){I}
+		\tkzDefPoint[](3.2, 0.4){J}
+		
+		% draw extrem points on y(x) curve
+		\tkzDrawPoint[fill=black, size=7](A)
+		\tkzDrawPoint[fill=black, size=7](B)
+		
+		% y(x)
+		\tkzFct[domain=2.5:4.6,samples=800]{-exp(-x+3.2)+4}
+		% eta(x)
+		\tkzFct[domain=2.5:4.6,samples=800]{-0.18*x*x+1.29*x-2.09}
+		% y(x) + 2*eta(x)
+		\tkzFct[domain=2.5:4.6,samples=800,dashed]{-exp(-x+3.2)+4+2*(-0.18*x*x+1.29*x-2.09)}
+		% y(x) - 4*eta(x)
+		\tkzFct[domain=2.5:4.6,samples=800,dashed]{-exp(-x+3.2)+4-4*(-0.18*x*x+1.29*x-2.09)}
+		
+		% draw dotted segments (x_1, y_1), (x_2, y_2)
+		\tkzDrawSegment[dotted](A,C)
+		\tkzDrawSegment[dotted](B,D)
+		\tkzDrawSegment[dotted](A,E)
+		\tkzDrawSegment[dotted](B,F)
+		
+		% x_1, x_2, y_1, y_2 labels
+		\tkzLabelPoint[below](C){$x_1$}
+		\tkzLabelPoint[below](D){$x_2$}
+		\tkzLabelPoint[left](E){$y_1$}
+		\tkzLabelPoint[left](F){$y_2$}
+		
+		\tkzLabelPoint[right](G){$y(x)$}
+		\tkzLabelPoint[right](H){$Y_2(x)=y(x)+\varepsilon _2 \eta(x)$}
+		\tkzLabelPoint[right](I){$Y_1(x)=y(x)+\varepsilon _1 \eta(x)$}
+		\tkzLabelPoint[right](J){$\eta(x)$}
+	\end{tikzpicture}
+	
 	\label{fig:test_01}
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-%\textit{\color{red}Substituir essa imagem por um desenho plotado com O Tikz/PGF.}
+\textit{\color{red}Testar sobre grossura de linha e melhor exibição.}
 
 Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
 \begin{equation}\label{eqn:int_funcional_approx}
