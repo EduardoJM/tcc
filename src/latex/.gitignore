@@ -244,3 +244,7 @@ TSWLatexianTemp*
 # other external archives
 *.docx
 *.out.ps
+
+# TIKZ
+*.gnuplot
+*.tkzfct.table
