@@ -26,42 +26,43 @@
 \usepackage{geometry}
 
 % alterando a capa
-\renewcommand{\imprimircapa}{%
-  \newgeometry{head=0pt,top=0.50cm,left=3cm,right=2cm,bottom=2cm}
-  \begin{capa}%
-    \center
-%    \ABNTEXchapterfont\Large UNIVERSIDADE ESTADUAL DE GOIÁS\\ Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\ Curso de Matemática
+\renewcommand{\imprimircapa}
+{%
+	\newgeometry{head=0pt,top=0.50cm,left=3cm,right=2cm,bottom=2cm}
+	\begin{capa}%
+   		\center
+		%\ABNTEXchapterfont\Large UNIVERSIDADE ESTADUAL DE GOIÁS\\ Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\ Curso de Matemática
 		
         {\begin{SingleSpace}\includegraphics[scale=0.07]{logo} \\ \ABNTEXchapterfont UNIVERSIDADE ESTADUAL DE GOIÁS\\ Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\ Coordenação do Curso de Matemática (Licenciatura)\\Coordenação Adjunta de Trabalho de Curso \end{SingleSpace}}
 
-    \vspace*{1cm}
+	    \vspace*{1cm}
     
-%    {\ABNTEXchapterfont\large\imprimirautor}
+		%{\ABNTEXchapterfont\large\imprimirautor}
 
-	\vfill
+		\vfill
 	
-	\begin{center}
-	\ABNTEXchapterfont\bfseries\ABNTEXchapterfontsize Relatório do Trabalho de Curso I
-	\end{center}
+		\begin{center}
+			\ABNTEXchapterfont\bfseries\ABNTEXchapterfontsize Relatório do Trabalho de Curso I
+		\end{center}
 
-    \vfill
-    \begin{center}
-    \ABNTEXchapterfont\bfseries\large \imprimirtitulo
-    \end{center}
-    \vfill
+    	\vfill
+	    \begin{center}
+		    \ABNTEXchapterfont\bfseries\large \imprimirtitulo
+    	\end{center}
+ 	   \vfill
 
-	\vfill
-	\begin{flushright}
-		{\ABNTEXchapterfont\large\imprimirautor \\ \imprimirorientadorRotulo~\imprimirorientador}
-	\end{flushright}
-	\vfill
+		\vfill
+		\begin{flushright}
+			{\ABNTEXchapterfont\large\imprimirautor \\ \imprimirorientadorRotulo~\imprimirorientador}
+		\end{flushright}
+		\vfill
     
-    \large\ABNTEXchapterfont\imprimirlocal
+	    \large\ABNTEXchapterfont\imprimirlocal
 
-    \large\ABNTEXchapterfont\imprimirdata
-    
-    \vspace*{1cm}
-  \end{capa}
+    	\large\ABNTEXchapterfont\imprimirdata
+   	
+    	\vspace*{1cm}
+	\end{capa}
 }
 \makeatletter
 
@@ -84,6 +85,52 @@
   % \makeheadrule{ueg_mat_heading}{\textwidth}{\normalrulethickness}
 
 \makeatletter
+
+% Criar \item sem enumerador
+\newcommand{\notitleitem}[1]
+{
+	\item[\refstepcounter{enumi}\textbf{#1}]
+}
+
+% definir um novo contador para os apêndices
+\newcounter{apendice}[section]
+% definir um \item pra inserir apêndices na
+% estrutura do trabalho
+\newcommand{\estruturaApendice}[1]
+{
+	\refstepcounter{apendice}
+	\notitleitem{Apêndice~\Alph{apendice}:} #1
+}
+% definir um \item pra inserir referências
+% na estrutura do trabalho
+\newcommand{\estruturaReferencias}{\notitleitem{Referências}}
+
+\renewcommand{\bibsection}{%
+    %\chapter*{\bibname}
+    \section*{REFERÊNCIAS}
+    \bibmark
+    %\ifnobibintoc\else
+    %\phantomsection
+    %\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{\bibname}}{\bibname}}
+    %\fi
+    \prebibhook
+}
+
+\makeoddhead{abntchapfirst}{}{}{}
+\makeoddhead{abntheadings}{\ABNTEXfontereduzida\textit\rightmark}{}{}
+
+%
+% Imprimir os itens:
+%	( ) Sim	  ( ) Parcialmente   ( ) Não
+%
+\newcommand{\CompromissoItemOptions}
+{
+	\begin{center}
+		\begin{tabular}{c c c}
+			(\hspace{0.3cm}) Sim \hspace{1.5cm}  & (\hspace{0.3cm}) Parcialmente \hspace{1.5cm} & (\hspace{0.3cm}) Não
+		\end{tabular}
+	\end{center}
+}
 
 %
 % Novo comando para imprimir a folha de compromisso
@@ -158,18 +205,5 @@
 			}
 		\end{tabular}
 	\end{center}
-
-	%
-	% Aviso sobre rubrica das páginas
-	%
-	%\vspace{1cm}
-	%\begin{center}
-	%	{\color{red}Obs: Orientador(a) e Orientado(a) rubricar todas as folhas a partir da segunda, exceto a primeira.}
-	%\end{center}
 }
 \makeatletter
-
-
-% ---
-% FIM DAS CUSTOMIZACOES PARA A UNIVERSIDADE XXX
-% ---

@@ -204,40 +204,6 @@ Curso de Matemática}
 \newgeometry{a4paper, head=95pt, left=3cm, top=4cm, right=2cm, bottom=2cm, foot=100pt}
 \usepackage{multirow} % Usado para compilar a tabela da sessão "Atividades Cumpridas do Cronograma do TC"
 
-\newcommand{\CompromissoItemOptions}{
-	\begin{center}
-		\begin{tabular}{c c c}
-			(\hspace{0.3cm}) Sim \hspace{1.5cm}  & (\hspace{0.3cm}) Parcialmente \hspace{1.5cm} & (\hspace{0.3cm}) Não
-		\end{tabular}
-	\end{center}
-}
-
-\newcommand{\notitleitem}[1]{
-	\item[\refstepcounter{enumi}\textbf{#1}]
-}
-
-\newcounter{apendice}[section]
-
-\newcommand{\referencias}{\notitleitem{Referências}}
-\newcommand{\apendice}[1]{
-	\refstepcounter{apendice}
-	\notitleitem{Apêndice~\Alph{apendice}:} #1
-}
-
-\renewcommand{\bibsection}{%
-    %\chapter*{\bibname}
-    \section*{REFERÊNCIAS}
-    \bibmark
-    %\ifnobibintoc\else
-    %\phantomsection
-    %\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeTextUppercase{\bibname}}{\bibname}}
-    %\fi
-    \prebibhook
-}
-
-\makeoddhead{abntchapfirst}{}{}{}
-\makeoddhead{abntheadings}{\ABNTEXfontereduzida\textit\rightmark}{}{}
-
 % ----
 % Início do documento
 % ----
@@ -263,17 +229,16 @@ Curso de Matemática}
 %
 \pagestyle{ueg_mat_heading}
 {
-	
 	%
 	% Estrutura do Trabalho de Curso
 	%
 	\section*{ESTRUTURA DO TC}
 
-	%Definir a estrutura inicial do TC, ou seja, quantos e quais capítulos estão previstos e o que poderá ter neste trabalho. Essa estrutura pode ser ajustada no decorrer do desenvolvimento do trabalho de curso.
 	A estrutura prevista para este trabalho de curso é a seguinte:
 	
 	%
-	% -> Ambiente Enumerate contendo a estrutura dos capítulos do TC
+	% -> Ambiente Enumerate contendo a 
+	%	 estrutura dos capítulos do TC
 	%
 	\begin{enumerate}[align=left,leftmargin=*,label=\textbf{Capítulo \arabic*}:]
 		\item Introdução
@@ -281,8 +246,8 @@ Curso de Matemática}
 		\item Cálculo Variacional
 		\item Aplicações
 		% ...
-		\referencias
-		\apendice {Regra de Leibniz}
+		\estruturaReferencias
+		\estruturaApendice {Regra de Leibniz}
 	\end{enumerate}
 
 	%
@@ -290,9 +255,11 @@ Curso de Matemática}
 	%
 	\section*{ATIVIDADES CUMPRIDAS DO CRONOGRAMA DO TC}
 
-	%Neste item devem ser assinaladas com um \textbf{X} as atividades que já foram desenvolvidas para a realização do TC. Lembre-se que essas atividades foram listadas no Projeto de Trabalho de Curso, no entanto, podem ser feitas alterações nessas atividades, incluindo ou excluindo algumas dessas atividades.
-	
-	\input{tabela_cronograma.tex} % insere o conteúdo do arquivo "tabela_cronograma.tex" apenas para simplificar a exibição\edição destes documentos
+	% inserir o conteúdo do arquivo contendo a
+	% tabela para simplificar a exibição\edição
+	% deste documentos
+	\input{tabela_cronograma.tex}
+	% Conferir questão do tamanho da fonte na tabela
 	
 	%
 	% Resultados Parciais
@@ -300,8 +267,13 @@ Curso de Matemática}
 	\section*{RESULTADOS PARCIAIS}
 	
 	Os resultados parciais são apresentados nas páginas subsequentes.
+	
+	% há um bug em que o texto aqui passa pra
+	% baixo da margem, não resolvido ainda.
+	% controlar de forma manual.
 }
 \clearpage
+
 %
 % Texto dos resultados parciais
 %
@@ -309,19 +281,21 @@ Curso de Matemática}
 \thispagestyle{abntheadings}
 \textual
 {
+	% inserir o conteúdo do arquivo
+	% para simplificar a exibição/edição
+	% deste arquivo.
 	\input{texto.tex}
 	
 	% quebra a página para os próximos itens
 	\newpage
 	% retoma os estilos de cabeçalho para o modelo próprio do curso de matemática - ccet
 	\thispagestyle{ueg_mat_heading}
+	
 	%
 	% Referências Bibliográficas
 	%
 	\bibliography{../../references}
 	
-	%Incluir somente as referências pesquisadas até o momento.
-
 	%
 	% Folha de compromisso com a execução do trabalho de curso
 	%

@@ -1,68 +1,43 @@
-% Copyright 2009 by Pim Vullers
 %
-% This file may be distributed and/or modified
+% Template construido sobre o thema 
+%	"Radboud University Beamer"
+% obtido em:
+%	<https://pt.sharelatex.com/templates/presentations/radboud-university-beamer-(version-1)>
 %
-% 1. under the LaTeX Project Public License and/or
-% 2. under the GNU Public License.
-%
-% See the file doc/licenses/LICENSE for more details.
 
+% Condicionais
 \usepackage{ifthen}
 
 %%%
 %%% Inherit definitions from existing themes (DO NOT MODIFY THESE)
 %%%
-
 % Layout scheme for outer elements: split header and footer
 \useoutertheme{split}
-
 % Color scheme for outer elements: use background colors
 \usecolortheme{whale}
-
 % Layout scheme for inner elements: rounded elements
 \useinnertheme{rounded} 
-
 % Color scheme for inner elements: use foreground colors
 \usecolortheme{orchid}
 
-
-%%%
-%%% Tweak definitions of inner theme to match personal preferences (MODIFY THESE)
-%%%
-
 % Itemize items: default (triangle), circle, square, ball
 \setbeamertemplate{itemize items}[circle]
-
 % Enumerate items: default, circle, square, ball
 \setbeamertemplate{enumerate items}[circle]
-
 % Outline: default, sections numbered, subsections numbered, circle, square, ball, ball unnumbered
 \setbeamertemplate{sections/subsections in toc}[default]
-
 % General blocks: 
 \setbeamertemplate{blocks}[rounded]
-
 % Title page:
 \setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]
-
 % Part page:
 \setbeamertemplate{part page}[default][colsep=-4bp,rounded=true]
-
 % Navigation symbols:
 \setbeamertemplate{navigation symbols}{}
 
-
-%%%
-%%% Tweak definitions of outer theme to match Radboud (website) style
-%%%
-
-% Background
-%\pgfdeclareimage[width=\paperwidth,height=\paperheight]{bg}{ueg_background}
-%\pgfdeclareimage[width=\paperwidth]{bg2}{ueg_background_title}
-%\setbeamertemplate{background}{\pgfuseimage{bg}}
-%\setbeamertemplate{background2}{\pgfuseimage{bg2}}
-
-% Colors
+% Cores
+% Cor azul (tema UEG) 
+% Red=32, Green=47, Blue=96
 \usecolortheme[RGB={32, 47, 96}]{structure}
 \definecolor{UegBlue}{RGB}{32, 47, 96}
 
@@ -70,18 +45,69 @@
 \setbeamercolor{frametitle right}{parent=section in head/foot}
 \setbeamercolor{palette quaternary}{bg=UegBlue}
 
-\pgfdeclarehorizontalshading[frametitle.bg]{beamer@frametitleshade}{\paperheight}{%
-  color(0pt)=(frametitle.bg);
-  color(\paperwidth)=(frametitle.bg)}
 
-\AtBeginDocument{
-  \pgfdeclareverticalshading{beamer@topshade}{\paperwidth}{%
-    color(0pt)=(bg);
-    color(4pt)=(black!50!bg)}
+%
+% Utilize \encapsulateBlueFrames{
+%	\begin{frame}
+%     ...
+%	\end{frame}
+%	\begin{frame}
+%	  ...
+%	\end{frame}
+% }
+%
+% Os frames definidos dentro das chaves do 
+% \encapsulateBlueFrames terão o fundo azul
+%
+\newcommand{\encapsulateBlueFrames}[1]{
+	{
+		\usebackgroundtemplate{\includegraphics[width=\paperwidth]{graphics/ueg_background_title}}
+		#1
+	}
 }
 
-\defbeamertemplate*{title page}{customized}[1][]
+%
+% Utilize \encapsulateBackgroundLessFrames{
+%	\begin{frame}
+%     ...
+%	\end{frame}
+%	\begin{frame}
+%	  ...
+%	\end{frame}
+% }
+%
+% Os frames definidos dentro das chaves do 
+% \encapsulateBackgroundLessFrames não terão
+% imagem de fundo.
+%
+\newcommand{\encapsulateBackgroundLessFrames}[1]{
+	{
+		\usebackgroundtemplate{}
+		#1
+	}
+}
+
+%
+% Utilize \makesubtitleframe{Subtítulo}
+% para criar um frame de subtítulo, com o fundo azul.
+% 
+\newcommand{\makesubtitleframe}[1]{
+	\encapsulateBlueFrames{
+		\begin{frame}
+			\vfill
+			\begin{center}
+				{\Huge\usebeamercolor[white]{}#1}
+			\end{center}
+			\vfill
+		\end{frame}
+	}
+}
+
+\defbeamertemplate*{title page}{ccetmat theme}[1][]
 {
+	%
+	% Página de título customizada
+	%
 	\begin{center}
 		\includegraphics[scale=0.35]{graphics/ueg_ccet}\par
 		\usebeamercolor[white]{}
@@ -97,8 +123,14 @@
 	\end{center}
 }
 
-\defbeamertemplate*{background canvas}{ru theme}
+\defbeamertemplate*{background canvas}{ccetmat theme}
 {
+	%
+	% Imagem de fundo
+	% Se o número do frame = 1, exibir imagem azul para 
+	% frame de título, caso contrário, exibir a imagem
+	% branca para os demais frames.
+	%
 	\ifnumequal{\c@framenumber}{1}
 	{
 		\includegraphics[width=\paperwidth,height=\paperheight]{graphics/ueg_background_title}
@@ -108,87 +140,111 @@
 	}
 }
 
-% Footline: AUTHOR | TITLE | DATE FRAMENUMBER
-
-\defbeamertemplate*{footline}{ru theme}{%
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortauthor
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
-    \usebeamerfont{author in head/foot}\insertshortdate
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.416667\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle
-  \end{beamercolorbox}%
-   \begin{beamercolorbox}[wd=0.083333\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
-    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
-  \end{beamercolorbox}}%
-  \vskip0pt%
+% Rodapé: AUTOR | ANO | TÍTULO | NÚMERO DE FRAME
+\defbeamertemplate*{footline}{ccetmat theme}
+{
+	\leavevmode%
+	\hbox
+	{%
+		%
+		% Caso seja necessário alterar a ordem de 
+		% exibição, basta apenas trocar a ordem dos
+		% ambientes:
+		% \begin{beamercolorbox}...\end{beamercolorbox}
+		%
+		
+		% Bloco de Autor (shortauthor)
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}%
+		% Bloco de Data (shortdate)
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortdate
+		\end{beamercolorbox}%
+		% Bloco do título (shorttitle)
+		\begin{beamercolorbox}[wd=.416667\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}%
+		% Bloco de número de frame
+		\begin{beamercolorbox}[wd=0.083333\paperwidth,ht=2.25ex,dp=1ex,right]{title in head/foot}%
+			\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+		\end{beamercolorbox}]
+	}%
+	\vskip0pt%
 }
 
-\defbeamertemplate*{headline}{ru theme}{%
-  \leavevmode%
-  \@tempdimb=2.4375ex%
-    \multiply\@tempdimb by\beamer@sectionmax%
-  \pgfdeclareimage[height=.9\@tempdimb]{logo}{graphics/ueg_ccet}%
-  %\logo{\pgfuseimage{logo}}%
-  \ifdim\@tempdimb>0pt%
-    \advance\@tempdimb by 1.125ex%
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=\@tempdimb]{section in head/foot}%
-      \vbox to\@tempdimb{\vfil\insertsectionnavigation{.5\paperwidth}\vfil}%
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=\@tempdimb,right]{subsection in head/foot}%
-      %\vbox to\@tempdimb{\vfil\vfil\textbf{\footnotesize\insertshortinstitute~~}\vfil}%
-      \vbox to \@tempdimb{
-      	\vfil\vfil
-      	\centering
-      	\pgfuseimage{logo}
-      	\vfil
-      }
-    \end{beamercolorbox}
-  \fi%
+% Cabeçalho
+\defbeamertemplate*{headline}{ccetmat theme}
+{%
+	\leavevmode%
+	\@tempdimb=2.4375ex%
+	\multiply\@tempdimb by\beamer@sectionmax%
+	% declarar o uso da imagem de logo do campus cet.
+	\pgfdeclareimage[height=.9\@tempdimb]{logo}{graphics/ueg_ccet}%
+	\ifdim\@tempdimb>0pt%
+    	\advance\@tempdimb by 1.125ex%
+    	\begin{beamercolorbox}[wd=.5\paperwidth,ht=\@tempdimb]{section in head/foot}%
+    		% Barra de navegação
+      		\vbox to\@tempdimb
+      		{
+      			\vfil
+      			% Inserir a barra de navegação
+      			\insertsectionnavigation{.5\paperwidth}
+      			\vfil
+      		}%
+    	\end{beamercolorbox}%
+    	\begin{beamercolorbox}[wd=.5\paperwidth,ht=\@tempdimb,right]{subsection in head/foot}%
+    		% Logo da UEG - Campus CET
+      		\vbox to \@tempdimb
+      		{
+      			\vfil\vfil
+      			% Centralizar no bloco
+      			\centering
+      			% Inserir a imagem
+      			\pgfuseimage{logo}
+      			\vfil
+      		}
+		\end{beamercolorbox}
+	\fi%
 }
 
-\defbeamertemplate*{frametitle}{ru theme}{%
-  \nointerlineskip%
-  %\vskip-2pt%
-  \hbox{\leavevmode
-    \advance\beamer@leftmargin by -12bp%
-    \advance\beamer@rightmargin by -12bp%
-    \beamer@tempdim=\textwidth%
-    \advance\beamer@tempdim by \beamer@leftmargin%
-    \advance\beamer@tempdim by \beamer@rightmargin%
-    \hskip-\Gm@lmargin\hbox{%
-      \setbox\beamer@tempbox=\hbox{\begin{minipage}[b]{\paperwidth}%
-          \vbox{}\vskip.75ex%
-          \leftskip0.3cm%
-          \rightskip0.3cm plus1fil\leavevmode
-          \insertframetitle%
-          \ifx\insertframesubtitle\@empty%
-            \strut\par%
-          \else
-            \par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
-          \fi%
-          \nointerlineskip
-          \vbox{}%
-          \end{minipage}}%
-      \beamer@tempdim=\ht\beamer@tempbox%
-      \advance\beamer@tempdim by 2pt%
-      \begin{pgfpicture}{0.1mm}{0pt}{1.01\paperwidth}{\beamer@tempdim}
-        %\usebeamercolor{frametitle right}
-        %\pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
-        %\pgfusepath{clip}
-        %\pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
-      \end{pgfpicture}
-      \hskip-\paperwidth%
-      \box\beamer@tempbox%
-    }%
-    \hskip-\Gm@rmargin%
-  }%
-%  \nointerlineskip
-%    \vskip-0.2pt
-%    \hbox to\textwidth{\hskip-\Gm@lmargin\pgfuseshading{beamer@topshade}\hskip-\Gm@rmargin}
-%    \vskip-2pt
+% Frametitle - Título dos frames
+\defbeamertemplate*{frametitle}{ccetmat theme}
+{%
+	\nointerlineskip%
+	\hbox
+	{
+		\leavevmode
+    	\advance\beamer@leftmargin by -12bp%
+	    \advance\beamer@rightmargin by -12bp%
+    	\beamer@tempdim=\textwidth%
+	    \advance\beamer@tempdim by \beamer@leftmargin%
+    	\advance\beamer@tempdim by \beamer@rightmargin%
+	    \hskip-\Gm@lmargin\hbox
+	    {%
+      		\setbox\beamer@tempbox=\hbox
+      		{
+      			\begin{minipage}[b]{\paperwidth}%
+          			\vbox{}\vskip.75ex%
+          			\leftskip0.3cm%
+          			\rightskip0.3cm plus1fil\leavevmode
+          			\insertframetitle%
+          			\ifx\insertframesubtitle\@empty%
+           				\strut\par%
+          			\else
+            			\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+          			\fi%
+          			\nointerlineskip
+          			\vbox{}%
+          		\end{minipage}
+          	}%
+      		\beamer@tempdim=\ht\beamer@tempbox%
+      		\advance\beamer@tempdim by 2pt%
+      		\begin{pgfpicture}{0.1mm}{0pt}{1.01\paperwidth}{\beamer@tempdim}
+		    \end{pgfpicture}
+      		\hskip-\paperwidth%
+      		\box\beamer@tempbox%
+    	}%
+    	\hskip-\Gm@rmargin%
+  	}%
 }
