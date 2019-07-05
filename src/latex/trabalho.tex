@@ -712,13 +712,13 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 		\tkzDrawPoint[fill=black, size=7](B)
 		
 		% y(x)
-		\tkzFct[domain=2.5:4.6,samples=800]{-exp(-x+3.2)+4}
+		\tkzFct[domain=2.5:4.6,samples=1000, line width=2pt]{-exp(-x+3.2)+4}
 		% eta(x)
-		\tkzFct[domain=2.5:4.6,samples=800]{-0.18*x*x+1.29*x-2.09}
+		\tkzFct[domain=2.5:4.6,samples=1000]{-0.18*x*x+1.29*x-2.09}
 		% y(x) + 2*eta(x)
-		\tkzFct[domain=2.5:4.6,samples=800,dashed]{-exp(-x+3.2)+4+2*(-0.18*x*x+1.29*x-2.09)}
+		\tkzFct[domain=2.5:4.6,samples=1000,dashed]{-exp(-x+3.2)+4+2*(-0.18*x*x+1.29*x-2.09)}
 		% y(x) - 4*eta(x)
-		\tkzFct[domain=2.5:4.6,samples=800,dashed]{-exp(-x+3.2)+4-4*(-0.18*x*x+1.29*x-2.09)}
+		\tkzFct[domain=2.5:4.6,samples=1000,dashed]{-exp(-x+3.2)+4-4*(-0.18*x*x+1.29*x-2.09)}
 		
 		% draw dotted segments (x_1, y_1), (x_2, y_2)
 		\tkzDrawSegment[dotted](A,C)
@@ -741,8 +741,6 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 	\label{fig:test_01}
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
-
-\textit{\color{red}Testar sobre grossura de linha e melhor exibição.}
 
 Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
 \begin{equation}\label{eqn:int_funcional_approx}
