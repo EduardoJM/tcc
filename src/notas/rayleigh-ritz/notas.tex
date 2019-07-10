@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[left=3cm,right=2cm,top=3cm,bottom=2cm]{geometry}
+\author{Eduardo José de Oliveira}
+\title{Anotações:\\Método de Rayleigh-Ritz}
+
+\newcommand{\todo}[1]{{\color{red}#1}}
+
+\begin{document}
+
+\maketitle
+
+No método de Rayleigh-Ritz a função exata $y(x)$ é substituida por uma função aproximada $v(x)$, formada por uma combinação linear de funções $\phi _i(x)$, de modo que ao se substituir $v(x)$ no funcional, este é minimizado.  A escolha adequada das funções $\phi _i(x)$ é importante para se obter uma boa aproximação para a solução do problema.
+
+Assim, considerando o funcional
+$$
+I=
+\int_{x_1}^{x_2}
+	f(x, y, y')
+dx
+\text{,}
+$$
+com as condições de contorno $y(x_1)=y(x_2)=0$, pode-se assumir como solução aproximada a função $v(x)$ definida por
+$$
+v(x)=
+\sum_{i=1}^n
+	a_i \phi _i (x)
+\text{.}
+$$
+
+As funções $\phi _i(x)$ são chamadas funções de forma e elas devem ser linearmente independente, sendo que cada uma deve satisfazer individualmente as condições de contorno $\phi_i (x)=\phi_i (x_2)= 0$, para todo $1\leqslant i\leqslant n$. Essas funções $\phi _i(x)$ são, ainda, contínuas até o grau $m-1$, onde $m$ é a ordem da maior derivada do funcional.
+
+Os coeficientes $a_i$ a serem determinados, são denominados parâmetros de deslocamentos e $v(x)$ é conhecida como função aproximadora.
+
+Pode-se, então, substituir $v(x)$ no funcional e, ao aplicar a condição de estacionariedade $\delta I = 0$, tem-se
+$$
+\delta I = 
+	\frac{\partial I}{\partial a_1}\delta a_1 +
+	\frac{\partial I}{\partial a_2}\delta a_2 +
+	\cdots +
+	\frac{\partial I}{\partial a_n}\delta a_n
+= 0
+\text{.}
+$$
+
+Como as variações $\delta a_i$ são arbitrárias, a equação acima se transforma em um sistema de equações homogêneas da forma
+$$
+\frac{\partial I}{\partial a_i}=0
+\text{,}
+$$
+onde $i=1$, $2$, $\dots$, $n$. 
+
+Para a garantia de uma sequência de soluções que convergem para a solução exata, deve-se satisfazer as seguintes condições:
+
+\begin{enumerate}
+	\item as funções aproximadoras $v(x)$ devem ser contínuas até uma ordem menor do que a maior derivada do integrando (\todo{Conferir se é $v(x)$ ou se são as $\phi_i(x)$}), 
+	
+	\item cada função $\phi _i(x)$ deve satisfazer, individualmente, as condições essenciais de contorno (\todo{Conferir sobre as condições essenciais de contorno}) e
+	
+	\item a sequencia de funções deve ser completa. Diz-se que $v(x)$ é completa quando a seguinte condição é satisfeita:
+	$$\lim_{n\to \infty} \int_{x_1}^{x_2} \left ( y - \sum_{i=1}^n a_i \phi_i \right )^2 dx < \lambda \text{,}$$
+	onde $\lambda$ é um número tão pequeno quanto se deseja.
+\end{enumerate}
+
+\end{document}
