@@ -151,7 +151,7 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 	$$
 		\Pi =
 		\frac{1}{2}
-		\int_0^l EI 4 a_2 ^2 dx
+		\int_0^l 4 EI a_2 ^2 dx
 		-
 		\int_0^l q a_2 (x^2-lx) dx
 		\text{.}
@@ -175,8 +175,63 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 	de onde, devido ao fato de $\delta a_2$ ser arbitrário, obtem-se a equação
 	$$
 		\frac{\partial \Pi}{\partial a_2} = 0
+	$$
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\frac{\partial}{\partial a_2} \left [
+			\int_0^l \left ( 2EIa_2 ^2 - a_2 q (x^2 -lx) \right ) dx
+		\right]
+	$$
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l
+			\frac{\partial}{\partial a_2} \left [
+			4EIa_2^2 - a_2 q(x^2-lx)
+		\right ] dx
+	$$
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			4EIa_2 - q(x^2-lx)
+		\right ] dx = 0
+	$$
+	$$
+		\left [ 
+			4EIa_2 x \Big |_0^l
+			-
+			q \left (
+				\frac{x^3}{3} - \frac{lx^2}{2}
+			\right ) \Big |_0^l
+		\right ] 
+		= 0
+	$$
+	$$
+		4EIa_2l
+		-
+		q \left (\frac{l^3}{3} - \frac{l^3}{2} \right )
+		= 0
+	$$	
+	$$
+		4EIa_2l+\frac{ql^3}{6} = 0
+	$$
+	$$
+		a_2=\frac{-ql^2}{24EI}\text{.}
+	$$
+
+	Com o valor de $a_2$ é possível calcular o valor de $a_1=-a_2l$, então, $$a_1=\frac{ql^3}{24EI}\text{.}$$
+	
+	Pode-se utilizar uma aproximação de grau 3 para tentar melhorar o resultado, isto é, $v_2(x)=a_0+a_1x+a_2x^2+a_3x^3$. Das condições de contorno, $v_2(0)=0$, de onde $a_0=0$ e $v_2(l)=0$, donde $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser escrita como
+	$$
+		v_2(x)=
+		a_2(x^2-lx)
+		+
+		a_3(x^3-l^2x)
 		\text{.}
 	$$
+	
 \end{example}
 
 \end{document}
