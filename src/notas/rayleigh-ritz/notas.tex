@@ -249,7 +249,17 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 		a_2=\frac{-ql^2}{24EI}\text{.}
 	$$
 
-	Com o valor de $a_2$ é possível calcular o valor de $a_1=-a_2l$, então, $$a_1=\frac{ql^3}{24EI}\text{.}$$
+	Com o valor de $a_2$ é possível calcular o valor de $a_1=-a_2l$, então, 
+	$$a_1=\frac{ql^3}{24EI}\text{.}$$
+	
+	Assim, a função aproximadora $v_1$ pode ser escrita como
+	$$
+		v_1(x)=
+		\frac{ql^3}{24EI}x
+		-
+		\frac{ql^2}{24EI}x^2
+		\text{.}
+	$$
 	
 	Pode-se utilizar uma aproximação de grau 3 para tentar melhorar o resultado, isto é, $v_2(x)=a_0+a_1x+a_2x^2+a_3x^3$. Das condições de contorno, $v_2(0)=0$, de onde $a_0=0$ e $v_2(l)=0$, donde $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser escrita como
 	$$
@@ -260,6 +270,282 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 		\text{.}
 	$$
 	
+	Das condições de contorno, tem-se que $v_2(0)=0$, donde pode-se concluir que $a_0=0$. Ainda, $v_2(l)=0$, de onde, $a_1 l + a_2 l^2 + a_3 l^3=0$, isto é, $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser reescrita como
+	$$
+		v_2(x)=
+		a_2(x^2-lx)
+		+
+		a_3(x^3-l^2x)
+		\text{.}
+	$$
+	
+	Derivando a função $v_2$ em função de x, pode-se obter
+	$$
+	v_2'(x)=
+	a_2(2x-l)
+	+
+	a_3(3x^2-l^2)
+	$$
+
+	$$
+	v_2''(x)=
+	2a_2 + 6a_3 x \text{.}
+	$$
+	
+	Substituindo em $\Pi$, tem-se
+	$$
+		\Pi=
+		\frac{1}{2}
+		\int_0^l
+			\left (
+				EI(2a_2+6a_3x)^2
+			\right ) dx
+		-
+		\int_0^l
+			q
+			\left (
+				a_2(x^2-lx)
+				+
+				a_3(x^3-l^2x)
+			\right ) dx
+		\text{.}
+	$$
+	
+	Derivando $\Pi$ em função de $a_2$ é possível obter
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			2EI(2a_2+6a_3x)-q(x^2-lx)
+		\right ] dx
+		= 0
+	$$	
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			EI(4a_2+12a_3x)-q(x^2-lx)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			4EIa_2 + 12EIa_3x - qx^2 + qlx
+		\right ] dx
+		= 0
+	$$
+	$$
+		4EIa_2 x \Big |_0^l
+		+
+		\frac{12a_3EI}{2} x^2 \Big |_0^l
+		-
+		\frac{q}{3} x^3 \Big |_0^l
+		+
+		\frac{ql}{2} x^2 \Big |_0^l
+		= 0
+	$$
+	$$
+		4EIa_2l
+		+
+		6a_3EIl^2
+		-
+		\frac{2ql^3}{6}
+		+
+		\frac{3ql^3}{6}
+		= 0
+	$$
+	$$
+		4EIa_2l
+		+
+		6a_3EIl^2
+		=
+		\frac{2ql^3}{6}
+		-
+		\frac{3ql^3}{6}
+	$$
+	$$
+		4a_2 + 6a_3l
+		=
+		\frac{-ql^2}{6EI}
+	$$
+	\begin{equation}
+		\label{eq:approx2_eq1}
+		2a_2 + 3a_3l
+		=
+		\frac{-ql^2}{12EI}
+		\text{.}
+	\end{equation}
+	
+	Derivando $\Pi$ em relação a $a_3$ tem-se que
+	$$
+		\frac{\partial \Pi}{\partial a_3}
+		=
+		\int_0^l \left [
+			6EI(2a_2 + 6a_3x)x
+			-
+			q(x^3 - l^2x)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			EI(12a_2 + 36a_3x)x
+			-
+			q(x^3 - l^2x)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			EI(12a_2 x + 36a_3x^2)
+			-
+			q(x^3 - l^2x)
+		\right ] dx = 0
+		= 0
+	$$
+	$$
+		EI \left (
+			\frac{12a_2}{2}x^2 \Big |_0^l
+			+
+			\frac{36a_3}{3}x^3 \Big |_0^l
+		\right )
+		-
+		q \left (
+			\frac{x^4}{4} \Big |_0^l
+			-
+			\frac{l^2x^2}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	$$
+		EI(6a_2l^2 + 12a_3l^3)
+		-
+		q \left (
+			\frac{l^4}{4}
+		\right )
+		+
+		q \left (
+			\frac{l^4}{2}
+		\right )
+	$$
+	$$
+		6a_2 + 12a_3l = -\frac{ql^4}{4EIl^2}
+	$$
+	$$
+		6a_2 + 12a_3l = -\frac{ql^2}{4EI}
+	$$
+	\begin{equation}
+		\label{eq:approx2_eq2}
+		2a_2 + 4a_3l = -\frac{ql^2}{12EI}
+		\text{.}
+	\end{equation}
+	
+	Montando um sistema de equações com \eqref{eq:approx2_eq1} e \eqref{eq:approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:approx2_eq2} - \eqref{eq:approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$.
+	De volta a \eqref{eq:approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\frac{ql^2}{12EI}$ e, por fim,
+	$$
+		a_2=-\frac{ql^2}{24EI}
+		\text{.}
+	$$
+	Assim, a função $v_2$ é a mesma que $v_1$, não sendo muito útil ao caso.
+	
+	Utilizando, como função aproximadora, a função $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, tem-se das condições de contorno que $v_3(0)=0$, donde $a_0=0$ e, $v_3(l)=0$, isto é $a_1l+a_2l^2+a_3l^3+a_4l^4=0$, donde pode-se concluir que $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, podemos encontrar a função
+	$$
+		a_2 (x^2 - lx)
+		+
+		a_3 (x^3 - l^2x)
+		+
+		a_4 (x^4 - l^3x)
+		\text{.}
+	$$
+	
+	Derivando $v_3$ em relação a $x$:
+	$$
+		v_3'(x)=
+		a_2(2x - l)
+		+
+		a_3(3x^2 - l^2)
+		+
+		a_4(4x^3 - l^3)
+	$$
+	$$
+		v_3''(x)=
+		2a_2
+		+
+		6a_3 x
+		+
+		12a_4 x^2
+		\text{.}
+	$$
+	
+	Substituindo em $\Pi$,
+	$$
+		\Pi = \frac{1}{2} \int_0^l \left [
+			EI(2a_2+6a_3x+12a_4x^2)^2
+		\right ] dx
+		-
+		\int_0^l q \left [
+			a_2(x^2 - lx)
+			+
+			a_3(x^3 - l^2x)
+			+
+			a_4(x^4 - l^3x)
+		\right ] dx
+		\text{,}
+	$$
+	de onde pode-se derivar $\Pi$ em relação a $a_2$, $a_3$ e $a_4$ para obter um sistema de equações permitindo a determinação de $a_2$, $a_3$ e $a_4$.
+	
+	Fazendo $\frac{\partial \Pi}{\partial a_2} = 0$:
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			2EI(2a_2 + 6a_3x + 12a_4x^2)
+			-
+			q(x^2 - lx)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			EI(4a_2 + 12a_3x + 24a_4x^2)
+			-
+			q(x^2 - lx)
+		\right ] dx
+		= 0
+	$$
+	$$
+		EI \left (
+			4a_2 x \Big |_0^l
+			+
+			\frac{12a^3}{2}x^2 \Big |_0^l
+			+
+			\frac{24a_4}{3}x^3 \Big |_0^l
+		\right )
+		- q
+		\left (
+			\frac{x^3}{3} \Big |_0^l
+			-
+			\frac{lx^2}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	$$
+		EI(4a_2l + 6a_3l^2 + 8a_4l^3)
+		=
+		\frac{ql^3}{3}
+		-
+		\frac{ql^3}{2}
+	$$
+	$$
+		4a_2l + 6a_3l^2 + 8a_4l^3 = -\frac{ql^3}{6EI}
+	$$
+	\begin{equation}
+		2a_2 + 3a_3l + 4a_4l^2 = -\frac{ql^2}{12EI}
+		\text{.}
+	\end{equation}
+		
+	Fazendo $\frac{\partial \Pi}{\partial a_3} = 0$:
+		
 \end{example}
 
 \end{document}
