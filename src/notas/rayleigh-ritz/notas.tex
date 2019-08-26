@@ -46,6 +46,11 @@
 
 \newcommand{\todo}[1]{{\color{red}#1}}
 
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
 
 \begin{document}
 
@@ -369,7 +374,7 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 		\frac{-ql^2}{6EI}
 	$$
 	\begin{equation}
-		\label{eq:approx2_eq1}
+		\label{eq:exemp_rayritz_approx2_eq1}
 		2a_2 + 3a_3l
 		=
 		\frac{-ql^2}{12EI}
@@ -435,13 +440,13 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 		6a_2 + 12a_3l = -\frac{ql^2}{4EI}
 	$$
 	\begin{equation}
-		\label{eq:approx2_eq2}
+		\label{eq:exemp_rayritz_approx2_eq2}
 		2a_2 + 4a_3l = -\frac{ql^2}{12EI}
 		\text{.}
 	\end{equation}
 	
-	Montando um sistema de equações com \eqref{eq:approx2_eq1} e \eqref{eq:approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:approx2_eq2} - \eqref{eq:approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$.
-	De volta a \eqref{eq:approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\frac{ql^2}{12EI}$ e, por fim,
+	Montando um sistema de equações com \eqref{eq:exemp_rayritz_approx2_eq1} e \eqref{eq:exemp_rayritz_approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:exemp_rayritz_approx2_eq2} - \eqref{eq:exemp_rayritz_approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$.
+	De volta a \eqref{eq:exemp_rayritz_approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\frac{ql^2}{12EI}$ e, por fim,
 	$$
 		a_2=-\frac{ql^2}{24EI}
 		\text{.}
@@ -540,11 +545,170 @@ onde $i=1$, $2$, $3$, $\dots$, $n$.
 		4a_2l + 6a_3l^2 + 8a_4l^3 = -\frac{ql^3}{6EI}
 	$$
 	\begin{equation}
+		\label{eq:exemp_rayritz_approx3_eq1}
 		2a_2 + 3a_3l + 4a_4l^2 = -\frac{ql^2}{12EI}
 		\text{.}
 	\end{equation}
 		
-	Fazendo $\frac{\partial \Pi}{\partial a_3} = 0$:
+	Fazendo $\frac{\partial \Pi}{\partial a_3} = 0$, tem-se
+	$$
+		\frac{\partial \Pi}{\partial a_3}
+		=
+		\int_0^l \left [
+			6xEI(2a_2 + 6a_3x + 12a_4x^2)
+			-
+			q(x^3 - l^2x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		\frac{\partial \Pi}{\partial a_3}
+		=
+		\int_0^l \left [
+			EI(12 a_2 x + 36 a_3 x^2 + 72 a_4 x^3)
+			-
+			q(x^3-l^2x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		EI \left (
+			\frac{12a_2}{2} x^2 \Big |_0^l
+			+
+			\frac{36a_3}{3} x^3 \Big |_0^l
+			+
+			\frac{72a_4}{4} x^4 \Big |_0^l
+		\right )
+		-
+		q \left (
+			\frac{x^4}{4} \Big |_0^l
+			-
+			\frac{l^2 x}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	
+	$$
+		EI(6a_2 l^2 + 12a_3 l^3 + 18a_4 l^4)
+		=
+		\frac{ql^4}{4}
+		-
+		\frac{ql^4}{2}
+	$$
+	
+	$$
+		EI(6a_2 l^2 + 12a_3 l^3 + 18a_4 l^4)
+		=
+		-\frac{ql^4}{4}
+	$$
+	
+	$$
+		6a_2 + 12a_3 l + 18a_4 l^2
+		=
+		-\frac{ql^2}{4EI}
+	$$
+	
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx3_eq2}
+		a_2 + 2a_3 l + 3a_4 l^2 = - \frac{ql^2}{24EI}
+		\text{.}
+	\end{equation}
+	
+	Por último, fazendo $\frac{\partial \Pi}{\partial a_4}=0$, tem-se
+	
+	$$
+		\frac{\partial \Pi}{\partial a_4}
+		=
+		\int_0^l \left [
+			12x^2EI(2a_2 + 6a_3x + 12a_4x^2)
+			-
+			q(x^4 - l^3x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		\int_0^l \left [
+			EI(24a_2 x^2 + 72 a_3 x^3 + 144 a_4 x^4)
+			-
+			q(x^4 - l^3 x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		EI \left ( 
+			\frac{24a_2}{3}x^3 \Big |_0^l
+			+
+			\frac{72a_3}{4}x^4 \Big |_0^l
+			+
+			\frac{144a_4}{5}x^5 \Big |_0^l
+		\right )
+		-
+		q \left (
+			\frac{x^5}{5} \Big |_0^l
+			-
+			\frac{l^3x^2}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	
+	$$
+		EI \left (
+			8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
+		\right )
+		=
+		\frac{ql^5}{5}
+		-
+		\frac{ql^5}{2}
+	$$
+	
+	$$
+		EI \left (
+			8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
+		\right )
+		=
+		-\frac{3ql^5}{10}
+	$$
+	
+	$$
+		8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
+		=
+		-\frac{3ql^5}{10EI}
+	$$
+	
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx3_eq3}
+		8a_2 + 18a_3 l + \frac{144}{5} a_4 l^2 
+		=
+		-\frac{3ql^2}{10EI}
+		\text{.}
+	\end{equation}
+	
+	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $c=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada
+	$$
+	\begin{amatrix}{3}
+	2 & 3l  & 4l^2 				 & C \\
+	1 & 2l  & 3l^2				 & \frac{1}{2}C \\
+	8 & 18l & \frac{144}{5} l^2 & D
+	\end{amatrix}
+	\text{,}
+	$$
+	donde, resolvendo o sistema, obtem-se os valores
+	$$a_4=\frac{q}{24EI}\text{,}$$
+	$$a_3=-\frac{ql}{12EI}\text{,}$$
+	$$a_2=0\text{.}$$
+	
+	Deste modo, a função $v_3(x)$ pode ser escrita como
+	$$
+		v_3(x) =
+		\frac{q}{24EI} ( x^4 - l^3 x )
+		-
+		\frac{ql}{24EI} ( x^3 - l^2 x )
+		\text{.}
+	$$
 		
 \end{example}
 

@@ -1,3 +1,3 @@
 # Introdução
 
-Nesta pasta estão organizadas anotações sobre diversos conteúdos relacionados aos temas do trabalho, tais como Cálculo Variacional, Método de Rayleigh-Ritz, Método de Galerkin, etc.
+Nesta pasta estão anotações sobre diversos conteúdos relacionados aos temas do trabalho. As anotações estão, também, em formato LaTeX e utilizam, quando possível, os pacotes abntex2.
