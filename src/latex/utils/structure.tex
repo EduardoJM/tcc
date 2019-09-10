@@ -1,0 +1,134 @@
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes para escrita matemática
+% ---
+\usepackage{amsmath}
+
+\usepackage{amssymb}	 % qed
+\usepackage{amsthm}      % Teoremas
+
+\newtheorem{teorema}{Teorema}
+\newtheorem{lema}{Lema}
+\newtheorem{definicao}{Definição}
+
+% Resetar o numberador de lemas no fim de todo capítulo
+% Isso faz com que a numeração seja indexada por capítulos e não
+% pelo documento todo
+\numberwithin{lema}{chapter}
+% Idem ao de cima, com teoremas/definições
+\numberwithin{teorema}{chapter}
+\numberwithin{definicao}{chapter}
+% Idem aos anteriores com o ambiente figure
+\numberwithin{figure}{chapter}
+
+% Pacotes do Tikz utilizados para desenho
+\usepackage{tikz}
+\usepackage{tkz-fct}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{\textbf{Cálculo Variacional}}
+\autor{EDUARDO JOSÉ DE OLIVEIRA}
+\local{Anápolis}
+\data{2018}
+\orientador{Prof. Me. Tiago de Lima Bento Pereira}
+%\coorientador{Titulação e Nome do coorientador}
+\instituicao{%
+Universidade Estadual de Goiás
+  \par
+Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo
+  \par
+Curso de Matemática}
+\tipotrabalho{Trabalho de Curso (Graduação)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Curso (TC) apresentado a Coordenação Adjunta de TC, como parte dos requisitos para obtenção do título de Graduado no Curso de Matemática da Universidade Estadual de Goiás.} %sob a orientação do Professor(a) titulação e nome do professor(a).}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=false,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% Define o tamanho da indentação do paragrafo
+\setlength{\parindent}{1.3cm}
+% Define o espaçamento entre um parágrafo e outro
+\setlength{\parskip}{0.2cm}
+
+% Adaptações para o curso de Matemática
+\usepackage{abntex2matematicaCCET}
+% usa a fonte helvet "sem serifa"
+\usepackage{helvet}
+% 
+\usepackage{pdfpages}
+
+% ---
+% compila o indice
+% ---
+\makeindex
