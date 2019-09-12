@@ -679,6 +679,23 @@ Esse operador pode ser escrito, ainda, na forma $\delta y = Y(x)-y(x)$, ou seja,
 %\section{Generalização da Equação de Euler-Lagrange}
 
 
+\chapter{Método de Rayleigh-Ritz}
+
+O objetivo do Cálculo Variacional é o de encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar $y(x)$ é o de resolver a equação de Euler-Lagrange associada ao problema. É evidente que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar desses problemas surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
+
+O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Considerando o funcional
+$$
+	I=\int_{x_1}^{x_2} f(x,y,y')dx
+	\text{,}
+$$
+com as condições de contorno $y(x_1)=y(x_2)=0$, então,
+$$
+	y(x) \approx v(x) = \sum_{i=1}^n a_i \phi _i (x)
+	\text{.}
+$$
+
+As funções $\phi _i$ são chamadas de funções de forma e devem ser linearmente independente. Os coeficientes $a_i$ são chamados parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
+
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
@@ -947,17 +964,6 @@ elementum}
 			$$
 		\end{proof}
 	\end{teorema}
-	
-	\iffalse
-	\begin{teorema}
-		\label{teorema:regra_de_leibniz}
-		Considere uma função $f:[a,b]\times [c,d] \longrightarrow \mathbb{R}$ e suponha que a derivada parcial $\frac{\partial f}{\partial p}(x,p)$ existe e é contínua em $[a,b]\times [c,d]$. Se a integral
-		$$F(p)=\int_a^b f(x, p)dx$$
-		existe para todo $p\in [c,d]$, então $F(p)$ é diferenciável e
-		$$F'(p)=\int_a^b \frac{\partial f}{\partial p} (x, p)dx \text{.}$$
-		\textit{\color{red} Estudar, entender e demonstrar a regra de Leibiniz.}
-	\end{teorema}
-	\fi
 }
 
 \end{apendicesenv}
