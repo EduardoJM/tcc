@@ -49,7 +49,140 @@
 	brazil				% o último idioma é o principal do documento
 	]{abntex2}
 
-\input{utils/structure.tex}
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes para escrita matemática
+% ---
+\usepackage{amsmath}
+
+\usepackage{amssymb}	 % qed
+\usepackage{amsthm}      % Teoremas
+
+\newtheorem{teorema}{Teorema}
+\newtheorem{lema}{Lema}
+\newtheorem{definicao}{Definição}
+
+% Resetar o numberador de lemas no fim de todo capítulo
+% Isso faz com que a numeração seja indexada por capítulos e não
+% pelo documento todo
+\numberwithin{lema}{chapter}
+% Idem ao de cima, com teoremas/definições
+\numberwithin{teorema}{chapter}
+\numberwithin{definicao}{chapter}
+% Idem aos anteriores com o ambiente figure
+\numberwithin{figure}{chapter}
+
+% Pacotes do Tikz utilizados para desenho
+\usepackage{tikz}
+\usepackage{tkz-fct}
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{\textbf{Cálculo Variacional}}
+\autor{EDUARDO JOSÉ DE OLIVEIRA}
+\local{Anápolis}
+\data{2019}
+\orientador{Prof. Me. Tiago de Lima Bento Pereira}
+%\coorientador{Titulação e Nome do coorientador}
+\instituicao{%
+Universidade Estadual de Goiás
+  \par
+Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo
+  \par
+Curso de Matemática}
+\tipotrabalho{Trabalho de Curso (Graduação)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho de Curso (TC) apresentado a Coordenação Adjunta de TC, como parte dos requisitos para obtenção do título de Graduado no Curso de Matemática da Universidade Estadual de Goiás.} %sob a orientação do Professor(a) titulação e nome do professor(a).}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=false,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% Define o tamanho da indentação do paragrafo
+\setlength{\parindent}{1.5cm}
+% Define o espaçamento entre um parágrafo e outro
+\setlength{\parskip}{0.2cm}
+
+% Adaptações para o curso de Matemática
+\usepackage{abntex2matematicaCCET}
+% usa a fonte helvet "sem serifa"
+\usepackage{helvet}
+% 
+\usepackage{pdfpages}
+
+% ---
+% compila o indice
+% ---
+\makeindex
 
 \begin{document}
 
@@ -60,7 +193,7 @@
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
-\iffalse
+%\iffalse
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
@@ -128,6 +261,7 @@
 \end{fichacatalografica}
 % ---
 
+\iffalse
 % ---
 % Inserir errata
 % ---
@@ -156,6 +290,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 
 \end{errata}
 % ---
+\fi
 
 % ---
 % Inserir folha de aprovação
@@ -222,7 +357,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
    \vspace*{\fill}
    \centering
    \noindent
-   \textit{ Este trabalho é dedicado às crianças adultas que,\\
+   \textit{\color{red} Este trabalho é dedicado às crianças adultas que,\\
    quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
 \end{dedicatoria}
 % ---
@@ -231,7 +366,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % Agradecimentos
 % ---
 \begin{agradecimentos}[AGRADECIMENTOS]
-Os agradecimentos principais são direcionados à Gerald Weber, Miguel Frasson,
+{\color{red}Os agradecimentos principais são direcionados à Gerald Weber, Miguel Frasson,
 Leslie H. Watter, Bruno Parente Lima, Flávio de Vasconcellos Corrêa, Otavio Real
 Salvador, Renato Machnievscz\footnote{Os nomes dos integrantes do primeiro
 projeto abn\TeX\ foram extraídos de
@@ -246,7 +381,7 @@ Brasília (CPAI), ao grupo de usuários
 novos voluntários do grupo
 \emph{\abnTeX}\footnote{\url{http://groups.google.com/group/abntex2} e
 \url{http://www.abntex.net.br/}}~que contribuíram e que ainda
-contribuirão para a evolução do \abnTeX.
+contribuirão para a evolução do \abnTeX.}
 
 \end{agradecimentos}
 % ---
@@ -257,11 +392,9 @@ contribuirão para a evolução do \abnTeX.
 \begin{epigrafe}
     \vspace*{\fill}
 	\begin{flushright}
-		\textit{``Não vos amoldeis às estruturas deste mundo, \\
-		mas transformai-vos pela renovação da mente, \\
-		a fim de distinguir qual é a vontade de Deus: \\
-		o que é bom, o que Lhe é agradável, o que é perfeito.\\
-		(Bíblia Sagrada, Romanos 12, 2)}
+		\textit{``Se vi mais longe foi por estar de pé \\
+		sobre ombros de gigantes. \\
+		(Isaac Newton)}
 	\end{flushright}
 \end{epigrafe}
 % ---
@@ -273,18 +406,19 @@ contribuirão para a evolução do \abnTeX.
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}[RESUMO]
- Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
+ {\color{red}Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o
  objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
  destes itens dependem do tipo de resumo (informativo ou indicativo) e do
  tratamento que cada item recebe no documento original. O resumo deve ser
  precedido da referência do documento, com exceção do resumo inserido no
  próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
- ponto e finalizadas também por ponto.
+ ponto e finalizadas também por ponto.}
 
- \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+ \textbf{Palavras-chave}: {\color{red}latex. abntex. editoração de texto.}
 \end{resumo}
 
+\iffalse
 % resumo em inglês
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
@@ -315,6 +449,7 @@ contribuirão para a evolução do \abnTeX.
  \end{otherlanguage*}
 \end{resumo}
 % ---
+\fi
 
 % ---
 % inserir lista de ilustrações
@@ -324,6 +459,7 @@ contribuirão para a evolução do \abnTeX.
 \cleardoublepage
 % ---
 
+\iffalse
 % ---
 % inserir lista de tabelas
 % ---
@@ -331,7 +467,9 @@ contribuirão para a evolução do \abnTeX.
 \listoftables*
 \cleardoublepage
 % ---
+\fi
 
+\iffalse
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
@@ -340,7 +478,9 @@ contribuirão para a evolução do \abnTeX.
   \item[abnTeX] ABsurdas Normas para TeX
 \end{siglas}
 % ---
+\fi
 
+\iffalse
 % ---
 % inserir lista de símbolos
 % ---
@@ -351,6 +491,7 @@ contribuirão para a evolução do \abnTeX.
   \item[$ \in $] Pertence
 \end{simbolos}
 % ---
+\fi
 
 % ---
 % inserir o sumario
@@ -373,88 +514,8 @@ contribuirão para a evolução do \abnTeX.
 % ----------------------------------------------------------
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
-% ----------------------------------------------------------
 
-Este documento e seu código-fonte são exemplos de referência de uso da classe
-\textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento 
-exemplifica a elaboração de trabalho acadêmico (tese, dissertação e outros do
-gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documentação
-- Trabalhos acadêmicos - Apresentação}.
-
-A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é
-modelo específico de nenhuma universidade ou instituição, mas que implementa tão
-somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
-
-Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
-\url{http://www.abntex.net.br/}. Também fique livre para conhecer,
-estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos
-modificados tenham seus nomes alterados e que os créditos sejam dados aos
-autores originais, nos termos da ``The \LaTeX\ Project Public
-License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
-
-Encorajamos que sejam realizadas customizações específicas deste exemplo para
-universidades e outras instituições --- como capas, folha de aprovação, etc.
-Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
-\abnTeX, distribua-se arquivos com as respectivas customizações.
-Isso permite que futuras versões do \abnTeX~não se tornem automaticamente
-incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} par mais informações.
-
-Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ 
-\cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}
-\cite{memoir}. 
-
-Esperamos, sinceramente, que o \abnTeX\ aprimore a qualidade do trabalho que
-você produzirá, de modo que o principal esforço seja concentrado no principal:
-na contribuição científica.
-
-Equipe \abnTeX 
-
-Lauro César Araujo
-
-%--------------------------------------------------------------------------------------------------------------------------
-
-Este documento e seu código-fonte são exemplos de referência de uso da classe
-\textsf{abntex2} e do pacote \textsf{abntex2cite}. O documento 
-exemplifica a elaboração de trabalho acadêmico (tese, dissertação e outros do
-gênero) produzido conforme a ABNT NBR 14724:2011 \emph{Informação e documentação
-- Trabalhos acadêmicos - Apresentação}.
-
-A expressão ``Modelo Canônico'' é utilizada para indicar que \abnTeX\ não é
-modelo específico de nenhuma universidade ou instituição, mas que implementa tão
-somente os requisitos das normas da ABNT. Uma lista completa das normas
-observadas pelo \abnTeX\ é apresentada em \citeonline{abntex2classe}.
-
-Sinta-se convidado a participar do projeto \abnTeX! Acesse o site do projeto em
-\url{http://www.abntex.net.br/}. Também fique livre para conhecer,
-estudar, alterar e redistribuir o trabalho do \abnTeX, desde que os arquivos
-modificados tenham seus nomes alterados e que os créditos sejam dados aos
-autores originais, nos termos da ``The \LaTeX\ Project Public
-License''\footnote{\url{http://www.latex-project.org/lppl.txt}}.
-
-Encorajamos que sejam realizadas customizações específicas deste exemplo para
-universidades e outras instituições --- como capas, folha de aprovação, etc.
-Porém, recomendamos que ao invés de se alterar diretamente os arquivos do
-\abnTeX, distribua-se arquivos com as respectivas customizações.
-Isso permite que futuras versões do \abnTeX~não se tornem automaticamente
-incompatíveis com as customizações promovidas. Consulte
-\citeonline{abntex2-wiki-como-customizar} par mais informações.
-
-Este documento deve ser utilizado como complemento dos manuais do \abnTeX\ 
-\cite{abntex2classe,abntex2cite,abntex2cite-alf} e da classe \textsf{memoir}
-\cite{memoir}. 
-
-Esperamos, sinceramente, que o \abnTeX\ aprimore a qualidade do trabalho que
-você produzirá, de modo que o principal esforço seja concentrado no principal:
-na contribuição científica.
-
-Equipe \abnTeX 
-
-Lauro César Araujo
-%_______________________________________________________________
-
-\fi
+{\color{red}Escrever a introdução do trabalho.}
 
 \chapter{Contexto Histórico}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
@@ -488,14 +549,12 @@ A solução de Jacob Bernoulli considerava o aspecto da curva variável, sendo c
 
 Os métodos para a resolução de problemas deste tipo eram específicos com adaptações para cada caso, sendo que os métodos gerais para a resolução só foram desenvolvidos com o envolvimento dos matemáticos Euler e Lagrange nos estudos desses problemas \cite{hist_courant}.
 
-{\color{red}Falar sobre o advento da computação.}
+{\color{red}Falar sobre a computação / métodos numéricos.}
 
 % Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
 
 
 \chapter{Cálculo Variacional}
-
-%Para adentrar o estudo do {\color{red}Método dos Elementos Finitos}, faz-se necessário a compreensão dos fundamentos básicos do Cálculo Variacional. 
 
 O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
 \begin{equation}
@@ -545,10 +604,6 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 \begin{figure}[!h]
 	\caption{Representação gráfica das funções aproximadoras.}
 	\centering
-
-	%\iffalse
-	%\includegraphics[width=0.5\textwidth, angle=0]{../figuras/cap_calcvar/figura_001.pdf}
-	%\fi
 	
 	\resizebox{0.75\textwidth}{!}
 	{
