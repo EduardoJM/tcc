@@ -79,20 +79,23 @@
 \newtheorem{teorema}{Teorema}
 \newtheorem{lema}{Lema}
 \newtheorem{definicao}{Definição}
+\newtheorem{exemplo}{Exemplo}
 
 % Resetar o numberador de lemas no fim de todo capítulo
 % Isso faz com que a numeração seja indexada por capítulos e não
 % pelo documento todo
 \numberwithin{lema}{chapter}
-% Idem ao de cima, com teoremas/definições
+% Idem ao de cima, com teoremas/definições/exemplos
 \numberwithin{teorema}{chapter}
 \numberwithin{definicao}{chapter}
+\numberwithin{exemplo}{chapter}
 % Idem aos anteriores com o ambiente figure
 \numberwithin{figure}{chapter}
 
 % Pacotes do Tikz utilizados para desenho
-\usepackage{tikz}
-\usepackage{tkz-fct}
+\usepackage{tikz, tkz-euclide, tkz-fct}
+\usetikzlibrary{babel}
+\usetkzobj{all}
 
 % ---
 % Pacotes de citações
@@ -750,6 +753,212 @@ $$
 $$
 
 As funções $\phi _i$ são chamadas de funções de forma e devem ser linearmente independente. Os coeficientes $a_i$ são chamados parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
+
+Substituindo $y$ por $v$ no funcional $Y$ e aplicando a condição de estacionáriedade, $\delta I=0$, tem-se
+$$
+	\delta I
+	=
+	\frac{\partial I}{\partial a_1} \delta a_1
+	+
+	\frac{\partial I}{\partial a_2} \delta a_2
+	+
+	\cdots
+	+
+	\frac{\partial I}{\partial a_n} \delta a_n
+	= 0
+	\text{.}
+$$
+
+Como as variações $\delta a_i$ são arbitrárias, a equação se transforma em um sistema de equações homogêneas da forma
+$$
+	\frac{\partial I}{\partial a_i} = 0
+	\text{,}
+$$
+com $i=1, 2, 3, \dots, n$.
+
+\begin{exemplo}
+	\begin{figure}
+		\caption{Viga prismática.}
+		\centering
+		\begin{tikzpicture}
+			\tkzInit[xmin=-0, xmax=6, ymin=-0.6, ymax=2]
+			% draw axis without ticks
+			\tkzDrawX[label=$x$, noticks, loosely dashed]
+			\tkzDrawY[label=$v(x)$, noticks]
+			
+			% rectangle
+			\tkzDefPoints{
+				0/0.6/V_1,
+				5/0.6/V_2,
+				5/-0.6/V_3,
+				0/-0.6/V_4}
+			% complete x axis without dashed line
+			\tkzDefPoints{
+				5/0/A_1,
+				6.35/0/A_2}
+			% left base triangle
+			\tkzDefPoints{
+				0/-0.6/T1_1, 
+				-0.25/-1.1/T1_2, 
+				0.25/-1.1/T1_3}
+			% right base triangle
+			\tkzDefPoints{
+				5/-0.6/T2_1, 
+				4.75/-1.1/T2_2,
+				5.25/-1.1/T2_3}
+			% line on base of right triangle
+			\tkzDefPoints{
+				4.75/-1.2/T2_B1,
+				5.25/-1.2/T2_B2}
+			% length marker in bottom
+			\tkzDefPoints{
+				0/-1.5/L_1,
+				0/-2/L_2,
+				5/-1.5/L_3,
+				5/-2/L_4,
+				0/-1.75/LS_1,
+				5/-1.75/LS_2}
+			
+			\tkzDrawSegment[color=black, line width=0.5mm](A_1, A_2)
+			
+			\tkzDrawPolygon[draw=black](T1_1, T1_2, T1_3)
+			\tkzDrawPolygon[draw=black](T2_1, T2_2, T2_3)
+			\tkzDrawSegment[color=black](T2_B1, T2_B2)
+			\tkzDrawPolygon[draw=black](V_1, V_2, V_3, V_4)
+			% q arrows
+			\foreach \i in {1,...,25}{
+				\tkzDefPoint(0.2*\i,1.3){A_\i}
+				\tkzDefPoint(0.2*\i,0.7){B_\i}
+				\draw[line width=0.6pt, black,-stealth] (A_\i) -- (B_\i);
+			}
+			% q text
+			\node at (2.5,1.7) {$q$};
+			% length marker in bottom
+			\tkzDrawSegment[color=black](L_1, L_2)
+			\tkzDrawSegment[color=black](L_3, L_4)
+			\tkzDrawSegment[color=black](LS_1, LS_2)
+			\node at (2.5,-2) {$l$};
+		\end{tikzpicture}
+		\label{fig:test_02}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}
+	
+	A viga prismática da Figura \ref{fig:test_02} possui o funcional de energia potencial total associado
+	$$
+		\Pi = 
+		\frac{1}{2} \int_0^l EI \left [
+			\frac{d^2v}{dx^2}
+		\right ]^2 dx
+		-
+		\int_0^l qvdx
+		\text{,}
+	$$
+	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. Podemos aproximar a função $y(x)$ pelos seguintes polinômios:
+	$$
+		v_1 (x) = a_0 + a_1 x + a_2 x^2
+		\text{,}
+	$$
+	$$
+		v_2 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3
+		\text{,}
+	$$
+	$$
+		v_3 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4
+		\text{.}
+	$$
+	
+	Como primeira aproximação, podemos utilizar a função $v_1(x)=a_0+a_1x+a_2x^2$, de onde, considerando as condições de contorno, tem-se que
+	$$v_1(0)=0\Longrightarrow a_0=0\text{,}$$
+	e de $v_1(l)=0$ concluí-se que $a_1=-a_2 l$. Assim, a função pode ser escrita como $$v_1(x)=a_2(x^2-lx) \text{.}$$
+	
+	Sua derivada é $v_1'(x)=a_2(2x-l)$ e, a derivada de segunda ordem é $v_1''(x)=2a_2$. Substituindo esses valores no funcional, tem-se que
+	$$
+		\Pi =
+		\frac{1}{2}
+		\int_0^l 4 EI a_2 ^2 dx
+		-
+		\int_0^l q a_2 (x^2-lx) dx
+		\text{.}
+	$$
+	
+	Da condição de estacionáriedade, $\delta \Pi=$, tem-se que
+	$$
+		\frac{\partial \Pi}{\partial a_0} \delta a_0
+		+
+		\frac{\partial \Pi}{\partial a_1} \delta a_1
+		+
+		\frac{\partial \Pi}{\partial a_2} \delta a_2
+		= 0 \text{,}
+	$$
+	e, como $\Pi$ independe de $a_0$ e $a_1$, a equação se reduz a
+	$$
+		\frac{\partial \Pi}{\partial a_2} \delta a_2 
+		= 0
+		\text{,}
+	$$
+	de onde, devido ao fato de $\delta a_2$ ser arbitrário, obtem-se a equação
+	$$
+		\frac{\partial \Pi}{\partial a_2} = 0
+	$$
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\frac{\partial}{\partial a_2} \left [
+			\int_0^l \left ( 2EIa_2 ^2 - a_2 q (x^2 -lx) \right ) dx
+		\right]
+	$$
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l
+			\frac{\partial}{\partial a_2} \left [
+			4EIa_2^2 - a_2 q(x^2-lx)
+		\right ] dx
+	$$
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			4EIa_2 - q(x^2-lx)
+		\right ] dx = 0
+	$$
+	$$
+		\left [ 
+			4EIa_2 x \Big |_0^l
+			-
+			q \left (
+				\frac{x^3}{3} - \frac{lx^2}{2}
+			\right ) \Big |_0^l
+		\right ] 
+		= 0
+	$$
+	$$
+		4EIa_2l
+		-
+		q \left (\frac{l^3}{3} - \frac{l^3}{2} \right )
+		= 0
+	$$	
+	$$
+		4EIa_2l+\frac{ql^3}{6} = 0
+	$$
+	$$
+		a_2=\frac{-ql^2}{24EI}\text{.}
+	$$
+
+	Com o valor de $a_2$ é possível calcular o valor de $a_1=-a_2l$, então, 
+	$$a_1=\frac{ql^3}{24EI}\text{.}$$
+	
+	Assim, a função aproximadora $v_1$ pode ser escrita como
+	$$
+		v_1(x)=
+		\frac{ql^3}{24EI}x
+		-
+		\frac{ql^2}{24EI}x^2
+		\text{.}
+	$$
+	
+	{\color{red}Escrever $v_2(x)$.}
+\end{exemplo}
 
 % ----------------------------------------------------------
 % PARTE
