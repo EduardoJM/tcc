@@ -42,8 +42,11 @@ def integrate(func, start, end, *args):
     value = 0
     for i in range(0, steps):
         dh = func(start + h * i + half, *args)
-        value += h * dh
-    return value
+        if i == 0 or i == steps:
+            value += dh
+        else:
+            value += (2 * dh)
+    return (value * (h / 2))
 
 def p(x):
     return e**x
@@ -65,6 +68,7 @@ def b_intern(x, i):
 
 def b(i):
     return integrate(b_intern, 0, 1, i)
+
 
 A = zeros(n, n+1)
 for i in range(0, n):
