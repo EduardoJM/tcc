@@ -182,6 +182,8 @@ Curso de Matemática}
 % 
 \usepackage{pdfpages}
 
+\usepackage{kpfonts}
+
 % ---
 % compila o indice
 % ---
@@ -369,23 +371,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % Agradecimentos
 % ---
 \begin{agradecimentos}[AGRADECIMENTOS]
-{\color{red}Os agradecimentos principais são direcionados à Gerald Weber, Miguel Frasson,
-Leslie H. Watter, Bruno Parente Lima, Flávio de Vasconcellos Corrêa, Otavio Real
-Salvador, Renato Machnievscz\footnote{Os nomes dos integrantes do primeiro
-projeto abn\TeX\ foram extraídos de
-\url{http://codigolivre.org.br/projects/abntex/}} e todos aqueles que
-contribuíram para que a produção de trabalhos acadêmicos conforme
-as normas ABNT com \LaTeX\ fosse possível.
-
-Agradecimentos especiais são direcionados ao Centro de Pesquisa em Arquitetura
-da Informação\footnote{\url{http://www.cpai.unb.br/}} da Universidade de
-Brasília (CPAI), ao grupo de usuários
-\emph{latex-br}\footnote{\url{http://groups.google.com/group/latex-br}} e aos
-novos voluntários do grupo
-\emph{\abnTeX}\footnote{\url{http://groups.google.com/group/abntex2} e
-\url{http://www.abntex.net.br/}}~que contribuíram e que ainda
-contribuirão para a evolução do \abnTeX.}
-
+{\color{red}Escrever agradecimentos}
 \end{agradecimentos}
 % ---
 
@@ -552,10 +538,19 @@ A solução de Jacob Bernoulli considerava o aspecto da curva variável, sendo c
 
 Os métodos para a resolução de problemas deste tipo eram específicos com adaptações para cada caso, sendo que os métodos gerais para a resolução só foram desenvolvidos com o envolvimento dos matemáticos Euler e Lagrange nos estudos desses problemas \cite{hist_courant}.
 
-{\color{red}Falar sobre a computação / métodos numéricos.}
+\section{O Método de Rayleigh-Ritz}
 
-% Os matemáticos Leonhard Euler (1707-1783) e Joseph Louis Lagrange (1736-1813) são considerados os dois maiores matemáticos do século XVIII e suas contribuições para o cálculo variacional impulsionaram o desenvolvimento deste campo, influenciando futuras pesquisas matemáticas. \cite{hist_eves}
+O processo de minimização de funcionais envolve diretamente a resolução de equações diferenciais que, muitas das vezes, pode não ter solução analítica. Uma forma de se contornar esse problema é o uso de soluções aproximadas e, com esse intuito, surge o método de Rayleigh-Ritz, fazendo o uso de funções admissíveis.
 
+O método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\footnote{\textborn\,1842 - \textdied\,1919} e Walter Ritz\footnote{\textborn\,1878 - \textdied\,1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
+
+Lord Rayleigh, em 1877, trabalhando com as energias potencial e cinética de sistemas, assumiu um padrão de vibração numa determinada frequência calculando a frequência de vibração livre por meio do equacionamento das energias potencial e cinética. Esse método ficou conhecido como Método de Rayleigh e a sua precisão depende de quão próximo o padrão de vibração escolhido está do correto \cite{LEISSA_2005}.
+
+Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simples para a resolução de problemas de valor de contorno e de autovalores numericamente para qualquer nível de exatidão necessário usando funcionais \cite{LEISSA_2005}. Esse procedimento foi chamado de Método de Ritz.
+
+Não se sabe exatamente quando o nome Rayleigh passou a ser agregado ao Método de Ritz, transformando-se em "Método de Rayleigh-Ritz". Uma das razões pelas quais isso ocorreu é o fato de que o método de Rayleigh pode ser considerado como um caso especial do método de Ritz quando uma única função admissível é utilizada para a aproximação \cite{LEISSA_2005}.
+
+O método de Rayleigh foi utilizado frequentemente, porém, nas últimas décadas o método de Ritz ou, como é chamado hoje, de Rayleigh-Ritz se mostrou aplicável a uma gama enorme de problemas devido, principalmente, a revolução tecnologica promovida pelos computadores, a partir da invenção dos transistores e microprocessadores \cite{LEISSA_2005}.
 
 \chapter{Cálculo Variacional}
 
@@ -709,32 +704,6 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 \end{equation}
 
 A equação diferencial \eqref{eqn:cap_calcvar_euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:int_funcional}).
-
-\section{Operador Variacional}
-
-Ao definir as funções aproximadoras
-$$
-	Y(x)=y(x)+\varepsilon \eta(x)
-	\text{,}
-$$
-para cada valor fixo de $x$, o produto $\varepsilon \eta(x)$ pode ser entendido com uma variação da função exata $y(x)$. Pode-se exprimir essa variação por
-$$
-	\delta y=\varepsilon \eta(x)
-	\text{.}
-$$
-
-É necessário tratar, também, a variação de funcionais $f(x, y, y')$. Utilizando-se a mesma notação, essa variação é definida como
-$$
-	\delta f = \frac{\partial f}{\partial y}\delta y + \frac{\partial f}{\partial y'}\delta y'
-	\text{.}
-$$
-
-Esse operador pode ser escrito, ainda, na forma $\delta y = Y(x)-y(x)$, ou seja, como a diferença entre a função aproximadora ou admissível e a função exata. {\color{red}Essa abordagem permite a demonstração de algumas propriedades comuns entre o operador diferencial e o operador variacional.}
-
-{\color{red}Enunciar e demonstrar algumas das propriedades de $\delta f$.}
-
-%\textit{\color{red}(Necessário?) Falar sobre a generalização da equação de Euler-Lagrange para $n$ variáveis.}
-%\section{Generalização da Equação de Euler-Lagrange}
 
 
 \chapter{Método de Rayleigh-Ritz}
