@@ -258,7 +258,7 @@ O método de Rayleigh foi utilizado frequentemente, porém, nas últimas década
 O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
 \begin{equation}
 	\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
-	\label{eqn:int_funcional}
+	\label{eqn:cap_calc_var:int_funcional}
 \end{equation}
 
 Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
@@ -292,11 +292,11 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{lema}
 
 Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções aproximadoras, que será denotada por $Y(x)$. Essas funções aproximadoras podem ser chamadas, também, de funções admissíveis. Essa família é definida por:
-\begin{equation}\label{eqn:cap_calcvar_eq_approx}
+\begin{equation}\label{eqn:cap_calc_var:func_admissible}
 	Y(x)=y(x)+\varepsilon \eta (x)\text{,}
 \end{equation}
 onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\varepsilon$ é o parâmetro da família. É possível escrever, também, a derivada de $Y$ como
-\begin{equation}\label{eqn:cap_calcvar_eq_approx_diff}
+\begin{equation}\label{eqn:cap_calc_var:func_admissible_diff}
 	Y'(x)=y'(x)+\varepsilon \eta '(x)\text{.}
 \end{equation}
 
@@ -313,28 +313,28 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-Reescrevendo a integral (\ref{eqn:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
-\begin{equation}\label{eqn:int_funcional_approx}
+Reescrevendo a integral (\ref{eqn:cap_calc_var:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
+\begin{equation}\label{eqn:cap_calc_var:int_funcional_approx}
 I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
 \end{equation}
 
-Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:int_funcional}) quando $\varepsilon=0$.
+Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:cap_calc_var:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:cap_calc_var:int_funcional}) quando $\varepsilon=0$.
 
 A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
-\begin{equation}\label{eqn:cap_calcvar_condition}
+\begin{equation}\label{eqn:cap_calc_var:extrem_condition}
 I'(0)=0\text{.}
 \end{equation}
 
-Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:int_funcional_approx}) pode ser escrita como
+Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:cap_calc_var:int_funcional_approx}) pode ser escrita como
 $$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y, Y') dx \text{,}$$
 e, aplicando regra da cadeia, obtêm-se
 $$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{,}$$
 onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\varepsilon$, portanto $\dfrac{\partial x}{\partial \varepsilon}=0$, ou seja,
-\begin{equation}\label{eqn:cap_calcvar_chain_rule}
+\begin{equation}\label{eqn:cap_calc_var:chain_rule}
 I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
 \end{equation}
 
-Derivando \eqref{eqn:cap_calcvar_eq_approx} em função de $\varepsilon$, tem-se $\frac{\partial Y}{\partial \varepsilon}=\frac{\partial y}{\partial \varepsilon}+\frac{\partial}{\partial \varepsilon}(\varepsilon \eta)$, de onde conclui-se que $\frac{\partial Y}{\partial \varepsilon}=\eta$, pois $y$ e $\eta$ independem de $\varepsilon$. O mesmo acontece com \eqref{eqn:cap_calcvar_eq_approx_diff}, donde verifica-se que $\frac{\partial Y'}{\partial \varepsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calcvar_chain_rule}, obtêm-se a integral
+Derivando \eqref{eqn:cap_calc_var:func_admissible} em função de $\varepsilon$, tem-se $\frac{\partial Y}{\partial \varepsilon}=\frac{\partial y}{\partial \varepsilon}+\frac{\partial}{\partial \varepsilon}(\varepsilon \eta)$, de onde conclui-se que $\frac{\partial Y}{\partial \varepsilon}=\eta$, pois $y$ e $\eta$ independem de $\varepsilon$. O mesmo acontece com \eqref{eqn:cap_calc_var:func_admissible_diff}, donde verifica-se que $\frac{\partial Y'}{\partial \varepsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calc_var:chain_rule}, obtêm-se a integral
 $$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
 	\frac{\partial f}{\partial Y'} \eta '
@@ -364,7 +364,7 @@ I'(0)=
 	uv \Big|_{x_1}^{x_2} - \int_{x_1}^{x_2}vdu
 	\right )
 $$
-\begin{equation}\label{eqn:cap_calcvar_part_integration}
+\begin{equation}\label{eqn:cap_calc_var:integration_parts}
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 	+
@@ -373,7 +373,7 @@ I'(0)=
 	\right )
 \end{equation}
 
-Sabe-se que $\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, \eqref{eqn:cap_calcvar_part_integration} pode ser reescrita como
+Sabe-se que $\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, \eqref{eqn:cap_calc_var:integration_parts} pode ser reescrita como
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
@@ -389,7 +389,7 @@ I'(0)=\int_{x_1}^{x_2}\left (
 	\right )
 \right )\eta dx
 $$
-que, a partir da condição necessária (\ref{eqn:cap_calcvar_condition}), deve ser igualada a $0$:
+que, a partir da condição necessária (\ref{eqn:cap_calc_var:extrem_condition}), deve ser igualada a $0$:
 $$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} -
@@ -400,11 +400,11 @@ I'(0)=\int_{x_1}^{x_2}\left (
 \right )\eta dx = 0	\text{.}
 $$
 permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
-\begin{equation}\label{eqn:cap_calcvar_euler_lagrange}
+\begin{equation}\label{eqn:cap_calc_var:euler_lagrange}
 \frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
 \end{equation}
 
-A equação diferencial \eqref{eqn:cap_calcvar_euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:int_funcional}).
+A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
 
 
 \chapter{Método de Rayleigh-Ritz}
@@ -811,7 +811,7 @@ elementum}
 			$$
 			de onde subtraindo $\int_a^b \frac{\partial f}{\partial x_i}(x,t) dt$ de ambos os lados, tem-se
 			\begin{equation}
-			\label{eqn:anexo_leibniz_r1}
+			\label{eqn:cap_ap_leibniz:subtract_1}
 			\frac{\varphi(x+se_i)-\varphi(x)}{s}
 			- \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
 			=
@@ -825,10 +825,10 @@ elementum}
 			$$
 				\frac{f(x+se_i,t)-f(x,t)}{s}=\frac{\partial f}{\partial x_i}(x+\theta s e_i,t)\text{,}
 			$$
-			onde $\theta \in [0,1]$ garante que $\theta s$ esteja entre $]0, s[$, satisfazendo as condições do Teorema do Valor Médio. Assim, de \eqref{eqn:anexo_leibniz_r1} tem-se
-			%donde pode-se escrever \eqref{eqn:anexo_leibniz_r1} como
+			onde $\theta \in [0,1]$ garante que $\theta s$ esteja entre $]0, s[$, satisfazendo as condições do Teorema do Valor Médio. Assim, de \eqref{eqn:cap_ap_leibniz:subtract_1} tem-se
+			%donde pode-se escrever \eqref{eqn:cap_ap_leibniz:subtract_1} como
 			\begin{equation}
-				\label{eqn:anexo_leibniz_voltas}
+				\label{eqn:cap_ap_leibniz:tvm}
 				\frac{\varphi(x+se_i)-\varphi(x)}{s}
 				- \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
 				=
@@ -839,7 +839,7 @@ elementum}
 			
 			Como $\frac{\partial f}{\partial x_i}$ é contínua e $[a,b]$ é compacto, pelo Teorema \ref{teorema:func_uniformemente}, para todo $\varepsilon > 0$, existe um $\delta > 0$, de modo que
 			\begin{equation}
-				\label{eqn:anexo_leibniz_ineq_func_unif}
+				\label{eqn:cap_ap_leibniz:compact_limit}
 				|s|<\delta \Longrightarrow
 				\left | 
 					\frac{\partial f}{\partial x_i} (x+\theta s e_i, t) - \frac{\partial f}{\partial x_i}(x,t)
@@ -859,7 +859,7 @@ elementum}
 				\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
 			\right | dt\text{,}
 			$$
-			e, utilizando \eqref{eqn:anexo_leibniz_ineq_func_unif}, tem-se a inequação
+			e, utilizando \eqref{eqn:cap_ap_leibniz:compact_limit}, tem-se a inequação
 			$$
 			\left |
 				\int_a^b \left [
@@ -870,7 +870,7 @@ elementum}
 			\int_a^b \frac{\varepsilon}{b-a} dt
 			$$
 			\begin{equation}
-				\label{eqn:anexo_leibniz_ineq_limit}
+				\label{eqn:cap_ap_leibniz:epsilon_limit}
 				\left |
 					\int_a^b \left [
 						\frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
@@ -879,7 +879,7 @@ elementum}
 				< \varepsilon \text{.}
 			\end{equation}
 			
-			De \eqref{eqn:anexo_leibniz_voltas} e \eqref{eqn:anexo_leibniz_ineq_limit}, verifica-se que
+			De \eqref{eqn:cap_ap_leibniz:tvm} e \eqref{eqn:cap_ap_leibniz:epsilon_limit}, verifica-se que
 			$$
 				|s|<\delta \Longrightarrow
 				\left |

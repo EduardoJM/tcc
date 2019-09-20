@@ -22,3 +22,5 @@ São padrões para os nomes declarados nos comandos `\label` para diversos eleme
 - Contexto Histórico: **contexto_hist**
 - Cálculo Variacional: **calc_var**
 - Método de Rayleigh-Ritz: **metodo_ray_ritz**
+
+- Anexo: Regra de Leibniz: **ap_leibniz**
