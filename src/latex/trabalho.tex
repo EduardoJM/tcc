@@ -76,6 +76,12 @@
 \usepackage{amssymb}	 % qed
 \usepackage{amsthm}      % Teoremas
 
+\newenvironment{amatrix}[1]{%
+  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right)
+}
+
 \newtheorem{teorema}{Teorema}
 \newtheorem{lema}{Lema}
 \newtheorem{definicao}{Definição}
@@ -792,6 +798,8 @@ Para funcionais que dependem de derivadas superiores até a ordem $n$, o process
 
 O objetivo do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é resolver a equação de Euler-Lagrange associada ao problema. É evidente, porém, que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar de problemas como esses, surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
 
+{\color{red}Citar referências usadas, tais como \citeonline{mefassan} e \citeonline{MRR_Deflex}.}
+
 O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Considerando o funcional
 $$
 	I=\int_{x_1}^{x_2} f(x,y,y',\dots,y^{(m)})dx
@@ -897,7 +905,8 @@ com $i=1, 2, 3, \dots, n$.
 	\end{figure}
 	
 	A viga prismática da Figura \ref{fig:test_02} possui o funcional de energia potencial total associado
-	$$
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:exemplo_func_pi}
 		\Pi = 
 		\frac{1}{2} \int_0^l EI \left [
 			\frac{d^2v}{dx^2}
@@ -905,7 +914,7 @@ com $i=1, 2, 3, \dots, n$.
 		-
 		\int_0^l qvdx
 		\text{,}
-	$$
+	\end{equation}
 	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. Podemos aproximar a função $y(x)$ pelos seguintes polinômios:
 	$$
 		v_1 (x) = a_0 + a_1 x + a_2 x^2
@@ -934,25 +943,12 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	$$
 	
-	Da condição de estacionáriedade, $\delta \Pi=$, tem-se que
-	$$
-		\frac{\partial \Pi}{\partial a_0} \delta a_0
-		+
-		\frac{\partial \Pi}{\partial a_1} \delta a_1
-		+
-		\frac{\partial \Pi}{\partial a_2} \delta a_2
-		= 0 \text{,}
-	$$
-	e, como $\Pi$ independe de $a_0$ e $a_1$, a equação se reduz a
-	$$
-		\frac{\partial \Pi}{\partial a_2} \delta a_2 
-		= 0
-		\text{,}
-	$$
-	de onde, devido ao fato de $\delta a_2$ ser arbitrário, obtem-se a equação
+	Da condição de estacionáriedade tem-se, que
 	$$
 		\frac{\partial \Pi}{\partial a_2} = 0
+		\text{,}
 	$$
+	que pode ser desenvolvido como
 	$$
 		\frac{\partial \Pi}{\partial a_2}
 		=
@@ -1010,8 +1006,455 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	$$
 	
-	{\color{red}Escrever $v_2(x)$.}
+	Pode-se utilizar uma aproximação de grau 3 para tentar melhorar o resultado, isto é, $v_2(x)=a_0+a_1x+a_2x^2+a_3x^3$. Das condições de contorno, $v_2(0)=0$, de onde $a_0=0$ e $v_2(l)=0$, donde $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser escrita como
+	$$
+		v_2(x)=
+		a_2(x^2-lx)
+		+
+		a_3(x^3-l^2x)
+		\text{.}
+	$$
+	
+	Das condições de contorno, tem-se que $v_2(0)=0$, donde pode-se concluir que $a_0=0$. Ainda, $v_2(l)=0$, de onde, $a_1 l + a_2 l^2 + a_3 l^3=0$, isto é, $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser reescrita como
+	$$
+		v_2(x)=
+		a_2(x^2-lx)
+		+
+		a_3(x^3-l^2x)
+		\text{.}
+	$$
+	
+	Derivando a função $v_2$ em função de x, pode-se obter
+	$$
+	v_2'(x)=
+	a_2(2x-l)
+	+
+	a_3(3x^2-l^2)
+	$$
+
+	$$
+	v_2''(x)=
+	2a_2 + 6a_3 x \text{.}
+	$$
+	
+	Substituindo em $\Pi$, tem-se
+	$$
+		\Pi=
+		\frac{1}{2}
+		\int_0^l
+			\left (
+				EI(2a_2+6a_3x)^2
+			\right ) dx
+		-
+		\int_0^l
+			q
+			\left (
+				a_2(x^2-lx)
+				+
+				a_3(x^3-l^2x)
+			\right ) dx
+		\text{.}
+	$$
+	
+	Derivando $\Pi$ em função de $a_2$ é possível obter
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			2EI(2a_2+6a_3x)-q(x^2-lx)
+		\right ] dx
+		= 0
+	$$	
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			EI(4a_2+12a_3x)-q(x^2-lx)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			4EIa_2 + 12EIa_3x - qx^2 + qlx
+		\right ] dx
+		= 0
+	$$
+	$$
+		4EIa_2 x \Big |_0^l
+		+
+		\frac{12a_3EI}{2} x^2 \Big |_0^l
+		-
+		\frac{q}{3} x^3 \Big |_0^l
+		+
+		\frac{ql}{2} x^2 \Big |_0^l
+		= 0
+	$$
+	$$
+		4EIa_2l
+		+
+		6a_3EIl^2
+		-
+		\frac{2ql^3}{6}
+		+
+		\frac{3ql^3}{6}
+		= 0
+	$$
+	$$
+		4EIa_2l
+		+
+		6a_3EIl^2
+		=
+		\frac{2ql^3}{6}
+		-
+		\frac{3ql^3}{6}
+	$$
+	$$
+		4a_2 + 6a_3l
+		=
+		\frac{-ql^2}{6EI}
+	$$
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx2_eq1}
+		2a_2 + 3a_3l
+		=
+		\frac{-ql^2}{12EI}
+		\text{.}
+	\end{equation}
+	
+	Derivando $\Pi$ em relação a $a_3$ tem-se que
+	$$
+		\frac{\partial \Pi}{\partial a_3}
+		=
+		\int_0^l \left [
+			6EI(2a_2 + 6a_3x)x
+			-
+			q(x^3 - l^2x)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			EI(12a_2 + 36a_3x)x
+			-
+			q(x^3 - l^2x)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			EI(12a_2 x + 36a_3x^2)
+			-
+			q(x^3 - l^2x)
+		\right ] dx = 0
+		= 0
+	$$
+	$$
+		EI \left (
+			\frac{12a_2}{2}x^2 \Big |_0^l
+			+
+			\frac{36a_3}{3}x^3 \Big |_0^l
+		\right )
+		-
+		q \left (
+			\frac{x^4}{4} \Big |_0^l
+			-
+			\frac{l^2x^2}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	$$
+		EI(6a_2l^2 + 12a_3l^3)
+		-
+		q \left (
+			\frac{l^4}{4}
+		\right )
+		+
+		q \left (
+			\frac{l^4}{2}
+		\right )
+	$$
+	$$
+		6a_2 + 12a_3l = -\frac{ql^4}{4EIl^2}
+	$$
+	$$
+		6a_2 + 12a_3l = -\frac{ql^2}{4EI}
+	$$
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx2_eq2}
+		2a_2 + 4a_3l = -\frac{ql^2}{12EI}
+		\text{.}
+	\end{equation}
+	
+	Montando um sistema de equações com \eqref{eq:exemp_rayritz_approx2_eq1} e \eqref{eq:exemp_rayritz_approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:exemp_rayritz_approx2_eq2} - \eqref{eq:exemp_rayritz_approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$.
+	De volta a \eqref{eq:exemp_rayritz_approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\frac{ql^2}{12EI}$ e, por fim,
+	$$
+		a_2=-\frac{ql^2}{24EI}
+		\text{.}
+	$$
+
+	Assim, a função $v_2$ é a mesma que $v_1$, não sendo útil ao caso.
+	
+	Utilizando, como função aproximadora, a função $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, tem-se das condições de contorno que $v_3(0)=0$, donde $a_0=0$ e, $v_3(l)=0$, isto é $a_1l+a_2l^2+a_3l^3+a_4l^4=0$, donde pode-se concluir que $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, podemos encontrar a função
+	$$
+		a_2 (x^2 - lx)
+		+
+		a_3 (x^3 - l^2x)
+		+
+		a_4 (x^4 - l^3x)
+		\text{.}
+	$$
+	
+	Derivando $v_3$ em relação a $x$:
+	$$
+		v_3'(x)=
+		a_2(2x - l)
+		+
+		a_3(3x^2 - l^2)
+		+
+		a_4(4x^3 - l^3)
+	$$
+	$$
+		v_3''(x)=
+		2a_2
+		+
+		6a_3 x
+		+
+		12a_4 x^2
+		\text{.}
+	$$
+	
+	Substituindo em $\Pi$,
+	$$
+		\Pi = \frac{1}{2} \int_0^l \left [
+			EI(2a_2+6a_3x+12a_4x^2)^2
+		\right ] dx
+		-
+		\int_0^l q \left [
+			a_2(x^2 - lx)
+			+
+			a_3(x^3 - l^2x)
+			+
+			a_4(x^4 - l^3x)
+		\right ] dx
+		\text{,}
+	$$
+	de onde pode-se derivar $\Pi$ em relação a $a_2$, $a_3$ e $a_4$ para obter um sistema de equações permitindo a determinação de $a_2$, $a_3$ e $a_4$.
+	
+	Fazendo $\frac{\partial \Pi}{\partial a_2} = 0$:
+	$$
+		\frac{\partial \Pi}{\partial a_2}
+		=
+		\int_0^l \left [
+			2EI(2a_2 + 6a_3x + 12a_4x^2)
+			-
+			q(x^2 - lx)
+		\right ] dx
+		= 0
+	$$
+	$$
+		\int_0^l \left [
+			EI(4a_2 + 12a_3x + 24a_4x^2)
+			-
+			q(x^2 - lx)
+		\right ] dx
+		= 0
+	$$
+	$$
+		EI \left (
+			4a_2 x \Big |_0^l
+			+
+			\frac{12a^3}{2}x^2 \Big |_0^l
+			+
+			\frac{24a_4}{3}x^3 \Big |_0^l
+		\right )
+		- q
+		\left (
+			\frac{x^3}{3} \Big |_0^l
+			-
+			\frac{lx^2}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	$$
+		EI(4a_2l + 6a_3l^2 + 8a_4l^3)
+		=
+		\frac{ql^3}{3}
+		-
+		\frac{ql^3}{2}
+	$$
+	$$
+		4a_2l + 6a_3l^2 + 8a_4l^3 = -\frac{ql^3}{6EI}
+	$$
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx3_eq1}
+		2a_2 + 3a_3l + 4a_4l^2 = -\frac{ql^2}{12EI}
+		\text{.}
+	\end{equation}
+		
+	Fazendo $\frac{\partial \Pi}{\partial a_3} = 0$, tem-se
+	$$
+		\frac{\partial \Pi}{\partial a_3}
+		=
+		\int_0^l \left [
+			6xEI(2a_2 + 6a_3x + 12a_4x^2)
+			-
+			q(x^3 - l^2x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		\frac{\partial \Pi}{\partial a_3}
+		=
+		\int_0^l \left [
+			EI(12 a_2 x + 36 a_3 x^2 + 72 a_4 x^3)
+			-
+			q(x^3-l^2x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		EI \left (
+			\frac{12a_2}{2} x^2 \Big |_0^l
+			+
+			\frac{36a_3}{3} x^3 \Big |_0^l
+			+
+			\frac{72a_4}{4} x^4 \Big |_0^l
+		\right )
+		-
+		q \left (
+			\frac{x^4}{4} \Big |_0^l
+			-
+			\frac{l^2 x}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	
+	$$
+		EI(6a_2 l^2 + 12a_3 l^3 + 18a_4 l^4)
+		=
+		\frac{ql^4}{4}
+		-
+		\frac{ql^4}{2}
+	$$
+	
+	$$
+		EI(6a_2 l^2 + 12a_3 l^3 + 18a_4 l^4)
+		=
+		-\frac{ql^4}{4}
+	$$
+	
+	$$
+		6a_2 + 12a_3 l + 18a_4 l^2
+		=
+		-\frac{ql^2}{4EI}
+	$$
+	
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx3_eq2}
+		a_2 + 2a_3 l + 3a_4 l^2 = - \frac{ql^2}{24EI}
+		\text{.}
+	\end{equation}
+	
+	Por último, fazendo $\frac{\partial \Pi}{\partial a_4}=0$, tem-se
+	
+	$$
+		\frac{\partial \Pi}{\partial a_4}
+		=
+		\int_0^l \left [
+			12x^2EI(2a_2 + 6a_3x + 12a_4x^2)
+			-
+			q(x^4 - l^3x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		\int_0^l \left [
+			EI(24a_2 x^2 + 72 a_3 x^3 + 144 a_4 x^4)
+			-
+			q(x^4 - l^3 x)
+		\right ] dx
+		= 0
+	$$
+	
+	$$
+		EI \left ( 
+			\frac{24a_2}{3}x^3 \Big |_0^l
+			+
+			\frac{72a_3}{4}x^4 \Big |_0^l
+			+
+			\frac{144a_4}{5}x^5 \Big |_0^l
+		\right )
+		-
+		q \left (
+			\frac{x^5}{5} \Big |_0^l
+			-
+			\frac{l^3x^2}{2} \Big |_0^l
+		\right )
+		= 0
+	$$
+	
+	$$
+		EI \left (
+			8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
+		\right )
+		=
+		\frac{ql^5}{5}
+		-
+		\frac{ql^5}{2}
+	$$
+	
+	$$
+		EI \left (
+			8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
+		\right )
+		=
+		-\frac{3ql^5}{10}
+	$$
+	
+	$$
+		8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
+		=
+		-\frac{3ql^5}{10EI}
+	$$
+	
+	\begin{equation}
+		\label{eq:exemp_rayritz_approx3_eq3}
+		8a_2 + 18a_3 l + \frac{144}{5} a_4 l^2 
+		=
+		-\frac{3ql^2}{10EI}
+		\text{.}
+	\end{equation}
+	
+	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $c=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada
+	$$
+	\begin{amatrix}{3}
+	2 & 3l  & 4l^2 				 & C \\
+	1 & 2l  & 3l^2				 & \frac{1}{2}C \\
+	8 & 18l & \frac{144}{5} l^2 & D
+	\end{amatrix}
+	\text{,}
+	$$
+	donde, resolvendo o sistema, obtem-se os valores
+	$$a_4=\frac{q}{24EI}\text{,}$$
+	$$a_3=-\frac{ql}{12EI}\text{,}$$
+	$$a_2=0\text{.}$$
+	
+	Deste modo, a função $v_3(x)$ pode ser escrita como
+	$$
+		v_3(x) =
+		\frac{q}{24EI} ( x^4 - l^3 x )
+		-
+		\frac{ql}{24EI} ( x^3 - l^2 x )
+		\text{.}
+	$$
+	
+	{\color{red}Esse resultado $v_3(x)$ é a função exata procurada. Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{exemplo}
+
+{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
 % ----------------------------------------------------------
 % PARTE
