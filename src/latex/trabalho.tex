@@ -790,22 +790,24 @@ Para funcionais que dependem de derivadas superiores até a ordem $n$, o process
 
 \chapter{Método de Rayleigh-Ritz}
 
-O objetivo do Cálculo Variacional é o de encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é o de resolver a equação de Euler-Lagrange associada ao problema. É evidente que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar desses problemas surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
+O objetivo do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é resolver a equação de Euler-Lagrange associada ao problema. É evidente, porém, que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar de problemas como esses, surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
 
 O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Considerando o funcional
 $$
-	I=\int_{x_1}^{x_2} f(x,y,y')dx
+	I=\int_{x_1}^{x_2} f(x,y,y',\dots,y^{(m)})dx
 	\text{,}
 $$
-com as condições de contorno $y(x_1)=y(x_2)=0$, então,
+com as condições de contorno $y(x_1)=y(x_2)=0$, então a função $y(x)$ é aproximada por $v(x)$:
 $$
 	y(x) \approx v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{.}
 $$
 
-As funções $\phi _i$ são chamadas de funções de forma e devem ser linearmente independente. Os coeficientes $a_i$ são chamados parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
+As funções $\phi _i$ são chamadas de funções de forma e devem ser linearmente independente. {\color{red}Falar sobre diferenciabilidade das $\phi_i(x)$}. Os coeficientes $a_i$ são chamados parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
 
-Substituindo $y$ por $v$ no funcional $Y$ e {\color{red}aplicando a condição de estacionáriedade, $\delta I=0$, tem-se
+Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$. Assim, sua condição de estacionariedade será data por {\color{red}continuar}.
+
+{\color{red}aplicando a condição de estacionáriedade, $\delta I=0$, tem-se
 $$
 	\delta I
 	=
