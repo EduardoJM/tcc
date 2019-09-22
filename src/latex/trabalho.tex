@@ -195,6 +195,15 @@ Curso de Matemática}
 
 \begin{document}
 
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+\textual
+
 \chapter{Contexto Histórico}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
 
@@ -261,7 +270,7 @@ O problema pertinente ao cálculo variacional é o de encontrar uma função dif
 	\label{eqn:cap_calc_var:int_funcional}
 \end{equation}
 
-Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar} e \citeonline{mefassan}.
+Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar}, \citeonline{calcvar_campos} e \citeonline{mefassan}.
 
 \section{Equação de Euler-Lagrange}
 
@@ -406,10 +415,382 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 
 A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
 
+\section{Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior}
+
+Existem também, funcionais que dependem de mais funções, funções de mais de uma variável ou, ainda, que dependem de derivadas de ordem superior. O último caso será mostrado aqui, tendo em vista seu uso nos próximos capítulos. Considere o funcional
+\begin{equation}
+	\label{eqn:cap_calc_var:funcional_n_derivadas}
+	I=\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx
+	\text{,}
+\end{equation}
+onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ por $Y(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$, isto é, $n$ vezes diferenciável com suas derivadas contínuas. Desse modo,
+$$
+	Y'(x)=y'(x)+\varepsilon \eta ' (x)
+	\text{,}
+$$
+$$
+	Y''(x)=y''(x)+\varepsilon \eta '' (x)
+	\text{,}
+$$
+$$
+	\vdots
+$$
+$$
+	Y^{(n)} (x)= y^{(n)}(x)+\varepsilon \eta^{(n)} (x)
+	\text{.}
+$$
+
+Substituindo $y$, $y'$, $y''$, $\dots$, $y^{(n)}$ por suas funções admissíveis $Y$, $Y'$, $Y''$, $\dots$, $Y^{(n)}$ em \eqref{eqn:cap_calc_var:funcional_n_derivadas}, o funcional pode ser escrito como
+$$
+	I(\varepsilon) = \int_{x_1}^{x_2}
+		f(x, Y, Y', Y'', \dots, Y^{(n)})
+		dx
+	\text{,}
+$$
+donde, derivando em função de $\varepsilon$, por meio da Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), tem-se
+\begin{equation}
+	\label{eqn:cap_calc_var:diff_func_n_derivadas_leibniz}
+	I'(\varepsilon) = 
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial \varepsilon}
+		(x, Y, Y', Y'', \dots, Y^{(n)})
+		dx
+	\text{.}
+\end{equation}
+
+Aplicando a Regra da Cadeia em \eqref{eqn:cap_calc_var:diff_func_n_derivadas_leibniz}, $I'(\varepsilon)$ pode ser escrita como
+$$
+	I'(\varepsilon)=\int_{x_1}^{x_2}
+	\left (
+		\frac{\partial f}{\partial x}
+		\frac{\partial x}{\partial \varepsilon}
+		+
+		\frac{\partial f}{\partial Y}
+		\frac{\partial Y}{\partial \varepsilon}
+		+
+		\frac{\partial f}{\partial Y'}
+		\frac{\partial Y'}{\partial \varepsilon}
+		+
+		\frac{\partial f}{\partial Y''}
+		\frac{\partial Y''}{\partial \varepsilon}
+		+
+		\cdots
+		+
+		\frac{\partial f}{\partial Y^{(n)}}
+		\frac{\partial Y^{(n)}}{\partial \varepsilon}
+	\right ) dx
+	\text{,}
+$$
+onde $\frac{\partial x}{\partial \varepsilon} = 0$, pois $x$ não depende de $\varepsilon$, ou seja,
+\begin{equation}
+	\label{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia}
+	I'(\varepsilon)=\int_{x_1}^{x_2}
+	\left (
+		\frac{\partial f}{\partial Y}
+		\frac{\partial Y}{\partial \varepsilon}
+		+
+		\frac{\partial f}{\partial Y'}
+		\frac{\partial Y'}{\partial \varepsilon}
+		+
+		\frac{\partial f}{\partial Y''}
+		\frac{\partial Y''}{\partial \varepsilon}
+		+
+		\cdots
+		+
+		\frac{\partial f}{\partial Y^{(n)}}
+		\frac{\partial Y^{(n)}}{\partial \varepsilon}
+	\right ) dx
+	\text{.}
+\end{equation}
+
+Derivando as funções admissíveis $Y$, $Y'$, $Y''$, $\dots$, $Y^{(n)}$ em relação a $\varepsilon$, como já feito anteriormente, é possível substituir em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia}, os valores de $\frac{\partial Y}{\partial \varepsilon}$ por $\eta(x)$ e $\frac{\partial Y^{(i)}}{\partial \varepsilon}$ por $\eta^{(i)}(x)$ onde $i=1, 2, \dots, n$. Assim, \eqref{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia} pode ser reescrito como
+\begin{equation}
+	\label{eqn:cap_calc_var:func_n_derivadas_replace_0}
+	I'(\varepsilon)=
+	\int_{x_1}^{x_2} \left (
+		\frac{\partial f}{\partial Y} \eta
+		+
+		\frac{\partial f}{\partial Y'} \eta'
+		+
+		\frac{\partial f}{\partial Y''} \eta''
+		+
+		\cdots
+		+
+		\frac{\partial f}{\partial Y^{(n)}} \eta^{(n)}
+	\right ) dx
+	\text{.}
+\end{equation}
+
+Fazendo $\varepsilon=0$, pode-se substituir $Y$, $Y'$, $Y''$, $\dots$, $Y^{(n)}$ por $y$, $y'$, $y''$, $\dots$, $y^{(n)}$, respectivamente, então
+$$
+	I'(0)= \int_{x_1}^{x_2} \left (
+		\frac{\partial f}{\partial y} \eta
+		+
+		\frac{\partial f}{\partial y'} \eta'
+		+
+		\frac{\partial f}{\partial y''} \eta''
+		+
+		\cdots
+		+
+		\frac{\partial f}{\partial y^{(n)}} \eta^{(n)}
+	\right )dx
+$$
+\begin{equation}
+	\label{eqn:cap_calc_var:func_n_derivadas_pos_separar}
+	I'(0)= 
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y} \eta
+	dx
+	+		
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y'} \eta'
+	dx
+	+
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y''} \eta''
+	dx
+	+
+	\cdots
+	+
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y^{(n)}} \eta^{(n)}
+	dx
+	\text{.}
+\end{equation}
+
+Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar o segundo membro por partes uma vez, o terceiro membro por partes duas vezes, o quarto membro três vezes e assim por diante, até que o $n$-ésimo membro seja integrado $n-1$ vezes, também por partes. No fim das integrações, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}.
+
+As integrações para o caso geral serão omitidas aqui. Nas duas subseções proximas, será mostrado o processo para o caso em que $n=2$ e será mostrado a equação geral para derivadas até a ordem $n$.
+
+\subsection{Processo para funcionais que dependem de derivadas de segunda ordem}
+
+No caso em que
+$$
+	I=\int_{x_1}^{x_2} f(x, y, y', y'')dx
+	\text{,}
+$$
+e
+\begin{equation}
+	\label{eqn:cap_calc_var:func_2_derivada_integracao}
+	I'(0)=
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y}
+		\eta
+	dx
+	+
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y'}
+		\eta'
+	dx
+	+
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y''}
+		\eta''
+	dx
+\end{equation}
+
+O segundo membro pode ser integrado, por partes, com $u=\frac{\partial f}{\partial y'}$ e $dv=\eta'dx$, donde 
+$du=\frac{d}{dx} \left (
+	\frac{\partial f}{\partial y'}
+\right ) dx$ e $v=\eta$, logo
+$$
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta ' dx
+	=
+	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}
+	-
+	\int_{x_1}^{x_2}
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y'}
+		\right ) \eta dx
+	\text{,}
+$$
+mas $\eta(x_1)=\eta(x_2)=0$, ou seja, a integral pode ser reescrita como
+\begin{equation}
+	\label{eqn:cap_calc_var:func_2_derivadas_membro2}
+	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta ' dx
+	=
+	-
+	\int_{x_1}^{x_2}
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y'}
+		\right ) \eta dx
+	\text{.}
+\end{equation}
+
+O terceiro membro deve ser integrado duas vezes por partes. Na primeira integração, seja $u=\frac{\partial f}{\partial y''}$ e $dv=\eta''dx$, onde 
+$du=\frac{d}{dx} \left (
+	\frac{\partial f}{\partial y''}
+\right) dx$ e $v=\eta '$. Assim,
+$$
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y''}
+		\eta ''
+	dx
+	=
+	\frac{\partial f}{\partial y''} \eta ' \Big |_{x_1}^{x_2}
+	-
+	\int_{x_1}^{x_2} \frac{d}{dx}
+		\left ( 
+			\frac{\partial f}{\partial y''}
+		\right )
+	\eta ' dx
+	\text{.}
+$$
+Como $\eta$ é contínua,
+$$
+	\label{eqn:cap_calc_var:limit_eta_x1}
+	\lim_{x\to x_1^+} \eta(x)=\eta(x_1)=0
+	\text{,}
+$$
+$$
+	\lim_{x\to x_2^-} \eta(x)=\eta(x_2)=0
+	\text{,}
+$$
+de onde é possível calcular 
+\begin{equation}
+	\label{eqn:cap_calc_var:limit_diff_x1}
+	\eta '(x_1) = \lim_{x\to x_1^+} 
+	\frac{\eta (x) - \eta(x_1}{x-x_1}
+	=
+	0
+	\text{,}
+\end{equation}
+\begin{equation}
+	\label{eqn:cap_calc_var:limit_diff_x2}
+	\eta '(x_2) = \lim_{x\to x_2^-} 
+	\frac{\eta (x) - \eta(x_2}{x-x_2}
+	=
+	0
+	\text{.}
+\end{equation}
+
+Usando os resultados \eqref{eqn:cap_calc_var:limit_diff_x1} e \eqref{eqn:cap_calc_var:limit_diff_x2}, $\frac{\partial f}{\partial y''}\eta ' \Big |_{x_1}^{x_2} = 0$, portanto
+$$
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y''}
+		\eta'' dx
+	=
+	-
+	\int_{x_1}^{x_2}
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y''}
+		\right )
+	\eta 'dx
+	\text{,}
+$$
+e, para a segunda integração por partes, pode-se fazer
+$u=\frac{d}{dx} \left (
+	\frac{\partial f}{\partial y''}
+\right )$ e $dv=\eta ' dx$, de onde 
+$du=\frac{d^2}{dx^2} \left (
+	\frac{\partial f}{\partial y''}
+\right )dx$ e $v=\eta$.  Assim,
+
+$$
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y''}
+		\eta'' dx
+	=
+	- \left [
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y''}
+		\right ) \eta \Big |_{x_1}^{x_2}
+		-
+		\int_{x_1}^{x_2}
+			\frac{d^2}{dx^2} \left (
+				\frac{\partial f}{\partial y''}
+			\right )
+		\eta dx
+	\right ]
+	\text{,}
+$$
+e, como $\eta(x_1)=\eta(x_2)=0$,
+\begin{equation}
+	\label{eqn:cap_calc_var:func_2_derivadas_membro3}
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y''}
+		\eta'' dx
+	=
+	\int_{x_1}^{x_2}
+		\frac{d^2}{dx^2} \left (
+			\frac{\partial f}{\partial y''}
+		\right )
+	\eta dx
+	\text{.}
+\end{equation}
+
+Voltando a \eqref{eqn:cap_calc_var:func_2_derivada_integracao}, substituindo os resultados de \eqref{eqn:cap_calc_var:func_2_derivadas_membro2} e \eqref{eqn:cap_calc_var:func_2_derivadas_membro3}, $I'(0)$ pode ser escrito como
+$$
+	I'(0)=
+	\int_{x_1}^{x_2}
+		\frac{\partial f}{\partial y}
+		\eta dx
+	-
+	\int_{x_1}^{x_2}
+		\frac{d}{dx}\left (
+			\frac{\partial f}{\partial y'}
+		\right ) \eta dx
+	+
+	\int_{x_1}^{x_2}
+		\frac{d^2}{dx^2}\left (
+			\frac{\partial f}{\partial y''}
+		\right ) \eta dx
+$$
+$$
+	I'(0)=
+	\int_{x_1}^{x_2} \left (
+		\frac{\partial f}{\partial y}
+		\eta
+		-
+		\frac{d}{dx}\left (
+			\frac{\partial f}{\partial y'}
+		\right ) \eta
+		+
+		\frac{d^2}{dx^2}\left (
+			\frac{\partial f}{\partial y''}
+		\right ) \eta 
+	\right ) dx
+$$
+\begin{equation}
+	\label{eqn:cap_calc_var:func_2_derivadas_final}
+	I'(0)=
+	\int_{x_1}^{x_2} \left (
+		\frac{\partial f}{\partial y}
+		-
+		\frac{d}{dx}\left (
+			\frac{\partial f}{\partial y'}
+		\right )
+		+
+		\frac{d^2}{dx^2}\left (
+			\frac{\partial f}{\partial y''}
+		\right )
+	\right ) \eta dx
+	\text{.}
+\end{equation}
+
+Fazendo $I'(0)=0$ e utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var:func_2_derivadas_final}, a equação de Euler-Lagrange é obtida como
+$$
+	\frac{\partial f}{\partial y}
+	-
+	\frac{d}{dx}\left (
+		\frac{\partial f}{\partial y'}
+	\right )
+	+
+	\frac{d^2}{dx^2}\left (
+		\frac{\partial f}{\partial y''}
+	\right )
+	=0 \text{.}
+$$
+
+\subsection{Equação Geral}
+
+Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é o mesmo e a equação geral é
+
+{\color{red}Escrever a formula da equação geral.}
 
 \chapter{Método de Rayleigh-Ritz}
 
-O objetivo do Cálculo Variacional é o de encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar $y(x)$ é o de resolver a equação de Euler-Lagrange associada ao problema. É evidente que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar desses problemas surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
+O objetivo do Cálculo Variacional é o de encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é o de resolver a equação de Euler-Lagrange associada ao problema. É evidente que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar desses problemas surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
 
 O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Considerando o funcional
 $$
