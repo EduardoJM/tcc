@@ -581,7 +581,7 @@ O problema pertinente ao cálculo variacional é o de encontrar uma função dif
 	\label{eqn:cap_calc_var:int_funcional}
 \end{equation}
 
-Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{calcvar}, \citeonline{calcvar_campos} e \citeonline{mefassan}.
+Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
 
 \section{Equação de Euler-Lagrange}
 
@@ -611,7 +611,7 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{proof}
 \end{lema}
 
-Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções aproximadoras, que será denotada por $Y(x)$. Essas funções aproximadoras podem ser chamadas, também, de funções admissíveis. Essa família é definida por:
+Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções admissíveis\footnote{Em outras literaturas, essas funções admissíveis podem ser chamadas, também, de funções aproximadoras, porém devido ao uso de nomes parecidos em outros capítulos deste trabalho foi preferível o emprego do nome funções admissíveis.}, que será denotada por $Y(x)$. Essa família é definida por:
 \begin{equation}\label{eqn:cap_calc_var:func_admissible}
 	Y(x)=y(x)+\varepsilon \eta (x)\text{,}
 \end{equation}
@@ -621,7 +621,7 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 \end{equation}
 
 \begin{figure}[!h]
-	\caption{Representação gráfica das funções aproximadoras.}
+	\caption{Representação gráfica das funções admissíveis.}
 	\centering
 	
 	\resizebox{0.75\textwidth}{!}
@@ -633,7 +633,7 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-Reescrevendo a integral (\ref{eqn:cap_calc_var:int_funcional}) utilizando as funções aproximadoras definidas, tem-se
+Reescrevendo a integral (\ref{eqn:cap_calc_var:int_funcional}) utilizando as funções admissíveis definidas, tem-se
 \begin{equation}\label{eqn:cap_calc_var:int_funcional_approx}
 I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
 \end{equation}
@@ -869,19 +869,18 @@ $$
 	\text{.}
 \end{equation}
 
-{\color{red}Trocar membro por parcela.}
-Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar o segundo membro por partes uma vez, o terceiro membro por partes duas vezes, o quarto membro três vezes e assim por diante, até que o $n$-ésimo membro seja integrado $n-1$ vezes, também por partes. No fim das integrações, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}.
+Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrado $n-1$ vezes, também por partes. No fim das integrações, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}.
 
 As integrações para o caso geral serão omitidas aqui. Nas duas subseções proximas, será mostrado o processo para o caso em que $n=2$ e será mostrado a equação geral para derivadas até a ordem $n$.
 
 \subsection{Processo para funcionais que dependem de derivadas de segunda ordem}
 
-No caso em que
+Fazendo uso de \eqref{eqn:cap_calc_var:funcional_n_derivadas} e \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} pode-se considerar o caso em que $n=2$, onde o funcional é dado por
 $$
 	I=\int_{x_1}^{x_2} f(x, y, y', y'')dx
 	\text{,}
 $$
-e
+e $I'(0)$ é dado por
 \begin{equation}
 	\label{eqn:cap_calc_var:func_2_derivada_integracao}
 	I'(0)=
@@ -1119,29 +1118,18 @@ $$
 
 As funções $\phi _i$ são chamadas de funções de forma e devem ser linearmente independente. {\color{red}Falar sobre diferenciabilidade das $\phi_i(x)$}. Os coeficientes $a_i$ são chamados parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
 
-Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$. Assim, sua condição de estacionariedade será data por {\color{red}continuar}.
-
-{\color{red}aplicando a condição de estacionáriedade, $\delta I=0$, tem-se
-$$
-	\delta I
-	=
-	\frac{\partial I}{\partial a_1} \delta a_1
-	+
-	\frac{\partial I}{\partial a_2} \delta a_2
-	+
-	\cdots
-	+
-	\frac{\partial I}{\partial a_n} \delta a_n
-	= 0
-	\text{.}
-$$
-
-Como as variações $\delta a_i$ são arbitrárias}, a equação se transforma em um sistema de equações homogêneas da forma
+Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$. Agora, sua condição de estacionariedade é dada por
 $$
 	\frac{\partial I}{\partial a_i} = 0
 	\text{,}
 $$
 com $i=1, 2, 3, \dots, n$.
+
+\section{Usando Funções Triangulares}
+
+{\color{red}Falar sobre o uso de funções triangulares.}
+
+{\color{red}Fazer ligação com o exemplo abaixo.}
 
 \begin{exemplo}
 	\begin{figure}
@@ -2030,12 +2018,14 @@ elementum}
 			$$
 		\end{proof}
 	\end{teorema}
+	
+	{\color{red}Falar sobre funções de classe $C^k$.}
 }
 
 \chapter{Resolução de sistemas lineares com python}
 \label{apend:res_sis_lin}
 {
-	Lorem ipsum dolor sit amet.
+	{\color{red}Falar sobre a resolução do sistema linear do exemplo.}
 	\begin{lstlisting}[language=Python]
 import numpy as np
 
