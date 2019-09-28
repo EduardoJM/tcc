@@ -103,6 +103,8 @@
 \usetikzlibrary{babel}
 \usetkzobj{all}
 
+\usepackage{listings}
+
 % ---
 % Pacotes de citações
 % ---
@@ -183,16 +185,16 @@ Curso de Matemática}
 
 % Adaptações para o curso de Matemática
 \usepackage{abntex2matematicaCCET}
+
+\usepackage{genealogytree}
+\newcommand{\bdDate}[2]{
+	\footnote{\gtrsymBorn\text{ }#1 - \gtrsymDied\text{ }#2}
+}
+
 % usa a fonte helvet "sem serifa"
 \usepackage{helvet}
 % 
 \usepackage{pdfpages}
-
-\usepackage{kpfonts}
-
-\newcommand{\bdDate}[2]{
-	\footnote{\textborn\,#1 - \textdied\,#2}
-}
 
 % ---
 % compila o indice
@@ -201,6 +203,7 @@ Curso de Matemática}
 
 \begin{document}
 
+
 % Seleciona o idioma do documento (conforme pacotes do babel)
 %\selectlanguage{english}
 \selectlanguage{brazil}
@@ -208,7 +211,309 @@ Curso de Matemática}
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
+\sffamily
+
+%\iffalse
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+% ---
+% Capa
+% ---
+
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf[pages=1]{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+\begin{fichacatalografica}
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+	\small
+	\imprimirautor
+	%Sobrenome, Nome do autor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata-
+	
+	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		1. Palavra-chave1.
+		2. Palavra-chave2.
+		2. Palavra-chave3.
+		I. Orientador.
+		II. Universidade xxx.
+		III. Faculdade de xxx.
+		IV. Título 			
+	\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+% ---
+
+\iffalse
+% ---
+% Inserir errata
+% ---
+\begin{errata}
+Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+
+\vspace{\onelineskip}
+
+FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
+reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
+rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
+cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
+Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+
+\begin{table}[htb]
+\center
+\footnotesize
+\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+  \hline
+   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
+    \hline
+    1 & 10 & auto-conclavo & autoconclavo\\
+   \hline
+\end{tabular}
+\end{table}
+
+\end{errata}
+% ---
+\fi
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+  {\ABNTEXchapterfont\bfseries\large\imprimirtitulo}
+%    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+    
+%    \hspace{.45\textwidth}
+%    \begin{minipage}{.5\textwidth}
+%        \imprimirpreambulo
+%    \end{minipage}%
+%    \vspace*{\fill}
+\end{center}
+\vfill  
+      
+   Trabalho de Curso de Matemática apresentado à Banca Examinadora como parte dos requisitos para a obtenção do grau de graduado em Licenciatura em Matemática. 
+   
+   Banca Examinadora do Trabalho de Curso de Matemática do Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo da Universidade Estadual de Goiás, \imprimirlocal, 10 de agosto de 2018.
+
+\vfill
+
+   \assinatura{\textbf{\imprimirorientador} Presidente da Banca Examinadora \\ Orientador(a) } 
+   \vfill
+   \assinatura{\textbf{Títulação e nome do professor} \\ 1º Membro da Banca Examinadora}
+   \vfill
+   \assinatura{\textbf{Títulação e nome do professor} \\ 2º Membro da Banca Examinadora}
+\vfill
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+%   \begin{center}
+%    \vspace*{0.5cm}
+%    {\large\imprimirlocal}
+%    \par
+%    {\large\imprimirdata}
+%    \vspace*{1cm}
+%  \end{center}
+  
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{\color{red} Este trabalho é dedicado às crianças adultas que,\\
+   quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}[AGRADECIMENTOS]
+{\color{red}Escrever agradecimentos}
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{``Se vi mais longe foi por estar de pé \\
+		sobre ombros de gigantes. \\
+		(Isaac Newton)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}[RESUMO]
+ {\color{red}Escrever Resumo.}
+
+ \textbf{Palavras-chave}: {\color{red}palavas, chave.}
+\end{resumo}
+
+\iffalse
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   This is the english abstract.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Keywords}: latex. abntex. text editoration.
+ \end{otherlanguage*}
+\end{resumo}
+
+% resumo em francês 
+\begin{resumo}[Résumé]
+ \begin{otherlanguage*}{french}
+    Il s'agit d'un résumé en français.
+ 
+   \textbf{Mots-clés}: latex. abntex. publication de textes.
+ \end{otherlanguage*}
+\end{resumo}
+
+% resumo em espanhol
+\begin{resumo}[Resumen]
+ \begin{otherlanguage*}{spanish}
+   Este es el resumen en español.
+  
+   \textbf{Palabras clave}: latex. abntex. publicación de textos.
+ \end{otherlanguage*}
+\end{resumo}
+% ---
+\fi
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+\iffalse
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+\fi
+
+\iffalse
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[ABNT] Associação Brasileira de Normas Técnicas
+  \item[abnTeX] ABsurdas Normas para TeX
+\end{siglas}
+% ---
+\fi
+
+\iffalse
+% ---
+% inserir lista de símbolos
+% ---
+\begin{simbolos}
+  \item[$ \Gamma $] Letra grega Gama
+  \item[$ \Lambda $] Lambda
+  \item[$ \zeta $] Letra grega minúscula zeta
+  \item[$ \in $] Pertence
+\end{simbolos}
+% ---
+\fi
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
 \textual
+
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+
+{\color{red}Escrever a introdução do trabalho.}
+
 
 \chapter{Contexto Histórico}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
@@ -246,7 +551,7 @@ Os métodos para a resolução de problemas deste tipo eram específicos com ada
 
 O processo de minimização de funcionais envolve diretamente a resolução de equações diferenciais que, muitas das vezes, pode não ter solução analítica. Uma forma de se contornar esse problema é o uso de soluções aproximadas e, com esse intuito, surge o método de Rayleigh-Ritz, fazendo o uso de funções admissíveis.
 
-O método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\footnote{\textborn\,1842 - \textdied\,1919} e Walter Ritz\footnote{\textborn\,1878 - \textdied\,1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
+O método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\bdDate{1842}{1919} e Walter Ritz\bdDate{1878}{1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
 
 Lord Rayleigh, em 1877, trabalhando com as energias potencial e cinética de sistemas, assumiu um padrão de vibração numa determinada frequência calculando a frequência de vibração livre por meio do equacionamento das energias potencial e cinética. Esse método ficou conhecido como Método de Rayleigh e a sua precisão depende de quão próximo o padrão de vibração escolhido está do correto \cite{LEISSA_2005}.
 
@@ -258,7 +563,7 @@ O método de Rayleigh foi utilizado frequentemente, porém, nas últimas década
 
 {\color{red}Ver sobre as datas de nascimento/falecimento.}
 
-\section{Aplicações do Método de Rayleigh-Ritz}
+\subsection{Aplicações do Método de Rayleigh-Ritz}
 
 {\color{red}Citar aplicações atuais do Método de Rayleigh-Ritz.}
 
@@ -564,6 +869,7 @@ $$
 	\text{.}
 \end{equation}
 
+{\color{red}Trocar membro por parcela.}
 Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar o segundo membro por partes uma vez, o terceiro membro por partes duas vezes, o quarto membro três vezes e assim por diante, até que o $n$-ésimo membro seja integrado $n-1$ vezes, também por partes. No fim das integrações, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}.
 
 As integrações para o caso geral serão omitidas aqui. Nas duas subseções proximas, será mostrado o processo para o caso em que $n=2$ e será mostrado a equação geral para derivadas até a ordem $n$.
@@ -1428,7 +1734,7 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $c=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada
+	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $c=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada ({\color{red}Elon}) ou ampliada ({\color{red}Boldrini}).
 	$$
 	\begin{amatrix}{3}
 	2 & 3l  & 4l^2 				 & C \\
@@ -1724,6 +2030,17 @@ elementum}
 			$$
 		\end{proof}
 	\end{teorema}
+}
+
+\chapter{Resolução de sistemas lineares com python}
+\label{apend:res_sis_lin}
+{
+	Lorem ipsum dolor sit amet.
+	\begin{lstlisting}[language=Python]
+import numpy as np
+
+def incmatrix(genl1,genl2):
+	\end{lstlisting}
 }
 
 \end{apendicesenv}
