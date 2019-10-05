@@ -36,7 +36,7 @@
 	12pt,				% tamanho da fonte
 	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
     twoside,			% para impressão em recto e verso. Oposto a oneside
-	a4paper,			% tamanho do papel. 
+	a4paper,			% tamanho do papel.
 	% -- opções da classe abntex2 --
 	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
 	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
@@ -564,6 +564,68 @@ O método de Rayleigh foi utilizado frequentemente, porém, nas últimas década
 {\color{red}Ver sobre as datas de nascimento/falecimento.}
 
 \subsection{Aplicações do Método de Rayleigh-Ritz}
+
+O método de Rayleigh-Ritz possui diversas aplicações, em diversas áreas. Porém, a área onde o mesmo mais é utilizado é em análise estrutural. Seu uso é empregado, principalmente com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
+
+Esse método não requer que as funções admissíveis satisfaçam as condições de contorno naturais {\color{red}(Ver seção tal do capítulo tal)} e, portanto, é utilizado constantemente para os casos onde essas condições naturais são de difícil resolução \cite{GROSSI_2001}.
+
+\citeonline{RRM_Applications} trata do problema de encontrar as frequências natruais em um tipo especial de viga, chamada de consola, que é, basicamente, uma viga apoiada apenas em uma de suas extremidades (Ver Figura \ref{fig:cantilever}). Na Figura \ref{fig:cantilever}, a função $w(x,t)$ representa o deslocamento dinâmico.
+
+\begin{figure}
+	\caption{Modelo de uma Viga Consola Vibrando.}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0, xmax=6, ymin=-0.6, ymax=2]
+		
+		% wall
+		\tkzDefPoints{
+			0/0/V_1,
+			0/2.2/V_2}
+				
+		% indicate end of cantilever
+		\tkzDefPoints{
+			6/1.4/E_1,
+			6/0/E_2}
+		
+		% wall hatch
+		\tkzDefPoints{
+			0/0.8/WH_1,
+			-0.4/0.4/WH_2,
+			0/1.2/WH_3,
+			-0.4/0.8/WH_4,
+			0/1.6/WH_5,
+			-0.4/1.2/WH_6,
+			0/2/WH_7,
+			-0.4/1.6/WH_8}
+				
+		% cantilever
+		\tkzDefPoints {
+			0/1.4/C_1,
+			6/1.4/C_2}
+				
+		\tkzDrawSegment[color=black, line width=0.5mm](V_1, V_2)
+			
+		\tkzDrawSegment[color=black, line width=0.5mm](WH_1, WH_2)
+		\tkzDrawSegment[color=black, line width=0.5mm](WH_3, WH_4)
+		\tkzDrawSegment[color=black, line width=0.5mm](WH_5, WH_6)
+		\tkzDrawSegment[color=black, line width=0.5mm](WH_7, WH_8)
+			
+		\tkzDrawSegment[color=black, line width=1.5mm](C_1, C_2)
+		
+		\tkzDrawSegment[color=black, line width=0.5mm, dashed](E_1, E_2)
+			
+		\tkzFct[domain=0:6,samples=1000, line width=0.5mm, dashed]{0.01*x*x + 1.45}
+			
+		\tkzDefPointByFct(6) \tkzGetPoint{A}
+		\node (A) [above=1.4mm of A] {$w(x, t)$};
+		\node at (0, -0.2) {$x=0$};
+		\node at (6, -0.2) {$x=L$};
+	\end{tikzpicture}
+	\label{fig:cantilever}
+	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+\end{figure}
+
+%Um outro tipo de aplicação para o Método de Rayleigh-Ritz é o de encontrar as frequências naturais das chamadas consolas, vigas apoiadas apenas em uma das extremidades \cite{RRM_Applications}.
 
 {\color{red}Citar aplicações atuais do Método de Rayleigh-Ritz.}
 
