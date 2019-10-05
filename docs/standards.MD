@@ -24,3 +24,4 @@ São padrões para os nomes declarados nos comandos `\label` para diversos eleme
 - Método de Rayleigh-Ritz: **metodo_ray_ritz**
 
 - Apêndice: Regra de Leibniz: **ap_leibniz**
+- Apêndice: Resolução de sistemas lineares com python: **ap_sis_lin**
