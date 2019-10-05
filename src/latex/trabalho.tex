@@ -104,6 +104,27 @@
 \usetkzobj{all}
 
 \usepackage{listings}
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}
+
+\lstdefinestyle{Python}{
+  language={Python},
+  basicstyle=\ttfamily\small,
+  identifierstyle=\color{black},
+  keywordstyle=\color{blue},
+  commentstyle=\color{green},
+  stringstyle=\color{red},
+  extendedchars=true,
+  showspaces=false,
+  showstringspaces=false,
+  numbers=none,
+  breaklines=true,
+  backgroundcolor=\color{yellow!20},
+  breakautoindent=true,
+  captionpos=b,
+  xleftmargin=0pt,
+  frame=none
+}
 
 % ---
 % Pacotes de citações
@@ -455,6 +476,10 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \listoffigures*
 \cleardoublepage
 % ---
+
+\pdfbookmark[0]{\lstlistlistingname}{lof}
+\lstlistoflistings
+\cleardoublepage
 
 \iffalse
 % ---
@@ -1161,6 +1186,8 @@ Para funcionais que dependem de derivadas superiores até a ordem $n$, o process
 
 {\color{red}Escrever a formula da equação geral.}
 
+\section{Condições de Contorno Naturais e Essenciais}
+
 \chapter{Método de Rayleigh-Ritz}
 
 O objetivo do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é resolver a equação de Euler-Lagrange associada ao problema. É evidente, porém, que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar de problemas como esses, surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
@@ -1194,6 +1221,7 @@ com $i=1, 2, 3, \dots, n$.
 {\color{red}Fazer ligação com o exemplo abaixo.}
 
 \begin{exemplo}
+	\label{ex:mrr_ex_livro}
 	\begin{figure}
 		\caption{Viga prismática.}
 		\centering
@@ -1784,15 +1812,16 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $c=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada ({\color{red}Elon}) ou ampliada ({\color{red}Boldrini}).
-	$$
+	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $C=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada ({\color{red}Elon}) ou ampliada ({\color{red}Boldrini}).
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:matriz_sistema}
 	\begin{amatrix}{3}
 	2 & 3l  & 4l^2 				 & C \\
 	1 & 2l  & 3l^2				 & \frac{1}{2}C \\
 	8 & 18l & \frac{144}{5} l^2 & D
 	\end{amatrix}
 	\text{,}
-	$$
+	\end{equation}
 	donde, resolvendo o sistema, obtem-se os valores
 	$$a_4=\frac{q}{24EI}\text{,}$$
 	$$a_3=-\frac{ql}{12EI}\text{,}$$
@@ -2087,11 +2116,116 @@ elementum}
 \chapter{Resolução de sistemas lineares com python}
 \label{apend:res_sis_lin}
 {
-	{\color{red}Falar sobre a resolução do sistema linear do exemplo.}
-	\begin{lstlisting}[language=Python]
-import numpy as np
+	O sistema com matriz {\color{red}aumentada} \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python.
+	
+	Deste modo, seja, o sistema com matriz {\color{red}aumentada} \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema}
+	\begin{equation}
+		\label{eqn:cap_ap_sis_lin:matriz_sistema}
+		\begin{amatrix}{3}
+			2 & 3l  & 4l^2 				 & C \\
+			1 & 2l  & 3l^2				 & \frac{1}{2}C \\
+			8 & 18l & \frac{144}{5} l^2 & D
+		\end{amatrix}
+		\text{,}
+	\end{equation}
+	onde 
+	\begin{equation}
+		\label{eqn:cap_ap_sis_lin:aux_var_C}
+		C=-\frac{ql^2}{12EI}
+		\text{,}
+	\end{equation}
+	e
+	\begin{equation}
+		\label{eqn:cap_ap_sis_lin:aux_var_D}
+		D=-\frac{3ql^2}{10EI}
+		\text{.}
+	\end{equation}
+	
+	Para a resolução do sistema usando Python é necessário, primeiro, importar alguns componentes da biblioteca SymPy:
+	\begin{lstlisting}[style=Python]
+from sympy import symbols, Matrix
+from sympy.solvers import linsolve
+	\end{lstlisting}
+	
+	Serão importados os componentes \textit{symbols} para permitir a definição de símbolos matemáticos, \textit{Matrix} para a manipulação de matrizes e, finalmente, \textit{linsolve} para a resolução de sistemas lineares.
+	
+	Para a definição do sistema, utilizaremos os mesmos símbolos, $l$, $C$, e $D$, que são definidos, dentro da linguagem, utilizando o comando \textit{symbols} importado:
+	\begin{lstlisting}[style=Python]
+l, C, D = symbols('l C D')
+	\end{lstlisting}
+	
+	A matriz {\color{red}aumentada} é definida utilizando o componente \textit{Matrix} importado. Cada uma de suas linhas é escrita como um Array contendo os elementos das colunas. A matriz é escrita, então, como um Array de linhas.
+	\begin{lstlisting}[style=Python]
+A = Matrix([
+    [2, 3 * l ,  4 * l**2      ,  C  ],
+    [1, 2 * l ,  3 * l**2      ,  C/2],
+    [8, 18 * l,  144 / 5 * l**2,  D  ]
+])
+	\end{lstlisting}
+	
+	A resolução do sistema é feita pelo método \textit{linsolve} já importado. Primeiro, definimos três novos símbolos, $a_1$, $a_2$ e $a_3$ que são as incógnitas do sistema e então, executamos o método passando como argumento a matriz $A$ definida e os símbolos.
+	\begin{lstlisting}[style=Python]
+a2, a3, a4 = symbols("a2 a3 a4")
+sol, = linsolve(A, [a2, a3, a4])
+print(sol)
+	\end{lstlisting}
 
-def incmatrix(genl1,genl2):
+	\begin{figure}
+		\caption{Código para Resolução de Sistema Linear em Execução.}
+		\centering
+		\includegraphics[scale=2.5]{../figuras/code/code_solve_sis_linear.png}
+		\label{fig:code_solve_sis_linear}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}	
+	
+	O comando \textit{print(sol)} exibe a solução do sistema linear, como um Array (Veja Figura \ref{fig:code_solve_sis_linear}). O primeiro valor do Array corresponde a incógnita $a_2$, o segundo valor a $a_3$ e o último valor a $a_4$. Assim, $a_2=-4.5C+1.25D$, $a_3=\frac{1}{l}(10C-2.5D)$ e $a_4=\frac{1}{l^2}(-5C+1.25D)$. Pode-se converter os números decimais para frações obtendo
+	\begin{equation}
+		\label{eqn:cap_ap_sis_lin:result_a2}
+		a_2=\frac{5}{4}D-\frac{9}{2}C
+		\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_ap_sis_lin:result_a3}
+		a_3=\frac{1}{l}\left (
+			10C - \frac{5}{2} D
+		\right ) \text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_ap_sis_lin:result_a4}
+		a_4=\frac{1}{l^2}\left (
+			\frac{5}{4}D-5C
+		\right ) \text{.}
+	\end{equation}
+	
+	Substituindo $C$ e $D$, de \eqref{eqn:cap_ap_sis_lin:aux_var_C} e \eqref{eqn:cap_ap_sis_lin:aux_var_D}, em \eqref{eqn:cap_ap_sis_lin:result_a2}, \eqref{eqn:cap_ap_sis_lin:result_a3} e \eqref{eqn:cap_ap_sis_lin:result_a4} e simplificando os valores obtem-se a solução do sistema
+	$$
+		a_2 = 0\text{,}
+	$$
+	$$
+		a_3 = -\frac{ql}{12EI}\text{,}
+	$$
+	$$
+		a_4 = \frac{q}{24EI}\text{.}
+	$$
+	
+	O código completo utilizado na resolução do sistema linear é uma junção dos trechos apresentados acima:
+	
+	\begin{lstlisting}[style=Python, numbers=left, caption=Resolução de Sistemas Lineares em Python, captionpos=t]
+from sympy import symbols, Matrix
+from sympy.solvers import linsolve
+
+l, C, D = symbols('l C D')
+
+A = Matrix([
+    [2, 3 * l ,  4 * l**2      ,  C  ],
+    [1, 2 * l ,  3 * l**2      ,  C/2],
+    [8, 18 * l,  144 / 5 * l**2,  D  ]
+])
+
+a2, a3, a4 = symbols("a2 a3 a4")
+sol, = linsolve(A, [a2, a3, a4])
+
+print(sol)
 	\end{lstlisting}
 }
 
