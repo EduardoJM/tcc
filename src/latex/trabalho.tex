@@ -671,6 +671,7 @@ O problema pertinente ao cálculo variacional é o de encontrar uma função dif
 Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
 
 \section{Equação de Euler-Lagrange}
+\label{sec:eq_euler_lagrange}
 
 De ínicio, é preciso demonstrar um lema que servirá como base para a dedução da equação de Euler-Lagrange.
 
@@ -741,7 +742,7 @@ onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe d
 I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
 \end{equation}
 
-Derivando \eqref{eqn:cap_calc_var:func_admissible} em função de $\varepsilon$, tem-se $\frac{\partial Y}{\partial \varepsilon}=\frac{\partial y}{\partial \varepsilon}+\frac{\partial}{\partial \varepsilon}(\varepsilon \eta)$, de onde conclui-se que $\frac{\partial Y}{\partial \varepsilon}=\eta$, pois $y$ e $\eta$ independem de $\varepsilon$. O mesmo acontece com \eqref{eqn:cap_calc_var:func_admissible_diff}, donde verifica-se que $\frac{\partial Y'}{\partial \varepsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calc_var:chain_rule}, obtêm-se a integral
+Derivando \eqref{eqn:cap_calc_var:func_admissible} em função de $\varepsilon$, tem-se $\dfrac{\partial Y}{\partial \varepsilon}=\dfrac{\partial y}{\partial \varepsilon}+\dfrac{\partial}{\partial \varepsilon}(\varepsilon \eta)$, de onde conclui-se que $\dfrac{\partial Y}{\partial \varepsilon}=\eta$, pois $y$ e $\eta$ independem de $\varepsilon$. O mesmo acontece com \eqref{eqn:cap_calc_var:func_admissible_diff}, donde verifica-se que $\dfrac{\partial Y'}{\partial \varepsilon}=\eta'$. Deste modo, de \eqref{eqn:cap_calc_var:chain_rule}, obtêm-se a integral
 $$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( 
 	\frac{\partial f}{\partial Y} \eta +
 	\frac{\partial f}{\partial Y'} \eta '
@@ -762,7 +763,7 @@ I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{.}
 $$
 
-Integrando o segundo membro, por partes, tomando $u=\frac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtêm-se $du=\frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, portanto,
+Integrando o segundo membro, por partes, tomando $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtêm-se $du=\dfrac{d}{dx}\left ( \dfrac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, portanto,
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
@@ -780,7 +781,7 @@ I'(0)=
 	\right )
 \end{equation}
 
-Sabe-se que $\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, \eqref{eqn:cap_calc_var:integration_parts} pode ser reescrita como
+Sabe-se que $\dfrac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, \eqref{eqn:cap_calc_var:integration_parts} pode ser reescrita como
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
@@ -814,6 +815,7 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
 
 \section{Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior}
+\label{sec:eq_euler_lagrange_superior}
 
 Existem também, funcionais que dependem de mais funções, funções de mais de uma variável ou, ainda, que dependem de derivadas de ordem superior. O último caso será mostrado aqui, tendo em vista seu uso nos próximos capítulos. Considere o funcional
 \begin{equation}
@@ -1015,9 +1017,9 @@ mas $\eta(x_1)=\eta(x_2)=0$, ou seja, a integral pode ser reescrita como
 	\text{.}
 \end{equation}
 
-O terceiro membro deve ser integrado duas vezes por partes. Na primeira integração, seja $u=\frac{\partial f}{\partial y''}$ e $dv=\eta''dx$, onde 
-$du=\frac{d}{dx} \left (
-	\frac{\partial f}{\partial y''}
+O terceiro membro deve ser integrado duas vezes por partes. Na primeira integração, seja $u=\dfrac{\partial f}{\partial y''}$ e $dv=\eta''dx$, onde 
+$du=\dfrac{d}{dx} \left (
+	\dfrac{\partial f}{\partial y''}
 \right) dx$ e $v=\eta '$. Assim,
 $$
 	\int_{x_1}^{x_2}
@@ -1062,7 +1064,7 @@ de onde é possível calcular
 	\text{.}
 \end{equation}
 
-Usando os resultados \eqref{eqn:cap_calc_var:limit_diff_x1} e \eqref{eqn:cap_calc_var:limit_diff_x2}, $\frac{\partial f}{\partial y''}\eta ' \Big |_{x_1}^{x_2} = 0$, portanto
+Usando os resultados \eqref{eqn:cap_calc_var:limit_diff_x1} e \eqref{eqn:cap_calc_var:limit_diff_x2}, $\dfrac{\partial f}{\partial y''}\eta ' \Big |_{x_1}^{x_2} = 0$, portanto
 $$
 	\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial y''}
@@ -1077,11 +1079,11 @@ $$
 	\text{,}
 $$
 e, para a segunda integração por partes, pode-se fazer
-$u=\frac{d}{dx} \left (
-	\frac{\partial f}{\partial y''}
+$u=\dfrac{d}{dx} \left (
+	\dfrac{\partial f}{\partial y''}
 \right )$ e $dv=\eta ' dx$, de onde 
-$du=\frac{d^2}{dx^2} \left (
-	\frac{\partial f}{\partial y''}
+$du=\dfrac{d^2}{dx^2} \left (
+	\dfrac{\partial f}{\partial y''}
 \right )dx$ e $v=\eta$.  Assim,
 
 $$
@@ -1182,11 +1184,40 @@ $$
 
 \subsection{Equação Geral}
 
-Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é o mesmo e a equação geral é
+Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é o mesmo e a equação de Euler-Lagrange é dada por
+\begin{equation}
+	\label{eqn:cap_calc_var:euler_lagrange_nesimo}
+	\frac{\partial f}{\partial y}
+	- \frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right )
+	+ \frac{d^2}{dx^2}\left ( \frac{\partial f}{\partial y''} \right )
+	- \frac{d^3}{dx^3}\left ( \frac{\partial f}{\partial y'''} \right )
+	+ \cdots
+	+ (-1)^n \frac{d^n}{dx^n}\left (\frac{\partial f}{\partial y^{(n)}} \right )
+	= 0
+	\text{.}
+\end{equation}
 
-{\color{red}Escrever a formula da equação geral.}
+A equação \eqref{eqn:cap_calc_var:euler_lagrange_nesimo} pode, também, ser escrita como
+$$
+	\sum_{i=0}^n (-1)^i\frac{d^i}{dx^i}\left (
+		\frac{\partial f}{\partial y^{(i)}}
+	\right )
+	= 0
+	\text{,}
+$$
+onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ deve representar $\dfrac{\partial f}{\partial y}$.
+
 
 \section{Condições de Contorno Naturais e Essenciais}
+
+%Durante o processo para a obtenção dos extremos de um funcional, donde se deduz a equação de Euler-Lagrange, como nas seções \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior}, surgem algumas condições de contorno, como, por exemplo, o termo
+%$$
+%	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}
+%	=0
+%$$
+%na equação \eqref{eqn:cap_calc_var:integration_parts}.
+
+
 
 Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
 
@@ -2112,10 +2143,14 @@ elementum}
 		\end{proof}
 	\end{teorema}
 	
-	{\color{red}Falar sobre funções de classe $C^k$.}
+	\begin{definicao}
+		Seja o aberto $U\subset\mathbb{R}^n$. Uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^0$ quando é contínua. Diz-se, também, que $f:U\longrightarrow\mathbb{R}$ é de classe $C^1$ quando existem, em cada ponto $x\in U$, as derivadas parciais $\dfrac{\partial f}{\partial x_1}(x)$, $\dots$, $\dfrac{\partial f}{\partial x_n}(x)$ e, as $n$ funções $\dfrac{\partial f}{\partial x_i}:U\longrightarrow \mathbb{R}$, assim definidas, são contínuas. Mais geralmente, uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^k$, onde $k>0$ é um inteiro, quando ela possuir derivadas parciais em todos os pontos de $U$ e as funções $\dfrac{\partial f}{\partial x_i}$, $\dots$, $\dfrac{\partial f}{\partial x_n}:U\longrightarrow \mathbb{R}$ forem de classe $C^{k-1}$.
+	\end{definicao}
+	
+	A definição acima corresponde a dizer que uma função $f$ é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas.
 }
 
-\chapter{Resolução de sistemas lineares com python}
+\chapter{Resolução de Sistemas Lineares Utilizando a Linguagem Python}
 \label{apend:res_sis_lin}
 {
 	O sistema com matriz {\color{red}aumentada} \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python.
