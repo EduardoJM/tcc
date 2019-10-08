@@ -234,7 +234,7 @@ Curso de Matemática}
 
 \sffamily
 
-%\iffalse
+\iffalse
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
@@ -301,6 +301,7 @@ Curso de Matemática}
 	\end{center}
 \end{fichacatalografica}
 % ---
+\fi
 
 \iffalse
 % ---
@@ -333,6 +334,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 \fi
 
+\iffalse
 % ---
 % Inserir folha de aprovação
 % ---
@@ -435,6 +437,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 
  \textbf{Palavras-chave}: {\color{red}palavas, chave.}
 \end{resumo}
+\fi
 
 \iffalse
 % resumo em inglês
@@ -469,6 +472,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 \fi
 
+\iffalse
 % ---
 % inserir lista de ilustrações
 % ---
@@ -480,6 +484,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \pdfbookmark[0]{\lstlistlistingname}{lof}
 \lstlistoflistings
 \cleardoublepage
+\fi
 
 \iffalse
 % ---
@@ -515,6 +520,8 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 \fi
 
+\iffalse
+
 % ---
 % inserir o sumario
 % ---
@@ -523,13 +530,15 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \cleardoublepage
 % ---
 
-
+\fi
 
 % ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
 
+
+\iffalse
 
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
@@ -659,6 +668,8 @@ Esse método não requer que as funções admissíveis satisfaçam as condiçõe
 {\color{red}Falar sobre a linguagem Python.}
 
 {\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
+
+\fi
 
 \chapter{Cálculo Variacional}
 
@@ -989,9 +1000,9 @@ e $I'(0)$ é dado por
 	dx
 \end{equation}
 
-O segundo membro pode ser integrado, por partes, com $u=\frac{\partial f}{\partial y'}$ e $dv=\eta'dx$, donde 
-$du=\frac{d}{dx} \left (
-	\frac{\partial f}{\partial y'}
+O segundo membro pode ser integrado, por partes, com $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$, donde 
+$du=\dfrac{d}{dx} \left (
+	\dfrac{\partial f}{\partial y'}
 \right ) dx$ e $v=\eta$, logo
 $$
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta ' dx
@@ -1208,7 +1219,7 @@ $$
 onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ deve representar $\dfrac{\partial f}{\partial y}$.
 
 
-\section{Condições de Contorno Naturais e Essenciais}
+%\section{Condições de Contorno Naturais e Essenciais}
 
 %Durante o processo para a obtenção dos extremos de um funcional, donde se deduz a equação de Euler-Lagrange, como nas seções \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior}, surgem algumas condições de contorno, como, por exemplo, o termo
 %$$
@@ -1217,9 +1228,9 @@ onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y
 %$$
 %na equação \eqref{eqn:cap_calc_var:integration_parts}.
 
+%Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
 
-
-Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
+\iffalse
 
 \chapter{Método de Rayleigh-Ritz}
 
@@ -1874,6 +1885,8 @@ com $i=1, 2, 3, \dots, n$.
 
 {\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
+
+\fi
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
@@ -2018,6 +2031,7 @@ elementum}
 \chapter{Regra de Leibniz}
 \label{apend:regra_de_leibniz}
 {
+	{\color{red}Reescrever o inicio do Apêndice, trocar o título (conceitos de análise no $R^n$}
 	Para encontrar a equação de Euler-Lagrande faz-se necessário derivar uma integral. A ferramenta matemática que permite tal feito é chamada de Regra de Leibniz (Também conhecida como Derivação sob o sinal de integral) e será enunciada e demonstrada neste Apêndice, tomando como referência \citeonline{analise_elon2}.
 
 	\begin{definicao}
@@ -2268,7 +2282,6 @@ print(sol)
 
 \end{apendicesenv}
 % ---
-
 
 \iffalse
 % ----------------------------------------------------------
