@@ -1253,11 +1253,28 @@ $$
 $$
 com $i=1, 2, 3, \dots, n$.
 
-\section{Usando Funções Triangulares}
+\section{Método de Rayleigh-Ritz Utilizando Funções de Forma Triangulares}
+
+\citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$ exata. A função triangular trabalhada é definida como
+\begin{equation}
+	\phi_i (x) = 
+		\begin{cases}
+			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
+			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
+			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
+			0							& \mbox{se } x_{i+1}<x\leqslant 1
+		\end{cases}
+	\text{,}
+\end{equation}
+onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} apresenta uma ilustração da função definida $\phi_i(x)$.
+
+
 
 {\color{red}Falar sobre o uso de funções triangulares.}
 
 {\color{red}Fazer ligação com o exemplo abaixo.}
+
+\section{OI}
 
 \begin{exemplo}
 	\label{ex:mrr_ex_livro}
