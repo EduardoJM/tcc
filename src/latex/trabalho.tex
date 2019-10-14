@@ -729,11 +729,11 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{proof}
 \end{lema}
 
-Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções admissíveis\footnote{Em outras literaturas, essas funções admissíveis podem ser chamadas, também, de funções aproximadoras, porém devido ao uso de nomes parecidos em outros capítulos deste trabalho foi preferível o emprego do nome funções admissíveis.}, que será denotada por $Y(x)$. Essa família é definida por:
+Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções admissíveis\footnote{Em outras literaturas, essas funções admissíveis podem ser chamadas, também, de funções aproximadoras, porém, devido ao uso de nomes parecidos em outros capítulos deste trabalho, foi preferível o emprego do nome funções admissíveis.}, $Y_{\varepsilon}(x)$, definida por:
 \begin{equation}\label{eqn:cap_calc_var:func_admissible}
-	Y(x)=y(x)+\varepsilon \eta (x)\text{,}
+	Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)\text{,}
 \end{equation}
-onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\varepsilon$ é o parâmetro da família. É possível escrever, também, a derivada de $Y$ como
+onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2) = 0$. O número $\varepsilon$ é o parâmetro da família. A representação gráfica das funções admissíveis pode ser vista na Figura \ref{fig:funcoes_admissiveis}. Assim, a derivada de $Y$ em relação a $x$, $Y'(x)$, é
 \begin{equation}\label{eqn:cap_calc_var:func_admissible_diff}
 	Y'(x)=y'(x)+\varepsilon \eta '(x)\text{.}
 \end{equation}
@@ -747,24 +747,26 @@ onde $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_
 		\input{../figuras/cap_calcvar/funcoes_aproximadoras.tex}
 	}
 	
-	\label{fig:test_01}
+	\label{fig:funcoes_admissiveis}
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
 Reescrevendo a integral (\ref{eqn:cap_calc_var:int_funcional}) utilizando as funções admissíveis definidas, tem-se
 \begin{equation}\label{eqn:cap_calc_var:int_funcional_approx}
-I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
+I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y_{\varepsilon}, Y')dx\text{.}
 \end{equation}
 
-Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a integral (\ref{eqn:cap_calc_var:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:cap_calc_var:int_funcional}) quando $\varepsilon=0$.
+Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. {\color{red}Deste modo, a integral (\ref{eqn:cap_calc_var:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:cap_calc_var:int_funcional}) quando $\varepsilon=0$}.
 
 A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
 \begin{equation}\label{eqn:cap_calc_var:extrem_condition}
-I'(0)=0\text{.}
+	I'(0)=0\text{.}
 \end{equation}
 
+{\color{red}Verificar notação do $I'$.}
+
 Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:cap_calc_var:int_funcional_approx}) pode ser escrita como
-$$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y, Y') dx \text{,}$$
+$$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y_{\varepsilon}, Y') dx \text{,}$$
 e, aplicando regra da cadeia, obtêm-se
 $$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{,}$$
 onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\varepsilon$, portanto $\dfrac{\partial x}{\partial \varepsilon}=0$, ou seja,
@@ -793,7 +795,7 @@ I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{.}
 $$
 
-Integrando o segundo membro, por partes, tomando $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtêm-se $du=\dfrac{d}{dx}\left ( \dfrac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, portanto,
+Integrando a segunda parcela, por partes, tomando $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$ de onde obtêm-se $du=\dfrac{d}{dx}\left ( \dfrac{\partial f}{\partial y'} \right )dx$ e $v=\eta$, segue que,
 $$
 I'(0)=
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
@@ -853,7 +855,7 @@ Existem também, funcionais que dependem de mais funções, funções de mais de
 	I=\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx
 	\text{,}
 \end{equation}
-onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ por $Y(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$, isto é, $n$ vezes diferenciável com suas derivadas contínuas. Desse modo,
+onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ através de funções admissíveis $Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$, isto é, $n$ vezes diferenciável com suas derivadas contínuas. Desse modo,
 $$
 	Y'(x)=y'(x)+\varepsilon \eta ' (x)
 	\text{,}
@@ -873,7 +875,7 @@ $$
 Substituindo $y$, $y'$, $y''$, $\dots$, $y^{(n)}$ por suas funções admissíveis $Y$, $Y'$, $Y''$, $\dots$, $Y^{(n)}$ em \eqref{eqn:cap_calc_var:funcional_n_derivadas}, o funcional pode ser escrito como
 $$
 	I(\varepsilon) = \int_{x_1}^{x_2}
-		f(x, Y, Y', Y'', \dots, Y^{(n)})
+		f(x, Y_{\varepsilon}, Y', Y'', \dots, Y^{(n)})
 		dx
 	\text{,}
 $$
@@ -883,7 +885,7 @@ donde, derivando em função de $\varepsilon$, por meio da Regra de Leibniz (Teo
 	I'(\varepsilon) = 
 	\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial \varepsilon}
-		(x, Y, Y', Y'', \dots, Y^{(n)})
+		(x, Y_{\varepsilon}, Y', Y'', \dots, Y^{(n)})
 		dx
 	\text{.}
 \end{equation}
@@ -911,7 +913,7 @@ $$
 	\right ) dx
 	\text{,}
 $$
-onde $\frac{\partial x}{\partial \varepsilon} = 0$, pois $x$ não depende de $\varepsilon$, ou seja,
+onde $\dfrac{\partial x}{\partial \varepsilon} = 0$, pois $x$ não depende de $\varepsilon$, assim,
 \begin{equation}
 	\label{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia}
 	I'(\varepsilon)=\int_{x_1}^{x_2}
@@ -933,7 +935,7 @@ onde $\frac{\partial x}{\partial \varepsilon} = 0$, pois $x$ não depende de $\v
 	\text{.}
 \end{equation}
 
-Derivando as funções admissíveis $Y$, $Y'$, $Y''$, $\dots$, $Y^{(n)}$ em relação a $\varepsilon$, como já feito anteriormente, é possível substituir em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia}, os valores de $\frac{\partial Y}{\partial \varepsilon}$ por $\eta(x)$ e $\frac{\partial Y^{(i)}}{\partial \varepsilon}$ por $\eta^{(i)}(x)$ onde $i=1, 2, \dots, n$. Assim, \eqref{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia} pode ser reescrito como
+Derivando as funções admissíveis $Y$, $Y'$, $Y''$, $\dots$, $Y^{(n)}$ em relação a $\varepsilon$, como já feito anteriormente, é possível substituir em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia}, os valores de $\dfrac{\partial Y}{\partial \varepsilon}$ por $\eta(x)$ e $\dfrac{\partial Y^{(i)}}{\partial \varepsilon}$ por $\eta^{(i)}(x)$ onde $i=1, 2, \dots, n$. Assim, \eqref{eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia} pode ser reescrito como
 \begin{equation}
 	\label{eqn:cap_calc_var:func_n_derivadas_replace_0}
 	I'(\varepsilon)=
@@ -1019,7 +1021,7 @@ e $I'(0)$ é dado por
 	dx
 \end{equation}
 
-O segundo membro pode ser integrado, por partes, com $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$, donde 
+A segunda parcela pode ser integrada, por partes, com $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$, donde 
 $du=\dfrac{d}{dx} \left (
 	\dfrac{\partial f}{\partial y'}
 \right ) dx$ e $v=\eta$, logo
@@ -1047,7 +1049,7 @@ mas $\eta(x_1)=\eta(x_2)=0$, ou seja, a integral pode ser reescrita como
 	\text{.}
 \end{equation}
 
-O terceiro membro deve ser integrado duas vezes por partes. Na primeira integração, seja $u=\dfrac{\partial f}{\partial y''}$ e $dv=\eta''dx$, onde 
+A terceira parcela deve ser integrada duas vezes por partes. Na primeira integração, seja $u=\dfrac{\partial f}{\partial y''}$ e $dv=\eta''dx$, onde 
 $du=\dfrac{d}{dx} \left (
 	\dfrac{\partial f}{\partial y''}
 \right) dx$ e $v=\eta '$. Assim,
@@ -1066,35 +1068,8 @@ $$
 	\eta ' dx
 	\text{.}
 $$
-Como $\eta$ é contínua,
-$$
-	\label{eqn:cap_calc_var:limit_eta_x1}
-	\lim_{x\to x_1^+} \eta(x)=\eta(x_1)=0
-	\text{,}
-$$
-$$
-	\lim_{x\to x_2^-} \eta(x)=\eta(x_2)=0
-	\text{,}
-$$
-de onde é possível calcular 
-\begin{equation}
-	\label{eqn:cap_calc_var:limit_diff_x1}
-	\eta '(x_1) = \lim_{x\to x_1^+} 
-	\frac{\eta (x) - \eta(x_1}{x-x_1}
-	=
-	0
-	\text{,}
-\end{equation}
-\begin{equation}
-	\label{eqn:cap_calc_var:limit_diff_x2}
-	\eta '(x_2) = \lim_{x\to x_2^-} 
-	\frac{\eta (x) - \eta(x_2}{x-x_2}
-	=
-	0
-	\text{.}
-\end{equation}
 
-Usando os resultados \eqref{eqn:cap_calc_var:limit_diff_x1} e \eqref{eqn:cap_calc_var:limit_diff_x2}, $\dfrac{\partial f}{\partial y''}\eta ' \Big |_{x_1}^{x_2} = 0$, portanto
+{\color{red}Condições de contorno......, $\dfrac{\partial f}{\partial y''}\eta ' \Big |_{x_1}^{x_2} = 0$, portanto
 $$
 	\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial y''}
@@ -1107,7 +1082,7 @@ $$
 		\right )
 	\eta 'dx
 	\text{,}
-$$
+$$}
 e, para a segunda integração por partes, pode-se fazer
 $u=\dfrac{d}{dx} \left (
 	\dfrac{\partial f}{\partial y''}
@@ -1214,7 +1189,7 @@ $$
 
 \subsection{Equação Geral}
 
-Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é o mesmo e a equação de Euler-Lagrange é dada por
+Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é análogo e a equação de Euler-Lagrange é dada por
 \begin{equation}
 	\label{eqn:cap_calc_var:euler_lagrange_nesimo}
 	\frac{\partial f}{\partial y}
@@ -1227,7 +1202,7 @@ Para funcionais que dependem de derivadas superiores até a ordem $n$, o process
 	\text{.}
 \end{equation}
 
-A equação \eqref{eqn:cap_calc_var:euler_lagrange_nesimo} pode, também, ser escrita como
+A equação \eqref{eqn:cap_calc_var:euler_lagrange_nesimo} é escrita, também, como
 $$
 	\sum_{i=0}^n (-1)^i\frac{d^i}{dx^i}\left (
 		\frac{\partial f}{\partial y^{(i)}}
@@ -1235,7 +1210,7 @@ $$
 	= 0
 	\text{,}
 $$
-onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ deve representar $\dfrac{\partial f}{\partial y}$.
+onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ representa $\dfrac{\partial f}{\partial y}$.
 
 
 %\section{Condições de Contorno Naturais e Essenciais}
