@@ -83,9 +83,23 @@
 }
 
 \newtheorem{teorema}{Teorema}
-\newtheorem{lema}{Lema}
+%\newtheorem{lema}{Lema}
 \newtheorem{definicao}{Definição}
 \newtheorem{exemplo}{Exemplo}
+\newtheorem{lema}{Lema}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{
+	\par\pushQED{\qed}%
+	\normalfont \topsep6\p@\@plus6\p@\relax
+	\trivlist
+	\item\relax
+		{\itshape
+			#1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+\makeatother
 
 % Resetar o numberador de lemas no fim de todo capítulo
 % Isso faz com que a numeração seja indexada por capítulos e não
@@ -106,6 +120,23 @@
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Código}
 \renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}
+
+\begingroup\makeatletter
+\let\newcounter\@gobble\let\setcounter\@gobbletwo
+  \globaldefs\@ne \let\c@loldepth\@ne
+  \newlistof{listings}{lol}{\lstlistlistingname}
+  \newlistentry{lstlisting}{lol}{0}
+\endgroup
+\renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+
+\let\oldlstlistoflistings\lstlistoflistings
+\renewcommand{\lstlistoflistings}{%
+   \begingroup%
+   \let\oldnumberline\numberline%
+   \renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+   \oldlstlistoflistings%
+   \endgroup}
+
 
 \lstdefinestyle{Python}{
   language={Python},
@@ -213,7 +244,10 @@ Curso de Matemática}
 }
 
 % usa a fonte helvet "sem serifa"
-\usepackage{helvet}
+%\usepackage{helvet}
+\usepackage{mathptmx}
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+
 % 
 \usepackage{pdfpages}
 
@@ -232,9 +266,8 @@ Curso de Matemática}
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
-\sffamily
+%\sffamily
 
-\iffalse
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
@@ -301,7 +334,6 @@ Curso de Matemática}
 	\end{center}
 \end{fichacatalografica}
 % ---
-\fi
 
 \iffalse
 % ---
@@ -334,7 +366,6 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 \fi
 
-\iffalse
 % ---
 % Inserir folha de aprovação
 % ---
@@ -437,7 +468,6 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 
  \textbf{Palavras-chave}: {\color{red}palavas, chave.}
 \end{resumo}
-\fi
 
 \iffalse
 % resumo em inglês
@@ -472,7 +502,6 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 \fi
 
-\iffalse
 % ---
 % inserir lista de ilustrações
 % ---
@@ -481,12 +510,13 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \cleardoublepage
 % ---
 
-\pdfbookmark[0]{\lstlistlistingname}{lof}
+% Lista de códigos
+\pdfbookmark[0]{\lstlistlistingname}{lol}
+\begin{KeepFromToc}
 \lstlistoflistings
+\end{KeepFromToc}
 \cleardoublepage
-\fi
 
-\iffalse
 % ---
 % inserir lista de tabelas
 % ---
@@ -494,9 +524,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \listoftables*
 \cleardoublepage
 % ---
-\fi
 
-\iffalse
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
@@ -505,9 +533,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
   \item[abnTeX] ABsurdas Normas para TeX
 \end{siglas}
 % ---
-\fi
 
-\iffalse
 % ---
 % inserir lista de símbolos
 % ---
@@ -518,9 +544,7 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
   \item[$ \in $] Pertence
 \end{simbolos}
 % ---
-\fi
 
-\iffalse
 
 % ---
 % inserir o sumario
@@ -530,15 +554,10 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \cleardoublepage
 % ---
 
-\fi
-
 % ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
-
-
-\iffalse
 
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
@@ -669,22 +688,22 @@ Esse método não requer que as funções admissíveis satisfaçam as condiçõe
 
 {\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
 
-\fi
-
 \chapter{Cálculo Variacional}
 
-O problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
+Um dos problemas pertinentes ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, que minimiza ou maximiza a integral
 \begin{equation}
-	\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
 	\label{eqn:cap_calc_var:int_funcional}
+	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
 \end{equation}
+
+{\color{red}O que é minimizar, maximizar, extremos?}
 
 Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
 
 \section{Equação de Euler-Lagrange}
 \label{sec:eq_euler_lagrange}
 
-De ínicio, é preciso demonstrar um lema que servirá como base para a dedução da equação de Euler-Lagrange.
+De início, é preciso demonstrar um lema que servirá como base para a dedução da equação de Euler-Lagrange.
 
 \begin{lema}
 \label{lema:cap_calcvar_lema_1}
@@ -706,7 +725,7 @@ $$
 e então reescrever a integral do seguinte modo:
 $$\int_{x_1}^{x_2}\eta (x) G(x)dx =\int_{\overline{x_1}}^{\overline{x_2}}(x-\overline{x_1})^2(x-\overline{x_2})^2G(x)dx\text{.}$$
 
-Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a integral do lado direito é estritamente positiva, contradizendo a hipótese. Portanto, não vale para todo $\eta (x)$, de onde $G(\overline{x})=0$. A demonstração considerando $G(\overline{x})<0$ é análogo.
+Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a integral do lado direito é estritamente positiva, contradizendo a hipótese. Portanto, $G(\overline{x})=0$. A demonstração considerando $G(\overline{x})<0$ é análoga.
 \end{proof}
 \end{lema}
 
@@ -1229,8 +1248,6 @@ onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y
 %na equação \eqref{eqn:cap_calc_var:integration_parts}.
 
 %Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
-
-\iffalse
 
 \chapter{Método de Rayleigh-Ritz}
 
@@ -1885,8 +1902,6 @@ com $i=1, 2, 3, \dots, n$.
 
 {\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
-
-\fi
 % ----------------------------------------------------------
 % PARTE
 % ----------------------------------------------------------
@@ -2261,7 +2276,7 @@ print(sol)
 	
 	O código completo utilizado na resolução do sistema linear é uma junção dos trechos apresentados acima:
 	
-	\begin{lstlisting}[style=Python, numbers=left, caption=Resolução de Sistemas Lineares em Python, captionpos=t]
+	\begin{lstlisting}[style=Python, numbers=left, caption=Resolução de Sistemas Lineares em Python, captionpos=t, label=py_code_solve_sys_linear]
 from sympy import symbols, Matrix
 from sympy.solvers import linsolve
 
