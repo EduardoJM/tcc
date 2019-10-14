@@ -8,12 +8,12 @@ from matplotlib.collections import EventCollection
 
 #E, I, q = symbols('E I q')
 
-E = 200
-I = 50
-q = 100
-L = 1
+#E = 200
+#I = 50
+#q = 100
+#L = 1
 
-n = 5
+n = 4
 #space = 1/(n + 1)
 #intervals = [0]
 #for i in range(0, n):
@@ -64,82 +64,84 @@ def integrate(func, start, end, *args):
             value += (2 * dh)
     return (value * (h / 2))
 
-#def p(x):
-#    return e**x
+def p(x):
+    return e**x
 
-#def q(x):
-#    return e**x
+def q(x):
+    return e**x
 
-#def f(x):
-#    return (x+(2-x)*e**x)
+def f(x):
+    return (x+(2-x)*e**x)
 
 def a_intern(x, i, j):
     #return (p(x) * fi_diff(i, x) * fi_diff(j, x) + q(x) * fi(i, x) * fi(j, x))
-    row_part = i * (i - 1) * (x ** (i - 2))
-    column_part = E * I * j * (j - 1) * (x ** (j - 2))
-    return column_part * row_part
+    p1 = 2 * p(x) * j * x ** (j - 1) * i * x ** i
+    p2 = 2 * q(x) * (x ** j - 1) * (x ** i - 1)
+    return p1 + p2
 
 def a(i, j):
-    return integrate(a_intern, 0, L, i, j)
+    return integrate(a_intern, 0, 1, i, j)
 
 def b_intern(x, i):
-    return q * ((x ** i) - (L ** (i - 1)))
+    return 2 * f(x) * (x ** i - 1)
 
 def b(i):
-    return integrate(b_intern, 0, L, i)
+    return integrate(b_intern, 0, 1, i)
 
-def func_intern(x, i, j):
-    return x ** (i + j - 4)
-
-A = zeros(n - 2, n - 1)
-for i in range(0, n - 2):
-    num = i + 2
-    num_row_part = num * (num - 1) * E * I
-    for j in range(0, n - 1):
-        print (str(i) + "-" + str(j))
-        if j == n - 2:
+k = n - 2
+A = zeros(k, k + 1)
+for i in range(0, k):
+    for j in range(0, k + 1):
+        if j == k:
             A[i, j] = b(i + 2)
         else:
-            # row i
-            # column j
-            k = j + 2
-            num_col_part = k * (k - 1) * integrate(func_intern, 0, L, i, j)
-            A[i, j] = num_row_part * num_col_part
-            #A[i, j] = a(i + 2, j + 2)
+            A[i, j] = a(i + 2, j + 2)
+
 print(A)
 
-coeficients = symbols('a_2:{}'.format(n))
+coeficients = symbols('a_0:{}'.format(k))
 print(coeficients)
 
 solution, = linsolve(A, coeficients)
 print(solution)
 
-exit(0)
-
-
 def function_origin(x):
     return ((x - 1) * (e**(-x) - 1))
 
+coef_isol = 0
+for c in solution:
+    coef_isol -= c
+
 def function(solution, x):
+    #y = symbols('y')
+    #test = 0
+    #i = 0
+    #for c in solution:
+    #    test += c * y ** i
+    #    i = i + 1
+    #print(test)
     value = 0
-    i = 0
+    i = 2
+    value += coef_isol * x
     for c in solution:
-        value += c * fi(i + 1, x)
+        value += c * x ** i
         i = i + 1
     return value
 
-ydata1 = []
-for i in intervals:
-    ydata1.append(function(solution, i))
+#ydata1 = []
+#for i in intervals:
+#    ydata1.append(function(solution, i))
 fig = plt.figure()
 ax = fig.add_subplot(1, 1, 1)
-ax.plot(intervals, ydata1, color='tab:blue')
+#ax.plot(intervals, ydata1, color='tab:blue')
 t = np.arange(0.0, 1.0, 0.01)
 s = function_origin(t)
+n = function(solution, t)
+ax.plot(t, n, color='tab:blue')
 ax.plot(t, s, color='tab:orange')
 #ax.plot(intervals, ydata2, color='tab:orange')
 
-ax.set_title('Rayleigh-Ritz Implementation With n=' + str(n))
+#ax.set_title('Rayleigh-Ritz Implementation With n=' + str(n))
 
 # display the plot
 plt.show()
