@@ -756,14 +756,14 @@ Reescrevendo a integral (\ref{eqn:cap_calc_var:int_funcional}) utilizando as fun
 I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y_{\varepsilon}, Y')dx\text{.}
 \end{equation}
 
-Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. {\color{red}Deste modo, a integral (\ref{eqn:cap_calc_var:int_funcional_approx}) fornece os mesmos extremos que a (\ref{eqn:cap_calc_var:int_funcional}) quando $\varepsilon=0$}.
+Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a função que determina os extremos do funcional em \eqref{eqn:cap_calc_var:int_funcional_approx} é a mesma que determina os extremos em \eqref{eqn:cap_calc_var:int_funcional} tomando $\varepsilon=0$.
 
 A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
 \begin{equation}\label{eqn:cap_calc_var:extrem_condition}
 	I'(0)=0\text{.}
 \end{equation}
 
-{\color{red}Verificar notação do $I'$.}
+{\color{red}Deixar explicito que $I'(\varepsilon)$ é a derivada de $I$ em relação a $\varepsilon$ enquanto que $Y'$ ou $y'$ é a derivada de $Y$ ou $y$ em relação a $x$.}
 
 Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:cap_calc_var:int_funcional_approx}) pode ser escrita como
 $$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y_{\varepsilon}, Y') dx \text{,}$$
@@ -990,9 +990,7 @@ $$
 	\text{.}
 \end{equation}
 
-Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrado $n-1$ vezes, também por partes. No fim das integrações, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}.
-
-As integrações para o caso geral serão omitidas aqui. Nas duas subseções proximas, será mostrado o processo para o caso em que $n=2$ e será mostrado a equação geral para derivadas até a ordem $n$.
+As integrações para o caso geral serão omitidas aqui. Nas duas subseções proximas, será mostrado o processo para o caso em que $n=2$ e a equação geral para derivadas até a ordem $n$.
 
 \subsection{Processo para funcionais que dependem de derivadas de segunda ordem}
 
@@ -1019,6 +1017,7 @@ e $I'(0)$ é dado por
 		\frac{\partial f}{\partial y''}
 		\eta''
 	dx
+	\text{.}
 \end{equation}
 
 A segunda parcela pode ser integrada, por partes, com $u=\dfrac{\partial f}{\partial y'}$ e $dv=\eta'dx$, donde 
@@ -1189,7 +1188,11 @@ $$
 
 \subsection{Equação Geral}
 
-Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é análogo e a equação de Euler-Lagrange é dada por
+%Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é análogo e a equação de Euler-Lagrange é dada por
+
+
+Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem $n$, o processo para a obtenção da equação de Euler-Lagrange é análogo. Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrada $n-1$ vezes, também por partes. Ao fim do processo, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
+
 \begin{equation}
 	\label{eqn:cap_calc_var:euler_lagrange_nesimo}
 	\frac{\partial f}{\partial y}
