@@ -1229,24 +1229,27 @@ onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y
 
 \chapter{Método de Rayleigh-Ritz}
 
-O objetivo do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é resolver a equação de Euler-Lagrange associada ao problema. É evidente, porém, que a resolução de equações diferenciais é uma tarefa trabalhosa e, em muitos casos, até infazível. Visando esquivar de problemas como esses, surgem métodos que, atualmente, são trabalhados computacionalmente, dentre os quais está o Método de Rayleigh-Ritz.
+Um dos objetivos do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é encontrando a Equação de Euler-Lagrange associada ao problema e, então, resolvê-la. 
 
-{\color{red}Citar referências usadas, tais como \citeonline{mefassan} e \citeonline{MRR_Deflex}.}
+A resolução de equações diferenciais e a determinação da solução exata por meio das condições de contorno do problema é, entretanto,  uma tarefa trabalhosa e, em muitos casos, até não factível. Para se esquivar de problemas como esses, surgem alguns métodos, dentre os quais está o Método de Rayleigh-Ritz.
 
-O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Considerando o funcional
+As explicações e os conceitos aqui utilizados foram elaboradas tomando como referências os autores \citeonline{mefassan} e \citeonline{MRR_Deflex}.
+
+O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. 
+
+Considerando o funcional
 $$
 	I=\int_{x_1}^{x_2} f(x,y,y',\dots,y^{(m)})dx
 	\text{,}
 $$
-com as condições de contorno $y(x_1)=y(x_2)=0$, então a função $y(x)$ é aproximada por $v(x)$:
+com as condições de contorno $y(x_1)=y(x_2)=0$, então a função $y(x)$ é aproximada por meio da função $v(x)$ definida como
 $$
-	y(x) \approx v(x) = \sum_{i=1}^n a_i \phi _i (x)
-	\text{.}
+	v(x) = \sum_{i=1}^n a_i \phi _i (x)
+	\text{,}
 $$
+onde as funções $\phi_i(x)$ são chamadas de funções de forma e devem ser linearmente independente. {\color{red}Falar sobre a diferenciabilidade das $\phi_i(x)$.} Os coeficientes $a_i$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
 
-As funções $\phi _i$ são chamadas de funções de forma e devem ser linearmente independente. {\color{red}Falar sobre diferenciabilidade das $\phi_i(x)$}. Os coeficientes $a_i$ são chamados parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
-
-Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$. Agora, sua condição de estacionariedade é dada por
+Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$, isto é, $I=I(a_1, a_2, \dots, a_n)$. A condição de máximo ou mínimo para o funcional $I$ é, então, que as suas derivadas parciais em relação a $a_1$, $a_2$, $\dots$, $a_n$ se anulem, então
 $$
 	\frac{\partial I}{\partial a_i} = 0
 	\text{,}
@@ -1278,7 +1281,7 @@ onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} ap
 
 \begin{exemplo}
 	\label{ex:mrr_ex_livro}
-	\begin{figure}
+	\begin{figure}[h]
 		\caption{Viga prismática.}
 		\centering
 		\begin{tikzpicture}
