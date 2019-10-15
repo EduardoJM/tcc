@@ -690,20 +690,22 @@ Esse método não requer que as funções admissíveis satisfaçam as condiçõe
 
 \chapter{Cálculo Variacional}
 
-Um dos problemas pertinentes ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, que minimiza ou maximiza a integral
+Um dos problemas pertinentes ao cálculo variacional é o de minimizar ou maximizar o funcional
 \begin{equation}
 	\label{eqn:cap_calc_var:int_funcional}
 	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
 \end{equation}
 
-{\color{red}O que é minimizar, maximizar, extremos?}
+Minimizar o funcional \eqref{eqn:cap_calc_var:int_funcional} é o processo de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$,  que faça com que o mesmo tenha valor mínimo. De modo análogo, maximizar o funcional é encontrar uma função $y=y(x)$, com $y(x_1)=y_1$ e $y(x_2)=y_2$, que faz a integral \eqref{eqn:cap_calc_var:int_funcional} ser um valor máximo. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional será estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
+
+%{\color{red}O que é minimizar, maximizar, extremos?}
 
 Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
 
 \section{Equação de Euler-Lagrange}
 \label{sec:eq_euler_lagrange}
 
-De início, é preciso demonstrar um lema que servirá como base para a dedução da equação de Euler-Lagrange.
+De início, é preciso demonstrar um Lema, conhecido como Lema de Lagrange, que servirá como base para a dedução da equação de Euler-Lagrange.
 
 \begin{lema}
 \label{lema:cap_calcvar_lema_1}
@@ -1215,8 +1217,9 @@ $$
 $$
 onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ representa $\dfrac{\partial f}{\partial y}$.
 
+\section{Condições de Contorno Naturais e Essenciais}
 
-%\section{Condições de Contorno Naturais e Essenciais}
+{\color{red}Durante o processo para a obtenção da equação de Euler-Lagrange, (...)}
 
 %Durante o processo para a obtenção dos extremos de um funcional, donde se deduz a equação de Euler-Lagrange, como nas seções \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior}, surgem algumas condições de contorno, como, por exemplo, o termo
 %$$
@@ -1269,7 +1272,7 @@ com $i=1, 2, 3, \dots, n$.
 		\end{cases}
 	\text{,}
 \end{equation}
-onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} apresenta uma ilustração da função definida $\phi_i(x)$.
+onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} apresenta uma ilustração da função $\phi_i(x)$ definida.
 
 
 
@@ -2082,7 +2085,7 @@ elementum}
 			=
 			\int_a^b \frac{f(x+se_i, t)-f(x,t)}{s} dt\text{,}
 			$$
-			de onde subtraindo $\int_a^b \frac{\partial f}{\partial x_i}(x,t) dt$ de ambos os lados, tem-se
+			de onde subtraindo $\displaystyle \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt$ de ambos os lados, tem-se
 			\begin{equation}
 			\label{eqn:cap_ap_leibniz:subtract_1}
 			\frac{\varphi(x+se_i)-\varphi(x)}{s}
@@ -2110,7 +2113,7 @@ elementum}
 				\right ] dt\text{.}
 			\end{equation}
 			
-			Como $\frac{\partial f}{\partial x_i}$ é contínua e $[a,b]$ é compacto, pelo Teorema \ref{teorema:func_uniformemente}, para todo $\varepsilon > 0$, existe um $\delta > 0$, de modo que
+			Como $\dfrac{\partial f}{\partial x_i}$ é contínua e $[a,b]$ é compacto, pelo Teorema \ref{teorema:func_uniformemente}, para todo $\varepsilon > 0$, existe um $\delta > 0$, de modo que
 			\begin{equation}
 				\label{eqn:cap_ap_leibniz:compact_limit}
 				|s|<\delta \Longrightarrow
@@ -2120,7 +2123,7 @@ elementum}
 			\end{equation}
 			seja qual for $t \in [a,b]$.
 			
-			Usando o fato de que $|\int_a^b f(x)dx| \leqslant \int_a^b |f(x)| dx$, obtêm-se
+			Usando o fato de que $\displaystyle \Big |\int_a^b f(x)dx \Big | \leqslant \int_a^b |f(x)| dx$, obtêm-se
 			$$
 			\left |
 				\int_a^b \left [
@@ -2182,9 +2185,9 @@ elementum}
 \chapter{Resolução de Sistemas Lineares Utilizando a Linguagem Python}
 \label{apend:res_sis_lin}
 {
-	O sistema com matriz {\color{red}aumentada} \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python.
+	O sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python.
 	
-	Deste modo, seja, o sistema com matriz {\color{red}aumentada} \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema}
+	Deste modo, seja, o sistema com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema}
 	\begin{equation}
 		\label{eqn:cap_ap_sis_lin:matriz_sistema}
 		\begin{amatrix}{3}
@@ -2220,7 +2223,7 @@ from sympy.solvers import linsolve
 l, C, D = symbols('l C D')
 	\end{lstlisting}
 	
-	A matriz {\color{red}aumentada} é definida utilizando o componente \textit{Matrix} importado. Cada uma de suas linhas é escrita como um Array contendo os elementos das colunas. A matriz é escrita, então, como um Array de linhas.
+	A matriz aumentada é definida utilizando o componente \textit{Matrix} importado. Cada uma de suas linhas é escrita como um Array contendo os elementos das colunas. A matriz é escrita, então, como um Array de linhas.
 	\begin{lstlisting}[style=Python]
 A = Matrix([
     [2, 3 * l ,  4 * l**2      ,  C  ],
@@ -2237,14 +2240,14 @@ print(sol)
 	\end{lstlisting}
 
 	\begin{figure}
-		\caption{Código para Resolução de Sistema Linear em Execução.}
+		\caption{Execução do Código para a Resolução do Sistema Linear.}
 		\centering
 		\includegraphics[scale=2.5]{../figuras/code/code_solve_sis_linear.png}
 		\label{fig:code_solve_sis_linear}
 		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 	\end{figure}	
 	
-	O comando \textit{print(sol)} exibe a solução do sistema linear, como um Array (Veja Figura \ref{fig:code_solve_sis_linear}). O primeiro valor do Array corresponde a incógnita $a_2$, o segundo valor a $a_3$ e o último valor a $a_4$. Assim, $a_2=-4.5C+1.25D$, $a_3=\frac{1}{l}(10C-2.5D)$ e $a_4=\frac{1}{l^2}(-5C+1.25D)$. Pode-se converter os números decimais para frações obtendo
+	O comando \textit{print(sol)} exibe a solução do sistema linear, como um Array (Veja Figura \ref{fig:code_solve_sis_linear}). O primeiro valor do Array corresponde a incógnita $a_2$, o segundo valor a $a_3$ e o último valor a $a_4$. Assim, $a_2=-4.5C+1.25D$, $a_3=\dfrac{1}{l}(10C-2.5D)$ e $a_4=\dfrac{1}{l^2}(-5C+1.25D)$. Pode-se converter os números decimais para frações obtendo
 	\begin{equation}
 		\label{eqn:cap_ap_sis_lin:result_a2}
 		a_2=\frac{5}{4}D-\frac{9}{2}C
