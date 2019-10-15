@@ -577,7 +577,11 @@ Para elucidar a história do Cálculo Variacional é importante mostrar um pouco
 
 Os problemas de máximo e mínimo são corriqueiros na vida cotidiana, por exemplo, quando se quer encontrar o caminho com menor distância entre dois lugares para se caminhar uma menor distância, dentre vários outros problemas mais elaborados. Para esse exemplo específico não é necessário o uso de matemática avançada, porém, quanto mais complexidades são adicionadas aos problemas, mais a matemática é necessária para a resolução, exata ou aproximada. Para simplificar estes processos, surgem os métodos para o cálculo de máximos e mínimos das funções.
 
-Uma das primeiras formulações matemáticas próxima das atuais para os problemas de máximos e mínimos foi feita por Pierre de Fermat\bdDate{1601}{1665} em 1629 considerando curvas $y=f(x)$. Ele fez comparações de $f(x)$ e $f(x+E)$ para pontos próximos. Esses valores geralmente são diferentes, porém, próximo de máximos ou mínimos a diferença se torna pequena. Deste modo, para achar os pontos de máximo ou mínimo, Fermat fazia $$\frac{f(x+E)-f(x)}{E}$$ e, após realizar a divisão, considerava $E=0$. Após considerar o valor de $E$ igual a $0$, Fermat igualava a expressão obtida a $0$, de onde conseguia extrair os valores das abscissas dos pontos de máximos e mínimos da função. \cite{boyer}
+Uma das primeiras formulações matemáticas próxima das atuais para os problemas de máximos e mínimos foi feita por Pierre de Fermat\bdDate{1601}{1665} em 1629 considerando curvas $y=f(x)$. Ele fez comparações de $f(x)$ e $f(x+E)$ para pontos próximos. Esses valores geralmente são diferentes, porém, próximo de máximos ou mínimos a diferença se torna pequena. Deste modo, para achar os pontos de máximo ou mínimo, Fermat fazia
+$$
+	\frac{f(x+E)-f(x)}{E}
+$$
+e, após realizar a divisão, considerava $E=0$. Após considerar o valor de $E$ igual a $0$, Fermat igualava a expressão obtida a $0$, de onde conseguia extrair os valores das abscissas dos pontos de máximos e mínimos da função. \cite{boyer}
 
 O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$. É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton\bdDate{1642}{1727} em 1665-1666 e Gottfried Wilhelm Leibniz\bdDate{1646}{1716} em 1676, de forma independente. \cite{boyer}
 
@@ -594,9 +598,9 @@ O problema pode ser enunciado como:
 Sejam $A$ e $B$ dois pontos dados em um plano vertical. O problema da braquistócrona consiste em encontrar a curva que uma partícula M precisa descrever para sair de A e chegar em B no menor tempo possível, somente sob a ação da força da gravidade \cite[p. 3]{calcvar}.
 \end{citacao}
 
-O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jacob Bernoulli (1697), L'Hôpital (1697), Leibniz (1697), e Newton (1697) \cite{hist_still}.
+O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli\bdDate{1654}{1705} (1697), L'Hôpital\bdDate{1661}{1704} (1697), Leibniz (1697), e Newton (1697) \cite{hist_still}.
 
-A solução de Jacob Bernoulli considerava o aspecto da curva variável, sendo considerado o primeiro grande passo para o desenvolvimento do cálculo variacional \cite{hist_still}. Nesse problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, o que torna necessária a construção de novas ferramentas matemáticas. 
+A solução de Jakob Bernoulli considerava o aspecto da curva variável, sendo considerado o primeiro grande passo para o desenvolvimento do cálculo variacional \cite{hist_still}. Nesse problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, o que torna necessária a construção de novas ferramentas matemáticas. 
 
 Os métodos para a resolução de problemas deste tipo eram específicos com adaptações para cada caso, sendo que os métodos gerais para a resolução só foram desenvolvidos com o envolvimento dos matemáticos Euler e Lagrange nos estudos desses problemas \cite{hist_courant}.
 
@@ -613,8 +617,6 @@ Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simp
 Não se sabe exatamente quando o nome Rayleigh passou a ser agregado ao Método de Ritz, transformando-se em "Método de Rayleigh-Ritz". Uma das razões pelas quais isso ocorreu é o fato de que o método de Rayleigh pode ser considerado como um caso especial do método de Ritz quando uma única função admissível é utilizada para a aproximação \cite{LEISSA_2005}.
 
 O método de Rayleigh foi utilizado frequentemente, porém, nas últimas décadas o método de Ritz ou, como é chamado hoje, de Rayleigh-Ritz se mostrou aplicável a uma gama enorme de problemas devido, principalmente, a revolução tecnologica promovida pelos computadores, a partir da invenção dos transistores e microprocessadores \cite{LEISSA_2005}.
-
-{\color{red}Ver sobre as datas de nascimento/falecimento.}
 
 \subsection{Aplicações do Método de Rayleigh-Ritz}
 
@@ -684,9 +686,29 @@ Esse método não requer que as funções admissíveis satisfaçam as condiçõe
 
 \section{A Linguagem Python}
 
-{\color{red}Falar sobre a linguagem Python.}
+%{\color{red}Falar sobre a linguagem Python.}
 
-{\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
+%{\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
+
+A linguagem de programação Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas (Atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}}). Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
+
+As principais motivações para o uso da linguagem Python neste trabalho é o seu funcionamento simples, a facilidade de uso, grande comunidade de usuários, além do fato de ser uma linguagem de gratuita e de código aberto tornando-a, deste modo, acessível.
+
+Além dos diversos colaboradores diretos no desenvolvimento da linguagem, existem os colaboradores indiretos que criam, por exemplo, os pacotes com funções prontas para o uso. Dentre os pacotes científicos mais conhecidos estão alguns do ecossistema \textit{SciPy}:
+
+\begin{itemize}
+	\item \textit{NumPy} é um pacote utilizado para computação científica contendo objetos para trabalhar com \textit{arrays} (arranjos em português) multidimensionais, rotinas de operações em \textit{arrays}, transformadas de Fourier, álgebra linear, estatística, dentre outras funcionalidades \cite{NumPy}.
+	
+	\item \textit{SciPy library} contém módulos para matemática, ciências e engenharia. As funções trazidas pela \textit{SciPy} permitem o trabalho com álgebra linear, cálculo, interpolação, manipulação de arquivos, otimização, processamento de sinais, entre outros \cite{SciPy}.
+	
+	\item \textit{Matplotlib} é uma biblioteca que permite plotar dados, tornando a visualização dos mesmos tão simples quanto possível \cite{Matplotlib}. Segundo \citeonline{Matplotlib}, a biblioteca possui um ambiente de estados de máquina similar ao utilizado no \textit{software} comercial MATLAB, trazendo uma experiência similar para usuários familiarizados com o MATLAB.
+	
+	\item \textit{SymPy} é uma biblioteca que contém classes e funções que permitem a manipulação simbólica de elementos matemáticos, isto é, os elementos matemáticos são representados de forma exata e não aproximados \cite{SymPy}. Por exemplo, ao se utilizar uma calculadora científica e fizermos algum cálculo com o número $\pi$, será apresentado no visor o cálculo utilizando uma aproximação para $\pi$. Já na matemática simbólica, $\pi$ não seria aproximado e, portanto, o número continuaria sendo representado pela letra grega. É importante perceber que, em determinados casos, a abordagem aproximada é mais eficiente e, em outros, a abordagem simbólica.
+\end{itemize}
+
+Existem outros pacotes científicos no ecossistema do \textit{SciPy} e, também, fora do ecossistema, porém, serão citados, aqui, apenas esses devido ao fato de que os seus usos são voltados para a matemática e aplicações.
+
+A linguagem e ambos os componentes citados são desenvolvidos em código aberto de forma colaborativa. Uma das vantagens dessa forma de desenvolvimento é o rápido aperfeiçoamento de suas funcionalidades, documentação e, também, a rápida correção de bugs.
 
 \chapter{Cálculo Variacional}
 
