@@ -1281,27 +1281,6 @@ $$
 $$
 com $i=1, 2, 3, \dots, n$.
 
-\section{Método de Rayleigh-Ritz Utilizando Funções de Forma Triangulares}
-
-\citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$ exata. A função triangular trabalhada é definida como
-\begin{equation}
-	\phi_i (x) = 
-		\begin{cases}
-			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
-			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
-			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
-			0							& \mbox{se } x_{i+1}<x\leqslant 1
-		\end{cases}
-	\text{,}
-\end{equation}
-onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} apresenta uma ilustração da função $\phi_i(x)$ definida.
-
-
-
-{\color{red}Falar sobre o uso de funções triangulares.}
-
-{\color{red}Fazer ligação com o exemplo abaixo.}
-
 
 \begin{exemplo}
 	\label{ex:mrr_ex_livro}
@@ -1895,15 +1874,15 @@ onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} ap
 		\text{.}
 	\end{equation}
 	
-	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $C=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada ({\color{red}Elon}) ou ampliada ({\color{red}Boldrini}).
+	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $C=-\frac{ql^2}{12EI}$ e $D=-\frac{3ql^2}{10EI}$, tem-se a matriz aumentada.
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:matriz_sistema}
-	\begin{amatrix}{3}
-	2 & 3l  & 4l^2 				 & C \\
-	1 & 2l  & 3l^2				 & \frac{1}{2}C \\
-	8 & 18l & \frac{144}{5} l^2 & D
-	\end{amatrix}
-	\text{,}
+		\begin{amatrix}{3}
+			2	& 	3l	&	4l^2 				& C \\
+			1	& 	2l	&	3l^2			 	& \frac{1}{2}C \\
+			8 	& 	18l & 	\frac{144}{5} l^2	& D
+		\end{amatrix}
+		\text{,}
 	\end{equation}
 	donde, resolvendo o sistema, obtem-se os valores
 	$$a_4=\frac{q}{24EI}\text{,}$$
@@ -1919,10 +1898,42 @@ onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}...} ap
 		\text{.}
 	$$
 	
-	{\color{red}Esse resultado $v_3(x)$ é a função exata procurada. Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
+	O resultado encontrado, $v_3(x)$, é a função exata que torna o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário.
+	
+	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{exemplo}
 
+É importante perceber que a escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no Método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, falicitando, desta forma, a escolha das funções de forma.
+
 {\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
+
+
+
+\section{Método de Rayleigh-Ritz Utilizando Funções de Forma Triangulares}
+
+\citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$ exata. A função triangular trabalhada é definida como
+\begin{equation}
+	\phi_i (x) = 
+		\begin{cases}
+			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
+			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
+			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
+			0							& \mbox{se } x_{i+1}<x\leqslant 1
+		\end{cases}
+	\text{,}
+\end{equation}
+onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}INSERIR FIGURA} apresenta uma ilustração da função $\phi_i(x)$ definida. A função exata, $y(x)$, que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
+$$
+	v(x)=\sum_{i=0}^{n} a_i \phi_i(x)
+	\text{.}
+$$
+
+Observe que, de acordo com a definição das funções de forma $\phi_i(x)$, a função $v(x)$, definida como combinação linear das $\phi_i(x)$, funcionará apenas para funcionais que dependem apenas de derivadas de primeira ordem, visto que a derivada de segunda ordem de qualquer $\phi_i(x)$ é nula.
+
+
+
+
+
 
 % ----------------------------------------------------------
 % PARTE
