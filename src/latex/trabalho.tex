@@ -2085,11 +2085,9 @@ elementum}
 		Um conjunto $K\subset \mathbb{R}^n$ é compacto se, e somente se, toda sequência de pontos em $K$ possui uma subsequência que converge para um ponto de $K$.
 	\end{definicao}
 
-	{\color{red}Quem é $X$?}
-
 	\begin{teorema}
 		\label{teorema:func_uniformemente}
-		Seja $f:X\times K \longrightarrow \mathbb{R}^n$ contínua, onde $K$ é compacto. Fixemos $x_0 \in X$. Para todo $\varepsilon > 0$, existe um $\delta > 0$ tal que $x\in X$, $|x-x_0|<\delta \Longrightarrow |f(x, \alpha)-f(x_0,\alpha)|<\varepsilon$, seja qual for $\alpha \in K$.
+		Seja $f:X\times K \longrightarrow \mathbb{R}^n$ contínua, onde $X\subset \mathbb{R}^m$, para algum $m$, e $K$ é compacto. Fixemos $x_0 \in X$. Para todo $\varepsilon > 0$, existe um $\delta > 0$ tal que $x\in X$, $|x-x_0|<\delta \Longrightarrow |f(x, \alpha)-f(x_0,\alpha)|<\varepsilon$, seja qual for $\alpha \in K$.
 		\begin{proof}
 		Suponha que o teorema não seja válido, então existiriam $\varepsilon > 0$ e sequências de pontos $x_k\in X$, $\alpha_k \in K$ tais que $|x_k-x_0|<\frac{1}{k}$ e $|f(x_k,\alpha_k)-f(x_0,\alpha_k)|\geqslant \varepsilon$. Passando a uma subsequência, se necessário e admitindo que $\lim \alpha_k=\alpha \in K$, devido ao fato de que o conjunto $K$ é compacto.
 		
@@ -2207,10 +2205,11 @@ elementum}
 	\end{teorema}
 	
 	\begin{definicao}
+		\label{def:cap_conceitos_analise:classe_ck}
 		Seja o aberto $U\subset\mathbb{R}^n$. Uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^0$ quando é contínua. Diz-se, também, que $f:U\longrightarrow\mathbb{R}$ é de classe $C^1$ quando existem, em cada ponto $x\in U$, as derivadas parciais $\dfrac{\partial f}{\partial x_1}(x)$, $\dots$, $\dfrac{\partial f}{\partial x_n}(x)$ e, as $n$ funções $\dfrac{\partial f}{\partial x_i}:U\longrightarrow \mathbb{R}$, assim definidas, são contínuas. Mais geralmente, uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^k$, onde $k>0$ é um inteiro, quando ela possuir derivadas parciais em todos os pontos de $U$ e as funções $\dfrac{\partial f}{\partial x_i}$, $\dots$, $\dfrac{\partial f}{\partial x_n}:U\longrightarrow \mathbb{R}$ forem de classe $C^{k-1}$.
 	\end{definicao}
 	
-	A definição acima corresponde a dizer que uma função $f$ é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas.
+	A Definição \ref{def:cap_conceitos_analise:classe_ck} é equivalente a dizer que uma função $f:U\longrightarrow\mathbb{R}$, onde $U\subset\mathbb{R}^n$, é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas. Completando, $f$ será de classe $C^0$ caso seja contínua.
 }
 
 \chapter{Resolução de Sistemas Lineares Utilizando a Linguagem Python}
