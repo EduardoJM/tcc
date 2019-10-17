@@ -2306,9 +2306,9 @@ print(sol)
 	$$
 		a_4 = \frac{q}{24EI}\text{.}
 	$$
-	
-	O código completo utilizado na resolução do sistema linear é uma junção dos trechos apresentados acima:
-	
+
+	O código completo utilizado para a resolução do sistema linear com matriz aumentada \eqref{eqn:cap_ap_sis_lin:matriz_sistema} é apresentado em Código \ref{py_code_solve_sys_linear}.
+		
 	\begin{lstlisting}[style=Python, numbers=left, caption=Resolução de Sistemas Lineares em Python, captionpos=t, label=py_code_solve_sys_linear]
 from sympy import symbols, Matrix
 from sympy.solvers import linsolve
