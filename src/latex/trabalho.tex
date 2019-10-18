@@ -2415,13 +2415,13 @@ sol, = linsolve(A, [a2, a3, a4])
 print(sol)
 	\end{lstlisting}
 
-	\begin{figure}
+	\begin{figure}[h]
 		\caption{Execução do Código para a Resolução do Sistema Linear.}
 		\centering
 		\includegraphics[scale=2.5]{../figuras/code/code_solve_sis_linear.png}
 		\label{fig:code_solve_sis_linear}
 		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
-	\end{figure}	
+	\end{figure}
 	
 	O comando \textit{print(sol)} exibe a solução do sistema linear, como um Array (Veja Figura \ref{fig:code_solve_sis_linear}). O primeiro valor do Array corresponde a incógnita $a_2$, o segundo valor a $a_3$ e o último valor a $a_4$. Assim, $a_2=-4.5C+1.25D$, $a_3=\dfrac{1}{l}(10C-2.5D)$ e $a_4=\dfrac{1}{l^2}(-5C+1.25D)$. Pode-se converter os números decimais para frações obtendo
 	\begin{equation}
