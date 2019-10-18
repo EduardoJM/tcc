@@ -15,6 +15,7 @@ a1 = a1.subs(a2, sol[a2])
 a1 = a1.subs(a3, sol[a3])
 a1 = a1.subs(a4, sol[a4])
 print(a1)
-
 v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
 print(v)
+maxdef = v.subs(x, l/2)
+print(maxdef)

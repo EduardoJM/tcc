@@ -2038,7 +2038,7 @@ print(sol)
 
 O Código \ref{py_code_solve_mrr_ex_livro} é executado rapidamente e o resultado é mostrado na Figura \ref{fig:code_solve_mrr_exemplo_livro}, com $a_2=0$, $a_3=-\dfrac{ql}{12EI}$ e $a_4=\dfrac{q}{24EI}$. Esses resultados são exatamente os mesmos apresentados no Exemplo \ref{ex:mrr_ex_livro}.
 
-\begin{figure}
+\begin{figure}[h]
 	\caption{Resultado Apresentado pelo Código \ref{py_code_solve_mrr_ex_livro}.}
 	\centering
 	\includegraphics[scale=0.6]{../figuras/code/code_solve_mrr_exemplo_livro.png}
@@ -2046,7 +2046,7 @@ O Código \ref{py_code_solve_mrr_ex_livro} é executado rapidamente e o resultad
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a propria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro}.
+O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a propria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro}. Os comandos \textit{a1 = a1.subs(a2, sol[a2])} indica que a variável \textit{a1} receberá o valor de \textit{a1} substituindo o simbólo \textit{a2} pela solução do sistema encontrada no Código \ref{py_code_solve_mrr_ex_livro}.
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=13, caption={Código para a determinação do coeficiente $a_1$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_isolatedcoef_ex_livro]
 a1 = -a2*l - a3*l**2 - a4 * l**3
@@ -2056,9 +2056,30 @@ a1 = a1.subs(a4, sol[a4])
 print(a1)
 \end{lstlisting}
 
-{\color{red}É possível ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo).}
+{\color{red}É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. De acordo com \citeonline{mefassan}, o valor $v_3(\frac{l}{2})$ é conhecido como o valor de máxima deflexão.}
 
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=18, caption={Código para a definição da função $v_3(x)$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_maxdef_ex_livro]
+v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
+print(v)
+maxdef = v.subs(x, l/2)
+print(maxdef)
+\end{lstlisting}
 
+É importante observar, no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, que ao construir a variável \textit{v} para representar a função, no primeiro coeficiente foi utilizado a variável \textit{a1}, enquanto que nas demais, foi utilizado \textit{sol[a2]}, \textit{sol[a3]} e \textit{sol[a4]}. Isso se deve ao fato de que os valores para os coeficientes $a_2$, $a_3$ e $a_4$ foram encontrados pela resolução do sistema, sendo a variável \textit{sol} a sua solução. Já, \textit{a1} foi definida como sendo a equação do termo $a_1$ isolado em função de $a_2$, $a_3$ e $a_4$.
+
+Os Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} são executados em sequência e, por essa razão, estão com numeração de linhas sequenciais: O Código \ref{py_code_solve_mrr_ex_livro} tendo as linhas de 1 a 12, o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} de 13 a 17 e o Código \ref{py_code_solve_mrr_maxdef_ex_livro} de 18 a 21. A Figura \ref{fig:code_solve_mrr_exec_complete} mostra o resultado da execução dos Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} no terminal.
+
+\begin{figure}[h]
+	\caption{Resultado apresentado pelos Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro}.}
+	\centering
+	\includegraphics[scale=2]{../figuras/code/code_solve_mrr_exec_complete.png}
+	\label{fig:code_solve_mrr_exec_complete}
+	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+\end{figure}
+
+Observando, no terminal da Figura \ref{fig:code_solve_mrr_exec_complete}, pela ordem dos comandos \textit{print} executados no código, a primeira linha apresenta a solução do sistema, a segunda linha apresenta o valor do coeficiente $a_1$, a terceira linha apresenta a função $v_3(x)$ e a quarta linha apresenta o resultado de $v_3(\frac{l}{2})$ que é o valor de máxima deflexão da viga.
+
+Ressaltando, novamente, que a escolha das funções de forma utilizadas na função aproximadora são de suma importância para o método de Rayleigh-Ritz. Para o uso de matemática simbólica, como nesse exemplo, deve-se tomar ainda mais cuidado com a escolha de tais funções pois, em alguns casos, a integração simbólica toma grande custo computacional. Em casos onde a integração simbólica se torna árdua, ou até mesmo impossível, o uso de algoritmos para integração numérica é necessário.
 
 % ----------------------------------------------------------
 % PARTE
