@@ -1478,25 +1478,38 @@ com $i=1, 2, 3, \dots, n$.
 		\int_0^l qvdx
 		\text{,}
 	\end{equation}
-	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. Podemos aproximar a função $y(x)$ pelos seguintes polinômios:
-	$$
+	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. É possível encontrar uma função $v(x)$ que aproxime a função exata $y(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras $v(x)$:
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_funcdef_v1}
 		v_1 (x) = a_0 + a_1 x + a_2 x^2
 		\text{,}
-	$$
-	$$
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_funcdef_v2}
 		v_2 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3
 		\text{,}
-	$$
-	$$
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_funcdef_v3}
 		v_3 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4
+		\text{.}
+	\end{equation}
+	
+	\citeonline{mefassan} cita que o ponto $y(\frac{l}{2})$ é o valor de máxima deflexão da Viga da Figura \ref{fig:test_02}. Esse valor, encontrado analiticamente, é
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}
+		y(\frac{l}{2})=\frac{5ql^4}{384EI}
+		\text{,}
+	\end{equation}
+	e será utilizado como parâmetro de comparação para os resultados com as funções $v_1(x)$, $v_2(x)$ e $v_3(x)$ definidas em \eqref{eqn:cap_metodo_ray_ritz_funcdef_v1}, \eqref{eqn:cap_metodo_ray_ritz_funcdef_v2} e \eqref{eqn:cap_metodo_ray_ritz_funcdef_v3}.
+	
+	Como primeira aproximação, pode-se utilizar a função $v_1(x)=a_0+a_1x+a_2x^2$, de onde, considerando as condições de contorno essenciais, tem-se que $v_1(0)=0$, levando a $a_0=0$, e de $v_1(l)=0$, concluindo que $a_1=-a_2l$. Assim, a função é escrita como
+	$$
+		v_1(x)=a_2(x^2-lx)
 		\text{.}
 	$$
 	
-	Como primeira aproximação, podemos utilizar a função $v_1(x)=a_0+a_1x+a_2x^2$, de onde, considerando as condições de contorno, tem-se que
-	$$v_1(0)=0\Longrightarrow a_0=0\text{,}$$
-	e de $v_1(l)=0$ concluí-se que $a_1=-a_2 l$. Assim, a função pode ser escrita como $$v_1(x)=a_2(x^2-lx) \text{.}$$
-	
-	Sua derivada é $v_1'(x)=a_2(2x-l)$ e, a derivada de segunda ordem é $v_1''(x)=2a_2$. Substituindo esses valores no funcional, tem-se que
+	Sua derivada é $v_1'(x)=a_2(2x-l)$ e, a derivada de segunda ordem é $v_1''(x)=2a_2$. Substituindo esses valores no funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi}, tem-se que
 	$$
 		\Pi =
 		\frac{1}{2}
@@ -1506,18 +1519,14 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	$$
 	
-	Da condição de estacionáriedade tem-se, que
-	$$
-		\frac{\partial \Pi}{\partial a_2} = 0
-		\text{,}
-	$$
-	que pode ser desenvolvido como
+	Da condição de estacionáriedade tem-se, que $\dfrac{\partial \Pi}{\partial a_2} = 0$ e, consequentemente
 	$$
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\frac{\partial}{\partial a_2} \left [
 			\int_0^l \left ( 2EIa_2 ^2 - a_2 q (x^2 -lx) \right ) dx
 		\right]
+		= 0
 	$$
 	$$
 		\frac{\partial \Pi}{\partial a_2}
@@ -1526,13 +1535,15 @@ com $i=1, 2, 3, \dots, n$.
 			\frac{\partial}{\partial a_2} \left [
 			4EIa_2^2 - a_2 q(x^2-lx)
 		\right ] dx
+		= 0
 	$$
 	$$
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\int_0^l \left [
 			4EIa_2 - q(x^2-lx)
-		\right ] dx = 0
+		\right ] dx
+		= 0
 	$$
 	$$
 		\left [ 
@@ -1557,8 +1568,11 @@ com $i=1, 2, 3, \dots, n$.
 		a_2=\frac{-ql^2}{24EI}\text{.}
 	$$
 
-	Com o valor de $a_2$ é possível calcular o valor de $a_1=-a_2l$, então, 
-	$$a_1=\frac{ql^3}{24EI}\text{.}$$
+	Com o valor de $a_2$ conhecido, é possível determinar o valor de $a_1=-a_2l$, resultando em
+	$$
+		a_1=\frac{ql^3}{24EI}
+		\text{.}
+	$$
 	
 	Assim, a função aproximadora $v_1$ pode ser escrita como
 	$$
@@ -1569,38 +1583,34 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	$$
 	
-	Pode-se utilizar uma aproximação de grau 3 para tentar melhorar o resultado, isto é, $v_2(x)=a_0+a_1x+a_2x^2+a_3x^3$. Das condições de contorno, $v_2(0)=0$, de onde $a_0=0$ e $v_2(l)=0$, donde $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser escrita como
-	$$
+	Calculando $v(\frac{l}{2})$ a título de comparação com o valor exato de máxima deflexão da viga, dado por \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato},
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:ex1_max_deflex_apv1}
+		v_3(\frac{l}{2}) = \frac{ql^4}{96EI}
+		\text{.}
+	\end{equation}
+	
+	Note que há uma grande diferença entre o valor encontrado pela função $v_1(x)$, \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_apv1}, e o valor exato, \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}. Visando uma melhoria nessa aproximação, faz-se necessário o uso da função definida $v_2(x)=a_0+a_1x+a_2x^2+a_3x^3$. Das condições de contorno essenciais, $v_2(0)=0$, de onde $a_0=0$, e $v_2(l)=0$, isolando $a_1=-a_2 l - a_3 l^2$. Assim, a função $v_2(x)$ é
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:v2_organizada}
 		v_2(x)=
 		a_2(x^2-lx)
 		+
 		a_3(x^3-l^2x)
 		\text{.}
-	$$
+	\end{equation}
 	
-	Das condições de contorno, tem-se que $v_2(0)=0$, donde pode-se concluir que $a_0=0$. Ainda, $v_2(l)=0$, de onde, $a_1 l + a_2 l^2 + a_3 l^3=0$, isto é, $a_1=-a_2 l - a_3 l^2$. Assim, a função pode ser reescrita como
+	Derivando a função $v_2$ em função de x, duas vezes, pode-se obter
 	$$
-		v_2(x)=
-		a_2(x^2-lx)
-		+
-		a_3(x^3-l^2x)
-		\text{.}
-	$$
-	
-	Derivando a função $v_2$ em função de x, pode-se obter
-	$$
-	v_2'(x)=
-	a_2(2x-l)
-	+
-	a_3(3x^2-l^2)
+	v_2'(x) = a_2(2x-l) + a_3(3x^2-l^2)
 	$$
 
-	$$
-	v_2''(x)=
-	2a_2 + 6a_3 x \text{.}
-	$$
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:v2_diff_organizada}
+		v_2''(x) = 2a_2 + 6a_3 x \text{.}
+	\end{equation}
 	
-	Substituindo em $\Pi$, tem-se
+	Substituindo \eqref{eqn:cap_metodo_ray_ritz:v2_organizada} e \eqref{eqn:cap_metodo_ray_ritz:v2_diff_organizada} em $\Pi$, tem-se
 	$$
 		\Pi=
 		\frac{1}{2}
@@ -1748,17 +1758,17 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	Montando um sistema de equações com \eqref{eq:exemp_rayritz_approx2_eq1} e \eqref{eq:exemp_rayritz_approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:exemp_rayritz_approx2_eq2} - \eqref{eq:exemp_rayritz_approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$.
-	De volta a \eqref{eq:exemp_rayritz_approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\frac{ql^2}{12EI}$ e, por fim,
+	Montando um sistema de equações com \eqref{eq:exemp_rayritz_approx2_eq1} e \eqref{eq:exemp_rayritz_approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:exemp_rayritz_approx2_eq2} - \eqref{eq:exemp_rayritz_approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\dfrac{ql^2}{12EI}+\dfrac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$. De volta a \eqref{eq:exemp_rayritz_approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\dfrac{ql^2}{12EI}$ e, por fim,
 	$$
 		a_2=-\frac{ql^2}{24EI}
 		\text{.}
 	$$
 
-	Assim, a função $v_2$ é a mesma que $v_1$, não sendo útil ao caso.
+	Assim, a função $v_2(x)$ é a mesma que $v_1(x)$, não permitindo uma melhoria na aproximação desejada, sendo, portanto, inútil para esse caso. Ainda, visando melhor aproximação, deve-se passar para a próxima função aproximadora escolhida, $v_3(x)$.
 	
-	Utilizando, como função aproximadora, a função $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, tem-se das condições de contorno que $v_3(0)=0$, donde $a_0=0$ e, $v_3(l)=0$, isto é $a_1l+a_2l^2+a_3l^3+a_4l^4=0$, donde pode-se concluir que $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, podemos encontrar a função
-	$$
+	Utilizando a função $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, tem-se das condições de contorno essensiais que $v_3(0)=0$, donde $a_0=0$ e, $v_3(l)=0$, isto é $a_1l+a_2l^2+a_3l^3+a_4l^4=0$, donde pode-se concluir que $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, podemos encontrar a função
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:func_def_v3}
 		v_3(x)=
 		a_2 (x^2 - lx)
 		+
@@ -1766,9 +1776,9 @@ com $i=1, 2, 3, \dots, n$.
 		+
 		a_4 (x^4 - l^3x)
 		\text{.}
-	$$
+	\end{equation}
 	
-	Derivando $v_3$ em relação a $x$:
+	Derivando $v_3$ em relação a $x$, duas vezes:
 	$$
 		v_3'(x)=
 		a_2(2x - l)
@@ -1777,7 +1787,8 @@ com $i=1, 2, 3, \dots, n$.
 		+
 		a_4(4x^3 - l^3)
 	$$
-	$$
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:func_def_v3_diff}
 		v_3''(x)=
 		2a_2
 		+
@@ -1785,9 +1796,9 @@ com $i=1, 2, 3, \dots, n$.
 		+
 		12a_4 x^2
 		\text{.}
-	$$
+	\end{equation}
 	
-	Substituindo em $\Pi$,
+	Substituindo \eqref{eqn:cap_metodo_ray_ritz:func_def_v3} e \eqref{eqn:cap_metodo_ray_ritz:func_def_v3_diff} em $\Pi$,
 	$$
 		\Pi = \frac{1}{2} \int_0^l \left [
 			EI(2a_2+6a_3x+12a_4x^2)^2
