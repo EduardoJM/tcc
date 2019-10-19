@@ -1172,7 +1172,7 @@ de onde, reorganizando os termos e colocando $\eta$ em evidência, e, finalmente
 	\text{.}
 \end{equation}
 
-A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}$ é uma das chamadas Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais serão tratadas em {\color{red}INSERIR REFERÊNCIA PARA A SECTION OU CHAPTER AQUI}. Desconsiderando-a, então, devido ao fato de que a mesma deve-se anular, resta que
+A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}$ é uma das chamadas Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais serão tratadas na seção \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
 \begin{equation}
 	\label{eqn:cap_calc_var:func_2_derivadas_final}
 	I'(0)=
@@ -1356,6 +1356,7 @@ $$
 onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ representa $\dfrac{\partial f}{\partial y}$.
 
 \section{Condições de Contorno Naturais e Essenciais}
+\label{sec:cond_contorno}
 
 {\color{red}Durante o processo para a obtenção da equação de Euler-Lagrange, (...)}
 
@@ -2017,11 +2018,20 @@ com $i=1, 2, 3, \dots, n$.
 		\text{,}
 	\end{equation}
 	donde, resolvendo o sistema (Veja o Apêndice \ref{apend:res_sis_lin}), obtem-se os valores
-	$$a_2=0\text{,}$$
-	$$a_3=-\frac{ql}{12EI}\text{,}$$
-	$$a_4=\frac{q}{24EI}\text{.}$$
-	
-	{\color{red}Deste modo, a função $v_3(x)$ pode ser escrita como
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_coef_v3_a2}
+		a_2=0\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_coef_v3_a3}
+		a_3=-\frac{ql}{12EI}\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_coef_v3_a4}
+		a_4=\frac{q}{24EI}\text{.}
+	\end{equation}
+		
+	Deste modo, substituindo \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a2}, \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a3} e \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a2} em \eqref{eqn:cap_metodo_ray_ritz:func_def_v3}, a função $v_3(x)$ é escrita como
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:func_v3}
 		v_3(x) =
@@ -2031,38 +2041,65 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	(APARENTEMENTE, HÁ UM ERRO {DE ESQUECIMENTO} NESSA PARTE).}	
+	Utilizando os três valores, \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a2}, \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a3} e \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a4}, da solução do sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema}, é possível determinar o coeficiente $a_1=-a_2l-a_3l^2-a_4l^3$, que é
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz_coef_v3_a1}
+		a_1 = \frac{ql^3}{24EI}
+		\text{.}
+	\end{equation}	
+	
+	Não há, de fato, necessidade para a obtenção do valor do coeficiente $a_1$, pois $v_3(x)$ foi escrita de forma independente de $a_1$ em \eqref{eqn:cap_metodo_ray_ritz:func_def_v3}. Este apenas foi feito para que a função $v_3(x)$ possa ser escrita, a partir de \eqref{eqn:cap_metodo_ray_ritz_funcdef_v3}, como
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:func_v3_forma2}
+		v_3(x)=
+			\frac{ql^3}{24EI} x
+			-
+			\frac{ql}{12EI} x^3
+			+
+			\frac{q}{24EI} x^4
+		\text{.}
+	\end{equation}
+
+
+	O valor de máxima deflexão, $v_3(\frac{l}{2})$ é dado por
+	$$
+		v_3(\frac{l}{2})=\frac{5ql^4}{384EI}
+		\text{,}
+	$$
+	que é o valor exato de $y(\frac{l}{2})$ indicado em \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}. Não apenas isto, mas a função $v_3(x)$, indicada em \eqref{eqn:cap_metodo_ray_ritz:func_v3} ou em \eqref{eqn:cap_metodo_ray_ritz:func_v3_forma2}, é a função $y(x)$ exata.
 	
 	%O resultado encontrado, $v_3(x)$, é a função exata que torna o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário.
 	
 	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{exemplo}
 
-A função $v_3(x)$, em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, falicitando, desta forma, a escolha das funções de forma.
+A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, falicitando, desta forma, a escolha das funções de forma.
+
+No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolhida não fosse $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, dificilmente a mesma tomaria a forma da função exata, $y(x)$, após a determinação de seus coeficientes.
 
 %{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
 
-\section{Método de Rayleigh-Ritz Utilizando Funções de Forma Triangulares}
-
-\citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$ exata. A função triangular trabalhada é definida como
-\begin{equation}
-	\phi_i (x) = 
-		\begin{cases}
-			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
-			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
-			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
-			0							& \mbox{se } x_{i+1}<x\leqslant 1
-		\end{cases}
-	\text{,}
-\end{equation}
-onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}INSERIR FIGURA} apresenta uma ilustração da função $\phi_i(x)$ definida. A função exata, $y(x)$, que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
-$$
-	v(x)=\sum_{i=0}^{n} a_i \phi_i(x)
-	\text{.}
-$$
-
-Observe que, de acordo com a definição das funções de forma $\phi_i(x)$, a função $v(x)$, definida como combinação linear das $\phi_i(x)$, funcionará apenas para funcionais que dependem apenas de derivadas de primeira ordem, visto que a derivada de segunda ordem de qualquer $\phi_i(x)$ é nula.
+%\section{Método de Rayleigh-Ritz Utilizando Funções de Forma Triangulares}
+%
+%\citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$ exata. A função triangular trabalhada é definida como
+%\begin{equation}
+%	\phi_i (x) = 
+%		\begin{cases}
+%			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
+%			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
+%			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
+%			0							& \mbox{se } x_{i+1}<x\leqslant 1
+%		\end{cases}
+%	\text{,}
+%\end{equation}
+%onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}INSERIR FIGURA} apresenta uma ilustração da função $\phi_i(x)$ definida. A função exata, $y(x)$, que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
+%$$
+%	v(x)=\sum_{i=0}^{n} a_i \phi_i(x)
+%	\text{.}
+%$$
+%
+%Observe que, de acordo com a definição das funções de forma $\phi_i(x)$, a função $v(x)$, definida como combinação linear das $\phi_i(x)$, funcionará apenas para funcionais que dependem apenas de derivadas de primeira ordem, visto que a derivada de segunda ordem de qualquer $\phi_i(x)$ é nula.
 
 
 
@@ -2207,6 +2244,10 @@ Os Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoe
 Observando, no terminal da Figura \ref{fig:code_solve_mrr_exec_complete}, pela ordem dos comandos \textit{print} executados no código, a primeira linha apresenta a solução do sistema, a segunda linha apresenta o valor do coeficiente $a_1$, a terceira linha apresenta a função $v_3(x)$ e a quarta linha apresenta o resultado de $v_3(\frac{l}{2})$ que é o valor de máxima deflexão da viga.
 
 Ressaltando, novamente, que a escolha das funções de forma utilizadas na função aproximadora são de suma importância para o método de Rayleigh-Ritz. Para o uso de matemática simbólica, como nesse exemplo, deve-se tomar ainda mais cuidado com a escolha de tais funções pois, em alguns casos, a integração simbólica toma grande custo computacional. Em casos onde a integração simbólica se torna árdua, ou até mesmo impossível, o uso de algoritmos para integração numérica é necessário.
+
+\section{Utilizando Funções Triangulares}
+
+Complementando o exemplo 
 
 % ----------------------------------------------------------
 % PARTE
