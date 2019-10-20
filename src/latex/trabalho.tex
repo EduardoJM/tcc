@@ -520,18 +520,18 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 % inserir lista de tabelas
 % ---
-\pdfbookmark[0]{\listtablename}{lot}
-\listoftables*
-\cleardoublepage
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
 % ---
 
 % ---
 % inserir lista de abreviaturas e siglas
 % ---
-\begin{siglas}
-  \item[ABNT] Associação Brasileira de Normas Técnicas
-  \item[abnTeX] ABsurdas Normas para TeX
-\end{siglas}
+%\begin{siglas}
+%  \item[ABNT] Associação Brasileira de Normas Técnicas
+%  \item[abnTeX] ABsurdas Normas para TeX
+%\end{siglas}
 % ---
 
 % ---
@@ -622,7 +622,7 @@ O método de Rayleigh foi utilizado frequentemente, porém, nas últimas década
 
 O método de Rayleigh-Ritz possui diversas aplicações, em diversas áreas. Porém, a área onde o mesmo mais é utilizado é em análise estrutural. Seu uso é empregado, principalmente com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
 
-Esse método não requer que as funções admissíveis satisfaçam as condições de contorno naturais {\color{red}(Ver seção tal do capítulo tal)} e, portanto, é utilizado constantemente para os casos onde essas condições naturais são de difícil resolução \cite{GROSSI_2001}.
+Esse método não requer que as funções admissíveis satisfaçam as condições de contorno naturais (Ver Seção \ref{sec:cond_contorno} do Capítulo \ref{cap:calc_var}) e, portanto, é utilizado constantemente para os casos onde essas condições naturais são de difícil resolução \cite{GROSSI_2001}.
 
 \citeonline{RRM_Applications} trata do problema de encontrar as frequências natruais em um tipo especial de viga, chamada de consola, que é, basicamente, uma viga apoiada apenas em uma de suas extremidades (Ver Figura \ref{fig:cantilever}). Na Figura \ref{fig:cantilever}, a função $w(x,t)$ representa o deslocamento dinâmico.
 
@@ -711,6 +711,7 @@ Existem outros pacotes científicos no ecossistema do \textit{SciPy} e, também,
 A linguagem e ambos os componentes citados são desenvolvidos em código aberto de forma colaborativa. Uma das vantagens dessa forma de desenvolvimento é o rápido aperfeiçoamento de suas funcionalidades, documentação e, também, a rápida correção de bugs.
 
 \chapter{Cálculo Variacional}
+\label{cap:calc_var}
 
 Um dos problemas pertinentes ao cálculo variacional é o de minimizar ou maximizar o funcional
 \begin{equation}
@@ -838,12 +839,13 @@ I'(0)=
 \end{equation}
 
 Sabe-se que $\dfrac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0$, devido ao fato de que $\eta(x_1)=\eta(x_2)=0$, portanto, \eqref{eqn:cap_calc_var:integration_parts} pode ser reescrita como
-$$
-I'(0)=
-	\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
-	-
-	\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx
-$$
+\begin{equation}
+	\label{eqn:cap_calc_var:func_admitindo_eta_0}
+	I'(0)=
+		\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+		-
+		\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx
+\end{equation}
 $$
 I'(0)=\int_{x_1}^{x_2}\left (
 	\frac{\partial f}{\partial y} -
@@ -1358,7 +1360,220 @@ onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y
 \section{Condições de Contorno Naturais e Essenciais}
 \label{sec:cond_contorno}
 
-{\color{red}Durante o processo para a obtenção da equação de Euler-Lagrange, (...)}
+Durante o processo para a obtenção da função $y(x)$ que torna o funcional estacionário aparecem algumas condições de contorno que devem ser tratadas cuidadosamente. Por exemplo, tomando o funcional
+$$
+	I=\int_{x_1}^{x_2} f(x, y, y')dx
+	\text{,}
+$$
+tem-se, da Seção \ref{sec:eq_euler_lagrange}, que sua condição de estacionáriedade é dada por
+\begin{equation}
+	\label{eqn:cap_calc_var:cond_boundary}
+	\int_{x_1}^{x_2} \left (
+		\frac{\partial f}{\partial y}
+		-
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y'}
+		\right )
+	\right ) \eta dx
+	+
+	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
+	\text{,}
+\end{equation}
+onde, como já tratado, $\eta$ representa uma variação da função exata conhecida.
+
+Admitimos, em \eqref{eqn:cap_calc_var:func_admitindo_eta_0}, que $\eta(x_1)=\eta(x_2)=0$, porém isso nem sempre acontece. Existem casos em que, para que a condição de estacionáriedade \eqref{eqn:cap_calc_var:cond_boundary} seja válida é preciso, primeiro, que a primeira parcela de \eqref{eqn:cap_calc_var:cond_boundary} seja nula, donde se resulta a equação de Euler-Lagrange
+$$
+	\frac{\partial f}{\partial y}
+	-
+	\frac{d}{dx}\left (
+		\frac{\partial f}{\partial y'}
+	\right )
+	= 0
+	\text{,}
+$$
+e, ainda, que
+$$
+	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
+	\text{,}
+$$
+de onde, geralmente, surgem as duas igualdades
+\begin{equation}
+	\label{eqn:cap_calc_var:condicao_natural_d1}
+	\frac{\partial f}{\partial y'} \Big |_{x=x_1} = 0
+	\text{,}
+\end{equation}
+\begin{equation}
+	\label{eqn:cap_calc_var:condicao_natural_d2}
+	\frac{\partial f}{\partial y'} \Big |_{x=x_2} = 0
+	\text{.}
+\end{equation}
+
+É importante deixar claro que pode acontecer, por exemplo, de $\eta(x_1)=0$ e $\eta(x_2)\neq 0$, ou vice-versa, e, consequentemente, reduz-se uma dessas condições de contorno.
+
+Essas condições de contorno são denominadas condições de contorno naturais do problema ou, ainda, problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$ tornando o funcional estacionário.
+
+Para o caso de funcionais que dependem de derivadas de ordem superior, da forma
+$$
+	I=\int_{x_1}^{x_2} f(x, y, y', \dots, y^{(n)}) dx
+	\text{,}
+$$
+aparecem diversas condições de contorno parecidas com \eqref{eqn:cap_calc_var:condicao_natural_d1} e \eqref{eqn:cap_calc_var:condicao_natural_d2}. Um destes exemplos aparece em \eqref{eqn:cap_calc_var:cond_with_naturalbound}.
+
+Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
+
+\begin{exemplo}
+	Considere o funcional
+	\begin{equation}
+		\label{eqn:cap_calc_var:funcional_pi}
+		I = \frac{1}{2}	\int_{0}^{l}
+			EI \left (
+				\frac{d^2v}{dx^2}
+			\right )^2 dx
+			-
+			\int_{0}^{l} qv dx
+			\text{.}
+	\end{equation}
+	
+	Variando $v$ por $\overline{v}_{\varepsilon}=v+\varepsilon \eta$ em \eqref{eqn:cap_calc_var:funcional_pi}, tem-se
+	$$
+		I(\varepsilon) = \frac{1}{2} \int_{0}^{l}
+			EI \left (
+				\frac{d^2\overline{v}}{dx^2}
+			\right )^2 dx
+			-
+			\int_{0}^{l} q\overline{v} dx
+			\text{,}
+	$$
+	de onde, derivando $I(\varepsilon)$ em relação a $\varepsilon$, resulta em
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_conditions_deduce}
+		\frac{dI}{d\varepsilon} = 
+			\int_{0}^{l} EI \left (
+				\frac{d^2\overline{v}}{dx^2}
+			\right ) \cdot 
+			\frac{d}{d\varepsilon}\left (
+				\frac{d^2\overline{v}}{dx^2}
+			\right ) dx
+			-
+			\int_{0}^{l} q\frac{d\overline{v}}{d\varepsilon} dx
+			\text{.}
+	\end{equation}
+	
+	Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $I'(0)$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
+	$$
+		I'(0) = 
+			\int_{0}^{l} EI \left (
+				\frac{d^2v}{dx^2}
+			\right ) \left (
+				\frac{d^2\eta}{dx^2}
+			\right ) dx
+			-
+			\int_{0}^{l}q\eta dx
+		\text{,}
+	$$
+	onde a primeira parcela deve ser integrada, por partes, duas vezes, resultando em
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_conditions_I0}
+		I'(0) = 
+			\int_{0}^{l} \left (
+				EI\frac{d^4 v}{dx^4}-q 
+			\right ) \eta dx
+			+
+			EI\frac{d^2 v}{dx^2} \eta' \Big |_{0}^{l}
+			-
+			EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
+			\text{.}
+	\end{equation}
+	
+	Aplicando a condição de estacionáriedade, $I'(0)=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_conditions_I0_eq_0}
+		I'(0) = 
+			\int_{0}^{l} \left (
+				EI\frac{d^4 v}{dx^4}-q 
+			\right ) \eta dx
+			+
+			EI\frac{d^2 v}{dx^2} \eta ' \Big |_{0}^{l}
+			-
+			EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
+			= 0
+			\text{.}
+	\end{equation}
+	
+	É preciso, então, que os termos de \eqref{eqn:cap_calc_var:natural_conditions_I0_eq_0} se anulem. A primeira parcela de \eqref{eqn:cap_calc_var:natural_conditions_I0_eq_0} resulta na equação de Euler-Lagrange
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_eq_euler_lagr}
+		EI\frac{d^4v}{dx^4} - q = 0
+		\text{,}
+	\end{equation}
+	enquanto que as duas outras parcelas são as condições de contorno naturais do problema
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_cond1}
+		\frac{d^2 v}{dx^2}\Big |_{0}^{l} = 0
+		\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_cond2}
+		\frac{d^3 v}{dx^3}\Big |_{0}^{l} = 0
+		\text{.}
+	\end{equation}
+	
+	A equação de Euler-Lagrange \eqref{eqn:cap_calc_var:natural_eq_euler_lagr} pode ser facilmente resolvida, isolando $\dfrac{d^4 v}{dx^4}$ e integrando ambos os lados da equação quatro vezes seguidas. Ao final desse processo, a função $v$ encontrada será
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_funcao_v}
+		v(x)=\frac{q}{24EI}x^4 + \frac{C_1}{6}x^3 + \frac{C_2}{2}x^2 + C_3x + C_4
+		\text{,}
+	\end{equation}
+	onde os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ podem ser determinados através do uso das condições de contorno naturais e essenciais.
+	
+	Da condição de contorno essencial, $v(0)=0$, resulta que o coeficiente $C_4=0$. Aplicando, então as condições de contorno naturais \eqref{eqn:cap_calc_var:natural_cond1}, tem-se
+	$$
+		\left (
+			\frac{q}{2EI}x^2 + C_1x + C_2
+		\right ) \Big |_{x=0}
+		= 0
+		\text{,}
+	$$
+	resultando no valor do coeficiente $C_2=0$. Utilizando o outro extremo de \eqref{eqn:cap_calc_var:natural_cond1}, tem-se
+	$$
+		\left (
+			\frac{q}{2EI}x^2 + C_1x + C_2
+		\right ) \Big |_{x=l}
+		=0
+		\text{,}
+	$$
+	onde
+	$$
+		\frac{ql^2}{2EI}+C_1l=0
+		\text{,}
+	$$
+	resultando em $C_1=-\dfrac{ql}{2EI}$.
+	
+	Para o último coeficiente, $C_3$, será utilizado a outra condição de contorno essencial, $v(l)=0$,
+	$$
+		\frac{q}{24EI}l^4
+		-
+		\frac{ql^4}{12EI}
+		+
+		C_3l
+		= 0
+		\text{,}
+	$$
+	tendo, assim, como resultado, $C_3=\dfrac{ql^3}{24EI}$.
+	
+	Substituindo, então, os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ determinados na função $v(x)$, encontrada em \eqref{eqn:cap_calc_var:natural_funcao_v},
+	$$
+		v(x) = 
+			\frac{q}{24EI} x^4
+			-
+			\frac{ql}{12EI} x^3
+			+
+			\frac{ql^3}{24EI} x
+			\text{.}
+	$$
+\end{exemplo}
+
+%{\color{red}Durante o processo para a obtenção da equação de Euler-Lagrange, (...)}
 
 %Durante o processo para a obtenção dos extremos de um funcional, donde se deduz a equação de Euler-Lagrange, como nas seções \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior}, surgem algumas condições de contorno, como, por exemplo, o termo
 %$$
@@ -2075,6 +2290,8 @@ com $i=1, 2, 3, \dots, n$.
 
 A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, falicitando, desta forma, a escolha das funções de forma.
 
+{\color{red}Falar que a função exata foi encontrada no Exemplo do Capítulo Anterior sobre As Condições de Contorno.}
+
 No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolhida não fosse $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, dificilmente a mesma tomaria a forma da função exata, $y(x)$, após a determinação de seus coeficientes.
 
 %{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
@@ -2247,7 +2464,7 @@ Ressaltando, novamente, que a escolha das funções de forma utilizadas na funç
 
 \section{Utilizando Funções Triangulares}
 
-Complementando o exemplo 
+{\color{red}Falar sobre o uso das funções triangulares para discretizar a função exata?}
 
 % ----------------------------------------------------------
 % PARTE
