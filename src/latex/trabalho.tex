@@ -1,35 +1,31 @@
-%% (pdf)latex + bibtex + (pdf)latex + (pdf)latex [+ preview]
-%%  F6 + F11 + F6 + F6 [+ F7]
 
-%% abtex2-modelo-trabalho-academico.tex, v-1.9.6 laurocesar
-%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
-%%
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%   http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2005/12/01 or later.
-%%
-%% This work has the LPPL maintenance status `maintained'.
-%% 
-%% The Current Maintainer of this work is the abnTeX2 team, led
-%% by Lauro César Araujo. Further information are available on 
-%% http://www.abntex.net.br/
-%%
-%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
-%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
-%%
 
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
-% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
-% mestrado e trabalhos monograficos em geral) em conformidade com 
-% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
-% Apresentacao
-% ------------------------------------------------------------------------
-% ------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Como o modelo faz o uso do bibtex para as referências,
+% quando as mesmas são alteradas, quando as citações são
+% alteradas, dentre outros casos, é necessário recompilar
+% o bibtex. Para isso, siga a ordem de compilação (apenas 
+% nos casos citados acima):
+%
+% (pdf)latex + bibtex + (pdf)latex + (pdf)latex [+ preview]
+%
+% sendo que o comando [+ preview] é opcional para a 
+% visualização do documento.
+% No editor TexMaker, as teclas de atalho para os comandos
+% acima são:
+%
+% F6 + F11 + F6 + F6 [+ F7]
+%
+% Observação: Você pode fazer isso alterando as configurações
+%             em "Opções -> Configurar o TexMaker", onde na
+%             janela de configuração, na barra lateral,
+%             selecione Compilar, altere o campo "Comandos
+%             de Compilação Rápida" para o segundo (que
+%             que parece com os comandos acima) e dê ok.
+%             Use a opção "Compilar" do TexMaker agora que
+%             a ordem de comandos acima será executada,
+%             gerando, assim, as referências.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[
 	% -- opções da classe memoir --
@@ -57,8 +53,10 @@
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}			% Usado pela Ficha catalográfica
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
+% Pacote para o uso de cores no documento
+\usepackage{color}
+% Pacote para a inclusão\manipulação de imagens
+\usepackage{graphicx}
 \usepackage{microtype} 			% para melhorias de justificação
 % ---
 		
@@ -82,12 +80,20 @@
   \end{array}\right)
 }
 
+% Cria um novo ambiente para Teorema
 \newtheorem{teorema}{Teorema}
-%\newtheorem{lema}{Lema}
+% Cria um novo ambiente para Definição
 \newtheorem{definicao}{Definição}
+% Cria um novo ambiente para Exemplo
 \newtheorem{exemplo}{Exemplo}
+% Cria um novo ambiente para Lema
 \newtheorem{lema}{Lema}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Recria o ambiente para demonstrações
+% \begin{proof} [...] \end{proof}
+% 			Observação: O ambiente foi recriado para adequação
+%						das fontes com o restante do texto
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{
 	\par\pushQED{\qed}%
@@ -101,15 +107,16 @@
 }
 \makeatother
 
-% Resetar o numberador de lemas no fim de todo capítulo
-% Isso faz com que a numeração seja indexada por capítulos e não
-% pelo documento todo
+% Reseta o numerador do ambiente Lema ao fim de todo
+% capítulo. Assim, os Lemas serão indexados por capítulo
+% e não no documento todo. Por exemplo, no Capítulo 1,
+% tem-se, Lema 1.1, Lema 1.2, etc.
 \numberwithin{lema}{chapter}
-% Idem ao de cima, com teoremas/definições/exemplos
+% Mesma função explicada acima para os ambientes de
+% teorema, definição, exemplo, figure
 \numberwithin{teorema}{chapter}
 \numberwithin{definicao}{chapter}
 \numberwithin{exemplo}{chapter}
-% Idem aos anteriores com o ambiente figure
 \numberwithin{figure}{chapter}
 
 % Pacotes do Tikz utilizados para desenho
@@ -117,51 +124,61 @@
 \usetikzlibrary{babel}
 \usetkzobj{all}
 
+% Pacote para a inclusão de códigos e para gerar
+% "Syntax Highlight" (Coloração do Código)
 \usepackage{listings}
-\renewcommand{\lstlistingname}{Código}
-\renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}
 
+
+% Define o nome de marcação para os Blocos de Código
+\renewcommand{\lstlistingname}{Código}
+% Define o nome de marcação para a Lista de Códigos
+\renewcommand{\lstlistlistingname}{Lista de \lstlistingname s}
+% Comandos utilizados para a criação e estilização
+% da Lista de Códigos
 \begingroup\makeatletter
 \let\newcounter\@gobble\let\setcounter\@gobbletwo
-  \globaldefs\@ne \let\c@loldepth\@ne
-  \newlistof{listings}{lol}{\lstlistlistingname}
-  \newlistentry{lstlisting}{lol}{0}
+	\globaldefs\@ne \let\c@loldepth\@ne
+	\newlistof{listings}{lol}{\lstlistlistingname}
+	\newlistentry{lstlisting}{lol}{0}
 \endgroup
 \renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
-
+% Comandos para a recriação do comando \lstlistoflistings,
+% ou seja, para criar a Lista de Códigos
 \let\oldlstlistoflistings\lstlistoflistings
 \renewcommand{\lstlistoflistings}{%
-   \begingroup%
-   \let\oldnumberline\numberline%
-   \renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
-   \oldlstlistoflistings%
-   \endgroup}
-
-
+	\begingroup%
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{\lstlistingname\space\oldnumberline}%
+	\oldlstlistoflistings%
+	\endgroup}
+% Cria um novo estilo de formatação de código
+% para a Linguagem de programação Python
+% a ser utilizada no ambiente "lstlisting".
 \lstdefinestyle{Python}{
-  language={Python},
-  basicstyle=\ttfamily\small,
-  identifierstyle=\color{black},
-  keywordstyle=\color{blue},
-  commentstyle=\color{green},
-  stringstyle=\color{red},
-  extendedchars=true,
-  showspaces=false,
-  showstringspaces=false,
-  numbers=none,
-  breaklines=true,
-  backgroundcolor=\color{yellow!20},
-  breakautoindent=true,
-  captionpos=b,
-  xleftmargin=0pt,
-  frame=none
+	language={Python},
+	basicstyle=\ttfamily\small,
+	identifierstyle=\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green},
+	stringstyle=\color{red},
+	extendedchars=true,
+	showspaces=false,
+	showstringspaces=false,
+	numbers=none,
+	breaklines=true,
+	backgroundcolor=\color{yellow!20},
+	breakautoindent=true,
+	captionpos=b,
+	xleftmargin=0pt,
+	frame=none
 }
 
 % ---
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% Pacote abntex2cite para citações no padrão ABNT
+\usepackage[alf]{abntex2cite}
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
@@ -235,16 +252,21 @@ Curso de Matemática}
 % Define o espaçamento entre um parágrafo e outro
 \setlength{\parskip}{0.2cm}
 
-% Adaptações para o curso de Matemática
+% Customizações para o Curso de Matemática do Campus CET
+% da Universidade Estadual de Goiás.
 \usepackage{abntex2matematicaCCET}
 
+% Pacote genealogytree. Usado apenas para os símbolos de
+% nascimento e morte, usados nessas datas no capítulo
+% sobre história.
 \usepackage{genealogytree}
+% Cria um comando utilizado para inserir a data de nascimento
+% e morte como nota de rodapé.
 \newcommand{\bdDate}[2]{
 	\footnote{\gtrsymBorn\text{ }#1 - \gtrsymDied\text{ }#2}
 }
 
-% usa a fonte helvet "sem serifa"
-%\usepackage{helvet}
+
 \usepackage{mathptmx}
 \renewcommand{\ABNTEXchapterfont}{\normalfont}
 
@@ -2443,6 +2465,7 @@ Ressaltando, novamente, que a escolha das funções de forma utilizadas na funç
 
 \citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$ exata. A função triangular trabalhada é definida como
 \begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_phi}
 	\phi_i (x) = 
 		\begin{cases}
 			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
@@ -2454,7 +2477,8 @@ Ressaltando, novamente, que a escolha das funções de forma utilizadas na funç
 \end{equation}
 onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}INSERIR FIGURA} apresenta uma ilustração da função $\phi_i(x)$ definida. A função exata, $y(x)$, que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
 \begin{equation}
-	v(x)=\sum_{i=0}^{n} a_i \phi_i(x)
+	\label{eqn:cap_metodo_ray_ritz:tri_func_app_v}
+	v(x)=\sum_{i=1}^{n} a_i \phi_i(x)
 	\text{.}
 \end{equation}
 
@@ -2462,6 +2486,7 @@ Observe que, de acordo com a definição das funções de forma $\phi_i(x)$, a f
 
 A primeira derivada das funções $\phi_i(x)$ em relação a $x$ é escrita como
 \begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}
 	\phi_i ' (x) = 
 		\begin{cases}
 			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
@@ -2473,9 +2498,196 @@ A primeira derivada das funções $\phi_i(x)$ em relação a $x$ é escrita como
 \end{equation}
 de onde a derivada de $v(x)$ em relação a $x$ é
 \begin{equation}
-	v'(x)=\sum_{i=0}^{n} a_i \phi_i '(x)
+	v'(x)=\sum_{i=1}^{n} a_i \phi_i '(x)
 	\text{.}
 \end{equation}
+
+Considere o funcional
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_funcional}
+	I = \int_{0}^{1} \left [ 
+		p(x) \left ( 
+			\frac{dy}{dx} (x) 
+		\right )^2
+		+ q(x)(y(x))^2 
+		- 2f(x)y(x) 
+	\right ] dx
+	\text{,}
+\end{equation}
+associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos. Pode-se, aqui, tomar $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ tendo em vista que a função exata $y(x)$ é conhecida, permitindo comparação. Aproximando $y(x)$ por meio da função $v(x)$ definida em \eqref{eqn:cap_metodo_ray_ritz:tri_func_app_v}, o funcional \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional} é escrito como
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_funcional_approx}
+	I = \int_{0}^{1} \left [
+		p(x) \left (
+			\sum_{i=1}^{n} a_i \phi_i '(x)
+		\right )^2
+		+ q(x) \left (
+			\sum_{i=1}^{n} a_i \phi_i (x)
+		\right )^2
+		- 2f(x) \left (
+			\sum_{i=1}^{n} a_i \phi_i (x)
+		\right )
+	\right ] dx
+	\text{.}
+\end{equation}
+
+Para determinar os coeficientes $a_j$, as derivadas parciais de \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_approx} em relação aos $a_j$ devem ser todas nulas, ou seja,
+$$
+	\frac{\partial I}{\partial a_j} = 0
+	\text{,}
+$$
+onde $j=1$, $2$, $\dots$, $n$. Utilizando o Teorema \ref{teorema:regra_de_leibniz} (Regra de Leibniz),
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada}
+	\frac{\partial I}{\partial a_j} = 
+	\int_{0}^{1} \left [
+		2p(x) \left (
+			\sum_{i=1}^{n} a_i \phi_i'(x)
+		\right ) \phi_j'(x)
+		+ 2q(x) \left (
+			\sum_{i=1}^{n} a_i \phi_i(x)
+		\right ) \phi_j(x)
+		- 2f(x)\phi_j(x)
+	\right ] dx
+	\text{.}
+\end{equation}
+
+Em \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada} foi utilizado o fato de que a derivada de $\displaystyle \sum_{i=1}^{n} a_i \phi_i(x)$ em relação a algum $a_j$, onde $1\leqslant j\leqslant n$, resulta em $\phi_j(x)$. O mesmo vale para a derivada de $\displaystyle \sum_{i=1}^{n} a_i \phi_i'(x)$ em relação a algum $a_j$, $1\leqslant j\leqslant n$, que resulta em $\phi_j'(x)$.
+
+Manipulando as ordens de integração e de soma em \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada} tem-se
+$$
+	\frac{\partial I}{\partial a_j} = \sum_{i=1}^{n} \left (
+		a_i \int_{0}^{1} \left [
+			2p(x)\phi_i'(x)\phi_j'(x)
+			+
+			2q(x)\phi_i(x)\phi_j(x)
+		\right ]
+	\right )
+	-
+	\int_{0}^{1} 2f(x)\phi_j(x)dx
+	\text{,}
+$$
+que, aplicando a condição $\dfrac{\partial I}{\partial a_j}=0$, resulta em um sistema de $n$ equações com $n$ incógnitas da forma
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_sistema}
+	\sum_{i=1}^{n} \left (
+		a_i \int_{0}^{1} \left [
+			2p(x)\phi_i'(x)\phi_j'(x)
+			+
+			2q(x)\phi_i(x)\phi_j(x)
+		\right ] dx
+	\right )
+	=
+	\int_{0}^{1} 2f(x)\phi_j(x)dx
+	\text{,}
+\end{equation}
+onde $j=1$, $2$, $\dots$, $n$.
+
+O sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na forma matricial $M\cdot A=B$, onde $M=[m_{j, i}]$ é a matriz de coeficientes, $A=[a_i]$ é a matriz coluna de incógnitas e $B=[b_j]$ é a matriz contendo os termos independentes. Assim, de \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema},
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_mji}
+	m_{j,i}=\int_{0}^{1} \left [
+		2p(x)\phi_i'(x)\phi_j'(x)
+		+
+		2q(x)\phi_i(x)\phi_j(x)
+	\right ]dx
+	\text{,}
+\end{equation}
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_bj}
+	b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
+	\text{.}
+\end{equation}
+
+A partir de \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, os produtos $\phi_i(x)\phi_j(x)$ e $\phi_i'(x)\phi_j'(x)$ são não nulos apenas quando $i=j-1$, $i=j$ e $i=j+1$. Consequentemente, $m_{j,i}$ é não nulo apenas para $i=j-1$, $i=j$ e $i=j+1$.
+
+O sistema $M\cdot A=B$ construido, pode ser resolvido, numericamente utilizando a linguagem de programação Python. Para tanto, o primeiro passo é importar os componentes a serem utilizados. No Código \ref{py_code_solve_mrr_tri_import} são importados os componentes \textit{numpy}, utilizado para a criação de alguns intervalos numéricos espaçados. Do pacote \textit{math} é importando a constante $e$. Do pacote \textit{sympy} é importado o método \textit{symbols} para a definição de símbolos matemáticos, de \textit{sympy.matrices} é importado o método \textit{zeros} para a criação de um matriz de tamanho determinado preenchida por números zeros e de \textit{sympy.solvers} é importado o método \textit{linsolve} utilizado para a resolução de sistemas lineares. Por último, é importado o pacote \textit{matplotlib.pyplot} como \textit{pyplot}\footnote{Utilizar o comando \textit{import matplotlib.pyplot as pyplot} faz com que, em vez de sempre escrever \textit{matplotlib.pyplot}, se possa escrever apenas \textit{pyplot} nos próximos comandos.} utilizado para plotar gráficos.
+
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=1, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_import]
+import numpy
+from math import e
+from sympy import symbols
+from sympy.matrices import zeros
+from sympy.solvers import linsolve
+import matplotlib.pyplot as pyplot
+\end{lstlisting}
+
+Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado.
+
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=7, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_interval]
+n = 5
+space = 1/(n + 1)
+intervals = numpy.arange(0, 1.0001, space)
+\end{lstlisting}
+
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=10, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
+def fi(i, x):
+    if x <= intervals[i - 1]:
+        return 0
+    elif x <= intervals[i]:
+        return ((x - intervals[i - 1]) / (intervals[i] - intervals[i - 1]))
+    elif x <= intervals[i + 1]:
+        return ((intervals[i + 1] - x) / (intervals[i + 1] - intervals[i]))
+    else:
+        return 0
+
+def fi_diff(i, x):
+    if x <= intervals[i - 1]:
+        return 0
+    elif x <= intervals[i]:
+        return (1 / (intervals[i] - intervals[i - 1]))
+    elif x <= intervals[i + 1]:
+        return (1 / (intervals[i] - intervals[i + 1]))
+    else:
+        return 0
+\end{lstlisting}
+
+Numericamente, as funções $\phi_i(x)$ e $\phi_i'(x)$ foram programadas utilizando condicionais, em Código \ref{py_code_solve_mrr_tri_form_func}.
+
+No Código \ref{py_code_solve_mrr_tri_form_func} o método utilizado para a integração numérica, que implementa a chamada regra do trapézio, é mostrado. Dentro do método, a variável \textit{steps} define em quantos intervalos o domínio de integração será dividido. Os parâmetros opcionais \textit{*args}, do método \textit{integrate}, são passados para a função a ser integrada, \textit{func}, e serão utilizados para passar os índices $i$ e $j$ quando necessário.
+
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=29, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
+def integrate(func, start, end, *args):
+    steps = 10000
+    h = ((end - start) / steps)
+    half = h / 2
+    value = 0
+    for i in range(0, steps):
+        dh = func(start + h * i + half, *args)
+        if i == 0 or i == (steps - 1):
+            value += dh
+        else:
+            value += (2 * dh)
+    return (value * (h / 2))
+\end{lstlisting}
+
+Para a integração numérica por meio do algoritmo implementado em Código \ref{py_code_solve_mrr_tri_integrate} é preciso definir funções com os integrandos de \eqref{eqn:cap_metodo_ray_ritz:tri_func_mji} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_bj}. Essas funções são chamadas, no código, de \textit{m\underline{\hspace{.1in}}intern} e \textit{b\underline{\hspace{0.1in}}intern}, respectivamente. Na implementação do Código \ref{py_code_solve_mrr_tri_m_b}, os métodos \textit{m(i, j)} e \textit{b(i)} calculam os elementos das matrizes $M$ e $B$, respectivamente. Nesses métodos, é somado 1 aos índices $i$ e $j$ pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma $\phi_i(x)$, elas são indexadas a partir de 1.
+
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=41, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
+def p(x):
+    return e**x
+
+def q(x):
+    return e**x
+
+def f(x):
+    return (x+(2-x)*e**x)
+
+def m_intern(x, i, j):
+    return (p(x) * fi_diff(i, x) * fi_diff(j, x) + q(x) * fi(i, x) * fi(j, x))
+
+def m(i, j):
+    i = i + 1
+    j = j + 1
+    return integrate(m_intern, 0, 1, i, j)
+
+def b_intern(x, i):
+    return (f(x) * fi(i, x))
+
+def b(i):
+    i = i + 1
+    return integrate(b_intern, 0, 1, i)
+\end{lstlisting}
 
 
 

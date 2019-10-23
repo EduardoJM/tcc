@@ -1,19 +1,13 @@
-import numpy as np
+import numpy
 from math import e
 from sympy import symbols
 from sympy.matrices import zeros
 from sympy.solvers import linsolve
-import matplotlib.pyplot as plt
-from matplotlib.collections import EventCollection
+import matplotlib.pyplot as pyplot
 
-n = 20
+n = 5
 space = 1/(n + 1)
-intervals = [0]
-for i in range(0, n):
-    intervals.append(space * (i + 1))
-intervals.append(1)
-
-#print(intervals)
+intervals = numpy.arange(0, 1.0001, space)
 
 def fi(i, x):
     if x <= intervals[i - 1]:
@@ -42,7 +36,7 @@ def integrate(func, start, end, *args):
     value = 0
     for i in range(0, steps):
         dh = func(start + h * i + half, *args)
-        if i == 0 or i == steps:
+        if i == 0 or i == (steps - 1):
             value += dh
         else:
             value += (2 * dh)
@@ -57,37 +51,31 @@ def q(x):
 def f(x):
     return (x+(2-x)*e**x)
 
-def a_intern(x, i, j):
+def m_intern(x, i, j):
     return (p(x) * fi_diff(i, x) * fi_diff(j, x) + q(x) * fi(i, x) * fi(j, x))
 
-def a(i, j):
-    return integrate(a_intern, 0, 1, i, j)
+def m(i, j):
+    i = i + 1
+    j = j + 1
+    return integrate(m_intern, 0, 1, i, j)
 
 def b_intern(x, i):
     return (f(x) * fi(i, x))
 
 def b(i):
+    i = i + 1
     return integrate(b_intern, 0, 1, i)
 
-
-A = zeros(n, n+1)
+M = zeros(n, n+1)
 for i in range(0, n):
-    for j in range(0, n + 1):
-        if j == n:
-            A[i, j] = b(i + 1)
-        elif j == i or j == i - 1 or j == i + 1:
-            A[i, j] = a(i + 1, j + 1)
-
-#print(A)
-
-coeficients = symbols('c_0:{}'.format(n))
-#print(coeficients)
-
-solution, = linsolve(A, coeficients)
-#print(solution)
-
-def function_origin(x):
-    return ((x - 1) * (e**(-x) - 1))
+    M[i, n] = b(i)
+    M[i, i] = m(i, i)
+    if (i - 1) >= 0:
+        M[i, i - 1] = m(i, i - 1)
+    if (i + 1) < n:
+        M[i, i + 1] = m(i, i + 1)
+coeficients = symbols('a_0:{}'.format(n))
+solution, = linsolve(M, coeficients)
 
 def function(solution, x):
     value = 0
@@ -96,23 +84,17 @@ def function(solution, x):
         value += c * fi(i + 1, x)
         i = i + 1
     return value
+def function_original(x):
+    return ((x - 1) * (e**(-x) - 1))
 
-ydata1 = []
-for i in intervals:
-    ydata1.append(function(solution, i))
-fig = plt.figure()
-ax = fig.add_subplot(1, 1, 1)
-ax.plot(intervals, ydata1, color='tab:blue')
-t = np.arange(0.0, 1.0, 0.01)
-s = function_origin(t)
-ax.plot(t, s, color='tab:orange')
-#ax.plot(intervals, ydata2, color='tab:orange')
-
-ax.set_title('Rayleigh-Ritz Implementation With n=' + str(n))
-
-# display the plot
-plt.show()
-
-#for i in intervals:
-#    err = abs(function(solution, i) - function_origin(i))
-#    print("E: " + str(err))
+plot_interval = numpy.arange(0.0, 1.0, 0.01)
+plot_original = function_original(plot_interval)
+plot_aprox = []
+for i in plot_interval:
+    plot_aprox.append(function(solution, i))
+fig = pyplot.figure()
+axes = fig.add_subplot(1, 1, 1)
+axes.plot(plot_interval, plot_aprox, color='tab:blue')
+axes.plot(plot_interval, plot_original, color='tab:orange')
+axes.set_title('Rayleigh-Ritz Implementation With n=' + str(n))
+pyplot.show()
