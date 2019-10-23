@@ -5,7 +5,7 @@ from sympy.matrices import zeros
 from sympy.solvers import linsolve
 import matplotlib.pyplot as pyplot
 
-n = 5
+n = 20
 space = 1/(n + 1)
 intervals = numpy.arange(0, 1.0001, space)
 
@@ -96,5 +96,5 @@ fig = pyplot.figure()
 axes = fig.add_subplot(1, 1, 1)
 axes.plot(plot_interval, plot_aprox, color='tab:blue')
 axes.plot(plot_interval, plot_original, color='tab:orange')
-axes.set_title('Rayleigh-Ritz Implementation With n=' + str(n))
+axes.set_title('Rayleigh-Ritz With n=' + str(n))
 pyplot.show()

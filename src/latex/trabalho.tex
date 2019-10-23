@@ -2612,15 +2612,15 @@ from sympy.solvers import linsolve
 import matplotlib.pyplot as pyplot
 \end{lstlisting}
 
-Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado.
+Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado. A variável \textit{n} representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=7, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_interval]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=7, caption={Criação dos intervalos numéricos}, captionpos=t, label=py_code_solve_mrr_tri_interval]
 n = 5
 space = 1/(n + 1)
 intervals = numpy.arange(0, 1.0001, space)
 \end{lstlisting}
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=10, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=10, caption={Função de forma $\phi$ e sua derivada}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
 def fi(i, x):
     if x <= intervals[i - 1]:
         return 0
@@ -2646,7 +2646,7 @@ Numericamente, as funções $\phi_i(x)$ e $\phi_i'(x)$ foram programadas utiliza
 
 No Código \ref{py_code_solve_mrr_tri_form_func} o método utilizado para a integração numérica, que implementa a chamada regra do trapézio, é mostrado. Dentro do método, a variável \textit{steps} define em quantos intervalos o domínio de integração será dividido. Os parâmetros opcionais \textit{*args}, do método \textit{integrate}, são passados para a função a ser integrada, \textit{func}, e serão utilizados para passar os índices $i$ e $j$ quando necessário.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=29, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=29, caption={Algoritmo para integração numérica usando a regra dos trapézios}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
 def integrate(func, start, end, *args):
     steps = 10000
     h = ((end - start) / steps)
@@ -2663,7 +2663,7 @@ def integrate(func, start, end, *args):
 
 Para a integração numérica por meio do algoritmo implementado em Código \ref{py_code_solve_mrr_tri_integrate} é preciso definir funções com os integrandos de \eqref{eqn:cap_metodo_ray_ritz:tri_func_mji} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_bj}. Essas funções são chamadas, no código, de \textit{m\underline{\hspace{.1in}}intern} e \textit{b\underline{\hspace{0.1in}}intern}, respectivamente. Na implementação do Código \ref{py_code_solve_mrr_tri_m_b}, os métodos \textit{m(i, j)} e \textit{b(i)} calculam os elementos das matrizes $M$ e $B$, respectivamente. Nesses métodos, é somado 1 aos índices $i$ e $j$ pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma $\phi_i(x)$, elas são indexadas a partir de 1.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=41, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=41, caption={Funções utilizadas para criação das matrizes do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
 def p(x):
     return e**x
 
@@ -2689,7 +2689,66 @@ def b(i):
     return integrate(b_intern, 0, 1, i)
 \end{lstlisting}
 
+O próximo passo, consiste em criar a matriz aumentada do sistema, os símbolos que representam as incógnitas e, então, resolvê-lo. Isso é feito no Código \ref{py_code_solve_mrr_tri_solvesys}.
 
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=64, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
+M = zeros(n, n+1)
+for i in range(0, n):
+    M[i, n] = b(i)
+    M[i, i] = m(i, i)
+    if (i - 1) >= 0:
+        M[i, i - 1] = m(i, i - 1)
+    if (i + 1) < n:
+        M[i, i + 1] = m(i, i + 1)
+coeficients = symbols('a_0:{}'.format(n))
+solution, = linsolve(M, coeficients)
+\end{lstlisting}
+
+A função $y(x)$ conhecida, exata, que torna o funcional de \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_approx} estacionário é $y(x)=(x-1)(e^{-x}-1)$. Assim, utilizando a solução do Código \ref{py_code_solve_mrr_tri_solvesys} e a função exata $y(x)$, é possível criar funções, numéricas, representando a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código \ref{py_code_solve_mrr_tri_plot}.
+
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=74, caption={Plotagem das funções exata e aproximada}, captionpos=t, label=py_code_solve_mrr_tri_plot]
+def function(solution, x):
+    value = 0
+    i = 0
+    for c in solution:
+        value += c * fi(i + 1, x)
+        i = i + 1
+    return value
+def function_original(x):
+    return ((x - 1) * (e**(-x) - 1))
+
+plot_interval = numpy.arange(0.0, 1.0, 0.01)
+plot_original = function_original(plot_interval)
+plot_aprox = []
+for i in plot_interval:
+    plot_aprox.append(function(solution, i))
+fig = pyplot.figure()
+axes = fig.add_subplot(1, 1, 1)
+axes.plot(plot_interval, plot_aprox, color='tab:blue')
+axes.plot(plot_interval, plot_original, color='tab:orange')
+axes.set_title('Rayleigh-Ritz With n=' + str(n))
+pyplot.show()
+\end{lstlisting}
+
+Os Códigos \ref{py_code_solve_mrr_tri_import}, \ref{py_code_solve_mrr_tri_interval}, \ref{py_code_solve_mrr_tri_form_func}, \ref{py_code_solve_mrr_tri_integrate}, \ref{py_code_solve_mrr_tri_m_b}, \ref{py_code_solve_mrr_tri_solvesys} e \ref{py_code_solve_mrr_tri_plot} são sequênciais e devem ser executados dentro de um único arquivo, por isso suas numerações estão sequênciais. O resultado da execução do código para a resolução do sistema é mostrado na Figura \ref{fig:code_plot_mrr_triangulate}. Para maior precisão do método, pode-se aumentar o valor da variável \textit{n} do Código \ref{py_code_solve_mrr_tri_interval}, por exemplo, para 10. O gráfico plotado para $n=10$ é apresentado na Figura \ref{fig:code_plot_mrr_triangulate_n10}.
+
+\begin{figure}[h]
+	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=5$.}
+	\centering
+	\includegraphics[scale=0.6]{../figuras/code/code_plot_mrr_triangulate.png}
+	\label{fig:code_plot_mrr_triangulate}
+	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+\end{figure}
+
+\begin{figure}[h]
+	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=10$.}
+	\centering
+	\includegraphics[scale=0.6]{../figuras/code/code_plot_mrr_triangulate_n10.png}
+	\label{fig:code_plot_mrr_triangulate_n10}
+	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+\end{figure}
+
+Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_tri_interval} maior a precisão, porém, com maior custo computacional. Consequentemente, quanto maior o valor de \textit{n}, mais tempo o computador levará para a resolução do problema.
 
 % ----------------------------------------------------------
 % PARTE
