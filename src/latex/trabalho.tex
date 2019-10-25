@@ -173,6 +173,8 @@
 	frame=none
 }
 
+\usepackage{subcaption}
+
 % ---
 % Pacotes de citações
 % ---
@@ -642,13 +644,11 @@ O método de Rayleigh foi utilizado frequentemente, porém, nas últimas década
 
 \subsection{Aplicações do Método de Rayleigh-Ritz}
 
-O método de Rayleigh-Ritz possui diversas aplicações, em diversas áreas. Porém, a área onde o mesmo mais é utilizado é em análise estrutural. Seu uso é empregado, principalmente com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
+O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, porém, mais conhecido aplicado a análise estrutural. Seu uso é empregado, principalmente, com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
 
-Esse método não requer que as funções admissíveis satisfaçam as condições de contorno naturais (Ver Seção \ref{sec:cond_contorno} do Capítulo \ref{cap:calc_var}) e, portanto, é utilizado constantemente para os casos onde essas condições naturais são de difícil resolução \cite{GROSSI_2001}.
+Exemplificando, \citeonline{RRM_Applications} trata do problema de encontrar as frequências naturais em um tipo especial de viga, chamada de consola, que é uma viga apoiada apenas em uma de suas extremidades (Ver Figura \ref{fig:cantilever}). Na Figura \ref{fig:cantilever}, a função $w(x,t)$ representa o deslocamento dinâmico.
 
-\citeonline{RRM_Applications} trata do problema de encontrar as frequências natruais em um tipo especial de viga, chamada de consola, que é, basicamente, uma viga apoiada apenas em uma de suas extremidades (Ver Figura \ref{fig:cantilever}). Na Figura \ref{fig:cantilever}, a função $w(x,t)$ representa o deslocamento dinâmico.
-
-\begin{figure}
+\begin{figure}[h]
 	\caption{Modelo de uma Viga Consola Vibrando.}
 	\centering
 	\begin{tikzpicture}
@@ -706,7 +706,28 @@ Esse método não requer que as funções admissíveis satisfaçam as condiçõe
 
 {\color{red}Citar aplicações atuais do Método de Rayleigh-Ritz.}
 
-{\color{red}Citar o Método Deep Ritz de \citeonline{deep_ritz}.}
+Além da abordagem convencional do método, existem trabalhos que visam aliar o método a técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirma que modelos baseados redes neurais profundas podem ser utilizadas em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (Método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. O método proposto faz o uso da representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
+
+Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia da abordagem é a solução para a equação de Poisson em duas dimensões. A Figura \ref{fig:deep_ritz_poisson} apresenta a solução utilizando dois métodos diferentes, sendo a Figura \ref{fig:deep_ritz_poisson_a} a solução pelo \textit{Deep Ritz Method} com 811 parâmetros e a Figura \ref{fig:deep_ritz_poisson_b} a solução pelo método das diferenças finitas com 1681 parâmetros.
+
+\begin{figure}[h]
+	\caption{Solução da equação de Poisson utilizando o \textit{Deep Ritz Method} e o método das diferenças finitas}
+	\centering
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{../figuras/cite/deep_ritz_a.png}
+		\caption{Solução pelo \textit{Deep Ritz Method}.}
+		\label{fig:deep_ritz_poisson_a}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{../figuras/cite/deep_ritz_b.png}
+		\caption{Solução pelo método das diferenças finitas.}
+		\label{fig:deep_ritz_poisson_b}
+	\end{subfigure}
+	\label{fig:deep_ritz_poisson}
+	\legend{\ABNTEXfontereduzida Fonte: \citeonline[p. 5]{deep_ritz}.}
+\end{figure}
 
 \section{A Linguagem Python}
 
@@ -1617,7 +1638,7 @@ A resolução de equações diferenciais e a determinação da solução exata p
 
 As explicações e os conceitos aqui utilizados foram elaboradas tomando como referências os autores \citeonline{mefassan} e \citeonline{MRR_Deflex}.
 
-O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. 
+O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.
 
 Considerando o funcional
 $$
@@ -1637,7 +1658,6 @@ $$
 	\text{,}
 $$
 com $i=1, 2, 3, \dots, n$.
-
 
 \begin{exemplo}
 	\label{ex:mrr_ex_livro}
