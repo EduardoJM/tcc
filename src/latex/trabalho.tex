@@ -704,7 +704,7 @@ O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, p
 
 %Um outro tipo de aplicação para o Método de Rayleigh-Ritz é o de encontrar as frequências naturais das chamadas consolas, vigas apoiadas apenas em uma das extremidades \cite{RRM_Applications}.
 
-{\color{red}Citar aplicações atuais do Método de Rayleigh-Ritz.}
+{\color{red}Citar aplicações do Método de Rayleigh-Ritz.}
 
 Além da abordagem convencional do método, existem trabalhos que visam aliar o método a técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirma que modelos baseados redes neurais profundas podem ser utilizadas em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (Método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. O método proposto faz o uso da representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
 
@@ -1375,9 +1375,6 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var
 
 \subsection{Equação Geral}
 
-%Para funcionais que dependem de derivadas superiores até a ordem $n$, o processo para obtenção da equação é análogo e a equação de Euler-Lagrange é dada por
-
-
 Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem $n$, o processo para a obtenção da equação de Euler-Lagrange é análogo. Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrada $n-1$ vezes, também por partes. Ao fim do processo, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
 
 \begin{equation}
@@ -1467,6 +1464,7 @@ aparecem diversas condições de contorno parecidas com \eqref{eqn:cap_calc_var:
 Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
 
 \begin{exemplo}
+	\label{ex:cond_contorno}
 	Considere o funcional
 	\begin{equation}
 		\label{eqn:cap_calc_var:funcional_pi}
@@ -1650,7 +1648,7 @@ $$
 	v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{,}
 $$
-onde as funções $\phi_i(x)$ são chamadas de funções de forma e devem ser linearmente independente. {\color{red}Falar sobre a diferenciabilidade das $\phi_i(x)$.} Os coeficientes $a_i$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
+onde as funções $\phi_i(x)$ são chamadas de funções de forma e devem ser linearmente independente. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$ e suas derivadas contínuas até a ordem $m-1$, onde $m$ é a ordem da maior derivada do funcional. Os coeficientes $a_i$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
 
 Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$, isto é, $I=I(a_1, a_2, \dots, a_n)$. A condição de máximo ou mínimo para o funcional $I$ é, então, que as suas derivadas parciais em relação a $a_1$, $a_2$, $\dots$, $a_n$ se anulem, então
 $$
@@ -2332,9 +2330,7 @@ com $i=1, 2, 3, \dots, n$.
 	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{exemplo}
 
-A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, falicitando, desta forma, a escolha das funções de forma.
-
-{\color{red}Falar que a função exata foi encontrada no Exemplo do Capítulo Anterior sobre As Condições de Contorno.}
+A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, falicitando, desta forma, a escolha das funções de forma.
 
 No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolhida não fosse $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, dificilmente a mesma tomaria a forma da função exata, $y(x)$, após a determinação de seus coeficientes.
 
@@ -2343,7 +2339,7 @@ No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolh
 
 \chapter{Utilizando o Método de Rayleigh-Ritz na Linguagem Python}
 
-{\color{red}Se tratando de programação, existem diversas formas de se trabalhar o método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.}
+Se tratando de programação, existem diversas formas de se trabalhar o método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
 
 Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4$, donde aplicando as condições de contorno essenciais, $v_3(0)=0$, obtendo $a_0=0$, e $v_3(l)=0$, encontrando $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, tem-se a função
 $$
@@ -2458,7 +2454,7 @@ a1 = a1.subs(a4, sol[a4])
 print(a1)
 \end{lstlisting}
 
-{\color{red}É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. De acordo com \citeonline{mefassan}, o valor $v_3(\frac{l}{2})$ é conhecido como o valor de máxima deflexão.}
+É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. De acordo com \citeonline{mefassan}, o valor $v_3(\frac{l}{2})$ é conhecido como o valor de máxima deflexão.
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=18, caption={Código para a definição da função $v_3(x)$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_maxdef_ex_livro]
 v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
@@ -2497,12 +2493,83 @@ Ressaltando, novamente, que a escolha das funções de forma utilizadas na funç
 		\end{cases}
 	\text{,}
 \end{equation}
-onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura {\color{red}INSERIR FIGURA} apresenta uma ilustração da função $\phi_i(x)$ definida. A função exata, $y(x)$, que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
+onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura \ref{fig:triangular_func} apresenta uma ilustração da função $\phi_i(x)$ definida. A função exata, $y(x)$, que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_app_v}
 	v(x)=\sum_{i=1}^{n} a_i \phi_i(x)
 	\text{.}
 \end{equation}
+
+\begin{figure}[h]
+	\caption{Função Triangular $\phi_i(x)$.}
+	\centering
+	\begin{tikzpicture}
+		\tkzInit[xmin=-0, xmax=10, ymin=0, ymax=6]
+		% desenhar os eixos sem marcação
+		\tkzDrawX[label={$x$}, noticks]
+		\tkzDrawY[label={$y(x)=\phi_i(x)$}, noticks]
+		
+		% pontos da caixa
+		\tkzDefPoints{
+			0/0/C_1,
+			10/0/C_2,
+			10/6/C_3,
+			0/6/C_4}
+		% desenho da caixa
+		%\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_1, C_2)
+		\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_2, C_3)
+		\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_3, C_4)
+		%\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_4, C_1)
+		
+		% pontos da função
+		\tkzDefPoints{
+			0/0/F_0,
+			4/0/F_1,
+			6/6/F_2,
+			7/0/F_3,
+			10/0/F_4}
+		% desenho da função
+		\tkzDrawSegment[color=black, line width=0.7mm](F_0, F_1)	
+		\tkzDrawSegment[color=black, line width=0.7mm](F_1, F_2)
+		\tkzDrawSegment[color=black, line width=0.7mm](F_2, F_3)
+		\tkzDrawSegment[color=black, line width=0.7mm](F_3, F_4)
+		
+		% textos das marcas: x_{i-1}, x_i, x_{i+1}
+		\node at (4, -0.5) {$x_{i-1}$};
+		\node at (6, -0.5) {$x_{i}$};
+		\node at (7, -0.5) {$x_{i+1}$};
+		
+		% linha (pontilhada) em x_i
+		\tkzDefPoints{
+			6/0/PT_1,
+			6/6/PT_2}
+		\tkzDrawSegment[color=black, line width=0.5mm, dashed](PT_1, PT_2)
+		
+		% nome da função $\phi_i(x)$
+		\node at (4, 3) {$\phi_i(x)$};
+		
+		% marcador dos intervalos $h_{i-1}$, $h_i$
+		\node at (5, -1.2) {$h_{i-1}$};
+		\tkzDefPoints{
+			4/-0.8/M_1,
+			4/-0.7/M_11,
+			4/-0.9/M_12,
+			6/-0.8/M_2,
+			6/-0.7/M_21,
+			6/-0.9/M_22,
+			7/-0.8/M_3,
+			7/-0.7/M_31,
+			7/-0.9/M_32}
+		\tkzDrawSegment[color=black, line width=0.5mm](M_1, M_2)
+		\tkzDrawSegment[color=black, line width=0.5mm](M_11, M_12)
+		\tkzDrawSegment[color=black, line width=0.5mm](M_21, M_22)
+		\tkzDrawSegment[color=black, line width=0.5mm](M_2, M_3)
+		\tkzDrawSegment[color=black, line width=0.5mm](M_31, M_32)
+		\node at (6.5, -1.2) {$h_i$};
+	\end{tikzpicture}
+	\label{fig:triangular_func}
+	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+\end{figure}
 
 Observe que, de acordo com a definição das funções de forma $\phi_i(x)$, a função $v(x)$, definida como combinação linear das $\phi_i(x)$, funcionará apenas para funcionais que dependem apenas de derivadas de primeira ordem, visto que a derivada de segunda ordem de qualquer $\phi_i(x)$ é nula.
 
