@@ -561,12 +561,12 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 % ---
 % inserir lista de símbolos
 % ---
-\begin{simbolos}
-  \item[$ \Gamma $] Letra grega Gama
-  \item[$ \Lambda $] Lambda
-  \item[$ \zeta $] Letra grega minúscula zeta
-  \item[$ \in $] Pertence
-\end{simbolos}
+%\begin{simbolos}
+%  \item[$ \Gamma $] Letra grega Gama
+%  \item[$ \Lambda $] Lambda
+%  \item[$ \zeta $] Letra grega minúscula zeta
+%  \item[$ \in $] Pertence
+%\end{simbolos}
 % ---
 
 
@@ -589,7 +589,17 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 \chapter*[Introdução]{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
 
-{\color{red}Escrever a introdução do trabalho.}
+%{\color{red}Escrever a introdução do trabalho.}
+
+O Cálculo Variacional engloba diversos problemas, sendo um dos mais tratados, o de minimizar ou maximizar funcionais, que são, fundamentalmente, funções que dependem de outras funções \cite{mefassan}.
+
+Desde o enuncidado do problema da braquistócrona, em 1696, que visa encontrar a curva em que uma partícula precisa descrever para sair de um ponto A e chegar a um ponto B, ambos os pontos em um plano vertical, no menor tempo possível estando sobre ação apenas da força gravitacional \cite{calcvar}, diversas técnicas surgiram de modo a facilitar esse trabalho. 
+
+Algumas das principais contribuições para a área do Cálculo Variacional se devem aos matemáticos Euler e Lagrange, criando generalizações para métodos específicos utilizados, até então, na resolução de cada problema proposto \cite{hist_courant}.
+
+Além dos métodos que permitem a resolução analítica dos problemas surgem métodos que fornecem resoluções aproximadas e que são utilizados, principalmente, em aplicações a engenharia. O método de Rayleigh-Ritz, por exemplo, prevê o uso de uma função aproximadora no lugar da função exata, permitindo, assim, resoluções aproximadas para o problema do funcional \cite{mefassan}.
+
+Esse trabalho objetiva, primeiro, introduzir o Cálculo Variacional, elucidando algumas das ferramentas matemáticas importantes para trabalhar seus problemas do ponto de vista analítico. O segundo objetivo do trabalho é introduzir o Método de Rayleigh-Ritz aplicado a funcionais onde a função a ser determinada depende apenas de uma variável. Por último, o trabalho visa mostrar a aplicação do método utilizando a linguagem de programação Python.
 
 
 \chapter{Contexto Histórico}
@@ -1254,124 +1264,6 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var
 \end{equation}
 
 É importante ressaltar, novamente, que a equação de Euler-Lagrange \eqref{eqn:cap_calc_var:eq_euler_lagrange_twodiff} obtida é uma condição necessária, porém não é condição suficiente para a estacionáriedade do funcional.
-
-%{\color{red}Condições de contorno......, $\dfrac{\partial f}{\partial y''}\eta ' \Big |_{x_1}^{x_2} = 0$, portanto
-%$$
-%	\int_{x_1}^{x_2}
-%		\frac{\partial f}{\partial y''}
-%		\eta'' dx
-%	=
-%	-
-%	\int_{x_1}^{x_2}
-%		\frac{d}{dx} \left (
-%			\frac{\partial f}{\partial y''}
-%		\right )
-%	\eta 'dx
-%	\text{,}
-%$$}
-%e, para a segunda integração por partes, pode-se fazer
-%$u=\dfrac{d}{dx} \left (
-%	\dfrac{\partial f}{\partial y''}
-%\right )$ e $dv=\eta ' dx$, de onde 
-%$du=\dfrac{d^2}{dx^2} \left (
-%	\dfrac{\partial f}{\partial y''}
-%\right )dx$ e $v=\eta$.  Assim,
-%
-%$$
-%	\int_{x_1}^{x_2}
-%		\frac{\partial f}{\partial y''}
-%		\eta'' dx
-%	=
-%	- \left [
-%		\frac{d}{dx} \left (
-%			\frac{\partial f}{\partial y''}
-%		\right ) \eta \Big |_{x_1}^{x_2}
-%		-
-%		\int_{x_1}^{x_2}
-%			\frac{d^2}{dx^2} \left (
-%				\frac{\partial f}{\partial y''}
-%			\right )
-%		\eta dx
-%	\right ]
-%	\text{,}
-%$$
-%e, como $\eta(x_1)=\eta(x_2)=0$,
-%\begin{equation}
-%	\label{eqn:cap_calc_var:func_2_derivadas_membro3}
-%	\int_{x_1}^{x_2}
-%		\frac{\partial f}{\partial y''}
-%		\eta'' dx
-%	=
-%	\int_{x_1}^{x_2}
-%		\frac{d^2}{dx^2} \left (
-%			\frac{\partial f}{\partial y''}
-%		\right )
-%	\eta dx
-%	\text{.}
-%\end{equation}
-%
-%Voltando a \eqref{eqn:cap_calc_var:func_2_derivada_integracao}, substituindo os resultados de \eqref{eqn:cap_calc_var:func_2_derivadas_membro2} e \eqref{eqn:cap_calc_var:func_2_derivadas_membro3}, $I'(0)$ pode ser escrito como
-%$$
-%	I'(0)=
-%	\int_{x_1}^{x_2}
-%		\frac{\partial f}{\partial y}
-%		\eta dx
-%	-
-%	\int_{x_1}^{x_2}
-%		\frac{d}{dx}\left (
-%			\frac{\partial f}{\partial y'}
-%		\right ) \eta dx
-%	+
-%	\int_{x_1}^{x_2}
-%		\frac{d^2}{dx^2}\left (
-%			\frac{\partial f}{\partial y''}
-%		\right ) \eta dx
-%$$
-%$$
-%	I'(0)=
-%	\int_{x_1}^{x_2} \left (
-%		\frac{\partial f}{\partial y}
-%		\eta
-%		-
-%		\frac{d}{dx}\left (
-%			\frac{\partial f}{\partial y'}
-%		\right ) \eta
-%		+
-%		\frac{d^2}{dx^2}\left (
-%			\frac{\partial f}{\partial y''}
-%		\right ) \eta 
-%	\right ) dx
-%$$
-%\begin{equation}
-%	\label{eqn:cap_calc_var:func_2_derivadas_final}
-%	I'(0)=
-%	\int_{x_1}^{x_2} \left (
-%		\frac{\partial f}{\partial y}
-%		-
-%		\frac{d}{dx}\left (
-%			\frac{\partial f}{\partial y'}
-%		\right )
-%		+
-%		\frac{d^2}{dx^2}\left (
-%			\frac{\partial f}{\partial y''}
-%		\right )
-%	\right ) \eta dx
-%	\text{.}
-%\end{equation}
-%
-%Fazendo $I'(0)=0$ e utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var:func_2_derivadas_final}, a equação de Euler-Lagrange é obtida como
-%$$
-%	\frac{\partial f}{\partial y}
-%	-
-%	\frac{d}{dx}\left (
-%		\frac{\partial f}{\partial y'}
-%	\right )
-%	+
-%	\frac{d^2}{dx^2}\left (
-%		\frac{\partial f}{\partial y''}
-%	\right )
-%	=0 \text{.}
-%$$
 
 \subsection{Equação Geral}
 
