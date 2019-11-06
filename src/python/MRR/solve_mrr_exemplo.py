@@ -10,12 +10,12 @@ eq3 = integrate(12*E*I*(2*a2*x**2 + 6*a3*x**3 + 12*a4*x**4), (x, 0, l)) - integr
 
 sol = solve([eq1, eq2, eq3], [a2, a3, a4])
 print(sol)
-a1 = -a2*l - a3*l**2 - a4 * l**3
-a1 = a1.subs(a2, sol[a2])
-a1 = a1.subs(a3, sol[a3])
-a1 = a1.subs(a4, sol[a4])
-print(a1)
-v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
-print(v)
-maxdef = v.subs(x, l/2)
-print(maxdef)
+#a1 = -a2*l - a3*l**2 - a4 * l**3
+#a1 = a1.subs(a2, sol[a2])
+#a1 = a1.subs(a3, sol[a3])
+#a1 = a1.subs(a4, sol[a4])
+#print(a1)
+#v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
+#print(v)
+#maxdef = v.subs(x, l/2)
+#print(maxdef)
