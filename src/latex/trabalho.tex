@@ -154,19 +154,39 @@
 % Cria um novo estilo de formatação de código
 % para a Linguagem de programação Python
 % a ser utilizada no ambiente "lstlisting".
+%\lstdefinestyle{Python}{
+%	language={Python},
+%	basicstyle=\ttfamily\small,
+%	identifierstyle=\color{black},
+%	keywordstyle=\color{blue},
+%	commentstyle=\color{green},
+%	stringstyle=\color{red},
+%	extendedchars=true,
+%	showspaces=false,
+%	showstringspaces=false,
+%	numbers=none,
+%	breaklines=true,
+%	backgroundcolor=\color{yellow!20},
+%	breakautoindent=true,
+%	captionpos=b,
+%	xleftmargin=0pt,
+%	frame=none
+%}
+% Cria estilo de código em preto-e-branco
+% usado apenas para impressão (mais barata)
 \lstdefinestyle{Python}{
 	language={Python},
 	basicstyle=\ttfamily\small,
 	identifierstyle=\color{black},
-	keywordstyle=\color{blue},
-	commentstyle=\color{green},
-	stringstyle=\color{red},
+	keywordstyle=\color{black},
+	commentstyle=\color{black},
+	stringstyle=\color{black},
 	extendedchars=true,
 	showspaces=false,
 	showstringspaces=false,
 	numbers=none,
 	breaklines=true,
-	backgroundcolor=\color{yellow!20},
+	backgroundcolor=\color{gray!10},
 	breakautoindent=true,
 	captionpos=b,
 	xleftmargin=0pt,
