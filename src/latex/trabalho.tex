@@ -2656,7 +2656,7 @@ Observando, no terminal da Figura \ref{fig:code_solve_mrr_exec_complete}, pela o
 
 Ressaltando, novamente, que a escolha das funções de forma utilizadas na função aproximadora são de suma importância para o método de Rayleigh-Ritz. Para o uso de matemática simbólica, como nesse exemplo, deve-se tomar ainda mais cuidado com a escolha de tais funções pois, em alguns casos, a integração simbólica toma grande custo computacional. Em casos onde a integração simbólica se torna árdua, ou até mesmo impossível, o uso de algoritmos para integração numérica é necessário.
 
-\section{Resolução do Método de Rayleigh-Ritz Utilizando Funções Triangulares em Python}
+\section{Resolvendo Problemas com o Método de Rayleigh-Ritz Utilizando Funções Triangulares em Python}
 \label{sec:python_triangular}
 
 O sistema $M\cdot A=B$, construído na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação Python. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
