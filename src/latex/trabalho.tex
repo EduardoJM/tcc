@@ -911,7 +911,9 @@ A condição necessária para que uma função de uma variável real tenha um ex
 	I'(0)=0\text{.}
 \end{equation}
 
-{\color{red}Deixar explicito que $I'(\varepsilon)$ é a derivada de $I$ em relação a $\varepsilon$ enquanto que $Y'$ ou $y'$ é a derivada de $Y$ ou $y$ em relação a $x$.}
+Com o intuito de que não haja confusão com as notações, é necessário deixar claro que $I'(\varepsilon)$ é a derivada de $I$ em relação a $\varepsilon$, enquanto que $y'$, $Y'$, $\eta'$ são derivadas em relação a $x$.
+
+%{\color{red}Deixar explicito que $I'(\varepsilon)$ é a derivada de $I$ em relação a $\varepsilon$ enquanto que $Y'$ ou $y'$ é a derivada de $Y$ ou $y$ em relação a $x$.}
 
 Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de (\ref{eqn:cap_calc_var:int_funcional_approx}) pode ser escrita como
 $$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y_{\varepsilon}, Y') dx \text{,}$$
@@ -994,6 +996,70 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 \end{equation}
 
 A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
+
+\section{Condições de Contorno Naturais e Essenciais}
+\label{sec:cond_contorno}
+
+Durante o processo para a obtenção da função $y(x)$ que torna o funcional estacionário aparecem algumas condições de contorno que devem ser tratadas cuidadosamente. Por exemplo, tomando o funcional
+$$
+	I=\int_{x_1}^{x_2} f(x, y, y')dx
+	\text{,}
+$$
+tem-se, da Seção \ref{sec:eq_euler_lagrange}, que sua condição de estacionariedade é dada por
+\begin{equation}
+	\label{eqn:cap_calc_var:cond_boundary}
+	\int_{x_1}^{x_2} \left (
+		\frac{\partial f}{\partial y}
+		-
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y'}
+		\right )
+	\right ) \eta dx
+	+
+	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
+	\text{,}
+\end{equation}
+onde, como já tratado, $\eta$ representa uma variação da função exata conhecida.
+
+Admitiu-se, em \eqref{eqn:cap_calc_var:func_admitindo_eta_0}, que $\eta(x_1)=\eta(x_2)=0$, porém isso nem sempre acontece. Existem casos em que, para que a condição de estacionariedade \eqref{eqn:cap_calc_var:cond_boundary} seja válida é preciso, primeiro, que a primeira parcela de \eqref{eqn:cap_calc_var:cond_boundary} seja nula, donde se resulta a equação de Euler-Lagrange
+$$
+	\frac{\partial f}{\partial y}
+	-
+	\frac{d}{dx}\left (
+		\frac{\partial f}{\partial y'}
+	\right )
+	= 0
+	\text{,}
+$$
+e, ainda, que
+$$
+	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
+	\text{,}
+$$
+de onde, geralmente, surgem as duas igualdades
+\begin{equation}
+	\label{eqn:cap_calc_var:condicao_natural_d1}
+	\frac{\partial f}{\partial y'} \Big |_{x=x_1} = 0
+	\text{,}
+\end{equation}
+\begin{equation}
+	\label{eqn:cap_calc_var:condicao_natural_d2}
+	\frac{\partial f}{\partial y'} \Big |_{x=x_2} = 0
+	\text{.}
+\end{equation}
+
+É importante deixar claro que pode acontecer, por exemplo, de $\eta(x_1)=0$ e $\eta(x_2)\neq 0$, ou vice-versa, e, consequentemente, reduz-se uma dessas condições de contorno.
+
+Essas condições de contorno são denominadas condições de contorno naturais do problema ou, ainda, problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$ tornando o funcional estacionário.
+
+Para o caso de funcionais que dependem de derivadas de ordem superior, da forma
+$$
+	I=\int_{x_1}^{x_2} f(x, y, y', \dots, y^{(n)}) dx
+	\text{,}
+$$
+aparecem diversas condições de contorno parecidas com \eqref{eqn:cap_calc_var:condicao_natural_d1} e \eqref{eqn:cap_calc_var:condicao_natural_d2}. Um destes exemplos aparece em \eqref{eqn:cap_calc_var:cond_with_naturalbound}.
+
+Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
 
 \section{Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior}
 \label{sec:eq_euler_lagrange_superior}
@@ -1297,7 +1363,7 @@ de onde, reorganizando os termos e colocando $\eta$ em evidência, e, finalmente
 	\text{.}
 \end{equation}
 
-A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}$ é uma das chamadas Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais serão tratadas no Apêndice \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
+A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}$, é uma das chamadas Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais são tratadas na Seção \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
 \begin{equation}
 	\label{eqn:cap_calc_var:func_2_derivadas_final}
 	I'(0)=
@@ -1331,7 +1397,7 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var
 	=0 \text{.}
 \end{equation}
 
-É importante ressaltar, novamente, que a equação de Euler-Lagrange \eqref{eqn:cap_calc_var:eq_euler_lagrange_twodiff} obtida é uma condição necessária, porém não é condição suficiente para a estacionáriedade do funcional.
+É importante ressaltar, novamente, que a equação de Euler-Lagrange \eqref{eqn:cap_calc_var:eq_euler_lagrange_twodiff} obtida é uma condição necessária, porém não é condição suficiente para a estacionariedade do funcional.
 
 \subsection{Equação Geral}
 
@@ -1357,7 +1423,7 @@ $$
 	= 0
 	\text{,}
 $$
-onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$ representa $\dfrac{\partial f}{\partial y}$.
+onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$, representa $\dfrac{\partial f}{\partial y}$.
 
 %{\color{red}Durante o processo para a obtenção da equação de Euler-Lagrange, (...)}
 
@@ -1370,10 +1436,167 @@ onde a primeira parcela $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y
 
 %Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
 
+\section{Exemplos}
+
+\begin{exemplo}
+	\label{ex:cond_contorno}
+	Considere o funcional
+	\begin{equation}
+		\label{eqn:cap_calc_var:funcional_pi}
+		I = \frac{1}{2}	\int_{0}^{l}
+			EI \left (
+				\frac{d^2v}{dx^2}
+			\right )^2 dx
+			-
+			\int_{0}^{l} qv dx
+			\text{,}
+	\end{equation}
+	encontre $v(x)$ de modo que $I$ seja estacionário.
+\end{exemplo}
+\begin{solution}
+	Variando $v$ por $\overline{v}_{\varepsilon}=v+\varepsilon \eta$ em \eqref{eqn:cap_calc_var:funcional_pi}, tem-se
+	$$
+		I(\varepsilon) = \frac{1}{2} \int_{0}^{l}
+			EI \left (
+				\frac{d^2\overline{v}}{dx^2}
+			\right )^2 dx
+			-
+			\int_{0}^{l} q\overline{v} dx
+			\text{,}
+	$$
+	de onde, derivando $I(\varepsilon)$ em relação a $\varepsilon$, resulta em
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_conditions_deduce}
+		\frac{dI}{d\varepsilon} = 
+			\int_{0}^{l} EI \left (
+				\frac{d^2\overline{v}}{dx^2}
+			\right ) \cdot 
+			\frac{d}{d\varepsilon}\left (
+				\frac{d^2\overline{v}}{dx^2}
+			\right ) dx
+			-
+			\int_{0}^{l} q\frac{d\overline{v}}{d\varepsilon} dx
+			\text{.}
+	\end{equation}
+	
+	Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $I'(0)$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
+	$$
+		I'(0) = 
+			\int_{0}^{l} EI \left (
+				\frac{d^2v}{dx^2}
+			\right ) \left (
+				\frac{d^2\eta}{dx^2}
+			\right ) dx
+			-
+			\int_{0}^{l}q\eta dx
+		\text{,}
+	$$
+	onde a primeira parcela deve ser integrada, por partes, duas vezes, resultando em
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_conditions_I0}
+		I'(0) = 
+			\int_{0}^{l} \left (
+				EI\frac{d^4 v}{dx^4}-q 
+			\right ) \eta dx
+			+
+			EI\frac{d^2 v}{dx^2} \eta' \Big |_{0}^{l}
+			-
+			EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
+			\text{.}
+	\end{equation}
+	
+	Aplicando a condição de estacionariedade, $I'(0)=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_conditions_I0_eq_0}
+		I'(0) = 
+			\int_{0}^{l} \left (
+				EI\frac{d^4 v}{dx^4}-q 
+			\right ) \eta dx
+			+
+			EI\frac{d^2 v}{dx^2} \eta ' \Big |_{0}^{l}
+			-
+			EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
+			= 0
+			\text{.}
+	\end{equation}
+
+	É preciso, então, que os termos de \eqref{eqn:cap_calc_var:natural_conditions_I0_eq_0} se anulem. A primeira parcela de \eqref{eqn:cap_calc_var:natural_conditions_I0_eq_0} resulta na equação de Euler-Lagrange
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_eq_euler_lagr}
+		EI\frac{d^4v}{dx^4} - q = 0
+		\text{,}
+	\end{equation}
+	enquanto que as duas outras parcelas são as condições de contorno naturais do problema
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_cond1}
+		\frac{d^2 v}{dx^2}\Big |_{0}^{l} = 0
+		\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_cond2}
+		\frac{d^3 v}{dx^3}\Big |_{0}^{l} = 0
+		\text{.}
+	\end{equation}
+
+	A equação de Euler-Lagrange \eqref{eqn:cap_calc_var:natural_eq_euler_lagr} pode ser facilmente resolvida, isolando $\dfrac{d^4 v}{dx^4}$ e integrando ambos os lados da equação quatro vezes seguidas. Ao final desse processo, a função $v$ encontrada será
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_funcao_v}
+		v(x)=\frac{q}{24EI}x^4 + \frac{C_1}{6}x^3 + \frac{C_2}{2}x^2 + C_3x + C_4
+		\text{,}
+	\end{equation}
+	onde os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ podem ser determinados através do uso das condições de contorno naturais e essenciais.
+
+	Da condição de contorno essencial, $v(0)=0$, resulta que o coeficiente $C_4=0$. Aplicando, então as condições de contorno naturais \eqref{eqn:cap_calc_var:natural_cond1}, tem-se
+	$$
+		\left (
+			\frac{q}{2EI}x^2 + C_1x + C_2
+		\right ) \Big |_{x=0}
+		= 0
+		\text{,}
+	$$
+	resultando no valor do coeficiente $C_2=0$. Utilizando o outro extremo de \eqref{eqn:cap_calc_var:natural_cond1}, tem-se
+	$$
+		\left (
+			\frac{q}{2EI}x^2 + C_1x + C_2
+		\right ) \Big |_{x=l}
+		=0
+		\text{,}
+	$$
+	onde
+	$$
+		\frac{ql^2}{2EI}+C_1l=0
+		\text{,}
+	$$
+	resultando em $C_1=-\dfrac{ql}{2EI}$.
+
+	Para o último coeficiente, $C_3$, será utilizado a outra condição de contorno essencial, $v(l)=0$,
+	$$
+		\frac{q}{24EI}l^4
+		-
+		\frac{ql^4}{12EI}
+		+
+		C_3l
+		= 0
+		\text{,}
+	$$
+	tendo, assim, como resultado, $C_3=\dfrac{ql^3}{24EI}$.
+
+	Substituindo, então, os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ determinados na função $v(x)$, encontrada em \eqref{eqn:cap_calc_var:natural_funcao_v},
+	$$
+	v(x) = 
+		\frac{q}{24EI} x^4
+		-
+		\frac{ql}{12EI} x^3
+		+
+		\frac{ql^3}{24EI} x
+		\text{.}
+	$$
+\end{solution}
+
 \chapter{Método de Rayleigh-Ritz}
 \label{cap:mrr}
 
-Um dos objetivos do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é encontrando a Equação de Euler-Lagrange associada ao problema e, então, resolvê-la. 
+Um dos objetivos do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é encontrando a Equação de Euler-Lagrange, ver Seção \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior} do Capítulo \ref{cap:calc_var}, associada ao problema e, então, resolvê-la. 
 
 A resolução de equações diferenciais e a determinação da solução exata por meio das condições de contorno do problema é, entretanto,  uma tarefa trabalhosa e, em muitos casos, até não factível. Para se esquivar de problemas como esses, surgem alguns métodos, dentre os quais está o Método de Rayleigh-Ritz.
 
@@ -1391,7 +1614,7 @@ $$
 	v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{,}
 $$
-onde as funções $\phi_i(x)$ são chamadas de funções de forma e devem ser linearmente independente. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$ e suas derivadas contínuas até a ordem $m-1$, onde $m$ é a ordem da maior derivada do funcional. Os coeficientes $a_i$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
+onde as funções $\phi_i(x)$ são chamadas de funções de forma e devem ser linearmente independente. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$, onde $m$ é a ordem da maior derivada do funcional. Os coeficientes $a_i \in \mathbb{R}$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
 
 Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$, isto é, $I=I(a_1, a_2, \dots, a_n)$. A condição de máximo ou mínimo para o funcional $I$ é, então, que as suas derivadas parciais em relação a $a_1$, $a_2$, $\dots$, $a_n$ se anulem, então
 $$
@@ -1525,7 +1748,7 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	$$
 	
-	Da condição de estacionáriedade tem-se, que $\dfrac{\partial \Pi}{\partial a_2} = 0$ e, consequentemente
+	Da condição de estacionariedade tem-se, que $\dfrac{\partial \Pi}{\partial a_2} = 0$ e, consequentemente
 	$$
 		\frac{\partial \Pi}{\partial a_2}
 		=
@@ -2127,7 +2350,7 @@ $$
 	\text{.}
 $$
 
-Da condição de estacionáriedade, é preciso que $\dfrac{\partial\Pi}{\partial a_2}=0$, $\dfrac{\partial\Pi}{\partial a_3}=0$ e $\dfrac{\partial \Pi}{\partial a_4}=0$. De \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a2}, \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a3} e \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a4}, essas derivadas são:
+Da condição de estacionariedade, é preciso que $\dfrac{\partial\Pi}{\partial a_2}=0$, $\dfrac{\partial\Pi}{\partial a_3}=0$ e $\dfrac{\partial \Pi}{\partial a_4}=0$. De \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a2}, \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a3} e \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a4}, essas derivadas são:
 \begin{equation}
 	\label{eqn:cap_mrr_python:do_ex1_partial_pi_a2}
 	\frac{\partial \Pi}{\partial a_2}
@@ -2607,7 +2830,7 @@ Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_t
 
 Nesse trabalho, o Cálculo Variacional e o Método de Rayleigh-Ritz foram trabalhados de forma introdutória, inclusive, desenvolvendo as demonstrações e cálculos, de modo que todo aluno com conhecimentos de cálculo em várias variáveis possa compreender as ideias trabalhadas. No decorrer dos estudos sobre tais temas foi observado a importância e a necessidade de materiais introdutórios sobre ambos os temas.
 
-Para o Cálculo Variacional, o enfoque foi dado nas equações de Euler-Lagrange, condição necessária para a estacionáriedade de um funcional, de funcionais que dependem de uma váriavel, uma função e de suas derivadas até uma ordem $n$ qualquer. Esse enfoque dado se deve, primeiramente, ao enfoque introdutório do trabalho e, em segundo lugar, a aplicações simples do Cálculo Variacional a problemas de engenharia por meio desse tipo de funcional, objetivando o uso do Método de Rayleigh-Ritz.
+Para o Cálculo Variacional, o enfoque foi dado nas equações de Euler-Lagrange, condição necessária para a estacionariedade de um funcional, de funcionais que dependem de uma váriavel, uma função e de suas derivadas até uma ordem $n$ qualquer. Esse enfoque dado se deve, primeiramente, ao enfoque introdutório do trabalho e, em segundo lugar, a aplicações simples do Cálculo Variacional a problemas de engenharia por meio desse tipo de funcional, objetivando o uso do Método de Rayleigh-Ritz.
 
 Já no Método de Rayleigh-Ritz o foco foi dividido entre uma introdução ao tema, desenvolvendo todos os cálculos referentes ao exemplo, e o uso da Linguagem de Programação Python para agilizar o processo de minimização dos funcionais. O destaque dessa parte se encontra no uso da Linguagem de Programação Python e suas bibliotecas para a resolução, de forma simples, dos problemas propostos.
 
@@ -2777,224 +3000,6 @@ Já no Método de Rayleigh-Ritz o foco foi dividido entre uma introdução ao te
 	\end{definicao}
 	
 	A Definição \ref{def:cap_conceitos_analise:classe_ck} é equivalente a dizer que uma função $f:U\longrightarrow\mathbb{R}$, onde $U\subset\mathbb{R}^n$, é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas. Completando, $f$ será de classe $C^0$ caso seja contínua.
-}
-
-\chapter{Condições de Contorno Naturais e Essenciais}
-\label{sec:cond_contorno}
-{
-	Durante o processo para a obtenção da função $y(x)$ que torna o funcional estacionário aparecem algumas condições de contorno que devem ser tratadas cuidadosamente. Por exemplo, tomando o funcional
-	$$
-		I=\int_{x_1}^{x_2} f(x, y, y')dx
-		\text{,}
-	$$
-	tem-se, da Seção \ref{sec:eq_euler_lagrange}, que sua condição de estacionáriedade é dada por
-	\begin{equation}
-		\label{eqn:cap_calc_var:cond_boundary}
-		\int_{x_1}^{x_2} \left (
-			\frac{\partial f}{\partial y}
-			-
-			\frac{d}{dx} \left (
-				\frac{\partial f}{\partial y'}
-			\right )
-		\right ) \eta dx
-		+
-		\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
-		\text{,}
-	\end{equation}
-	onde, como já tratado, $\eta$ representa uma variação da função exata conhecida.
-	
-	Admitimos, em \eqref{eqn:cap_calc_var:func_admitindo_eta_0}, que $\eta(x_1)=\eta(x_2)=0$, porém isso nem sempre acontece. Existem casos em que, para que a condição de estacionáriedade \eqref{eqn:cap_calc_var:cond_boundary} seja válida é preciso, primeiro, que a primeira parcela de \eqref{eqn:cap_calc_var:cond_boundary} seja nula, donde se resulta a equação de Euler-Lagrange
-	$$
-		\frac{\partial f}{\partial y}
-		-
-		\frac{d}{dx}\left (
-			\frac{\partial f}{\partial y'}
-		\right )
-		= 0
-		\text{,}
-	$$
-	e, ainda, que
-	$$
-		\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
-		\text{,}
-	$$
-	de onde, geralmente, surgem as duas igualdades
-	\begin{equation}
-		\label{eqn:cap_calc_var:condicao_natural_d1}
-		\frac{\partial f}{\partial y'} \Big |_{x=x_1} = 0
-		\text{,}
-	\end{equation}
-	\begin{equation}
-		\label{eqn:cap_calc_var:condicao_natural_d2}
-		\frac{\partial f}{\partial y'} \Big |_{x=x_2} = 0
-		\text{.}
-	\end{equation}
-	
-	É importante deixar claro que pode acontecer, por exemplo, de $\eta(x_1)=0$ e $\eta(x_2)\neq 0$, ou vice-versa, e, consequentemente, reduz-se uma dessas condições de contorno.
-	
-	Essas condições de contorno são denominadas condições de contorno naturais do problema ou, ainda, problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$ tornando o funcional estacionário.
-	
-	Para o caso de funcionais que dependem de derivadas de ordem superior, da forma
-	$$
-		I=\int_{x_1}^{x_2} f(x, y, y', \dots, y^{(n)}) dx
-		\text{,}
-	$$
-	aparecem diversas condições de contorno parecidas com \eqref{eqn:cap_calc_var:condicao_natural_d1} e \eqref{eqn:cap_calc_var:condicao_natural_d2}. Um destes exemplos aparece em \eqref{eqn:cap_calc_var:cond_with_naturalbound}.
-	
-	Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
-	
-	\begin{exemplo}
-		\label{ex:cond_contorno}
-		Considere o funcional
-		\begin{equation}
-			\label{eqn:cap_calc_var:funcional_pi}
-			I = \frac{1}{2}	\int_{0}^{l}
-				EI \left (
-					\frac{d^2v}{dx^2}
-				\right )^2 dx
-				-
-				\int_{0}^{l} qv dx
-				\text{.}
-		\end{equation}
-		
-		Variando $v$ por $\overline{v}_{\varepsilon}=v+\varepsilon \eta$ em \eqref{eqn:cap_calc_var:funcional_pi}, tem-se
-		$$
-			I(\varepsilon) = \frac{1}{2} \int_{0}^{l}
-				EI \left (
-					\frac{d^2\overline{v}}{dx^2}
-				\right )^2 dx
-				-
-				\int_{0}^{l} q\overline{v} dx
-				\text{,}
-		$$
-		de onde, derivando $I(\varepsilon)$ em relação a $\varepsilon$, resulta em
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_conditions_deduce}
-			\frac{dI}{d\varepsilon} = 
-				\int_{0}^{l} EI \left (
-					\frac{d^2\overline{v}}{dx^2}
-				\right ) \cdot 
-				\frac{d}{d\varepsilon}\left (
-					\frac{d^2\overline{v}}{dx^2}
-				\right ) dx
-				-
-				\int_{0}^{l} q\frac{d\overline{v}}{d\varepsilon} dx
-				\text{.}
-		\end{equation}
-		
-		Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $I'(0)$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
-		$$
-			I'(0) = 
-				\int_{0}^{l} EI \left (
-					\frac{d^2v}{dx^2}
-				\right ) \left (
-					\frac{d^2\eta}{dx^2}
-				\right ) dx
-				-
-				\int_{0}^{l}q\eta dx
-			\text{,}
-		$$
-		onde a primeira parcela deve ser integrada, por partes, duas vezes, resultando em
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_conditions_I0}
-			I'(0) = 
-				\int_{0}^{l} \left (
-					EI\frac{d^4 v}{dx^4}-q 
-				\right ) \eta dx
-				+
-				EI\frac{d^2 v}{dx^2} \eta' \Big |_{0}^{l}
-				-
-				EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
-				\text{.}
-		\end{equation}
-		
-		Aplicando a condição de estacionáriedade, $I'(0)=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_conditions_I0_eq_0}
-			I'(0) = 
-				\int_{0}^{l} \left (
-					EI\frac{d^4 v}{dx^4}-q 
-				\right ) \eta dx
-				+
-				EI\frac{d^2 v}{dx^2} \eta ' \Big |_{0}^{l}
-				-
-				EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
-				= 0
-				\text{.}
-		\end{equation}
-	
-		É preciso, então, que os termos de \eqref{eqn:cap_calc_var:natural_conditions_I0_eq_0} se anulem. A primeira parcela de \eqref{eqn:cap_calc_var:natural_conditions_I0_eq_0} resulta na equação de Euler-Lagrange
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_eq_euler_lagr}
-			EI\frac{d^4v}{dx^4} - q = 0
-			\text{,}
-		\end{equation}
-		enquanto que as duas outras parcelas são as condições de contorno naturais do problema
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_cond1}
-			\frac{d^2 v}{dx^2}\Big |_{0}^{l} = 0
-			\text{,}
-		\end{equation}
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_cond2}
-			\frac{d^3 v}{dx^3}\Big |_{0}^{l} = 0
-			\text{.}
-		\end{equation}
-	
-		A equação de Euler-Lagrange \eqref{eqn:cap_calc_var:natural_eq_euler_lagr} pode ser facilmente resolvida, isolando $\dfrac{d^4 v}{dx^4}$ e integrando ambos os lados da equação quatro vezes seguidas. Ao final desse processo, a função $v$ encontrada será
-		\begin{equation}
-			\label{eqn:cap_calc_var:natural_funcao_v}
-			v(x)=\frac{q}{24EI}x^4 + \frac{C_1}{6}x^3 + \frac{C_2}{2}x^2 + C_3x + C_4
-			\text{,}
-		\end{equation}
-		onde os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ podem ser determinados através do uso das condições de contorno naturais e essenciais.
-	
-		Da condição de contorno essencial, $v(0)=0$, resulta que o coeficiente $C_4=0$. Aplicando, então as condições de contorno naturais \eqref{eqn:cap_calc_var:natural_cond1}, tem-se
-		$$
-			\left (
-				\frac{q}{2EI}x^2 + C_1x + C_2
-			\right ) \Big |_{x=0}
-			= 0
-			\text{,}
-		$$
-		resultando no valor do coeficiente $C_2=0$. Utilizando o outro extremo de \eqref{eqn:cap_calc_var:natural_cond1}, tem-se
-		$$
-			\left (
-				\frac{q}{2EI}x^2 + C_1x + C_2
-			\right ) \Big |_{x=l}
-			=0
-			\text{,}
-		$$
-		onde
-		$$
-			\frac{ql^2}{2EI}+C_1l=0
-			\text{,}
-		$$
-		resultando em $C_1=-\dfrac{ql}{2EI}$.
-	
-		Para o último coeficiente, $C_3$, será utilizado a outra condição de contorno essencial, $v(l)=0$,
-		$$
-			\frac{q}{24EI}l^4
-			-
-			\frac{ql^4}{12EI}
-			+
-			C_3l
-			= 0
-			\text{,}
-		$$
-		tendo, assim, como resultado, $C_3=\dfrac{ql^3}{24EI}$.
-	
-		Substituindo, então, os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ determinados na função $v(x)$, encontrada em \eqref{eqn:cap_calc_var:natural_funcao_v},
-		$$
-		v(x) = 
-			\frac{q}{24EI} x^4
-			-
-			\frac{ql}{12EI} x^3
-			+
-			\frac{ql^3}{24EI} x
-			\text{.}
-		$$
-	\end{exemplo}
 }
 
 \chapter{Resolução de Sistemas Lineares Utilizando a Linguagem Python}
