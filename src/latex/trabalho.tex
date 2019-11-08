@@ -106,6 +106,18 @@
 	\popQED\endtrivlist\@endpefalse
 }
 \makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cria o ambiente para solução de exemplos.
+% \begin{solution} [...] \end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newenvironment{solution}{
+	\begin{proof}[Solução]
+}{%
+	\end{proof}
+}
+\makeatother
+
 
 % Reseta o numerador do ambiente Lema ao fim de todo
 % capítulo. Assim, os Lemas serão indexados por capítulo
@@ -127,7 +139,6 @@
 % Pacote para a inclusão de códigos e para gerar
 % "Syntax Highlight" (Coloração do Código)
 \usepackage{listings}
-
 
 % Define o nome de marcação para os Blocos de Código
 \renewcommand{\lstlistingname}{Código}
@@ -194,6 +205,29 @@
 }
 
 \usepackage{subcaption}
+
+\makeatletter
+\renewcommand{\ABNTEXcaptionfontedelim}{,}
+\renewcommand{\fonte}[2][\fontename]{%
+	\M@gettitle{#2}%
+	\memlegendinfo{#2}%
+	\par
+	\begingroup
+		\@parboxrestore
+		\if@minipage
+			\@setminipage
+		\fi
+		\small
+     	\configureseparator
+		\@makecaption{\small #1}{\ignorespaces\small #2}\par
+	\endgroup
+}
+\makeatother
+
+\newcommand{\codigofonte}{
+	\vspace{-0.4cm}
+	\fonte{Elaborado pelo autor, 2019.}
+}
 
 % ---
 % Pacotes de citações
@@ -1434,7 +1468,7 @@ com $i=1, 2, 3, \dots, n$.
 		\legend{\ABNTEXfontereduzida Fonte: \citeonline[{\color{red}p. 5}]{mefassan}.}
 		%\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 	\end{figure}
-	
+		
 	A viga prismática da Figura \ref{fig:test_02} possui o funcional de energia potencial total associado
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:exemplo_func_pi}
@@ -1446,7 +1480,11 @@ com $i=1, 2, 3, \dots, n$.
 		\int_0^l qvdx
 		\text{,}
 	\end{equation}
-	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. É possível encontrar uma função $v(x)$ que aproxime a função exata $y(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras $v(x)$:
+	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. 
+\end{exemplo}
+
+\begin{solution}
+	É possível encontrar uma função $v(x)$ que aproxime a função exata $y(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras $v(x)$:
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz_funcdef_v1}
 		v_1 (x) = a_0 + a_1 x + a_2 x^2
@@ -2038,7 +2076,7 @@ com $i=1, 2, 3, \dots, n$.
 	%O resultado encontrado, $v_3(x)$, é a função exata que torna o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário.
 	
 	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
-\end{exemplo}
+\end{solution}
 
 A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, falicitando, desta forma, a escolha das funções de forma.
 
@@ -2143,6 +2181,7 @@ eq3 = integrate(12*E*I*(2*a2*x**2 + 6*a3*x**3 + 12*a4*x**4), (x, 0, l)) - integr
 sol = solve([eq1, eq2, eq3], [a2, a3, a4])
 print(sol)
 \end{lstlisting}
+\codigofonte
 
 O Código \ref{py_code_solve_mrr_ex_livro} é executado rapidamente e o resultado é mostrado na Figura \ref{fig:code_solve_mrr_exemplo_livro}, com $a_2=0$, $a_3=-\dfrac{ql}{12EI}$ e $a_4=\dfrac{q}{24EI}$. Esses resultados são exatamente os mesmos apresentados no Exemplo \ref{ex:mrr_ex_livro}.
 
@@ -2163,6 +2202,7 @@ a1 = a1.subs(a3, sol[a3])
 a1 = a1.subs(a4, sol[a4])
 print(a1)
 \end{lstlisting}
+\codigofonte
 
 É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. De acordo com \citeonline{mefassan}, o valor $v_3(\frac{l}{2})$ é conhecido como o valor de máxima deflexão.
 
@@ -2172,6 +2212,7 @@ print(v)
 maxdef = v.subs(x, l/2)
 print(maxdef)
 \end{lstlisting}
+\codigofonte
 
 É importante observar, no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, que ao construir a variável \textit{v} para representar a função, no primeiro coeficiente foi utilizado a variável \textit{a1}, enquanto que nas demais, foi utilizado \textit{sol[a2]}, \textit{sol[a3]} e \textit{sol[a4]}. Isso se deve ao fato de que os valores para os coeficientes $a_2$, $a_3$ e $a_4$ foram encontrados pela resolução do sistema, sendo a variável \textit{sol} a sua solução. Já, \textit{a1} foi definida como sendo a equação do termo $a_1$ isolado em função de $a_2$, $a_3$ e $a_4$.
 
@@ -2410,6 +2451,7 @@ from sympy.matrices import zeros
 from sympy.solvers import linsolve
 import matplotlib.pyplot as pyplot
 \end{lstlisting}
+\codigofonte
 
 Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado. A variável \textit{n} representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.
 
@@ -2418,6 +2460,7 @@ n = 5
 space = 1/(n + 1)
 intervals = numpy.arange(0, 1.0001, space)
 \end{lstlisting}
+\codigofonte
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=10, caption={Função de forma $\phi$ e sua derivada}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
 def fi(i, x):
@@ -2440,6 +2483,7 @@ def fi_diff(i, x):
     else:
         return 0
 \end{lstlisting}
+\codigofonte
 
 Numericamente, as funções $\phi_i(x)$ e $\phi_i'(x)$ foram programadas utilizando condicionais, em Código \ref{py_code_solve_mrr_tri_form_func}.
 
@@ -2459,6 +2503,7 @@ def integrate(func, start, end, *args):
             value += (2 * dh)
     return (value * (h / 2))
 \end{lstlisting}
+\codigofonte
 
 Para a integração numérica por meio do algoritmo implementado em Código \ref{py_code_solve_mrr_tri_integrate} é preciso definir funções com os integrandos de \eqref{eqn:cap_metodo_ray_ritz:tri_func_mji} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_bj}. Essas funções são chamadas, no código, de \textit{m\underline{\hspace{.1in}}intern} e \textit{b\underline{\hspace{0.1in}}intern}, respectivamente. Na implementação do Código \ref{py_code_solve_mrr_tri_m_b}, os métodos \textit{m(i, j)} e \textit{b(i)} calculam os elementos das matrizes $M$ e $B$, respectivamente. Nesses métodos, é somado 1 aos índices $i$ e $j$ pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma $\phi_i(x)$, elas são indexadas a partir de 1.
 
@@ -2487,8 +2532,10 @@ def b(i):
     i = i + 1
     return integrate(b_intern, 0, 1, i)
 \end{lstlisting}
+\codigofonte
 
 O próximo passo, consiste em criar a matriz aumentada do sistema, os símbolos que representam as incógnitas e, então, resolvê-lo. Isso é feito no Código \ref{py_code_solve_mrr_tri_solvesys}.
+
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=64, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
 M = zeros(n, n+1)
@@ -2502,6 +2549,7 @@ for i in range(0, n):
 coeficients = symbols('a_0:{}'.format(n))
 solution, = linsolve(M, coeficients)
 \end{lstlisting}
+\codigofonte
 
 A função $y(x)$ conhecida, exata, que torna o funcional de \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_approx} estacionário é $y(x)=(x-1)(e^{-x}-1)$. Assim, utilizando a solução do Código \ref{py_code_solve_mrr_tri_solvesys} e a função exata $y(x)$, é possível criar funções, numéricas, representando a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código \ref{py_code_solve_mrr_tri_plot}.
 
@@ -2528,6 +2576,7 @@ axes.plot(plot_interval, plot_original, color='tab:orange')
 axes.set_title('Rayleigh-Ritz With n=' + str(n))
 pyplot.show()
 \end{lstlisting}
+\codigofonte
 
 Os Códigos \ref{py_code_solve_mrr_tri_import}, \ref{py_code_solve_mrr_tri_interval}, \ref{py_code_solve_mrr_tri_form_func}, \ref{py_code_solve_mrr_tri_integrate}, \ref{py_code_solve_mrr_tri_m_b}, \ref{py_code_solve_mrr_tri_solvesys} e \ref{py_code_solve_mrr_tri_plot} são sequênciais e devem ser executados dentro de um único arquivo, por isso suas numerações estão sequênciais. O resultado da execução do código para a resolução do sistema é mostrado na Figura \ref{fig:code_plot_mrr_triangulate}. Para maior precisão do método, pode-se aumentar o valor da variável \textit{n} do Código \ref{py_code_solve_mrr_tri_interval}, por exemplo, para 10. O gráfico plotado para $n=10$ é apresentado na Figura \ref{fig:code_plot_mrr_triangulate_n10}.
 
@@ -3062,6 +3111,7 @@ sol, = linsolve(A, [a2, a3, a4])
 
 print(sol)
 	\end{lstlisting}
+	\codigofonte
 }
 
 \end{apendicesenv}
