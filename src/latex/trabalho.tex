@@ -1438,6 +1438,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 %Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
 
 \section{Exemplos}
+\label{sec:calcvar_exemplos}
 
 \begin{exemplo}
 	\label{ex:cond_contorno}
@@ -1583,7 +1584,8 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	tendo, assim, como resultado, $C_3=\dfrac{ql^3}{24EI}$.
 
 	Substituindo, então, os coeficientes $C_1$, $C_2$, $C_3$ e $C_4$ determinados na função $v(x)$, encontrada em \eqref{eqn:cap_calc_var:natural_funcao_v},
-	$$
+	\begin{equation}
+	\label{eqn:sol_funcional_analitico}
 	v(x) = 
 		\frac{q}{24EI} x^4
 		-
@@ -1591,7 +1593,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 		+
 		\frac{ql^3}{24EI} x
 		\text{.}
-	$$
+	\end{equation}
 \end{solution}
 
 \chapter{Método de Rayleigh-Ritz}
@@ -1689,7 +1691,7 @@ com $i=1, 2, 3, \dots, n$.
 			\node at (2.5,-2) {$l$};
 		\end{tikzpicture}
 		\label{fig:test_02}	
-		\legend{\ABNTEXfontereduzida Fonte: \citeonline[{\color{red}p. 5}]{mefassan}.}
+		\legend{\ABNTEXfontereduzida Fonte: \citeonline[p. 25]{mefassan}.}
 		%\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 	\end{figure}
 		
@@ -1725,13 +1727,12 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	\citeonline{mefassan} cita que o ponto $y(\frac{l}{2})$ é o valor de máxima deflexão da Viga da Figura \ref{fig:test_02}. Esse valor, encontrado analiticamente, é
+	Para parâmetro de comparação com os resultados apresentados pelas funções $v_1(x)$, $v_2(x)$ e $v_3(x)$ definidas em \eqref{eqn:cap_metodo_ray_ritz_funcdef_v1}, \eqref{eqn:cap_metodo_ray_ritz_funcdef_v2} e \eqref{eqn:cap_metodo_ray_ritz_funcdef_v3}, será utilizado o valor de máxima deflexão da Viga da Figura \ref{fig:test_02}. Esse valor foi determinado no Apêndice \ref{apend:max_deflex}, em \eqref{eqn:max_deflex_resultado}, como
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}
 		y(\frac{l}{2})=\frac{5ql^4}{384EI}
 		\text{,}
 	\end{equation}
-	e será utilizado como parâmetro de comparação para os resultados com as funções $v_1(x)$, $v_2(x)$ e $v_3(x)$ definidas em \eqref{eqn:cap_metodo_ray_ritz_funcdef_v1}, \eqref{eqn:cap_metodo_ray_ritz_funcdef_v2} e \eqref{eqn:cap_metodo_ray_ritz_funcdef_v3}.
 	
 	Como primeira aproximação, pode-se utilizar a função $v_1(x)=a_0+a_1x+a_2x^2$, de onde, considerando as condições de contorno essenciais, tem-se que $v_1(0)=0$, levando a $a_0=0$, e de $v_1(l)=0$, concluindo que $a_1=-a_2l$. Assim, a função é escrita como
 	$$
@@ -1816,7 +1817,7 @@ com $i=1, 2, 3, \dots, n$.
 	Calculando $v(\frac{l}{2})$ a título de comparação com o valor exato de máxima deflexão da viga, dado por \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato},
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:ex1_max_deflex_apv1}
-		v_3(\frac{l}{2}) = \frac{ql^4}{96EI}
+		v_1(\frac{l}{2}) = \frac{ql^4}{96EI}
 		\text{.}
 	\end{equation}
 	
@@ -2032,7 +2033,7 @@ com $i=1, 2, 3, \dots, n$.
 	$$
 	de onde pode-se derivar $\Pi$ em relação a $a_2$, $a_3$ e $a_4$ para obter um sistema de equações permitindo a determinação de $a_2$, $a_3$ e $a_4$.
 	
-	Fazendo $\frac{\partial \Pi}{\partial a_2} = 0$:
+	Fazendo $\dfrac{\partial \Pi}{\partial a_2} = 0$:
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a2}
 		\frac{\partial \Pi}{\partial a_2}
@@ -2084,7 +2085,7 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 		
-	Fazendo $\frac{\partial \Pi}{\partial a_3} = 0$, tem-se
+	Fazendo $\dfrac{\partial \Pi}{\partial a_3} = 0$, tem-se
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a3}
 		\frac{\partial \Pi}{\partial a_3}
@@ -2151,7 +2152,7 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	Por último, fazendo $\frac{\partial \Pi}{\partial a_4}=0$, tem-se
+	Por último, fazendo $\dfrac{\partial \Pi}{\partial a_4}=0$, tem-se
 	
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a4}
@@ -3039,6 +3040,85 @@ Já no Método de Rayleigh-Ritz o foco foi dividido entre uma introdução ao te
 	\end{definicao}
 	
 	A Definição \ref{def:cap_conceitos_analise:classe_ck} é equivalente a dizer que uma função $f:U\longrightarrow\mathbb{R}$, onde $U\subset\mathbb{R}^n$, é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas. Completando, $f$ será de classe $C^0$ caso seja contínua.
+}
+
+\chapter{Encontrando a Máxima Deflexão da Viga Estudada}
+\label{apend:max_deflex}
+{
+	Durante o estudo do Método de Rayleigh-Ritz no Exemplo \ref{ex:mrr_ex_livro}, no Capítulo \ref{cap:mrr}, faz-se necessário ter valores para comparação. Com esse objetivo, pode-se determinar a máxima deflexão da viga a partir da solução analítica $v(x)$ do problema, determinada no Exemplo \ref{ex:cond_contorno} da Seção \ref{sec:calcvar_exemplos} do Capítulo \ref{cap:calc_var}, a partir de \eqref{eqn:sol_funcional_analitico},
+	\begin{equation}
+	\label{eqn:max_deflex_func}
+	v(x) = 
+		\frac{q}{24EI} x^4
+		-
+		\frac{ql}{12EI} x^3
+		+
+		\frac{ql^3}{24EI} x
+		\text{.}
+	\end{equation}
+	
+	Derivando \eqref{eqn:max_deflex_func}, tem-se
+	\begin{equation}
+	\label{eqn:max_deflex_func_diff}
+	v'(x) =
+		\frac{4q}{24EI}x^3
+		-
+		\frac{3ql}{12EI}x^2
+		+
+		\frac{ql^3}{24EI}
+		\text{.}
+	\end{equation}
+	
+	Fazendo $v'(x)=0$ é possível determinar os pontos de máximo e mínimo da função, donde
+	$$
+		\frac{4q}{24EI}x^3
+		-
+		\frac{6ql}{24EI}x^2
+		+
+		\frac{ql^3}{24EI}
+		= 0
+	$$
+	\begin{equation}
+		\label{eqn:max_deflex_equation}
+		4x^3 - 6lx^2 + l^3 = 0
+		\text{.}
+	\end{equation}
+	
+	A equação \eqref{eqn:max_deflex_equation} tem como uma de suas soluções o valor $x_1=\dfrac{l}{2}$, pois
+	$$
+		4\left (\frac{l}{2}\right )^3 - 6l\left ( \frac{l}{2}\right )^2+l^3=0
+		\text{,}
+	$$
+	de onde, realizando uma divisão do polinômio de \eqref{eqn:max_deflex_equation} por $x-\dfrac{l}{2}$ é possível determinar os outros extremos. Deste modo,
+	$$
+		4x^3-6lx^2+l^3 = (x-\frac{l}{2})(4x^2-4lx-2l^2)=0
+		\text{,}
+	$$
+	e, portanto, para a determinação dos outros extremos deve-se resolver a equação de segundo grau $4x^2-4lx-2l^2=0$, que resulta em $x_2=\dfrac{(1+\sqrt{3})}{2}l$ e $x_3=\dfrac{(1-\sqrt{3})}{2}l$.
+	
+	Fazendo o estudo de sinais de $v'(x)$ resulta que $x_1=\dfrac{l}{2}$ é ponto de máximo, enquanto que os demais são pontos de mínimo, logo, a máxima deflexão da viga acontece quando $x=\dfrac{l}{2}$.
+	
+	Calculando o valor da máxima deflexão,
+	$$
+		v\left (\frac{l}{2}\right )=
+			\frac{q}{24EI} \left (
+				\frac{l}{2}
+			\right )^4
+			-
+			\frac{ql}{12EI} \left (
+				\frac{l}{2}
+			\right )^3
+			+
+			\frac{ql^3}{24EI}\left (
+				\frac{l}{2}
+			\right )
+	$$
+	\begin{equation}
+	\label{eqn:max_deflex_resultado}
+		v\left (\frac{l}{2}\right )=
+			\frac{5ql^4}{384EI}
+			\text{.}
+	\end{equation}
 }
 
 \chapter{Resolução de Sistemas Lineares Utilizando a Linguagem Python}
