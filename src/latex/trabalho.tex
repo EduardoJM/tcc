@@ -1440,6 +1440,100 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 \section{Exemplos}
 \label{sec:calcvar_exemplos}
 
+\begin{exemplo}[Curva de Menor Comprimento entre Dois Pontos]
+	É sabido, do cálculo diferencial e integral, que o comprimento, $I$, de uma curva $y(x)$ é determinado por
+	\begin{equation}
+		\label{eqn:ex_reta_funcional}
+		I=\int_{x_1}^{x_2}\sqrt{1+(y'(x))^2}dx
+		\text{,}
+	\end{equation}
+	que é um funcional que depende de $y'(x)$. Assim, pode-se determinar a curva $y(x)$ que minimiza o funcional, ou seja, encontrar a menor curva entre dois pontos dados onde $x_1$ é a coordenada $x$ do primeiro ponto e $x_2$ é a coordenada $x$ do segundo ponto.
+\end{exemplo}
+
+\begin{solution}
+	Como o funcional de \eqref{eqn:ex_reta_funcional} depende apenas de $y'(x)$, sua equação de Euler-Lagrange será da forma
+	\begin{equation}
+		\label{eqn:ex_reta_eq_euler_lagrange}
+		\frac{\partial f}{\partial y}
+		-
+		\frac{d}{dx} \left (
+			\frac{\partial f}{\partial y'}
+		\right )
+		= 0
+		\text{,}
+	\end{equation}
+	onde $f(x, y, y')=\sqrt{1+(y'(x))^2}$.
+	
+	De \eqref{eqn:ex_reta_eq_euler_lagrange}, fazendo as devidas derivações, tem-se a equação
+	$$
+		-\frac{d}{dx}\left (
+			1+(y'(x))^2)^{-\frac{1}{2}}\cdot y'(x)
+		\right )
+		=0 
+		\text{,}
+	$$
+	de onde
+	\begin{equation}
+		\label{eqn:ex_reta_prim_deriv}
+		\frac{d}{dx} \left (
+			\frac{y'(x)}{\sqrt{1+(y'(x))^2}}
+		\right )
+		= 0
+		\text{,}
+	\end{equation}
+	
+	Fazendo a derivada em \eqref{eqn:ex_reta_prim_deriv}, tem-se como resultado
+	$$
+		\frac{
+			y''(x)\sqrt{1+(y'(x))^2}
+			-
+			y'(x)\left (
+				\frac{y'(x)y''(x)}{\sqrt{1+(y'(x))^2}}
+			\right )
+		}{
+			1+(y'(x))^2
+		}
+		=0\text{,}
+	$$
+	onde, devido ao fato de que o denominador $1+(y'(x))^2\geqslant 1$, pode-se analisar apenas o numerador, ou seja,
+	$$
+		y''(x)\sqrt{1+(y'(x))^2}
+		-
+		\frac{(y'(x))^2 y''(x)}{
+			\sqrt{1+(y'(x))^2}
+		}
+		= 0
+	$$
+	$$
+		\frac{
+			y''(x)(1+(y'(x))^2)-(y'(x))^2y''(x)
+		}{
+			\sqrt{1+(y'(x))^2}
+		}
+		= 0
+		\text{,}
+	$$
+	resultando, após manipulações no numerador, em
+	$$
+		\frac{y''(x)}{
+			\sqrt{1+(y'(x))^2}
+		}
+		= 0
+		\text{,}
+	$$
+	e, finalmente, $y''(x)=0$.
+	
+	A equação diferencial $y''(x)=0$ pode ser resolvida por meio de integrações sucessivas
+	$$
+		\int y''(x)dx = \int 0 dx \Longrightarrow y'(x) = C_1
+	$$
+	$$
+		\int y'(x)dx = \int C_1 dx \Longrightarrow y(x) = C_1 x + C_2
+		\text{,}
+	$$
+	ou seja, $y(x)=C_1x+C_2$. Deste modo, a curva de menor comprimento entre os dois pontos é um segmento de reta.
+\end{solution}
+
 \begin{exemplo}
 	\label{ex:cond_contorno}
 	Considere o funcional
