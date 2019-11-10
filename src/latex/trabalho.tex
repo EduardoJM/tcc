@@ -227,7 +227,7 @@
 \newcommand{\codigofonte}{
 	\vspace{-0.4cm}
 	\fonte{Elaborado pelo autor, 2019.}
-	\vspace{0.2cm}
+	\vspace{0.6cm}
 }
 
 % ---
@@ -735,7 +735,7 @@ O método de Rayleigh foi utilizado frequentemente, porém, nas últimas década
 
 O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, porém, mais conhecido aplicado a análise estrutural. Seu uso é empregado, principalmente, com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
 
-\citeonline{RRM_Applications} exemplifica essa aplicação ao procurar as frequências naturais em um tipo específico de viga, chamada de consola, que é uma viga apoiada apenas em uma de suas extremidades (Ver Figura \ref{fig:cantilever}). Na Figura \ref{fig:cantilever}, a função $w(x,t)$ representa o deslocamento dinâmico.
+\citeonline{RRM_Applications} exemplifica essa aplicação ao procurar as frequências naturais em um tipo específico de viga, chamada de consola, que é uma viga apoiada apenas em uma de suas extremidades. A Figura \ref{fig:cantilever} mostra uma representação de uma viga desse tipo, onde a curva $w(x,t)$ representa o deslocamento dinâmico. Diversos outros trabalhos trazem essa mesma abordagem ao método, visando analisar frequências naturais de vibração, como, por exemplo, o trabalho de \citeonline{mrr_beams}, que estuda a frequência natural de vigas seguindo o modelo de Timoshenko e de Euler usando o método de Rayleigh-Ritz. \citeonline{GROSSI_2001} mostra a aplicação do método a problemas envolvendo placas, ao invés de vigas.
 
 \begin{figure}[h]
 	\caption{Modelo de uma Viga Consola Vibrando.}
@@ -788,12 +788,14 @@ O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, p
 		\node at (6, -0.2) {$x=L$};
 	\end{tikzpicture}
 	\label{fig:cantilever}
-	\legend{\ABNTEXfontereduzida Fonte: Adaptada de \citeonline[{\color{red}p. 5}]{RRM_Applications}.}
+	\legend{\ABNTEXfontereduzida Fonte: Adaptada de \citeonline[p. 23]{RRM_Applications}.}
 \end{figure}
+
+%\citeonline{ritz_image_proc} estuda o método de Rayleigh-Ritz para minimização da variação total usando \textit{splines} de duas variáveis, em triangulações e mostra aplicações desse estudo no processamento digital de imagens, mais especificamente ao problema de redução de ruídos.
 
 %Um outro tipo de aplicação para o Método de Rayleigh-Ritz é o de encontrar as frequências naturais das chamadas consolas, vigas apoiadas apenas em uma das extremidades \cite{RRM_Applications}.
 
-{\color{red}Citar aplicações do Método de Rayleigh-Ritz.}
+%{\color{red}Citar aplicações do Método de Rayleigh-Ritz.}
 
 Além da abordagem convencional do método, existem trabalhos que visam aliar o método a técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirma que modelos baseados redes neurais profundas podem ser utilizadas em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (Método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. O método proposto faz o uso da representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
 
@@ -817,6 +819,8 @@ Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia d
 	\label{fig:deep_ritz_poisson}
 	\legend{\ABNTEXfontereduzida Fonte: \citeonline[p. 5]{deep_ritz}.}
 \end{figure}
+
+Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplicação moderna do método de Rayleigh-Ritz e serve, inclusive, como uma motivação ao estudo do tema.
 
 \section{A Linguagem Python}
 
