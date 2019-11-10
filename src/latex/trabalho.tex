@@ -1071,7 +1071,7 @@ Existem também, funcionais que dependem de mais funções, funções de mais de
 	I=\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx
 	\text{,}
 \end{equation}
-onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ através de funções admissíveis $Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$, isto é, $n$ vezes diferenciável com suas derivadas contínuas. Desse modo,
+onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ através de funções admissíveis $Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$ (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}). Desse modo,
 $$
 	Y'(x)=y'(x)+\varepsilon \eta ' (x)
 	\text{,}
@@ -1566,9 +1566,9 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 			\text{.}
 	\end{equation}
 	
-	Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $I'(0)$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
+	Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $\dfrac{dI}{d\varepsilon}\Big |_{\varepsilon=0}$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
 	$$
-		I'(0) = 
+		\frac{dI}{d\varepsilon}\Big |_{\varepsilon=0} = 
 			\int_{0}^{l} EI \left (
 				\frac{d^2v}{dx^2}
 			\right ) \left (
@@ -1581,7 +1581,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	onde a primeira parcela deve ser integrada, por partes, duas vezes, resultando em
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_conditions_I0}
-		I'(0) = 
+		\frac{dI}{d\varepsilon}\Big |_{\varepsilon=0} = 
 			\int_{0}^{l} \left (
 				EI\frac{d^4 v}{dx^4}-q 
 			\right ) \eta dx
@@ -1592,10 +1592,10 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 			\text{.}
 	\end{equation}
 	
-	Aplicando a condição de estacionariedade, $I'(0)=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
+	Aplicando a condição de estacionariedade, $\dfrac{dI}{d\varepsilon}\Big |_{\varepsilon=0}=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_conditions_I0_eq_0}
-		I'(0) = 
+		\frac{dI}{d\varepsilon}\Big |_{\varepsilon=0} = 
 			\int_{0}^{l} \left (
 				EI\frac{d^4 v}{dx^4}-q 
 			\right ) \eta dx
@@ -2408,7 +2408,7 @@ No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolh
 	\label{eqn:cap_metodo_ray_ritz:tri_func_funcional}
 	I = \int_{0}^{1} \left [ 
 		p(x) \left ( 
-			\frac{dy}{dx} (x) 
+			\frac{dy}{dx}
 		\right )^2
 		+ q(x)(y(x))^2 
 		- 2f(x)y(x) 
@@ -2702,7 +2702,7 @@ O Código \ref{py_code_solve_mrr_ex_livro_diff} é executado rapidamente e o res
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a própria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro}. Os comandos \textit{a1 = a1.subs(a2, sol[a2])} indica que a variável \textit{a1} receberá o valor de \textit{a1} substituindo o simbólo \textit{a2} pela solução do sistema encontrada no Código \ref{py_code_solve_mrr_ex_livro}.
+O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a própria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro_diff}. Os comandos \textit{a1 = a1.subs(a2, sol[a2])} indica que a variável \textit{a1} receberá o valor de \textit{a1} substituindo o simbólo \textit{a2} pela solução do sistema encontrada no Código \ref{py_code_solve_mrr_ex_livro_diff}.
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=26, caption={Código para a determinação do coeficiente $a_1$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_isolatedcoef_ex_livro]
 a1 = -a2*l - a3*l**2 - a4 * l**3
@@ -2812,9 +2812,11 @@ def fi(i, x):
     if x <= intervals[i - 1]:
         return 0
     elif x <= intervals[i]:
-        return ((x - intervals[i - 1]) / (intervals[i] - intervals[i - 1]))
+        h = (intervals[i] - intervals[i - 1])
+        return ((x - intervals[i - 1]) / h)
     elif x <= intervals[i + 1]:
-        return ((intervals[i + 1] - x) / (intervals[i + 1] - intervals[i]))
+        h = (intervals[i + 1] - intervals[i])
+        return ((intervals[i + 1] - x) / h)
     else:
         return 0
 
@@ -2834,7 +2836,7 @@ Numericamente, as funções $\phi_i(x)$ e $\phi_i'(x)$ foram programadas utiliza
 
 No Código \ref{py_code_solve_mrr_tri_form_func} o método utilizado para a integração numérica, que implementa a chamada regra do trapézio, é mostrado. Dentro do método, a variável \textit{steps} define em quantos intervalos o domínio de integração será dividido. Os parâmetros opcionais \textit{*args}, do método \textit{integrate}, são passados para a função a ser integrada, \textit{func}, e serão utilizados para passar os índices $i$ e $j$ quando necessário.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=29, caption={Algoritmo para integração numérica usando a regra dos trapézios}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=31, caption={Algoritmo para integração numérica usando a regra dos trapézios}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
 def integrate(func, start, end, *args):
     steps = 10000
     h = ((end - start) / steps)
@@ -2852,7 +2854,7 @@ def integrate(func, start, end, *args):
 
 Para a integração numérica por meio do algoritmo implementado em Código \ref{py_code_solve_mrr_tri_integrate} é preciso definir funções com os integrandos de \eqref{eqn:python_tri_func_mji} e \eqref{eqn:python_tri_func_bj}. Essas funções são chamadas, no código, de \textit{m\underline{\hspace{.1in}}intern} e \textit{b\underline{\hspace{0.1in}}intern}, respectivamente. Na implementação do Código \ref{py_code_solve_mrr_tri_m_b}, os métodos \textit{m(i, j)} e \textit{b(i)} calculam os elementos das matrizes $M$ e $B$, respectivamente. Nesses métodos, é somado 1 aos índices $i$ e $j$ pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma $\phi_i(x)$, elas são indexadas a partir de 1.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=41, caption={Funções utilizadas para criação das matrizes do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=43, caption={Funções utilizadas para criação das matrizes do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
 def p(x):
     return e**x
 
@@ -2863,7 +2865,9 @@ def f(x):
     return (x+(2-x)*e**x)
 
 def m_intern(x, i, j):
-    return (p(x) * fi_diff(i, x) * fi_diff(j, x) + q(x) * fi(i, x) * fi(j, x))
+    value = p(x) * fi_diff(i, x) * fi_diff(j, x)
+    value = value + q(x) * fi(i, x) * fi(j, x)
+    return value
 
 def m(i, j):
     i = i + 1
@@ -2882,7 +2886,7 @@ def b(i):
 O próximo passo, consiste em criar a matriz aumentada do sistema, os símbolos que representam as incógnitas e, então, resolvê-lo. Isso é feito no Código \ref{py_code_solve_mrr_tri_solvesys}.
 
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=64, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=68, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
 M = zeros(n, n+1)
 for i in range(0, n):
     M[i, n] = b(i)
@@ -2898,7 +2902,7 @@ solution, = linsolve(M, coeficients)
 
 Utilizando a solução do Código \ref{py_code_solve_mrr_tri_solvesys} e a função exata $y(x)=(x-1)(e^{-x}-1)$, é possível criar funções, numéricas, representando a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código \ref{py_code_solve_mrr_tri_plot}.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=74, caption={Plotagem das funções exata e aproximada}, captionpos=t, label=py_code_solve_mrr_tri_plot]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=78, caption={Plotagem das funções exata e aproximada}, captionpos=t, label=py_code_solve_mrr_tri_plot]
 def function(solution, x):
     value = 0
     i = 0

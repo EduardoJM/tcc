@@ -5,7 +5,7 @@ from sympy.matrices import zeros
 from sympy.solvers import linsolve
 import matplotlib.pyplot as pyplot
 
-n = 20
+n = 5
 space = 1/(n + 1)
 intervals = numpy.arange(0, 1.0001, space)
 
@@ -13,9 +13,11 @@ def fi(i, x):
     if x <= intervals[i - 1]:
         return 0
     elif x <= intervals[i]:
-        return ((x - intervals[i - 1]) / (intervals[i] - intervals[i - 1]))
+        h = (intervals[i] - intervals[i - 1])
+        return ((x - intervals[i - 1]) / h)
     elif x <= intervals[i + 1]:
-        return ((intervals[i + 1] - x) / (intervals[i + 1] - intervals[i]))
+        h = (intervals[i + 1] - intervals[i])
+        return ((intervals[i + 1] - x) / h)
     else:
         return 0
 
@@ -52,7 +54,9 @@ def f(x):
     return (x+(2-x)*e**x)
 
 def m_intern(x, i, j):
-    return (p(x) * fi_diff(i, x) * fi_diff(j, x) + q(x) * fi(i, x) * fi(j, x))
+    value = p(x) * fi_diff(i, x) * fi_diff(j, x)
+    value = value + q(x) * fi(i, x) * fi(j, x)
+    return value
 
 def m(i, j):
     i = i + 1
