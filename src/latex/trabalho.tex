@@ -1465,24 +1465,15 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	onde $f(x, y, y')=\sqrt{1+(y'(x))^2}$.
 	
 	De \eqref{eqn:ex_reta_eq_euler_lagrange}, fazendo as devidas derivações, tem-se a equação
-	$$
-		-\frac{d}{dx}\left (
-			1+(y'(x))^2)^{-\frac{1}{2}}\cdot y'(x)
-		\right )
-		=0 
-		\text{,}
-	$$
-	de onde
 	\begin{equation}
 		\label{eqn:ex_reta_prim_deriv}
-		\frac{d}{dx} \left (
+		-\frac{d}{dx} \left (
 			\frac{y'(x)}{\sqrt{1+(y'(x))^2}}
 		\right )
 		= 0
 		\text{,}
 	\end{equation}
-	
-	Fazendo a derivada em \eqref{eqn:ex_reta_prim_deriv}, tem-se como resultado
+	de onde tem-se
 	$$
 		\frac{
 			y''(x)\sqrt{1+(y'(x))^2}
@@ -1495,7 +1486,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 		}
 		=0\text{,}
 	$$
-	onde, devido ao fato de que o denominador $1+(y'(x))^2\geqslant 1$, pode-se analisar apenas o numerador, ou seja,
+	e, devido ao fato de que o denominador $1+(y'(x))^2\geqslant 1$, pode-se analisar apenas o numerador, ou seja,
 	$$
 		y''(x)\sqrt{1+(y'(x))^2}
 		-
@@ -1804,7 +1795,7 @@ com $i=1, 2, 3, \dots, n$.
 \end{exemplo}
 
 \begin{solution}
-	É possível encontrar uma função $v(x)$ que aproxime a função exata $y(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras $v(x)$:
+	É possível encontrar uma função $\overline{v}(x)$ que aproxime a função exata $v(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras:
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz_funcdef_v1}
 		v_1 (x) = a_0 + a_1 x + a_2 x^2
@@ -2060,6 +2051,7 @@ com $i=1, 2, 3, \dots, n$.
 		q \left (
 			\frac{l^4}{2}
 		\right )
+		=0
 	$$
 	$$
 		6a_2 + 12a_3l = -\frac{ql^4}{4EIl^2}
@@ -2070,7 +2062,25 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	Montando um sistema de equações com \eqref{eq:exemp_rayritz_approx2_eq1} e \eqref{eq:exemp_rayritz_approx2_eq2} é possível encontrar os valores de $a_2$ e $a_3$. Fazendo \eqref{eq:exemp_rayritz_approx2_eq2} - \eqref{eq:exemp_rayritz_approx2_eq1}, tem-se $2a_2+4a_3l-2a_2-3a_3l=-\dfrac{ql^2}{12EI}+\dfrac{ql^2}{12EI}$, donde $a_3l=0$ e, então, $a_3=0$. De volta a \eqref{eq:exemp_rayritz_approx2_eq1}, substituindo $a_3=0$, reduzimos a equação a $2a_2=-\dfrac{ql^2}{12EI}$ e, por fim,
+	Montando um sistema de equações com \eqref{eq:exemp_rayritz_approx2_eq1} e \eqref{eq:exemp_rayritz_approx2_eq2}:
+	\begin{equation}
+		\label{eqn:ex_rayritz_sistema_2}
+		\begin{cases}
+			2a_2+3a_3l=\dfrac{-ql^2}{12EI}\\[10pt]
+			2a_2+4a_3l=\dfrac{-ql^2}{12EI}
+		\end{cases}
+	\end{equation}
+	é possível encontrar os valores de $a_2$ e $a_3$. 
+	
+	Subtraindo as equações em \eqref{eqn:ex_rayritz_sistema_2}, tem-se
+	$$
+		4a_3l-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}
+	$$
+	$$
+		a_3=0\text{.}
+	$$
+	
+	Consequentemente,
 	$$
 		a_2=-\frac{ql^2}{24EI}
 		\text{.}
@@ -2384,9 +2394,9 @@ com $i=1, 2, 3, \dots, n$.
 	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{solution}
 
-A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, falicitando, desta forma, a escolha das funções de forma.
+A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, facilitando, desta forma, a escolha das funções de forma.
 
-No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolhida não fosse $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, dificilmente a mesma tomaria a forma da função exata, $y(x)$, após a determinação de seus coeficientes.
+No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolhida não fosse $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, dificilmente a mesma tomaria a forma da função exata, $v(x)$, após a determinação de seus coeficientes.
 
 %{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
@@ -2410,9 +2420,9 @@ associado ao Problema de Valor de Contorno que modela a deflexão de uma viga ap
 	\label{eqn:cap_metodo_ray_ritz:tri_func_phi}
 	\phi_i (x) = 
 		\begin{cases}
-			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
-			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
-			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
+			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\[5pt]
+			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\[10pt]
+			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\[5pt]
 			0							& \mbox{se } x_{i+1}<x\leqslant 1
 		\end{cases}
 	\text{,}
@@ -2503,9 +2513,9 @@ A primeira derivada das funções $\phi_i(x)$ em relação a $x$ é escrita como
 	\label{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}
 	\phi_i ' (x) = 
 		\begin{cases}
-			0 							& \mbox{se } 0 \leqslant x < x_{i - 1}\\
-			\dfrac{1}{h_{i-1}} 			& \mbox{se } x_{i-1} < x < x_i\\
-			\dfrac{-1}{h_i}				& \mbox{se } x_i < x < x_{i+1}\\
+			0 							& \mbox{se } 0 \leqslant x < x_{i - 1}\\[5pt]
+			\dfrac{1}{h_{i-1}} 			& \mbox{se } x_{i-1} < x < x_i\\[10pt]
+			\dfrac{-1}{h_i}				& \mbox{se } x_i < x < x_{i+1}\\[5pt]
 			0							& \mbox{se } x_{i+1}<x\leqslant 1
 		\end{cases}
 	\text{,}
@@ -2610,7 +2620,16 @@ O sistema construído $M\cdot A=B$ é resolvido, utilizando a linguagem de progr
 
 Se tratando de programação, existem diversas formas de se trabalhar o método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
 
-Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4$, donde aplicando as condições de contorno essenciais, $v_3(0)=0$, obtendo $a_0=0$, e $v_3(l)=0$, encontrando $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, tem-se a função
+Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, 
+$$
+	\Pi = 
+		\frac{1}{2} \int_0^l EI \left [
+			\frac{d^2v}{dx^2}
+		\right ]^2 dx
+		-
+		\int_0^l qvdx
+$$
+e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4$, donde aplicando as condições de contorno essenciais, $v_3(0)=0$, obtendo $a_0=0$, e $v_3(l)=0$, encontrando $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, tem-se a função
 $$
 	v_3(x)=
 	a_2 (x^2 - lx)
@@ -2632,79 +2651,48 @@ $$
 	\text{.}
 $$
 	
-Substituindo $v_3(x)$ e $v_3''(x)$ no funcional $\Pi$, segue que
+Para a determinação dos parâmetros $a_2$, $a_3$ e $a_4$, deve-se substituir $v_3(x)$ no funcional $\Pi$, e resolver o sistema 
 $$
-	\Pi = \frac{1}{2} \int_0^l \left [
-    	EI(2a_2+6a_3x+12a_4x^2)^2
-	\right ] dx
-	-
-	\int_0^l q \left [
-		a_2(x^2 - lx)
-		+
-		a_3(x^3 - l^2x)
-		+
-		a_4(x^4 - l^3x)
-	\right ] dx
+	\begin{cases}
+		\dfrac{\partial \Pi}{\partial a_2}=0\\[10pt]
+		\dfrac{\partial \Pi}{\partial a_3}=0\\[10pt]
+		\dfrac{\partial \Pi}{\partial a_4}=0
+	\end{cases}
 	\text{.}
 $$
 
-Da condição de estacionariedade, é preciso que $\dfrac{\partial\Pi}{\partial a_2}=0$, $\dfrac{\partial\Pi}{\partial a_3}=0$ e $\dfrac{\partial \Pi}{\partial a_4}=0$. De \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a2}, \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a3} e \eqref{eqn:cap_metodo_ray_ritz:exemp_v3_diff_a4}, essas derivadas são:
-\begin{equation}
-	\label{eqn:cap_mrr_python:do_ex1_partial_pi_a2}
-	\frac{\partial \Pi}{\partial a_2}
-	=
-	\int_0^l \left [
-		2EI(2a_2 + 6a_3x + 12a_4x^2)
-		-
-		q(x^2 - lx)
-	\right ] dx
-	= 0
-	\text{,}
-\end{equation}
-\begin{equation}
-	\label{eqn:cap_mrr_python:do_ex1_partial_pi_a3}
-	\frac{\partial \Pi}{\partial a_3}
-	=
-	\int_0^l \left [
-		6EI(2a_2x + 6a_3x^2 + 12a_4x^3)
-		-
-		q(x^3 - l^2x)
-	\right ] dx
-	= 0
-	\text{,}
-\end{equation}
-\begin{equation}
-	\label{eqn:cap_mrr_python:do_ex1_partial_pi_a4}
-	\frac{\partial \Pi}{\partial a_4}
-	=
-	\int_0^l \left [
-		12EI(2a_2x^2 + 6a_3x^3 + 12a_4x^4)
-		-
-		q(x^4 - l^3x)
-	\right ] dx
-	= 0
-	\text{.}
-\end{equation}
+Tanto a derivação quanto a integração podem ser feitas manualmente ou utilizando o pacote \textit{SymPy} em Python, como feito no Código \ref{py_code_solve_mrr_ex_livro_diff}.
 
-Utilizando a linguagem Python e o pacote para matemática simbólica \textit{SymPy}, o sistema com as equações \eqref{eqn:cap_mrr_python:do_ex1_partial_pi_a2}, \eqref{eqn:cap_mrr_python:do_ex1_partial_pi_a3} e \eqref{eqn:cap_mrr_python:do_ex1_partial_pi_a4} pode ser resolvido utilizando o Código \ref{py_code_solve_mrr_ex_livro}.
-
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, caption={Código para a resolução do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_ex_livro]
-from sympy import symbols, integrate, Matrix
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, caption={Código para a resolução do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_ex_livro_diff]
+from sympy import symbols, integrate, diff, Matrix
 from sympy.solvers import solve
 
 l, E, I, x, q = symbols('l E I x q')
 a2, a3, a4 = symbols("a2 a3 a4")
 
-eq1 = integrate(2*E*I*(2*a2 + 6*a3*x + 12*a4*x**2), (x, 0, l)) - integrate(q*x**2 - q*l*x, (x, 0, l))
-eq2 = integrate(6*E*I*(2*a2*x + 6*a3*x**2 + 12*a4*x**3), (x, 0, l)) - integrate(q*x**3 - q*(l**2)*x, (x, 0, l))
-eq3 = integrate(12*E*I*(2*a2*x**2 + 6*a3*x**3 + 12*a4*x**4), (x, 0, l)) - integrate(q*x**4 - q*(l**3)*x, (x, 0, l))
+v = a2 * (x**2 - l*x) 
+v = v + a3 * (x**3 - l**2 * x)
+v = v + a4 * (x**4 - l**3 * x)
+
+dv = diff(v, x)
+dv2 = diff(dv, x)
+
+f = (E*I*((dv2)**2)) / 2 - q * v
+
+df_a2 = diff(f, a2)
+df_a3 = diff(f, a3)
+df_a4 = diff(f, a4)
+
+eq1 = integrate(df_a2, (x, 0, l))
+eq2 = integrate(df_a3, (x, 0, l))
+eq3 = integrate(df_a4, (x, 0, l))
 
 sol = solve([eq1, eq2, eq3], [a2, a3, a4])
 print(sol)
 \end{lstlisting}
 \codigofonte
 
-O Código \ref{py_code_solve_mrr_ex_livro} é executado rapidamente e o resultado é mostrado na Figura \ref{fig:code_solve_mrr_exemplo_livro}, com $a_2=0$, $a_3=-\dfrac{ql}{12EI}$ e $a_4=\dfrac{q}{24EI}$. Esses resultados são exatamente os mesmos apresentados no Exemplo \ref{ex:mrr_ex_livro}.
+O Código \ref{py_code_solve_mrr_ex_livro_diff} é executado rapidamente e o resultado é mostrado na Figura \ref{fig:code_solve_mrr_exemplo_livro}, com $a_2=0$, $a_3=-\dfrac{ql}{12EI}$ e $a_4=\dfrac{q}{24EI}$. Esses resultados são exatamente os mesmos apresentados no Exemplo \ref{ex:mrr_ex_livro}.
 
 \begin{figure}[h]
 	\caption{Resultado Apresentado pelo Código \ref{py_code_solve_mrr_ex_livro}.}
@@ -2716,7 +2704,7 @@ O Código \ref{py_code_solve_mrr_ex_livro} é executado rapidamente e o resultad
 
 O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a própria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro}. Os comandos \textit{a1 = a1.subs(a2, sol[a2])} indica que a variável \textit{a1} receberá o valor de \textit{a1} substituindo o simbólo \textit{a2} pela solução do sistema encontrada no Código \ref{py_code_solve_mrr_ex_livro}.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=13, caption={Código para a determinação do coeficiente $a_1$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_isolatedcoef_ex_livro]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=26, caption={Código para a determinação do coeficiente $a_1$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_isolatedcoef_ex_livro]
 a1 = -a2*l - a3*l**2 - a4 * l**3
 a1 = a1.subs(a2, sol[a2])
 a1 = a1.subs(a3, sol[a3])
@@ -2727,7 +2715,7 @@ print(a1)
 
 É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. De acordo com \citeonline{mefassan}, o valor $v_3(\frac{l}{2})$ é conhecido como o valor de máxima deflexão.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=18, caption={Código para a definição da função $v_3(x)$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_maxdef_ex_livro]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=31, caption={Código para a definição da função $v_3(x)$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_maxdef_ex_livro]
 v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
 print(v)
 maxdef = v.subs(x, l/2)
@@ -2737,7 +2725,7 @@ print(maxdef)
 
 É importante observar, no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, que ao construir a variável \textit{v} para representar a função, no primeiro coeficiente foi utilizado a variável \textit{a1}, enquanto que nas demais, foi utilizado \textit{sol[a2]}, \textit{sol[a3]} e \textit{sol[a4]}. Isso se deve ao fato de que os valores para os coeficientes $a_2$, $a_3$ e $a_4$ foram encontrados pela resolução do sistema, sendo a variável \textit{sol} a sua solução. Já, \textit{a1} foi definida como sendo a equação do termo $a_1$ isolado em função de $a_2$, $a_3$ e $a_4$.
 
-Os Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} são executados em sequência e, por essa razão, estão com numeração de linhas sequenciais: O Código \ref{py_code_solve_mrr_ex_livro} tendo as linhas de 1 a 12, o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} de 13 a 17 e o Código \ref{py_code_solve_mrr_maxdef_ex_livro} de 18 a 21. A Figura \ref{fig:code_solve_mrr_exec_complete} mostra o resultado da execução dos Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} no terminal.
+Os Códigos \ref{py_code_solve_mrr_ex_livro_diff}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} são executados em sequência e, por essa razão, estão com numeração de linhas sequenciais: O Código \ref{py_code_solve_mrr_ex_livro_diff} tendo as linhas de 1 a 25, o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} de 26 a 30 e o Código \ref{py_code_solve_mrr_maxdef_ex_livro} de 31 a 34. A Figura \ref{fig:code_solve_mrr_exec_complete} mostra o resultado da execução dos Códigos \ref{py_code_solve_mrr_ex_livro_diff}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} no terminal.
 
 \begin{figure}[h]
 	\caption{Resultado apresentado pelos Códigos \ref{py_code_solve_mrr_ex_livro}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro}.}
@@ -2945,7 +2933,7 @@ Os Códigos \ref{py_code_solve_mrr_tri_import}, \ref{py_code_solve_mrr_tri_inter
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[b]
 	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=10$.}
 	\centering
 	\includegraphics[scale=0.8]{../figuras/code/code_plot_mrr_triangulate_n10.png}
