@@ -153,6 +153,7 @@
 	\newlistentry{lstlisting}{lol}{0}
 \endgroup
 \renewcommand{\cftlstlistingaftersnum}{\hfill--\hfill}
+%
 % Comandos para a recriação do comando \lstlistoflistings,
 % ou seja, para criar a Lista de Códigos
 \let\oldlstlistoflistings\lstlistoflistings
@@ -227,7 +228,7 @@
 \newcommand{\codigofonte}{
 	\vspace{-0.4cm}
 	\fonte{Elaborado pelo autor, 2019.}
-	\vspace{0.6cm}
+	\vspace{0.4cm}
 }
 
 % ---
@@ -240,22 +241,25 @@
 % CONFIGURAÇÕES DE PACOTES
 % --- 
 
+
+
+% Backref para a escrita do trabalho
+%\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+%\renewcommand{\backref}{}
+%\renewcommand*{\backrefalt}[4]{
+%	\ifcase #1 %
+%		Nenhuma citação no texto.%
+%	\or
+%		Citado na página #2.%
+%	\else
+%		Citado #1 vezes nas páginas #2.%
+%	\fi}%
 % ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
+
+% Backref para produção
+\renewcommand{\backrefpagesname}{}
 \renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
-% ---
+\renewcommand*{\backrefalt}[4]{}
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
@@ -402,10 +406,12 @@ Curso de Matemática}
 	\imprimirdata.}\\
 	
 	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		2. Palavra-chave3.
-		I. Orientador.
+		1. Cálculo Variacional. 
+		2. Equação de Euler-Lagrange. 
+		3. Método de Rayleigh-Ritz. 
+		4. Programação. 
+		5. Python. 
+		I. Orientador. 
 		II. Universidade xxx.
 		III. Faculdade de xxx.
 		IV. Título 			
@@ -532,7 +538,7 @@ Agradeço aos meus amigos e colegas que me apoiaram e estiveram ao meu lado, pes
 
 Agradeço, ainda, a todos aqueles que, mesmo desconhecidos, acalentaram meu coração, com pequenos gestos e sorrisos, ao longo dessa jornada.
 
-Por último, gostaria de agradecer a todos os integrantes que fazem o Grupo Alegria, especialmente do Grupo Alegria Anápolis, funcionar por me ensinarem que cada um de nós é capaz de realizar muito mais do que imagina, que o verdadeiro amor está nas pequenas coisas e, principalmente, que através do amor é possível mudar toda a história da humanidade.
+Por último, gostaria de agradecer a todos os integrantes do Grupo Alegria, especialmente do Grupo Alegria Anápolis, por ensinarem que cada um de nós é capaz de realizar muito mais do que imagina, que o verdadeiro amor está nas pequenas coisas e, principalmente, que através do amor é possível mudar toda a história da humanidade.
 \end{agradecimentos}
 % ---
 
@@ -558,9 +564,9 @@ Por último, gostaria de agradecer a todos os integrantes que fazem o Grupo Aleg
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}[RESUMO]
- Este trabalho apresentada uma introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz. Um dos principais problemas pertinentes ao Cálculo Variacional é o de encontrar uma função exata que torna um determinado funcional estacionário, sendo que um funcional é, basicamente, uma função que depende de outra função. Buscou-se apresentar ferramentas para se encontrar a função exata que torna o funcional estacionário, dentre as quais, a primeira dessas ferramentas, apresentadas no trabalho, é a equação de Euler-Lagrange. Outra ferramenta apresentada é o método de Rayleigh-Ritz, que visa aproximar a função exata desejada. Complementando os estudos do método de Rayleigh-Ritz, são apresentadas, também, aplicações com a linguagem de programação Python, completando o trabalho.
+Apresenta-se neste trabalho uma introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz. Um dos principais problemas pertinentes ao Cálculo Variacional é o de encontrar uma função exata que torna um determinado funcional estacionário. Mediante uma revisão bibliográfica buscou-se apresentar ferramentas para se encontrar a função exata que torna o funcional estacionário, dentre as quais, a primeira dessas ferramentas, apresentadas no trabalho, é a equação de Euler-Lagrange. Outra ferramenta apresentada é o método de Rayleigh-Ritz, que visa aproximar a função exata desejada. Complementando os estudos do método de Rayleigh-Ritz, são apresentadas, também, aplicações com a linguagem de programação Python.
 
- \textbf{Palavras-chave}: Cálculo Variacional, Método de Rayleigh-Ritz, Programação, Python.
+\textbf{Palavras-chave}: Cálculo Variacional. Equação de Euler-Lagrange. Método de Rayleigh-Ritz. Programação. Python.
 \end{resumo}
 
 \iffalse
@@ -656,8 +662,8 @@ Por último, gostaria de agradecer a todos os integrantes que fazem o Grupo Aleg
 % ----------------------------------------------------------
 % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
 % ----------------------------------------------------------
-\chapter*[Introdução]{Introdução}
-\addcontentsline{toc}{chapter}{Introdução}
+\chapter*[INTRODUÇÃO]{INTRODUÇÃO}
+\addcontentsline{toc}{chapter}{INTRODUÇÃO}
 
 %{\color{red}Escrever a introdução do trabalho.}
 
@@ -669,19 +675,25 @@ Algumas das principais contribuições para a área do Cálculo Variacional se d
 
 Além dos métodos que permitem a resolução analítica dos problemas surgem métodos que fornecem resoluções aproximadas e que são utilizados, principalmente, em aplicações a engenharia. O método de Rayleigh-Ritz, por exemplo, prevê o uso de uma função aproximadora no lugar da função exata, permitindo, assim, resoluções aproximadas para o problema do funcional \cite{mefassan}.
 
-A justificativa para o trabalho é a importância acadêmica dos temas, tendo em vista a grande gama de aplicações do Cálculo Variacional e do Método de Rayleigh-Ritz, desde os problemas clássicos, como a braquistócrona, a problemas não convencionais, como, por exemplo, a solução de Schwarzschild para as Equações de Einstein, tratada por \citeonline{calcvar_campos}, e a determinação da forma que um cabo longo, inestensível, assume quando suspenso por suas extremidades, em alturas iguais, o chamado problema da catenária, mostrado por \citeonline{calcvar}. O método de Rayleigh-Ritz, por sua vez, tem diversas aplicações, principalmente na área das engenharias, por exemplo, na determinação das frequências naturais, como tratado por \citeonline{RRM_Applications}, e no estudo da deflexão de vigas, de acordo com \citeonline{MRR_Deflex}.
+A justificativa para o trabalho é a importância acadêmica dos temas, tendo em vista a grande gama de aplicações do Cálculo Variacional e do Método de Rayleigh-Ritz, desde os problemas clássicos, como a braquistócrona, a problemas não convencionais, como, por exemplo, a solução de Schwarzschild para as Equações de Einstein, tratada por \citeonline{calcvar_campos}, e a determinação da forma que um cabo longo, inestensível, assume quando suspenso por suas extremidades, em alturas iguais, o chamado problema da catenária, mostrado por \citeonline{calcvar}. 
 
-O método tem sido aplicado, atualmente, junto a tecnologias como as técnicas de aprendizado de máquinas, conforme \citeonline{deep_ritz}, objetivando abordagens modernas da área de inteligência artificial para os problemas do Cálculo Variacional. Além disso, a necessídade de conteúdos introdutórios sobre o tema foi uma das maiores justificativas que determinaram os caminhos do trabalho.
+O método de Rayleigh-Ritz, por sua vez, tem diversas aplicações, principalmente na área das engenharias, por exemplo, na determinação das frequências naturais, como tratado por \citeonline{RRM_Applications}, e no estudo da deflexão de vigas, de acordo com \citeonline{MRR_Deflex}. O método tem sido aplicado, atualmente, junto a tecnologias como as técnicas de aprendizado de máquinas, conforme \citeonline{deep_ritz}, objetivando abordagens modernas da área de inteligência artificial para os problemas do Cálculo Variacional. 
 
-O trabalho possui alguns objetivos, sendo o primeiro deles o de introduzir, de forma clara e concisa, o Cálculo Variacional por meio do estudo das Equações de Euler-Lagrange para funcionais que dependem de uma única variável, da função e das suas derivadas, até a ordem $n$ desejada. O segundo objetivo é explicar o método de Rayleigh-Ritz, de forma simples e introdutória, desenvolvendo exemplos básicos. O terceiro, e último, objetivo do trabalho consiste em apresentar formas de se utilizar o método de Rayleigh-Ritz na computação, por meio da linguagem de programação Python.
+O primeiro objetivo do trabalho é o de introduzir, de forma clara e concisa, o Cálculo Variacional por meio do estudo das Equações de Euler-Lagrange para funcionais que dependem de uma única variável, da função e das suas derivadas, até a ordem $n$ desejada. O segundo objetivo é explicar o método de Rayleigh-Ritz, de forma simples e introdutória, desenvolvendo exemplos básicos. O terceiro, e último, objetivo do trabalho consiste em apresentar formas de se utilizar a computação para os cálculos do método de Rayleigh-Ritz por meio da linguagem de programação Python.
 
-%Esse trabalho objetiva, primeiro, introduzir o Cálculo Variacional, elucidando algumas das ferramentas matemáticas importantes para trabalhar seus problemas do ponto de vista analítico. O segundo objetivo do trabalho é introduzir o Método de Rayleigh-Ritz aplicado a funcionais onde a função a ser determinada depende apenas de uma variável. Por último, o trabalho visa mostrar a aplicação do método utilizando a linguagem de programação Python.
+O trabalho foi realizado por meio de um levantamento bibliográfico em artigos, dissertações, livros, artigos e outros documentos acadêmicos.
 
-A monografia foi dividida em quatro capítulos, tendo, ainda, três apêndices. O primeiro capítulo, entitulado de Contexto Histórico, apresenta, de forma breve e sucinta, a visão geral e o contexto histórico sobre os máximos e mínimos, o cálculo variacional, o método de Rayleigh-Ritz e a linguagem de programação Python. O segundo capítulo, Cálculo Variacional, apresenta um dos problemas clássicos do Cálculo Variacional e, partindo desse problema, são deduzidas as equações de Euler-Lagrange para funcionais que dependem de uma variável, da função e de derivadas da função até a ordem $n$, além de serem estudadas as Condições de Contorno Naturais e Essenciais. Além disso, são apresentados, no segundo Capítulo, exemplos de uso da equação de Euler-Lagrange e das Condições de Contorno. O terceiro capítulo, Método de Rayleigh-Ritz, define o método de Rayleigh-Ritz e o trabalha de forma analítica, através de exemplo, além de iniciar o estudo das funções triangulares como funções de forma. O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem Python, aborda o uso da linguagem de programação python para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no Capítulo 3, que discretizam a curva exata.
+A monografia foi dividida em quatro capítulos, tendo, ainda, três apêndices. O primeiro capítulo, entitulado de Contexto Histórico, apresenta, de forma breve e sucinta, a visão geral e o contexto histórico sobre os máximos e mínimos, o cálculo variacional, o método de Rayleigh-Ritz e a linguagem de programação Python. 
+
+O segundo capítulo, Cálculo Variacional, expõe um dos problemas clássicos do Cálculo Variacional e, partindo desse problema, são deduzidas as equações de Euler-Lagrange para funcionais que dependem de uma variável, da função e de derivadas da função até a ordem $n$, além de serem estudadas as Condições de Contorno Naturais e Essenciais. Além disso, são apresentados, no segundo Capítulo, exemplos de uso da equação de Euler-Lagrange e das Condições de Contorno. 
+
+O terceiro capítulo, Método de Rayleigh-Ritz, define o método de Rayleigh-Ritz e o trabalha de forma analítica, através de exemplo, além de iniciar o estudo das funções triangulares como funções de forma. 
+
+O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem Python, aborda o uso da linguagem de programação Python para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no Capítulo 3, que discretizam a curva exata.
 
 No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo Método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Resolução de Sistemas Lineares Utilizando a Linguagem Python, trata de como resolver sistemas lineares por meio da linguagem de programação Python.
 
-\chapter{Contexto Histórico}
+\chapter{CONTEXTO HISTÓRICO}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
 
 Para elucidar a história do Cálculo Variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema atribuido a área do Cálculo Variacional.
@@ -694,9 +706,9 @@ Uma das primeiras formulações matemáticas próxima das atuais para os problem
 $$
 	\frac{f(x+E)-f(x)}{E}
 $$
-e, após realizar a divisão, considerava $E=0$. Após considerar o valor de $E$ igual a $0$, Fermat igualava a expressão obtida a $0$, de onde conseguia extrair os valores das abscissas dos pontos de máximos e mínimos da função. \cite{boyer}
+e, após realizar a divisão, considerava $E=0$. Após considerar o valor de $E$ igual a $0$, Fermat igualava a expressão obtida a $0$, de onde conseguia extrair os valores das abscissas dos pontos de máximos e mínimos da função \cite{boyer}.
 
-O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$. É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton\bdDate{1642}{1727} em 1665-1666 e Gottfried Wilhelm Leibniz\bdDate{1646}{1716} em 1676, de forma independente. \cite{boyer}
+O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$. É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton\bdDate{1642}{1727} em 1665-1666 e Gottfried Wilhelm Leibniz\bdDate{1646}{1716} em 1676, de forma independente \cite{boyer}.
 
 %\textit{\color{red}Falar de modo geral que as maiores contribuições foram de Euler e Lagrange no cálculo variacional}
 
@@ -704,14 +716,14 @@ O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$
 
 %Johann Bernoulli, em 1969, deu ínicio ao estudo de uma classe de problemas cujo um dos mais antigos é o problema isoperimétrico. \cite{hist_courant}. O problema isoperimétrico consiste em "[d]ado um comprimento $L>0$, encontrar, dentre todas as curvas do plano de comprimento $L$, aquela que engloba a maior área" \cite[p. 1]{cbm_isoperimetrico}.
 
-O ponto de partida do cálculo variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do problema da braquistócrona no jornal científico \textit{Acta Eruditorium}. \cite{hist_courant}
+O ponto de partida do cálculo variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do problema da braquistócrona no jornal científico \textit{Acta Eruditorium} \cite{hist_courant}.
 
 O problema pode ser enunciado como:
 \begin{citacao}
 Sejam $A$ e $B$ dois pontos dados em um plano vertical. O problema da braquistócrona consiste em encontrar a curva que uma partícula M precisa descrever para sair de A e chegar em B no menor tempo possível, somente sob a ação da força da gravidade \cite[p. 3]{calcvar}.
 \end{citacao}
 
-O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli\bdDate{1654}{1705} (1697), L'Hôpital\bdDate{1661}{1704} (1697), Leibniz (1697), e Newton (1697) \cite{hist_still}.
+O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli\bdDate{1654}{1705} (1697), L'Hôpital\bdDate{1661}{1704} (1697), Leibniz (1697), e Newton (1697). \cite{hist_still}.
 
 A solução de Jakob Bernoulli considerava o aspecto da curva variável, sendo considerado o primeiro grande passo para o desenvolvimento do cálculo variacional \cite{hist_still}. Nesse problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, o que torna necessária a construção de novas ferramentas matemáticas. 
 
@@ -828,7 +840,7 @@ Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplic
 
 %{\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
 
-A linguagem de programação Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas (Atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}}). Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
+A linguagem de programação Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas \textemdash\text{ }atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}}. Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
 
 As principais motivações para o uso da linguagem Python neste trabalho é o seu funcionamento simples, a facilidade de uso, grande comunidade de usuários, além do fato de ser uma linguagem de gratuita e de código aberto tornando-a, deste modo, acessível.
 
@@ -848,7 +860,7 @@ Existem outros pacotes científicos no ecossistema do \textit{SciPy} e, também,
 
 A linguagem e ambos os componentes citados são desenvolvidos em código aberto de forma colaborativa. Uma das vantagens dessa forma de desenvolvimento é o rápido aperfeiçoamento de suas funcionalidades, documentação e, também, a rápida correção de bugs.
 
-\chapter{Cálculo Variacional}
+\chapter{CÁLCULO VARIACIONAL}
 \label{cap:calc_var}
 
 Um dos problemas pertinentes ao cálculo variacional é o de minimizar ou maximizar o funcional
@@ -1461,7 +1473,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 		I=\int_{x_1}^{x_2}\sqrt{1+(y'(x))^2}dx
 		\text{,}
 	\end{equation}
-	que é um funcional que depende de $y'(x)$. Assim, pode-se determinar a curva $y(x)$ que minimiza o funcional, ou seja, encontrar a menor curva entre dois pontos dados onde $x_1$ é a coordenada $x$ do primeiro ponto e $x_2$ é a coordenada $x$ do segundo ponto.
+	que é um funcional que depende de $y'(x)$. Assim, pode-se determinar a curva $y(x)$ que minimiza o funcional, ou seja, encontrar a menor curva entre dois pontos dados onde $x_1$ e $x_2$ são as abcissas do primeiro e do segundo ponto, respectivamente.
 \end{exemplo}
 
 \begin{solution}
@@ -1552,10 +1564,10 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 			\int_{0}^{l} qv dx
 			\text{,}
 	\end{equation}
-	encontre $v(x)$ de modo que $I$ seja estacionário.
+	encontre $v(x)$ de modo que $I$ seja estacionário, com as condições de contorno essenciais, $v(0)=0$ e $v(l)=0$ e as condições de contorno naturais $\dfrac{d^2v}{dx^2}\Big |_{x=0}$ e $\dfrac{d^2v}{dx^2}\Big |_{x=l}$.
 \end{exemplo}
 \begin{solution}
-	Variando $v$ por $\overline{v}_{\varepsilon}=v+\varepsilon \eta$ em \eqref{eqn:cap_calc_var:funcional_pi}, tem-se
+	A determinação de $v(x)$ pode ser feita diretamente utilizando a equação de Euler-Lagrange (Ver Seção \ref{sec:eq_euler_lagrange}), porém, aqui será repetido o processo, mostrando que as condições de contorno naturais realmente surgem durante o processo de obtenção da equação. Variando $v$ por $\overline{v}_{\varepsilon}=v+\varepsilon \eta$ em \eqref{eqn:cap_calc_var:funcional_pi}, tem-se
 	$$
 		I(\varepsilon) = \frac{1}{2} \int_{0}^{l}
 			EI \left (
@@ -1630,12 +1642,22 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	enquanto que as duas outras parcelas são as condições de contorno naturais do problema
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_cond1}
-		\frac{d^2 v}{dx^2}\Big |_{0}^{l} = 0
+		\frac{d^2 v}{dx^2}\Big |_{x=0} = 0
+		\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_cond1_l}
+		\frac{d^2 v}{dx^2}\Big |_{x=l} = 0
 		\text{,}
 	\end{equation}
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_cond2}
-		\frac{d^3 v}{dx^3}\Big |_{0}^{l} = 0
+		\frac{d^3 v}{dx^3}\Big |_{x=0} = 0
+		\text{,}
+	\end{equation}
+	\begin{equation}
+		\label{eqn:cap_calc_var:natural_cond2_l}
+		\frac{d^3 v}{dx^3}\Big |_{x=l} = 0
 		\text{.}
 	\end{equation}
 
@@ -1695,7 +1717,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	\end{equation}
 \end{solution}
 
-\chapter{Método de Rayleigh-Ritz}
+\chapter{MÉTODO DE RAYLEIGH-RITZ}
 \label{cap:mrr}
 
 Um dos objetivos do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é encontrando a Equação de Euler-Lagrange, ver Seção \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior} do Capítulo \ref{cap:calc_var}, associada ao problema e, então, resolvê-la. 
@@ -2629,7 +2651,7 @@ A partir de \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo
 
 O sistema construído $M\cdot A=B$ é resolvido, utilizando a linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
 
-\chapter{Utilizando o Método de Rayleigh-Ritz na Linguagem Python}
+\chapter{UTILIZANDO O MÉTODO DE RAYLEIGH-RITZ NA LINGUAGEM PYTHON}
 \label{cap:python}
 
 Se tratando de programação, existem diversas formas de se trabalhar o método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
@@ -2717,6 +2739,7 @@ O Código \ref{py_code_solve_mrr_ex_livro_diff} é executado rapidamente e o res
 \end{figure}
 
 O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a própria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro_diff}. Os comandos \textit{a1 = a1.subs(a2, sol[a2])} indica que a variável \textit{a1} receberá o valor de \textit{a1} substituindo o simbólo \textit{a2} pela solução do sistema encontrada no Código \ref{py_code_solve_mrr_ex_livro_diff}.
+\newpage
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=26, caption={Código para a determinação do coeficiente $a_1$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_isolatedcoef_ex_livro]
 a1 = -a2*l - a3*l**2 - a4 * l**3
@@ -2801,6 +2824,8 @@ Viabilizando a implementação do algoritmo, faz-se necessário relembrar $m_{j,
 \end{equation}
 
 Para a resolução do problema, o primeiro passo é importar os componentes a serem utilizados. No Código \ref{py_code_solve_mrr_tri_import} são importados os componentes \textit{numpy}, utilizado para a criação de alguns intervalos numéricos espaçados. Do pacote \textit{math} é importando a constante $e$. Do pacote \textit{sympy} é importado o método \textit{symbols} para a definição de símbolos matemáticos, de \textit{sympy.matrices} é importado o método \textit{zeros} para a criação de um matriz de tamanho determinado preenchida por números zeros e de \textit{sympy.solvers} é importado o método \textit{linsolve} utilizado para a resolução de sistemas lineares. Por último, é importado o pacote \textit{matplotlib.pyplot} como \textit{pyplot}\footnote{Utilizar o comando \textit{import matplotlib.pyplot as pyplot} faz com que, em vez de sempre escrever \textit{matplotlib.pyplot}, se possa escrever apenas \textit{pyplot} nos próximos comandos.} utilizado para plotar gráficos.
+
+\newpage
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=1, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_import]
 import numpy
@@ -2964,11 +2989,11 @@ Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_t
 % ---
 % Considerações Finais
 % ---
-\chapter*{Considerações Finais}
-\addcontentsline{toc}{chapter}{Considerações Finais}
+\chapter*{CONSIDERAÇÕES FINAIS}
+\addcontentsline{toc}{chapter}{CONSIDERAÇÕES FINAIS}
 % ---
 
-Nesse trabalho, o Cálculo Variacional e o Método de Rayleigh-Ritz foram trabalhados de forma introdutória, inclusive, desenvolvendo as demonstrações e cálculos, de modo que todo aluno com conhecimentos de cálculo em várias variáveis possa compreender as ideias trabalhadas. No decorrer dos estudos sobre tais temas foi observado a importância e a necessidade de materiais introdutórios sobre ambos os temas.
+Nesse trabalho, o Cálculo Variacional e o Método de Rayleigh-Ritz foram expostos de forma introdutória, inclusive, desenvolvendo as demonstrações e cálculos, de modo que todo aluno com conhecimentos de cálculo em várias variáveis possa compreender as ideias trabalhadas. No decorrer dos estudos sobre tais temas foi observado a importância e a necessidade de materiais introdutórios sobre ambos os temas.
 
 Para o Cálculo Variacional, o enfoque foi dado nas equações de Euler-Lagrange, condição necessária para a estacionariedade de um funcional, de funcionais que dependem de uma váriavel, uma função e de suas derivadas até uma ordem $n$ qualquer. Esse enfoque dado se deve, primeiramente, ao enfoque introdutório do trabalho e, em segundo lugar, a grande gama de aplicações que podem ser desenvolvidas com as ferramentas estudadas, por exemplo, ao se provar que a curva de menor comprimento entre dois pontos é um segmento de reta.
 
@@ -2976,7 +3001,7 @@ Já no Método de Rayleigh-Ritz o foco foi dividido entre uma introdução ao te
 
 Os estudos desenvolvidos com a linguagem Python mostraram, também, a utilidade da linguagem no meio científico, realizando tanto operações numéricas quanto manipulações simbólicas de forma eficiente. Isso evidencia a importância da linguagem por ser gratuita, de código aberto e multiplataforma, ou seja, uma linguagem acessível.
 
-Como já foi comentado diversas vezes, esse é um estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz e, portanto, pode ser ampliado, por exemplo, para funções de mais variáveis, problemas de fronteira livres onde as condições de contorno são de outra forma, indo, até mesmo, aos métodos modernos que utilizam, por exemplo, inteligência artificial, como o método \textit{Deep Ritz} citado no primeiro Capítulo desse trabalho.
+O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aqui apresentado, pode ser ampliado, por exemplo, para funções de mais variáveis, problemas de fronteira livres onde as condições de contorno são de outra forma, indo, até mesmo, aos métodos modernos que utilizam, por exemplo, inteligência artificial, como o método \textit{Deep Ritz} citado no primeiro Capítulo desse trabalho.
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -3010,7 +3035,7 @@ Como já foi comentado diversas vezes, esse é um estudo introdutório ao Cálcu
 \partapendices
 
 % Apêndice A
-\chapter{Conceitos de Análise no $\mathbb{R}^n$}
+\chapter{CONCEITOS DE ANÁLISE NO $\mathbb{R}^n$}
 \label{apend:regra_de_leibniz}
 {
 	Durante o desenvolvimento dos resultados do texto, tais como a obtenção da equação de Euler-Lagrange, é necessário o uso de alguns conceitos e resultados de Análise no $\mathbb{R}^n$. Estes conceitos serão trabalhados neste apêndice, tomando como referência \citeonline{analise_elon2}.
@@ -3146,7 +3171,7 @@ Como já foi comentado diversas vezes, esse é um estudo introdutório ao Cálcu
 	A Definição \ref{def:cap_conceitos_analise:classe_ck} é equivalente a dizer que uma função $f:U\longrightarrow\mathbb{R}$, onde $U\subset\mathbb{R}^n$, é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas. Completando, $f$ será de classe $C^0$ caso seja contínua.
 }
 
-\chapter{Encontrando a Máxima Deflexão da Viga Estudada}
+\chapter{ENCONTRANDO A MÁXIMA DEFLEXÃO DA VIGA ESTUDADA}
 \label{apend:max_deflex}
 {
 	Durante o estudo do Método de Rayleigh-Ritz no Exemplo \ref{ex:mrr_ex_livro}, no Capítulo \ref{cap:mrr}, faz-se necessário ter valores para comparação. Com esse objetivo, pode-se determinar a máxima deflexão da viga a partir da solução analítica $v(x)$ do problema, determinada no Exemplo \ref{ex:cond_contorno} da Seção \ref{sec:calcvar_exemplos} do Capítulo \ref{cap:calc_var}, a partir de \eqref{eqn:sol_funcional_analitico},
@@ -3225,7 +3250,7 @@ Como já foi comentado diversas vezes, esse é um estudo introdutório ao Cálcu
 	\end{equation}
 }
 
-\chapter{Resolução de Sistemas Lineares Utilizando a Linguagem Python}
+\chapter{RESOLUÇÃO DE SISTEMAS LINEARES UTILIZANDO A LINGUAGEM PYTHON}
 \label{apend:res_sis_lin}
 {
 	O sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python.
