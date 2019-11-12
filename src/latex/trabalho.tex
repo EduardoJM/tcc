@@ -334,13 +334,16 @@ Curso de Matemática}
 % 
 \usepackage{pdfpages}
 
+\usepackage{imakeidx}
+\usepackage{hyperref}
+
 % ---
 % compila o indice
 % ---
 \makeindex
+\makeindex[name=remissivo,title=\'Indice Remissivo,options=-s indexstyle,columns=2]
 
 \begin{document}
-
 
 % Seleciona o idioma do documento (conforme pacotes do babel)
 %\selectlanguage{english}
@@ -716,7 +719,7 @@ O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$
 
 %Johann Bernoulli, em 1969, deu ínicio ao estudo de uma classe de problemas cujo um dos mais antigos é o problema isoperimétrico. \cite{hist_courant}. O problema isoperimétrico consiste em "[d]ado um comprimento $L>0$, encontrar, dentre todas as curvas do plano de comprimento $L$, aquela que engloba a maior área" \cite[p. 1]{cbm_isoperimetrico}.
 
-O ponto de partida do cálculo variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do problema da braquistócrona no jornal científico \textit{Acta Eruditorium} \cite{hist_courant}.
+O ponto de partida do \index[remissivo]{Cálculo Variacional}Cálculo Variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do \index[remissivo]{Problema da braquistócrona}problema da braquistócrona no jornal científico \textit{Acta Eruditorium} \cite{hist_courant}.
 
 O problema pode ser enunciado como:
 \begin{citacao}
@@ -733,11 +736,11 @@ Os métodos para a resolução de problemas deste tipo eram específicos com ada
 
 O processo de minimização de funcionais envolve diretamente a resolução de equações diferenciais que, muitas das vezes, pode não ter solução analítica. Uma forma de se contornar esse problema é o uso de soluções aproximadas e, com esse intuito, surge o método de Rayleigh-Ritz, fazendo o uso de funções admissíveis.
 
-O método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\bdDate{1842}{1919} e Walter Ritz\bdDate{1878}{1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
+O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\bdDate{1842}{1919} e Walter Ritz\bdDate{1878}{1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
 
-Lord Rayleigh, em 1877, trabalhando com as energias potencial e cinética de sistemas, assumiu um padrão de vibração numa determinada frequência calculando a frequência de vibração livre por meio do equacionamento das energias potencial e cinética. Esse método ficou conhecido como Método de Rayleigh e a sua precisão depende de quão próximo o padrão de vibração escolhido está do correto \cite{LEISSA_2005}.
+Lord Rayleigh, em 1877, trabalhando com as energias potencial e cinética de sistemas, assumiu um padrão de vibração numa determinada frequência calculando a frequência de vibração livre por meio do equacionamento das energias potencial e cinética. Esse método ficou conhecido como \index[remissivo]{Método de Rayleigh}Método de Rayleigh e a sua precisão depende de quão próximo o padrão de vibração escolhido está do correto \cite{LEISSA_2005}.
 
-Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simples para a resolução de problemas de valor de contorno e de autovalores numericamente para qualquer nível de exatidão necessário usando funcionais \cite{LEISSA_2005}. Esse procedimento foi chamado de Método de Ritz.
+Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simples para a resolução de problemas de valor de contorno e de autovalores numericamente para qualquer nível de exatidão necessário usando funcionais \cite{LEISSA_2005}. Esse procedimento foi chamado de \index[remissivo]{Método de Ritz}Método de Ritz.
 
 Não se sabe exatamente quando o nome Rayleigh passou a ser agregado ao Método de Ritz, transformando-se em "Método de Rayleigh-Ritz". Uma das razões pelas quais isso ocorreu é o fato de que o método de Rayleigh pode ser considerado como um caso especial do método de Ritz quando uma única função admissível é utilizada para a aproximação \cite{LEISSA_2005}.
 
@@ -840,20 +843,20 @@ Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplic
 
 %{\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
 
-A linguagem de programação Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas \textemdash\text{ }atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}}. Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
+A linguagem de programação \index[remissivo]{Python}Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas \textemdash\text{ }atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}}. Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
 
 As principais motivações para o uso da linguagem Python neste trabalho é o seu funcionamento simples, a facilidade de uso, grande comunidade de usuários, além do fato de ser uma linguagem de gratuita e de código aberto tornando-a, deste modo, acessível.
 
 Além dos diversos colaboradores diretos no desenvolvimento da linguagem, existem os colaboradores indiretos que criam, por exemplo, os pacotes com funções prontas para o uso. Dentre os pacotes científicos mais conhecidos estão alguns do ecossistema \textit{SciPy}:
 
 \begin{itemize}
-	\item \textit{NumPy} é um pacote utilizado para computação científica contendo objetos para trabalhar com \textit{arrays} (arranjos em português) multidimensionais, rotinas de operações em \textit{arrays}, transformadas de Fourier, álgebra linear, estatística, dentre outras funcionalidades \cite{NumPy}.
+	\item \index[remissivo]{NumPy}\textit{NumPy} é um pacote utilizado para computação científica contendo objetos para trabalhar com \textit{arrays} (arranjos em português) multidimensionais, rotinas de operações em \textit{arrays}, transformadas de Fourier, álgebra linear, estatística, dentre outras funcionalidades \cite{NumPy}.
 	
-	\item \textit{SciPy library} contém módulos para matemática, ciências e engenharia. As funções trazidas pela \textit{SciPy} permitem o trabalho com álgebra linear, cálculo, interpolação, manipulação de arquivos, otimização, processamento de sinais, entre outros \cite{SciPy}.
+	\item \index[remissivo]{SciPy}\textit{SciPy library} contém módulos para matemática, ciências e engenharia. As funções trazidas pela \textit{SciPy} permitem o trabalho com álgebra linear, cálculo, interpolação, manipulação de arquivos, otimização, processamento de sinais, entre outros \cite{SciPy}.
 	
-	\item \textit{Matplotlib} é uma biblioteca que permite plotar dados, tornando a visualização dos mesmos tão simples quanto possível \cite{Matplotlib}. Segundo \citeonline{Matplotlib}, a biblioteca possui um ambiente de estados de máquina similar ao utilizado no \textit{software} comercial MATLAB, trazendo uma experiência similar para usuários familiarizados com o MATLAB.
+	\item \index[remissivo]{Matplotlib}\textit{Matplotlib} é uma biblioteca que permite plotar dados, tornando a visualização dos mesmos tão simples quanto possível \cite{Matplotlib}. Segundo \citeonline{Matplotlib}, a biblioteca possui um ambiente de estados de máquina similar ao utilizado no \textit{software} comercial MATLAB, trazendo uma experiência similar para usuários familiarizados com o MATLAB.
 	
-	\item \textit{SymPy} é uma biblioteca que contém classes e funções que permitem a manipulação simbólica de elementos matemáticos, isto é, os elementos matemáticos são representados de forma exata e não aproximados \cite{SymPy}. Por exemplo, ao se utilizar uma calculadora científica e fizermos algum cálculo com o número $\pi$, será apresentado no visor o cálculo utilizando uma aproximação para $\pi$. Já na matemática simbólica, $\pi$ não seria aproximado e, portanto, o número continuaria sendo representado pela letra grega. É importante perceber que, em determinados casos, a abordagem aproximada é mais eficiente e, em outros, a abordagem simbólica.
+	\item \index[remissivo]{SymPy}\textit{SymPy} é uma biblioteca que contém classes e funções que permitem a manipulação simbólica de elementos matemáticos, isto é, os elementos matemáticos são representados de forma exata e não aproximados \cite{SymPy}. Por exemplo, ao se utilizar uma calculadora científica e fizermos algum cálculo com o número $\pi$, será apresentado no visor o cálculo utilizando uma aproximação para $\pi$. Já na matemática simbólica, $\pi$ não seria aproximado e, portanto, o número continuaria sendo representado pela letra grega. É importante perceber que, em determinados casos, a abordagem aproximada é mais eficiente e, em outros, a abordagem simbólica.
 \end{itemize}
 
 Existem outros pacotes científicos no ecossistema do \textit{SciPy} e, também, fora do ecossistema, porém, serão citados, aqui, apenas esses devido ao fato de que os seus usos são voltados para a matemática e aplicações.
@@ -863,7 +866,7 @@ A linguagem e ambos os componentes citados são desenvolvidos em código aberto 
 \chapter{CÁLCULO VARIACIONAL}
 \label{cap:calc_var}
 
-Um dos problemas pertinentes ao cálculo variacional é o de minimizar ou maximizar o funcional
+Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo variacional é o de minimizar ou maximizar o funcional
 \begin{equation}
 	\label{eqn:cap_calc_var:int_funcional}
 	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
@@ -878,7 +881,7 @@ Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas fe
 \section{Equação de Euler-Lagrange}
 \label{sec:eq_euler_lagrange}
 
-De início, é preciso demonstrar um Lema, conhecido como Lema de Lagrange, que servirá como base para a dedução da equação de Euler-Lagrange.
+De início, é preciso demonstrar um Lema, conhecido como \index[remissivo]{Lema de Lagrange}Lema de Lagrange, que servirá como base para a dedução da equação de Euler-Lagrange.
 
 \begin{lema}
 \label{lema:cap_calcvar_lema_1}
@@ -904,7 +907,7 @@ Como $G(x) > 0$ em $\overline{x_1} \leqslant x \leqslant \overline{x_2}$, a inte
 \end{proof}
 \end{lema}
 
-Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de funções admissíveis\footnote{Em outras literaturas, essas funções admissíveis podem ser chamadas, também, de funções aproximadoras, porém, devido ao uso de nomes parecidos em outros capítulos deste trabalho, foi preferível o emprego do nome funções admissíveis.}, $Y_{\varepsilon}(x)$, definida por:
+Suponha $x_1$, $x_2$, $y_1$, $y_2$ dados, $f$ uma função de $x$, $y$ e $y'$ duas vezes diferenciável. É preciso construir uma família de \index[remissivo]{Função Admissível}funções admissíveis\footnote{Em outras literaturas, essas funções admissíveis podem ser chamadas, também, de funções aproximadoras, porém, devido ao uso de nomes parecidos em outros capítulos deste trabalho, foi preferível o emprego do nome funções admissíveis.}, $Y_{\varepsilon}(x)$, definida por:
 \begin{equation}\label{eqn:cap_calc_var:func_admissible}
 	Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)\text{,}
 \end{equation}
@@ -1022,7 +1025,7 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 \frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
 \end{equation}
 
-A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
+A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de \index[remissivo]{Equação de Euler-Lagrange}equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
 
 \section{Condições de Contorno Naturais e Essenciais}
 \label{sec:cond_contorno}
@@ -1077,7 +1080,7 @@ de onde, geralmente, surgem as duas igualdades
 
 É importante deixar claro que pode acontecer, por exemplo, de $\eta(x_1)=0$ e $\eta(x_2)\neq 0$, ou vice-versa, e, consequentemente, reduz-se uma dessas condições de contorno.
 
-Essas condições de contorno são denominadas condições de contorno naturais do problema ou, ainda, problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$ tornando o funcional estacionário.
+Essas condições de contorno são denominadas condições de \index[remissivo]{Condições de Contorno Naturais}contorno naturais do problema ou, ainda, \index[remissivo]{Condições de Contorno de Neumann}problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$ tornando o funcional estacionário.
 
 Para o caso de funcionais que dependem de derivadas de ordem superior, da forma
 $$
@@ -1086,7 +1089,7 @@ $$
 $$
 aparecem diversas condições de contorno parecidas com \eqref{eqn:cap_calc_var:condicao_natural_d1} e \eqref{eqn:cap_calc_var:condicao_natural_d2}. Um destes exemplos aparece em \eqref{eqn:cap_calc_var:cond_with_naturalbound}.
 
-Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
+Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de \index[remissivo]{Condições de Contorno Essenciais}\index[remissivo]{Condições de Contorno de Dirichlet}contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
 
 \section{Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior}
 \label{sec:eq_euler_lagrange_superior}
@@ -1097,7 +1100,7 @@ Existem também, funcionais que dependem de mais funções, funções de mais de
 	I=\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx
 	\text{,}
 \end{equation}
-onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ através de funções admissíveis $Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$ (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}). Desse modo,
+onde $y^{(n)}$ representa a $n$-ésima derivada de $y$. Pode-se aproximar $y(x)$ através de \index[remissivo]{Função Admissível}funções admissíveis $Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)$, onde $\eta(x_1)=\eta(x_2)=0$ e $\eta(x)$ deve ser uma função de classe $C^n$ (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}). Desse modo,
 $$
 	Y'(x)=y'(x)+\varepsilon \eta ' (x)
 	\text{,}
@@ -1390,7 +1393,7 @@ de onde, reorganizando os termos e colocando $\eta$ em evidência, e, finalmente
 	\text{.}
 \end{equation}
 
-A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}$, é uma das chamadas Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais são tratadas na Seção \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
+A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}$, é uma das chamadas \index[remissivo]{Condições de Contorno Naturais}Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais são tratadas na Seção \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
 \begin{equation}
 	\label{eqn:cap_calc_var:func_2_derivadas_final}
 	I'(0)=
@@ -1408,7 +1411,7 @@ A segunda parcela de \eqref{eqn:cap_calc_var:cond_with_naturalbound}, $\dfrac{\p
 	\right ) \eta dx
 	\text{,}
 \end{equation}
-onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var:func_2_derivadas_final}, a equação de Euler-Lagrange obtida é
+onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var:func_2_derivadas_final}, a \index[remissivo]{Equação de Euler-Lagrange}equação de Euler-Lagrange obtida é
 
 \begin{equation}
 	\label{eqn:cap_calc_var:eq_euler_lagrange_twodiff}
@@ -1428,7 +1431,7 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var
 
 \subsection{Equação Geral}
 
-Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem $n$, o processo para a obtenção da equação de Euler-Lagrange é análogo. Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrada $n-1$ vezes, também por partes. Ao fim do processo, a equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
+Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem $n$, o processo para a obtenção da equação de Euler-Lagrange é análogo. Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrada $n-1$ vezes, também por partes. Ao fim do processo, a \index[remissivo]{Equação de Euler-Lagrange}equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
 
 \begin{equation}
 	\label{eqn:cap_calc_var:euler_lagrange_nesimo}
@@ -1726,7 +1729,7 @@ A resolução de equações diferenciais e a determinação da solução exata p
 
 As explicações e os conceitos aqui utilizados foram elaboradas tomando como referências os autores \citeonline{mefassan} e \citeonline{MRR_Deflex}.
 
-O método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.
+O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.
 
 Considerando o funcional
 $$
@@ -1738,7 +1741,7 @@ $$
 	v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{,}
 $$
-onde as funções $\phi_i(x)$ são chamadas de funções de forma e devem ser linearmente independentes. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$, onde $m$ é a ordem da maior derivada do funcional. Os coeficientes $a_i \in \mathbb{R}$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de função aproximadora.
+onde as funções $\phi_i(x)$ são chamadas de \index[remissivo]{Função de Forma}funções de forma e devem ser linearmente independentes. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$, onde $m$ é a ordem da maior derivada do funcional. Os coeficientes $a_i \in \mathbb{R}$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de \index[remissivo]{Função Aproximadora}função aproximadora.
 
 Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$, isto é, $I=I(a_1, a_2, \dots, a_n)$. A condição de máximo ou mínimo para o funcional $I$ é, então, que as suas derivadas parciais em relação a $a_1$, $a_2$, $\dots$, $a_n$ se anulem, então
 $$
@@ -2451,7 +2454,7 @@ No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolh
 	\right ] dx
 	\text{,}
 \end{equation}
-associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos. A função triangular trabalhada é definida como
+associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos. A \index[remissivo]{Função Triangular}função triangular trabalhada é definida como
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_phi}
 	\phi_i (x) = 
@@ -2654,7 +2657,7 @@ O sistema construído $M\cdot A=B$ é resolvido, utilizando a linguagem de progr
 \chapter{UTILIZANDO O MÉTODO DE RAYLEIGH-RITZ NA LINGUAGEM PYTHON}
 \label{cap:python}
 
-Se tratando de programação, existem diversas formas de se trabalhar o método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
+Se tratando de programação, existem diversas formas de se trabalhar o \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem \index[remissivo]{Python}Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
 
 Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, 
 $$
@@ -2699,6 +2702,7 @@ $$
 
 Tanto a derivação quanto a integração podem ser feitas manualmente ou utilizando o pacote \textit{SymPy} em Python, como feito no Código \ref{py_code_solve_mrr_ex_livro_diff}.
 
+\newpage
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, caption={Código para a resolução do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_ex_livro_diff]
 from sympy import symbols, integrate, diff, Matrix
 from sympy.solvers import solve
@@ -2750,7 +2754,7 @@ print(a1)
 \end{lstlisting}
 \codigofonte
 
-É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. De acordo com \citeonline{mefassan}, o valor $v_3(\frac{l}{2})$ é conhecido como o valor de máxima deflexão.
+É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. O valor $v_3(\frac{l}{2})$ é o valor de máxima deflexão.
 
 \begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=31, caption={Código para a definição da função $v_3(x)$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_maxdef_ex_livro]
 v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
@@ -2779,7 +2783,7 @@ Ressaltando, novamente, que a escolha das funções de forma utilizadas na funç
 \section{Resolvendo Problemas com o Método de Rayleigh-Ritz Utilizando Funções Triangulares em Python}
 \label{sec:python_triangular}
 
-O sistema $M\cdot A=B$, construído na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação Python. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
+O sistema $M\cdot A=B$, construído na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação \index[remissivo]{Python}Python. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
 
 Viabilizando a implementação do algoritmo, faz-se necessário relembrar $m_{j,i}$ e $b_j$, obtidos em \eqref{eqn:cap_metodo_ray_ritz:tri_func_mji} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_bj}, respectivamente:
 \begin{equation}
@@ -3041,7 +3045,7 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 	Durante o desenvolvimento dos resultados do texto, tais como a obtenção da equação de Euler-Lagrange, é necessário o uso de alguns conceitos e resultados de Análise no $\mathbb{R}^n$. Estes conceitos serão trabalhados neste apêndice, tomando como referência \citeonline{analise_elon2}.
 
 	\begin{definicao}
-		Um conjunto $K\subset \mathbb{R}^n$ é compacto se, e somente se, toda sequência de pontos em $K$ possui uma subsequência que converge para um ponto de $K$.
+		Um conjunto $K\subset \mathbb{R}^n$ é \index[remissivo]{Conjunto Compacto}compacto se, e somente se, toda sequência de pontos em $K$ possui uma subsequência que converge para um ponto de $K$.
 	\end{definicao}
 
 	\begin{teorema}
@@ -3055,6 +3059,8 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 	\end{teorema}
 	
 	\begin{teorema}[Derivação sob o sinal de integral ou Regra de Leibniz]
+		\index[remissivo]{Regra de Leibniz}
+		\index[remissivo]{Derivação Sob o Sinal de Integral}
 		\label{teorema:regra_de_leibniz}
 		Dado $U\subset \mathbb{R}^n$, aberto, seja $f:U\times[a,b]\longrightarrow \mathbb{R}$ uma função com as seguintes propriedades:
 		\begin{enumerate}
@@ -3165,7 +3171,7 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 	
 	\begin{definicao}
 		\label{def:cap_conceitos_analise:classe_ck}
-		Seja o aberto $U\subset\mathbb{R}^n$. Uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^0$ quando é contínua. Diz-se, também, que $f:U\longrightarrow\mathbb{R}$ é de classe $C^1$ quando existem, em cada ponto $x\in U$, as derivadas parciais $\dfrac{\partial f}{\partial x_1}(x)$, $\dots$, $\dfrac{\partial f}{\partial x_n}(x)$ e, as $n$ funções $\dfrac{\partial f}{\partial x_i}:U\longrightarrow \mathbb{R}$, assim definidas, são contínuas. Mais geralmente, uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^k$, onde $k>0$ é um inteiro, quando ela possuir derivadas parciais em todos os pontos de $U$ e as funções $\dfrac{\partial f}{\partial x_i}$, $\dots$, $\dfrac{\partial f}{\partial x_n}:U\longrightarrow \mathbb{R}$ forem de classe $C^{k-1}$.
+		Seja o aberto $U\subset\mathbb{R}^n$. Uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe $C^0$ quando é contínua. Diz-se, também, que $f:U\longrightarrow\mathbb{R}$ é de classe $C^1$ quando existem, em cada ponto $x\in U$, as derivadas parciais $\dfrac{\partial f}{\partial x_1}(x)$, $\dots$, $\dfrac{\partial f}{\partial x_n}(x)$ e, as $n$ funções $\dfrac{\partial f}{\partial x_i}:U\longrightarrow \mathbb{R}$, assim definidas, são contínuas. Mais geralmente, uma função $f:U\longrightarrow\mathbb{R}$ é dita de classe \index[remissivo]{Função de Classe $C^k$}$C^k$, onde $k>0$ é um inteiro, quando ela possuir derivadas parciais em todos os pontos de $U$ e as funções $\dfrac{\partial f}{\partial x_i}$, $\dots$, $\dfrac{\partial f}{\partial x_n}:U\longrightarrow \mathbb{R}$ forem de classe $C^{k-1}$.
 	\end{definicao}
 	
 	A Definição \ref{def:cap_conceitos_analise:classe_ck} é equivalente a dizer que uma função $f:U\longrightarrow\mathbb{R}$, onde $U\subset\mathbb{R}^n$, é dita de classe $C^k$ se todas as suas derivadas parciais até a ordem $k$ existirem e, ainda, forem todas contínuas. Completando, $f$ será de classe $C^0$ caso seja contínua.
@@ -3409,7 +3415,7 @@ parturient montes nascetur ridiculus mus}
 % INDICE REMISSIVO
 %---------------------------------------------------------------------
 \phantompart
-\printindex
+\printindex[remissivo]
 %---------------------------------------------------------------------
 
 \end{document}
