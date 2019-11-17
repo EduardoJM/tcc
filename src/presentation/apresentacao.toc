@@ -1,6 +1,0 @@
-\babel@toc {brazil}{}
-\beamer@sectionintoc {1}{Objetivo}{2}{0}{1}
-\beamer@sectionintoc {2}{Introdu\IeC {\c c}\IeC {\~a}o}{3}{0}{2}
-\beamer@sectionintoc {3}{Hist\IeC {\'o}ria}{4}{0}{3}
-\beamer@sectionintoc {4}{C\IeC {\'a}lculo Variacional}{14}{0}{4}
-\beamer@sectionintoc {5}{Refer\IeC {\^e}ncias}{34}{0}{5}
