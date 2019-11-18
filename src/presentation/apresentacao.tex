@@ -1,37 +1,39 @@
 \documentclass{beamer}
 
+% Pacotes utilizados
 \usepackage[brazil]{babel}
 \usepackage[alf]{abntex2cite}
 \usepackage{graphicx,hyperref,url}
-\usepackage{uegCCETtheme}
+\usepackage{uegCCETtheme} % pacote customizado para o curso
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e}
+\usepackage{subcaption}
 \usepackage{tikz, tkz-euclide, tkz-fct}
 \usetikzlibrary{babel}
 \usetkzobj{all}
 
-
-% Título da apresentação [short title]{long title}
+% Título da apresentação [título curto]{título longo}
 \title[Cálculo Variacional e o Método de Rayleigh-Ritz]{Uma Introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz com Aplicações em Python}
 %\subtitle{Apenas um subtítulo}
-
-% Autores da apresentação [short name]{long name}
+% Autores da apresentação [nome curto]{nome longo}
 \author[Eduardo José de Oliveira]{
 	Eduardo José de Oliveira\\
 	Orientador: Prof. Me. Tiago de Lima Bento Pereira
 }
-
-% Nome da instituição [short name]{long name}
+% Nome da instituição [nome curto]{nome longo}
 \institute[Universidade Estadual de Goiás]{
 	UNIVERSIDADE ESTADUAL DE GOIÁS\\
   	Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo \\
   	Matemática
 }
-
-% Data [short date]{long date}
+% Data [data curta]{data longa}
 \date[2019]{2019}
+% Observação: geralmente o título\autor\data curto é usado
+%             em locais como o rodapé enquanto que o título
+%             longo é usado em lugares como a capa, por exemplo.
 
+% declara ambientes matemáticos
 \newtheorem{definicao}{Definição}
 \newtheorem{lema}{Lema}
 
@@ -41,8 +43,29 @@
 	  \titlepage
 	\end{frame}
 
-	\section{Objetivo}
+	\section{Introdução}
+	\begin{frame}
+		\frametitle{Introdução}
+		
+		\justify
+		Segundo \citeonline{calcvar} e \citeonline{calcvar_campos}, um dos problemas pertinentes ao Cálculo Variacional é o de encontrar uma função diferenciável até a ordem $n$, $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
+		$$
+			\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx\text{.}
+		$$
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Introdução}
+		\justify
 
+		Uma das formas de se encontrar a função $y(x)$ corresponde na determinação da chamada equação de Euler-Lagrange associada ao problema e, então, sua resolução. Além disso, a satisfação das chamadas Condições de Contorno Naturais e Essenciais são necessárias para a correta determinação da função $y(x)$ exata.
+		\vspace{10pt}
+		\pause
+		
+		Outra abordagem ao problema consiste na aproximação de $y(x)$ por meio de funções admissíveis.
+	\end{frame}
+	
+	\section{Objetivo}
 	\begin{frame}
 		\frametitle{Objetivos}
 	
@@ -54,17 +77,6 @@
 			
 			\item apresentar formas de se utilizar a computação para os cálculos do método de Rayleigh-Ritz por meio da linguagem de programação Python.
 		\end{enumerate}
-	\end{frame}
-	
-	\section{Introdução}
-	\begin{frame}
-		\frametitle{Introdução}
-		
-		\justify
-		Segundo \citeonline{calcvar} e \citeonline{calcvar_campos}, um dos problemas pertinentes ao Cálculo Variacional é o de encontrar uma função diferenciável até a ordem $n$, $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
-		$$
-			\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx\text{.}
-		$$
 	\end{frame}
 
 	\section{Contexto Histórico}
@@ -122,15 +134,70 @@
 		\frametitle{Método de Rayleigh-Ritz}
 		\justify
 		
-		{\color{red}Colocar tópicos sobre a história do método de Rayleigh-Ritz.}
+		Segundo \citeonline{LEISSA_2005}, 
+		\begin{itemize}
+			\justifying
+			\item o método leva o nome dos pesquisadores Lord Rayleigh e Walter Ritz;
+			\pause
+			\item estudado, primeiro, por Lord Rayleigh com problemas de energias potencial e cinética de sistemas;
+			\pause
+			\item generalizado por Walter Ritz;
+			\pause
+			\item não se sabe exatamente quando o método passou a se chamar "Método de Rayleigh-Ritz".
+		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
+		\frametitle{Aplicação do Método de Rayleigh-Ritz}
+		\justify
+
+		Uma das aplicações mais usuais nos trabalhos acadêmicos é o seu uso para a determinação das chamadas frequências naturais.
+		\vspace{10pt}
+		\pause
+		
+		As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Aplicação do Método de Rayleigh-Ritz}
 		\justify
 		
-		{\color{red}Citar os exemplos de aplicação do método de Rayleigh-Ritz.}
+		Essa aplicação pode ser verificada nos trabalhos de 
+		\begin{itemize}
+			\justifying
+			\item \citeonline{RRM_Applications} com as vigas consolas;
+			\item \citeonline{mrr_beams} ao estudar a frequência natural em vigas seguindo os modelos de Timoshenko e de Euler;
+			\item \citeonline{GROSSI_2001} aplica o método a problemas envolvendo placas.
+		\end{itemize}
+		\vspace{10pt}
+		\pause
+		
+		\citeonline{deep_ritz} estuda a aplicação do Método junto a Inteligência Aritifical, propondo o método chamado de \textit{Deep Ritz Method} para a resolução de problemas variacionais.
 	\end{frame}
+	
+	\encapsulateBackgroundLessFrames{
+		\begin{frame}
+			%\frametitle{Aplicação do Método de Rayleigh-Ritz}
+			\begin{figure}[h]
+				\caption{Solução da equação de Poisson em duas dimensões utilizando o \textit{Deep Ritz Method} e o método das diferenças finitas}
+				\centering
+				\begin{subfigure}{.4\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{../figuras/cite/deep_ritz_a.png}
+					\caption{Solução pelo \textit{Deep Ritz Method}.}
+					\label{fig:deep_ritz_poisson_a}
+				\end{subfigure}
+				\begin{subfigure}{.4\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{../figuras/cite/deep_ritz_b.png}
+					\caption{Solução pelo método das diferenças finitas.}
+					\label{fig:deep_ritz_poisson_b}
+				\end{subfigure}
+				\label{fig:deep_ritz_poisson}
+				\\{\small Fonte: \citeonline[p. 5]{deep_ritz}.}
+			\end{figure}
+		\end{frame}
+	}
 	
 	\begin{frame}
 		\frametitle{Linguagem Python}
@@ -348,7 +415,7 @@
 	\end{frame}
 
 	\section{Referências}
-	\begin{frame}
+	\begin{frame}[allowframebreaks]
 		\frametitle{Referências}
 		\bibliography{../references}
 	\end{frame}
