@@ -7,6 +7,10 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e}
+\usepackage{tikz, tkz-euclide, tkz-fct}
+\usetikzlibrary{babel}
+\usetkzobj{all}
+
 
 % Título da apresentação [short title]{long title}
 \title[Cálculo Variacional e o Método de Rayleigh-Ritz]{Uma Introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz com Aplicações em Python}
@@ -40,26 +44,31 @@
 	\section{Objetivo}
 
 	\begin{frame}
-		\frametitle{Objetivo}
+		\frametitle{Objetivos}
 	
-		\justify
-		O objetivo do presente trabalho é explicar o Cálculo Variacional e apresentar aplicações do mesmo.
+		\begin{enumerate}
+			\justifying
+			\item introduzir, de forma clara e concisa, o Cálculo Variacional por meio do estudo das Equações de Euler-Lagrange para funcionais que dependem de uma única variável, da função e das suas derivadas, até a ordem $n$ desejada;
+			
+			\item explicar o método de Rayleigh-Ritz, de forma simples e introdutória, desenvolvendo exemplos básicos;
+			
+			\item apresentar formas de se utilizar a computação para os cálculos do método de Rayleigh-Ritz por meio da linguagem de programação Python.
+		\end{enumerate}
 	\end{frame}
-
+	
 	\section{Introdução}
-
 	\begin{frame}
 		\frametitle{Introdução}
 		
 		\justify
-  		Segundo \citeonline{calcvar}, o problema pertinente ao cálculo variacional é o de encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, e $f$ uma função duas vezes diferenciável, minimizando ou maximizando a integral
+		Segundo \citeonline{calcvar} e \citeonline{calcvar_campos}, um dos problemas pertinentes ao Cálculo Variacional é o de encontrar uma função diferenciável até a ordem $n$, $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, minimizando ou maximizando a integral
 		$$
-			\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
+			\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx\text{.}
 		$$
 	\end{frame}
 
-	\section{História}
-	\makesubtitleframe{História}
+	\section{Contexto Histórico}
+	\makesubtitleframe{Contexto Histórico}
 
 	\begin{frame}
 		\frametitle{Máximos e Mínimos}
@@ -84,7 +93,7 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Problema da Braquistócrona}
+		\frametitle{O Problema da Braquistócrona e o Cálculo Variacional}
 		\justify
 	
 		Segundo \citeonline{hist_courant} e \citeonline{hist_still}, o problema da braquistócrona,
@@ -97,7 +106,7 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Problema da Braquistócrona}
+		\frametitle{O Problema da Braquistócrona e o Cálculo Variacional}
 		\justify
 
 		Segundo \citeonline{hist_courant} e \citeonline{hist_still},
@@ -108,31 +117,52 @@
 			\item Euler e Lagrange.
 		\end{itemize}
 	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Método de Rayleigh-Ritz}
+		\justify
+		
+		{\color{red}Colocar tópicos sobre a história do método de Rayleigh-Ritz.}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Método de Rayleigh-Ritz}
+		\justify
+		
+		{\color{red}Citar os exemplos de aplicação do método de Rayleigh-Ritz.}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Linguagem Python}
+		\justify
+		
+		{\color{red}Colocar tópicos sobre a linguagem de programação Python.}
+	\end{frame}
 
 	\section{Cálculo Variacional}
 	\makesubtitleframe{Cálculo Variacional}
 
-	\begin{frame}
-		\frametitle{Relembrando o problema}
-		\justify
-	
-		Deseja-se, no Cálculo Variacional, encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, e $f$ uma função duas vezes diferenciável, minimizando ou maximizando a integral
-		\begin{equation}
-			\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
-			\label{eqn:def_calcvar}
-		\end{equation}
-	\end{frame}
+	%\begin{frame}
+	%	\frametitle{Relembrando o problema}
+	%	\justify
+	%
+	%	Deseja-se, no Cálculo Variacional, encontrar uma função diferenciável até segunda ordem $y=y(x)$ satisfazendo $y(x_1)=y_1$ e $y(x_2)=y_2$, com $x_1$, $x_2$, $y_1$ e $y_2$ dados, e $f$ uma função duas vezes diferenciável, minimizando ou maximizando a integral
+	%	\begin{equation}
+	%		\int_{x_1}^{x_2} f(x,y,y')dx\text{.}
+	%		\label{eqn:def_calcvar}
+	%	\end{equation}
+	%\end{frame}
 
-	\begin{frame}
-		\frametitle{Funções Aproximadoras}
-		\begin{definicao}
-			\justify
-			Uma família de funções aproximadoras é definida como
-			$$Y(x)=y(x)+\varepsilon \eta (x)\text{,}$$
-			onde a função $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2)=0$. O número $\varepsilon$ é o parâmetro da família. Sua derivada pode ser escrita como
-			$$Y'(x)=y'(x)+\varepsilon \eta '(x)\text{.}$$
-		\end{definicao}
-	\end{frame}
+	%\begin{frame}
+	%	\frametitle{Funções Aproximadoras}
+	%	\begin{definicao}
+	%		\justify
+	%		Uma família de funções aproximadoras é definida como
+	%		$$Y(x)=y(x)+\varepsilon \eta (x)\text{,}$$
+	%		onde a função $\eta (x)$ é uma função diferenciável arbitrária para a qual $\eta (x_1)=\eta (x_2)=0$. O número $\varepsilon$ é o parâmetro da família. Sua derivada pode ser escrita como
+	%		$$Y'(x)=y'(x)+\varepsilon \eta '(x)\text{.}$$
+	%	\end{definicao}
+	%\end{frame}
 
 	\encapsulateBackgroundLessFrames
 	{
@@ -140,161 +170,187 @@
 			\begin{figure}
 				\caption{Representação gráfica das funções aproximadoras.}
 				\begin{center}
-					\includegraphics[scale=0.25]{../figuras/cap_calcvar/figura_001}\par
-					{\small Fonte: Elaborada pelo autor, 2019}
+					\resizebox{0.5\textwidth}{0.5\textwidth}{
+						\input{../figuras/cap_calcvar/funcoes_aproximadoras.tex}
+					}\\
+					{\small Fonte: Elaborada pelo autor, 2019.}
 				\end{center}
 				\label{fig:func_approx}
 			\end{figure}
 		\end{frame}
 	}
 	
-	\begin{frame}
-		\frametitle{Reescrevendo o Problema}
-		\justify
-	
-		Pode-se reescrever a integral \eqref{eqn:def_calcvar} utilizando as funções aproximadoras, dependendo de $\varepsilon$, então
-		\begin{equation}
-			\label{eqn:int_funcional_approx}
-			I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
-		\end{equation}
-	
-		Para encontrar a função $y(x)$ que maximiza ou minimiza a integral escrita com as funções aproximadoras \eqref{eqn:int_funcional_approx}, deve-se fazer
-		$$I'(\varepsilon)=0\text{,}$$
-		e, considerando que quando $\varepsilon=0$, as integrais \eqref{eqn:def_calcvar} e \eqref{eqn:int_funcional_approx} fornecem os mesmos maximos e mínimos, é necessário que
-		$$I'(0)=0\text{.}$$
-	\end{frame}
+	%\begin{frame}
+	%	\frametitle{Reescrevendo o Problema}
+	%	\justify
+	%
+	%	Pode-se reescrever a integral \eqref{eqn:def_calcvar} utilizando as funções aproximadoras, dependendo de $\varepsilon$, então
+	%	\begin{equation}
+	%		\label{eqn:int_funcional_approx}
+	%		I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y, Y')dx\text{.}
+	%	\end{equation}
+	%
+	%	Para encontrar a função $y(x)$ que maximiza ou minimiza a integral escrita com as funções aproximadoras \eqref{eqn:int_funcional_approx}, deve-se fazer
+	%	$$I'(\varepsilon)=0\text{,}$$
+	%	e, considerando que quando $\varepsilon=0$, as integrais \eqref{eqn:def_calcvar} e \eqref{eqn:int_funcional_approx} fornecem os mesmos maximos e mínimos, é necessário que
+	%	$$I'(0)=0\text{.}$$
+	%\end{frame}
 
-	\begin{frame}
-		\justify
-	
-		Utilizando a Regra de Leibniz, pode-se escrever a derivada de $I(\varepsilon)$ como
-		$$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y, Y') dx \text{,}$$
-		\pause
-		donde, aplicando a regra da cadeia, obtêm-se
-		$$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{.}$$
-		\pause
-	
-		O primeiro termo do integrando é nulo, pois $x$ independe de $\varepsilon$, então
-		$$
-			I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
-		$$
-	\end{frame}
+	%\begin{frame}
+	%	\justify
+	%
+	%	Utilizando a Regra de Leibniz, pode-se escrever a derivada de $I(\varepsilon)$ como
+	%	$$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y, Y') dx \text{,}$$
+	%	\pause
+	%	donde, aplicando a regra da cadeia, obtêm-se
+	%	$$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{.}$$
+	%	\pause
+	%
+	%	O primeiro termo do integrando é nulo, pois $x$ independe de $\varepsilon$, então
+	%	$$
+	%		I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
+	%	$$
+	%\end{frame}
 
-	\begin{frame}
-		\justify
-	
-		Derivando a função aproximadora $Y(x)=y(x)+\varepsilon \eta(x)$ em relação a $\varepsilon$, conclui-se que
-		$$\frac{\partial Y}{\partial \varepsilon}=\eta\text{.}$$
-		\pause
-	
-		De modo análogo, ao derivar $Y'(x)=y'(x)+\varepsilon \eta '(x)$ em relação a $\varepsilon$, obtêm-se que
-		$$\frac{\partial Y'}{\partial \varepsilon}=\eta '\text{.}$$
-	\end{frame}
+	%\begin{frame}
+	%	\justify
+	%
+	%	Derivando a função aproximadora $Y(x)=y(x)+\varepsilon \eta(x)$ em relação a $\varepsilon$, conclui-se que
+	%	$$\frac{\partial Y}{\partial \varepsilon}=\eta\text{.}$$
+	%	\pause
+	%
+	%	De modo análogo, ao derivar $Y'(x)=y'(x)+\varepsilon \eta '(x)$ em relação a $\varepsilon$, obtêm-se que
+	%	$$\frac{\partial Y'}{\partial \varepsilon}=\eta '\text{.}$$
+	%\end{frame}
 
-	\begin{frame}
-		\justify
-	
-		Substituindo $\frac{\partial Y}{\partial \varepsilon}=\eta$ e $\frac{\partial Y'}{\partial \varepsilon}=\eta'$ em $I'(\varepsilon)$,
-		$$
-			I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx
-		$$
-		\pause
-		$$
-			I'(\varepsilon)=\int_{x_1}^{x_2}\left ( 
-				\frac{\partial f}{\partial Y} \eta +
-				\frac{\partial f}{\partial Y'} \eta '
-			\right )dx \text{.}
-		$$
-	\end{frame}
+	%\begin{frame}
+	%	\justify
+	%
+	%	Substituindo $\frac{\partial Y}{\partial \varepsilon}=\eta$ e $\frac{\partial Y'}{\partial \varepsilon}=\eta'$ em $I'(\varepsilon)$,
+	%	$$
+	%		I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx
+	%	$$
+	%	\pause
+	%	$$
+	%		I'(\varepsilon)=\int_{x_1}^{x_2}\left ( 
+	%			\frac{\partial f}{\partial Y} \eta +
+	%			\frac{\partial f}{\partial Y'} \eta '
+	%		\right )dx \text{.}
+	%	$$
+	%\end{frame}
 
+	%\begin{frame}
+	%	\justify
+	%
+	%	Calculando $I'(0)$, ou seja, quando $\varepsilon=0$, é possível trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, então,
+	%	$$
+	%		I'(0)=\int_{x_1}^{x_2}\left (
+	%			\frac{\partial f}{\partial y} \eta +
+	%			\frac{\partial f}{\partial y'} \eta '
+	%		\right )dx
+	%	$$
+	%	\pause
+	%	$$
+	%		I'(0)=
+	%			\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+	%			+
+	%			\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{.}
+	%	$$
+	%	\pause
+	%
+	%	Integrando o segundo membro por partes, tem-se
+	%	$$
+	%	I'(0)=
+	%		\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
+	%		-
+	%		\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx
+	%	$$
+	%\end{frame}
+	
+	%\begin{frame}
+	%	\justify
+	%
+	%	Organizando $I'(0)$, tem-se
+	%	$$
+	%		I'(0)=\int_{x_1}^{x_2}\left (
+	%			\frac{\partial f}{\partial y} -
+	%			\frac{d}{dx}
+	%			\left (
+	%				\frac{\partial f}{\partial y'}
+	%			\right )
+	%		\right )\eta dx
+	%		\text{.}
+	%	$$
+	%	\pause
+	%	
+	%	Devido a condição necessária, $I'(0)=0$, escrevemos
+	%	$$
+	%		I'(0)=\int_{x_1}^{x_2}\left (
+	%			\frac{\partial f}{\partial y} -
+	%			\frac{d}{dx}
+	%			\left (
+	%				\frac{\partial f}{\partial y'}
+	%			\right )
+	%		\right )\eta dx = 0
+	%		\text{.}
+	%	$$
+	%\end{frame}
+
+	%\begin{frame}
+	%	\justify
+	%	Para concluirmos a dedução do resultado é necessário o uso do seguinte lema:
+	%
+	%	\begin{lema}
+	%		\justify
+	%		Sejam $x_1 < x_2$ fixos e $G(x)$ uma função contínua particular para $x_1 \leqslant x \leqslant x_2$. Se $$\int_{x_1}^{x_2} \eta (x) G(x) dx = 0$$ para cada função diferenciável $\eta (x)$ tal que $\eta (x_1)=\eta (x_2)=0$, concluímos que $G(x)=0$, para todo $x$ de modo que $x_1 \leqslant x \leqslant x_2$.
+	%	\end{lema}	
+	%
+	%\end{frame}
+
+	%\begin{frame}
+	%	\frametitle{Equação de Euler-Lagrange}
+	%	\justify
+	%
+	%	Pelo Lema anterior, conlui-se que
+	%	$$
+	%		\frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
+	%	$$
+	%	\pause
+	%
+	%	A equação acima é chamada de \textbf{Equação de Euler-Lagrange}, sendo uma condição necessária para minimizar ou maximizar a integral
+	%	$$
+	%		\int_{x_1}^{x_2} f(x, y, y')dx \text{.}
+	%	$$
+	%\end{frame}
+	
+	\section{Método de Rayleigh-Ritz}
+	\makesubtitleframe{Método de Rayleigh-Ritz}
+	
 	\begin{frame}
-		\justify
-	
-		Calculando $I'(0)$, ou seja, quando $\varepsilon=0$, é possível trocar $Y$ e $Y'$ por $y$ e $y'$, respectivamente, então,
-		$$
-			I'(0)=\int_{x_1}^{x_2}\left (
-				\frac{\partial f}{\partial y} \eta +
-				\frac{\partial f}{\partial y'} \eta '
-			\right )dx
-		$$
-		\pause
-		$$
-			I'(0)=
-				\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
-				+
-				\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{.}
-		$$
-		\pause
-	
-		Integrando o segundo membro por partes, tem-se
-		$$
-		I'(0)=
-			\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
-			-
-			\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx
-		$$
-	\end{frame}
-	
-	\begin{frame}
-		\justify
-	
-		Organizando $I'(0)$, tem-se
-		$$
-			I'(0)=\int_{x_1}^{x_2}\left (
-				\frac{\partial f}{\partial y} -
-				\frac{d}{dx}
-				\left (
-					\frac{\partial f}{\partial y'}
-				\right )
-			\right )\eta dx
-			\text{.}
-		$$
-		\pause
+		\frametitle{Método de Rayleigh-Ritz}
 		
-		Devido a condição necessária, $I'(0)=0$, escrevemos
-		$$
-			I'(0)=\int_{x_1}^{x_2}\left (
-				\frac{\partial f}{\partial y} -
-				\frac{d}{dx}
-				\left (
-					\frac{\partial f}{\partial y'}
-				\right )
-			\right )\eta dx = 0
-			\text{.}
-		$$
+		{\color{red}Explicar o método de Rayleigh-Ritz.}
 	\end{frame}
-
+	
 	\begin{frame}
-		\justify
-		Para concluirmos a dedução do resultado é necessário o uso do seguinte lema:
-	
-		\begin{lema}
-			\justify
-			Sejam $x_1 < x_2$ fixos e $G(x)$ uma função contínua particular para $x_1 \leqslant x \leqslant x_2$. Se $$\int_{x_1}^{x_2} \eta (x) G(x) dx = 0$$ para cada função diferenciável $\eta (x)$ tal que $\eta (x_1)=\eta (x_2)=0$, concluímos que $G(x)=0$, para todo $x$ de modo que $x_1 \leqslant x \leqslant x_2$.
-		\end{lema}	
-	
+		\frametitle{Funções Triangulares}
+		
+		{\color{red}Explicar o uso das funções triangulares.}
 	\end{frame}
-
+	
+	\section{Método de Rayleigh-Ritz e a Linguagem Python}
+	\makesubtitleframe{Método de Rayleigh-Ritz e a Linguagem Python}
+	
 	\begin{frame}
-		\frametitle{Equação de Euler-Lagrange}
-		\justify
-	
-		Pelo Lema anterior, conlui-se que
-		$$
-			\frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
-		$$
-		\pause
-	
-		A equação acima é chamada de \textbf{Equação de Euler-Lagrange}, sendo uma condição necessária para minimizar ou maximizar a integral
-		$$
-			\int_{x_1}^{x_2} f(x, y, y')dx \text{.}
-		$$
+		\frametitle{Método de Rayleigh-Ritz e a Linguagem Python}
+		
+		{\color{red}Explicar sobre o uso da Linguagem Python.}
 	\end{frame}
 
 	\section{Referências}
 	\begin{frame}
 		\frametitle{Referências}
-		\bibliography{../../references}
+		\bibliography{../references}
 	\end{frame}
 
 \end{document}
