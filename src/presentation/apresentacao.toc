@@ -1,0 +1,8 @@
+\babel@toc {brazil}{}
+\babel@toc {brazil}{}
+\beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{2}{0}{1}
+\beamer@sectionintoc {2}{Objetivo}{5}{0}{2}
+\beamer@sectionintoc {3}{Contexto Hist\IeC {\'o}rico}{6}{0}{3}
+\beamer@sectionintoc {4}{C\IeC {\'a}lculo Variacional}{29}{0}{4}
+\beamer@sectionintoc {5}{M\IeC {\'e}todo de Rayleigh-Ritz}{31}{0}{5}
+\beamer@sectionintoc {6}{M\IeC {\'e}todo de Rayleigh-Ritz e a Linguagem Python}{80}{0}{6}

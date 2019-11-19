@@ -9,9 +9,30 @@
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e}
 \usepackage{subcaption}
+\usepackage{listings}
 \usepackage{tikz, tkz-euclide, tkz-fct}
 \usetikzlibrary{babel}
 \usetkzobj{all}
+
+\renewcommand{\lstlistingname}{Código}
+\lstdefinestyle{Python}{
+	language={Python},
+	basicstyle=\ttfamily\footnotesize,
+	identifierstyle=\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green},
+	stringstyle=\color{red},
+	extendedchars=true,
+	showspaces=false,
+	showstringspaces=false,
+	numbers=none,
+	breaklines=true,
+	backgroundcolor=\color{yellow!20},
+	breakautoindent=true,
+	captionpos=b,
+	xleftmargin=0pt,
+	frame=none
+}
 
 % Título da apresentação [título curto]{título longo}
 \title[Cálculo Variacional e o Método de Rayleigh-Ritz]{Uma Introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz com Aplicações em Python}
@@ -194,7 +215,7 @@
 					\label{fig:deep_ritz_poisson_b}
 				\end{subfigure}
 				\label{fig:deep_ritz_poisson}
-				\\{\small Fonte: \citeonline[p. 5]{deep_ritz}.}
+				\\{\footnotesize Fonte: \citeonline[p. 5]{deep_ritz}.}
 			\end{figure}
 		\end{frame}
 	}
@@ -263,7 +284,7 @@
 	%				\resizebox{0.5\textwidth}{0.5\textwidth}{
 	%					\input{../figuras/cap_calcvar/funcoes_aproximadoras.tex}
 	%				}\\
-	%				{\small Fonte: Elaborada pelo autor, 2019.}
+	%				{\footnotesize Fonte: Elaborada pelo autor, 2019.}
 	%			\end{center}
 	%			\label{fig:func_approx}
 	%		\end{figure}
@@ -548,7 +569,7 @@
 					\tkzDrawSegment[color=black](LS_1, LS_2)
 					\node at (2.5,-2) {$l$};
 				\end{tikzpicture}
-				\\{\small Fonte: \citeonline[p. 25]{mefassan}.}
+				\\{\footnotesize Fonte: \citeonline[p. 25]{mefassan}.}
 			\end{figure}
 		\end{frame}
 	}
@@ -842,15 +863,145 @@
 	\end{frame}
 	
 	\section{Método de Rayleigh-Ritz e a Linguagem Python}
-	\makesubtitleframe{Método de Rayleigh-Ritz e a Linguagem Python}
-	 
+	\makesubtitleframe{Utilizando o Método de Rayleigh-Ritz na Linguagem Python}
+
 	\begin{frame}
 		\frametitle{Método de Rayleigh-Ritz e a Linguagem Python}
+		\justify
 		
-		{\color{red}Explicar sobre o uso da Linguagem Python.}
+		Considere o funcional
+		$$
+			\Pi = 
+			\frac{1}{2} \int_0^l EI \left [
+				\frac{d^2v}{dx^2}
+			\right ]^2 dx
+			-
+			\int_0^l qvdx
+			\text{,}
+		$$
+		do Exemplo sobre o Método de Rayleigh-Ritz.
+		\vspace{10pt}
+		\pause
+		
+		Seja a função aproximadora $v_3(x)$,
+		$$
+			v_3(x)=a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4
+			\text{.}
+		$$
 	\end{frame}
+	
+	\begin{frame}[containsverbatim]
+		\begin{lstlisting}[style=Python,numbers=left, caption={Definição da Função Aproximada e Integrando}, captionpos=t]
+from sympy import symbols, integrate, diff, Matrix
+from sympy.solvers import solve
 
-	\section{Referências}
+l, E, I, x, q = symbols('l E I x q')
+a2, a3, a4 = symbols("a2 a3 a4")
+
+v = a2 * (x**2 - l*x) 
+v = v + a3 * (x**3 - l**2 * x)
+v = v + a4 * (x**4 - l**3 * x)
+
+dv = diff(v, x)
+dv2 = diff(dv, x)
+
+f = (E*I*((dv2)**2)) / 2 - q * v
+		\end{lstlisting}
+		\begin{center}
+			\footnotesize Fonte: Elaborado pelo autor, 2019.
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Método de Rayleigh-Ritz e a Linguagem Python}
+		\justify
+		
+		Para resolver o sistema
+		$$
+			\begin{cases}
+				\dfrac{\partial \Pi}{\partial a_2}=0\\[10pt]
+				\dfrac{\partial \Pi}{\partial a_3}=0\\[10pt]
+				\dfrac{\partial \Pi}{\partial a_4}=0
+			\end{cases}
+			\text{,}
+		$$
+		é possível utilizar a chamada Regra de Leibniz, realizando a derivação antes da integração.
+		\vspace{10pt}
+		\pause
+		
+		Finalmente, o sistema resultante das derivações e integrações deve ser resolvido obtendo os valores de $a_2$, $a_3$ e $a_4$.
+	\end{frame}
+	
+	\begin{frame}[containsverbatim]
+		\begin{lstlisting}[style=Python, numbers=left, firstnumber=15, caption={Definição da Função Aproximada e Integrando}, captionpos=t]
+
+df_a2 = diff(f, a2)
+df_a3 = diff(f, a3)
+df_a4 = diff(f, a4)
+
+eq1 = integrate(df_a2, (x, 0, l))
+eq2 = integrate(df_a3, (x, 0, l))
+eq3 = integrate(df_a4, (x, 0, l))
+
+sol = solve([eq1, eq2, eq3], [a2, a3, a4])
+print(sol)
+		\end{lstlisting}
+		\begin{center}
+			\footnotesize Fonte: Elaborado pelo autor, 2019.
+		\end{center}
+	\end{frame}
+	
+	\encapsulateBackgroundLessFrames{
+	\begin{frame}
+		\begin{figure}
+			\caption{Resultado encontrado para $a_2$, $a_3$ e $a_4$}
+			\includegraphics[scale=1.8]{../figuras/code/code_solve_mrr_exemplo_livro.png}
+			\\{\footnotesize Fonte: Elaborada pelo autor, 2019.}
+		\end{figure}
+	\end{frame}
+	}
+	
+	\begin{frame}[containsverbatim]
+		\begin{lstlisting}[style=Python, numbers=left, firstnumber=26, caption={Determinando o coeficiente $a_1$}, captionpos=t]
+a1 = -a2*l - a3*l**2 - a4 * l**3
+a1 = a1.subs(a2, sol[a2])
+a1 = a1.subs(a3, sol[a3])
+a1 = a1.subs(a4, sol[a4])
+print("a1: ", a1)
+		\end{lstlisting}
+		\begin{center}
+			\footnotesize Fonte: Elaborado pelo autor, 2019.
+		\end{center}
+		\vspace{-10pt}
+		\begin{lstlisting}[style=Python, numbers=left, firstnumber=31, caption={Determinando a função $v$ e a Máxima Deflexão}, captionpos=t]
+v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
+print("v(x) = ", v)
+maxdef = v.subs(x, l/2)
+print("Maxima deflexao: ", maxdef)
+		\end{lstlisting}
+		\begin{center}
+			\footnotesize Fonte: Elaborado pelo autor, 2019.
+		\end{center}
+	\end{frame}
+	
+	\encapsulateBackgroundLessFrames{
+	\begin{frame}
+		\begin{figure}
+			\caption{Execução completa dos Códigos 1, 2, 3 e 4}
+			\includegraphics[scale=1.6]{../figuras/code/code_solve_mrr_exemplo_livro_presentation.png}
+			\\{\footnotesize Fonte: Elaborada pelo autor, 2019.}
+		\end{figure}
+	\end{frame}
+	}
+	
+	\begin{frame}
+		\frametitle{Funções Triangulares na Linguagem Python}
+		
+		{\color{red}Explicar sobre o uso da Linguagem Python e as funções triangulares.}
+	\end{frame}
+	
+	%\section{Referências}
+	\makesubtitleframe{Referências}
 	\begin{frame}[allowframebreaks]
 		\frametitle{Referências}
 		\bibliography{../references}
