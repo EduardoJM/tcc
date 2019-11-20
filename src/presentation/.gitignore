@@ -245,4 +245,6 @@ TSWLatexianTemp*
 *.docx
 *.out.ps
 
+*.tkzfct.table
+*.tkzfct.gnuplot
 apresentacao.pdf

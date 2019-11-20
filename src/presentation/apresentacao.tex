@@ -58,6 +58,20 @@
 \newtheorem{definicao}{Definição}
 \newtheorem{lema}{Lema}
 
+\newcommand{\fonte}[1]{
+	\begin{center}
+		\footnotesize Fonte: #1
+	\end{center}
+}
+
+\newcommand{\fonteElaboradoPeloAutor}{
+	\fonte{Elaborado pelo autor, 2019.}
+}
+
+\newcommand{\fonteElaboradaPeloAutor}{
+	\fonte{Elaborada pelo autor, 2019.}
+}
+
 \begin{document}
 
 	\begin{frame}[plain]
@@ -80,11 +94,11 @@
 		\frametitle{Introdução}
 		\justify
 
-		Uma das formas de se encontrar a função $y(x)$ corresponde na determinação da chamada equação de Euler-Lagrange associada ao problema e, então, sua resolução. Além disso, a satisfação das chamadas Condições de Contorno Naturais e Essenciais são necessárias para a correta determinação da função $y(x)$ exata.
+		Uma das formas de se encontrar a função $y(x)$ corresponde na determinação da chamada equação de Euler-Lagrange associada ao problema e, então, sua resolução.
 		\vspace{10pt}
 		\pause
 		
-		Outra abordagem ao problema consiste na aproximação de $y(x)$ por meio de funções admissíveis.
+		Outra abordagem ao problema consiste na aproximação de $y(x)$ por meio de outras funções, por exemplo, com o Método de Rayleigh-Ritz.
 	\end{frame}
 	
 	\section{Objetivo}
@@ -110,19 +124,10 @@
 	
 		Segundo \citeonline{boyer}, tem-se alguns acontecimentos importantes:
 		\begin{itemize}
-			\item Pierre de Fermat em 1629.
-			\pause
-			\begin{itemize}
-				\item Comparações entre $f(x)$ e $f(x+E)$ próximo de máximos ou mínimos.
-				\pause
-				\item Considerar a divisão $\frac{f(x+E)-f(x)}{E}$.
-				\pause
-				\item Após a divisão, considerar $E=0$.
-				\pause
-				\item Por último, igualar o resultado a $0$, encontrando as abscissas dos máximos ou mínimos.
-			\end{itemize}
-			\pause
-			\item Cálculo diferencial em 1665 (Isaac Newton) e 1676 (Gottfried Leibniz).
+			\justifying
+		    \item Pierre de Fermat em 1629.
+		    \pause
+		    \item Cálculo diferencial em 1665 (Isaac Newton) e 1676 (Gottfried Leibniz).
 		\end{itemize}
 	\end{frame}
 
@@ -132,7 +137,7 @@
 	
 		Segundo \citeonline{hist_courant} e \citeonline{hist_still}, o problema da braquistócrona,
 		\begin{itemize}
-			\item Foi formulado por Johann Bernoulli em 1969 e pode ser apresentado como:
+			\item Foi formulado por Johann Bernoulli em 1696 e pode ser apresentado como:
 			\begin{block}{Problema da Braquistócrona}
 				Sejam $A$ e $B$ dois pontos dados em um plano vertical. O problema da braquistócrona consiste em encontrar a curva que uma partícula M precisa descrever para sair de A e chegar em B no menor tempo possível, somente sob a ação da força da gravidade \cite[p. 3]{calcvar}.
 			\end{block}
@@ -178,47 +183,11 @@
 		\pause
 		
 		As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Aplicação do Método de Rayleigh-Ritz}
-		\justify
-		
-		Essa aplicação, com as frequências naturais, pode ser verificada nos trabalhos de 
-		\begin{itemize}
-			\justifying
-			\item \citeonline{RRM_Applications} com as vigas consolas.
-			\item \citeonline{mrr_beams} com as vigas seguindo os modelos de Timoshenko e de Euler.
-			\item \citeonline{GROSSI_2001} com problemas envolvendo placas.
-		\end{itemize}
 		\vspace{10pt}
 		\pause
 		
 		\citeonline{deep_ritz} estuda a aplicação do Método junto a Inteligência Aritifical, propondo o método chamado de \textit{Deep Ritz Method} para a resolução de problemas variacionais.
 	\end{frame}
-	
-	\encapsulateBackgroundLessFrames{
-		\begin{frame}
-			\begin{figure}[h]
-				\caption{Solução da equação de Poisson em duas dimensões utilizando o \textit{Deep Ritz Method} e o método das diferenças finitas}
-				\centering
-				\begin{subfigure}{.4\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{../figuras/cite/deep_ritz_a.png}
-					\caption{Solução pelo \textit{Deep Ritz Method}.}
-					\label{fig:deep_ritz_poisson_a}
-				\end{subfigure}
-				\begin{subfigure}{.4\textwidth}
-					\centering
-					\includegraphics[width=\linewidth]{../figuras/cite/deep_ritz_b.png}
-					\caption{Solução pelo método das diferenças finitas.}
-					\label{fig:deep_ritz_poisson_b}
-				\end{subfigure}
-				\label{fig:deep_ritz_poisson}
-				\\{\footnotesize Fonte: \citeonline[p. 5]{deep_ritz}.}
-			\end{figure}
-		\end{frame}
-	}
 	
 	\begin{frame}
 		\frametitle{Linguagem Python}
@@ -232,14 +201,15 @@
 			\pause
 			\item Atualmente há cerca de 1000 colaboradores no GitHub.
 			\pause
-			\item Diversas bibliotecas de rotinas como, por exemplo, o ecossistema SciPy:
-				\begin{itemize}
-					\item NumPy
-					\item SciPy
-					\item MatplotLib
-					\item SymPy\\
-					...
-				\end{itemize}
+			\item Diversas bibliotecas de rotinas voltadas a computação científica.
+%			\item Diversas bibliotecas de rotinas como, por exemplo, o ecossistema SciPy:
+%				\begin{itemize}
+%					\item NumPy
+%					\item SciPy
+%					\item MatplotLib
+%					\item SymPy\\
+%					...
+%				\end{itemize}
 		\end{itemize}
 	\end{frame}
 
@@ -250,7 +220,145 @@
 		\frametitle{Cálculo Variacional}
 		\justify
 		
-		{\color{red}Falar do Cálculo Variacional.}
+		Voltando ao problema da introdução, deseja-se encontrar $y=y(x)$, diferenciável até a ordem $n$, com $y(x_1)=y_1$ e $y(x_2)=y_2$ de modo que a integral
+		$$
+			I = \int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx
+		$$
+		seja um valor mínimo ou máximo.
+		\vspace{10pt}
+		\pause
+		
+		Variar $y$ por meio de funções admissíveis
+		$$
+			Y_{\varepsilon}=y(x)+\varepsilon\eta(x)
+			\text{.}
+		$$
+	\end{frame}
+	
+	\encapsulateBackgroundLessFrames
+	{
+		\begin{frame}
+			\begin{figure}
+				\caption{Representação gráfica das funções admissíveis.}
+				\begin{center}
+					\resizebox{0.5\textwidth}{0.5\textwidth}{
+						\input{../figuras/cap_calcvar/funcoes_aproximadoras.tex}
+					}\\
+					\fonteElaboradaPeloAutor
+				\end{center}
+				\label{fig:func_approx}
+			\end{figure}
+		\end{frame}
+	}
+
+	\begin{frame}
+		\frametitle{Cálculo Variacional}
+		\justify
+		
+		É possível escrever
+		$$
+			I(\varepsilon) = \int_{x_1}^{x_2} f(x, Y_{\varepsilon}, Y', Y'', \dots, Y^{(n)})dx
+			\text{.}
+		$$
+		\pause
+		
+		Fazendo $I'(0)=0$ e realizando as devidas manipulações, obtem-se a equação de Euler-Lagrange
+		\begin{block}{Equação de Euler-Lagrange}
+			$$
+				\sum_{i=0}^n (-1)^i\frac{d^i}{dx^i}\left (
+					\frac{\partial f}{\partial y^{(i)}}
+				\right )
+				= 0
+				\text{.}
+			$$
+		\end{block}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Cálculo Variacional}
+		\justify
+
+		Um caso mais simples da equação de Euler-Lagrange se dá para o funcional
+		$$
+			I=\int_{x_1}^{x_2} f(x, y, y')dx
+			\text{,}
+		$$
+		onde a equação é dada por
+		
+		\begin{block}{Equação de Euler-Lagrange}
+			$$
+				\frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
+			$$
+		\end{block}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Cálculo Variacional}
+		\justify
+		
+		Um exemplo de uso da equação de Euler-Lagrange
+		\pause
+		\begin{block}{Curva de Menor Comprimento entre dois Pontos}
+			É sabido do cálculo diferencial e integral que o comprimento, $I$, de uma curva $y(x)$ entre dois pontos é determinado por
+			$$
+				I=\int_{x_1}^{x_2} \sqrt{1+(y'(x))^2} dx
+				\text{,}
+			$$
+			onde $x_1$ e $x_2$ são as abscissas dos dois pontos.
+			
+			É possível determinar, pela equação de Euler-Lagrange, a curva $y(x)$ com menor comprimento.
+		\end{block}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Curva de Menor Comprimento entre dois Pontos}
+		\justify
+		
+		Seja
+		$$
+			\frac{\partial f}{\partial y}
+			-
+			\frac{d}{dx} \left (
+				\frac{\partial f}{\partial y'}
+			\right )
+			= 0
+			\text{,}
+		$$
+		onde $f(x, y, y')=\sqrt{1+(y'(x))^2}$. \pause Assim,
+		$$
+			-\frac{d}{dx} \left (
+				\frac{y'(x)}{\sqrt{1+(y'(x))^2}}
+			\right )
+			= 0
+		$$
+		\pause
+		$$
+			\frac{y''(x)}{
+				\sqrt{1+(y'(x))^2}
+			}
+			= 0
+		$$
+		\pause
+		$$
+			y''(x)=0
+			\text{.}
+		$$
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Curva de Menor Comprimento entre dois Pontos}
+		\justify
+		
+		Resolvendo a equação $y''(x)=0$\pause ,
+		$$
+			\int y''(x)dx = \int 0 dx \Longrightarrow y'(x) = C_1
+		$$
+		\pause
+		$$
+			\int y'(x)dx = \int C_1 dx \Longrightarrow y(x) = C_1 x + C_2
+		$$
+		\pause
+		Portanto, $y(x)=C_1 x + C_2$.
 	\end{frame}
 
 	%\begin{frame}
@@ -275,21 +383,7 @@
 	%	\end{definicao}
 	%\end{frame}
 
-	%\encapsulateBackgroundLessFrames
-	%{
-	%	\begin{frame}
-	%		\begin{figure}
-	%			\caption{Representação gráfica das funções aproximadoras.}
-	%			\begin{center}
-	%				\resizebox{0.5\textwidth}{0.5\textwidth}{
-	%					\input{../figuras/cap_calcvar/funcoes_aproximadoras.tex}
-	%				}\\
-	%				{\footnotesize Fonte: Elaborada pelo autor, 2019.}
-	%			\end{center}
-	%			\label{fig:func_approx}
-	%		\end{figure}
-	%	\end{frame}
-	%}
+	
 	
 	%\begin{frame}
 	%	\frametitle{Reescrevendo o Problema}
@@ -569,160 +663,161 @@
 					\tkzDrawSegment[color=black](LS_1, LS_2)
 					\node at (2.5,-2) {$l$};
 				\end{tikzpicture}
-				\\{\footnotesize Fonte: \citeonline[p. 25]{mefassan}.}
+				\\
+				\fonte{\citeonline[p. 25]{mefassan}.}
 			\end{figure}
 		\end{frame}
 	}
 	
 	% Resolução do Exemplo
-	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
-		\justify
-		
-		Seja $v_1(x)=a_0 + a_1 x + a_2 x^2$. \pause Das condições de contorno
-		$$
-			v_1(0)=0\Longrightarrow a_0 = 0\text{,}
-		$$
-		\pause
-		$$
-			v_1(l)=0\Longrightarrow a_1 = -a_2l\text{.}
-		$$
-		\pause
-		Logo, $v_1(x)=a_2(x^2-lx)$, \pause $v_1'(x)=a_2(2x-l)$ \pause e $v_1''(x)=2a_2$.
-	\end{frame}
+%	\begin{frame}
+%		\frametitle{Método de Rayleigh-Ritz}
+%		\justify
+%		
+%		Seja $v_1(x)=a_0 + a_1 x + a_2 x^2$. \pause Das condições de contorno
+%		$$
+%			v_1(0)=0\Longrightarrow a_0 = 0\text{,}
+%		$$
+%		\pause
+%		$$
+%			v_1(l)=0\Longrightarrow a_1 = -a_2l\text{.}
+%		$$
+%		\pause
+%		Logo, $v_1(x)=a_2(x^2-lx)$, \pause $v_1'(x)=a_2(2x-l)$ \pause e $v_1''(x)=2a_2$.
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Método de Rayleigh-Ritz}
+%		\justify
+%		
+%		Substituindo $v$ por $v_1$ em $\Pi$,
+%		$$
+%			\Pi =
+%			\frac{1}{2}
+%			\int_0^l 4 EI a_2 ^2 dx
+%			-
+%			\int_0^l q a_2 (x^2-lx) dx
+%			\text{.}
+%		$$
+%		\pause
+%		
+%		Da condição de estacionariedade, $\dfrac{\partial \Pi}{\partial a_2}=0$,
+%		$$
+%			a_2 = -\frac{ql^2}{24EI}
+%			\text{.}
+%		$$
+%		\pause
+%		E, como $a_1=-a_2l$,
+%		$$
+%			a_1 = \frac{ql^3}{24EI}
+%			\text{.}
+%		$$
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Método de Rayleigh-Ritz}
+%		\justify
+%		
+%		Assim, 
+%		$$
+%			v_1(x)=\dfrac{ql^3}{24EI}x - \dfrac{ql^2}{24EI}x^2
+%			\text{.}
+%		$$
+%		\pause
+%		
+%		Calculando o valor de máxima deflexão,
+%		$$
+%			v_1\left ( \frac{l}{2} \right )
+%			= \frac{ql^4}{96EI}
+%			\text{.}
+%		$$
+%		\pause
+%		
+%		O valor de máxima deflexão para $v_1(x)$ é menor que o valor exato,
+%		$$
+%			v\left ( \frac{l}{2} \right )
+%			= \frac{5ql^4}{384EI}
+%			\text{.}
+%		$$
+%	\end{frame}
 	
-	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
-		\justify
-		
-		Substituindo $v$ por $v_1$ em $\Pi$,
-		$$
-			\Pi =
-			\frac{1}{2}
-			\int_0^l 4 EI a_2 ^2 dx
-			-
-			\int_0^l q a_2 (x^2-lx) dx
-			\text{.}
-		$$
-		\pause
-		
-		Da condição de estacionariedade, $\dfrac{\partial \Pi}{\partial a_2}=0$,
-		$$
-			a_2 = -\frac{ql^2}{24EI}
-			\text{.}
-		$$
-		\pause
-		E, como $a_1=-a_2l$,
-		$$
-			a_1 = \frac{ql^3}{24EI}
-			\text{.}
-		$$
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
-		\justify
-		
-		Assim, 
-		$$
-			v_1(x)=\dfrac{ql^3}{24EI}x - \dfrac{ql^2}{24EI}x^2
-			\text{.}
-		$$
-		\pause
-		
-		Calculando o valor de máxima deflexão,
-		$$
-			v_1\left ( \frac{l}{2} \right )
-			= \frac{ql^4}{96EI}
-			\text{.}
-		$$
-		\pause
-		
-		O valor de máxima deflexão para $v_1(x)$ é menor que o valor exato,
-		$$
-			v\left ( \frac{l}{2} \right )
-			= \frac{5ql^4}{384EI}
-			\text{.}
-		$$
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
-		\justify
-		
-		Seja $v_2(x)=a_0 + a_1 x + a_2 x^2 + a_3 x^3$. \pause Das condições de contorno
-		$$
-			v_2(0)=0\Longrightarrow a_0 = 0\text{,}
-		$$
-		\pause
-		$$
-			v_2(l)=0\Longrightarrow a_1 = -a_2l - a_3l^2\text{.}
-		$$
-		\pause
-		Logo, 
-		$$v_2(x)=a_2(x^2-lx)+a_3(x^3-l^2x)\text{,}$$
-		\pause 
-		$$v_2'(x)=a_2(2x-l)+a_3(3x^2-l^2)\text{,}$$
-		\pause
-		$$v_2''(x)=2a_2 + 6a_3x\text{.}$$
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
-		\justify
-		
-		Substituindo $v$ por $v_2$ em $\Pi$,
-		$$
-			\Pi=
-			\frac{1}{2}
-			\int_0^l
-				\left (
-					EI(2a_2+6a_3x)^2
-				\right ) dx
-			-
-			\int_0^l
-				q
-				\left (
-					a_2(x^2-lx)
-					+
-					a_3(x^3-l^2x)
-				\right ) dx
-			\text{.}
-		$$
-		\pause
-		Da condição de estacionariedade, tem-se o sistema
-		$$
-			\begin{cases}
-				\dfrac{\partial \Pi}{\partial a_2}=0\\[10pt]
-				\dfrac{\partial \Pi}{\partial a_3}=0
-			\end{cases}
-			\text{.}
-		$$
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Método de Rayleigh-Ritz}
-		\justify
-		
-		$$
-			\begin{cases}
-				2a_2+3a_3l=\dfrac{-ql^2}{12EI}\\[10pt]
-				2a_2+4a_3l=\dfrac{-ql^2}{12EI}
-			\end{cases}
-			\text{.}
-		$$
-		\pause
-		Resolvendo o sistema,
-		$$
-			a_3=0
-			\text{,}
-		$$
-		\pause
-		$$
-			a_2=-\frac{ql^2}{24EI}
-			\text{.}
-		$$
-	\end{frame}
+%	\begin{frame}
+%		\frametitle{Método de Rayleigh-Ritz}
+%		\justify
+%		
+%		Seja $v_2(x)=a_0 + a_1 x + a_2 x^2 + a_3 x^3$. \pause Das condições de contorno
+%		$$
+%			v_2(0)=0\Longrightarrow a_0 = 0\text{,}
+%		$$
+%		\pause
+%		$$
+%			v_2(l)=0\Longrightarrow a_1 = -a_2l - a_3l^2\text{.}
+%		$$
+%		\pause
+%		Logo, 
+%		$$v_2(x)=a_2(x^2-lx)+a_3(x^3-l^2x)\text{,}$$
+%		\pause 
+%		$$v_2'(x)=a_2(2x-l)+a_3(3x^2-l^2)\text{,}$$
+%		\pause
+%		$$v_2''(x)=2a_2 + 6a_3x\text{.}$$
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Método de Rayleigh-Ritz}
+%		\justify
+%		
+%		Substituindo $v$ por $v_2$ em $\Pi$,
+%		$$
+%			\Pi=
+%			\frac{1}{2}
+%			\int_0^l
+%				\left (
+%					EI(2a_2+6a_3x)^2
+%				\right ) dx
+%			-
+%			\int_0^l
+%				q
+%				\left (
+%					a_2(x^2-lx)
+%					+
+%					a_3(x^3-l^2x)
+%				\right ) dx
+%			\text{.}
+%		$$
+%		\pause
+%		Da condição de estacionariedade, tem-se o sistema
+%		$$
+%			\begin{cases}
+%				\dfrac{\partial \Pi}{\partial a_2}=0\\[10pt]
+%				\dfrac{\partial \Pi}{\partial a_3}=0
+%			\end{cases}
+%			\text{.}
+%		$$
+%	\end{frame}
+%	
+%	\begin{frame}
+%		\frametitle{Método de Rayleigh-Ritz}
+%		\justify
+%		
+%		$$
+%			\begin{cases}
+%				2a_2+3a_3l=\dfrac{-ql^2}{12EI}\\[10pt]
+%				2a_2+4a_3l=\dfrac{-ql^2}{12EI}
+%			\end{cases}
+%			\text{.}
+%		$$
+%		\pause
+%		Resolvendo o sistema,
+%		$$
+%			a_3=0
+%			\text{,}
+%		$$
+%		\pause
+%		$$
+%			a_2=-\frac{ql^2}{24EI}
+%			\text{.}
+%		$$
+%	\end{frame}
 	
 	\begin{frame}
 		\frametitle{Método de Rayleigh-Ritz}
@@ -858,8 +953,174 @@
 	
 	\begin{frame}
 		\frametitle{Funções Triangulares}
+		\justify
 		
-		{\color{red}Explicar o uso das funções triangulares.}
+		Considere o funcional
+		$$
+			I = \int_{0}^{1} \left [ 
+				p(x) \left ( 
+					\frac{dy}{dx}
+				\right )^2
+				+ q(x)(y(x))^2 
+				- 2f(x)y(x) 
+			\right ] dx
+			\text{,}
+		$$
+		associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos.
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Funções Triangulares}
+		\justify
+		
+		Considere a função de forma
+		$$
+			\phi_i (x) = 
+				\begin{cases}
+					0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\[5pt]
+					\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\[10pt]
+					\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\[5pt]
+					0							& \mbox{se } x_{i+1}<x\leqslant 1
+				\end{cases}
+			\text{,}
+		$$
+		onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$.
+	\end{frame}
+	
+	\encapsulateBackgroundLessFrames
+	{
+		\begin{frame}
+			\begin{figure}
+				\caption{Função Triangular $\phi_i(x)$}
+				\resizebox{0.5\textwidth}{0.5\textwidth}{
+					\begin{tikzpicture}
+						\tkzInit[xmin=-0, xmax=10, ymin=0, ymax=6.4]
+						% desenhar os eixos sem marcação
+						\tkzDrawX[label={$x$}, noticks]
+						\tkzDrawY[label={$y(x)=\phi_i(x)$}, noticks]
+						
+						% pontos da caixa
+						\tkzDefPoints{
+							0/0/C_1,
+							10/0/C_2,
+							10/6/C_3,
+							0/6/C_4}
+						% desenho da caixa
+						%\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_1, C_2)
+						\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_2, C_3)
+						\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_3, C_4)
+						%\tkzDrawSegment[color=black, line width=0.5mm, loosely dashed](C_4, C_1)
+						
+						% pontos da função
+						\tkzDefPoints{
+							0/0/F_0,
+							4/0/F_1,
+							6/6/F_2,
+							7/0/F_3,
+							10/0/F_4}
+						% desenho da função
+						\tkzDrawSegment[color=black, line width=0.7mm](F_0, F_1)	
+						\tkzDrawSegment[color=black, line width=0.7mm](F_1, F_2)
+						\tkzDrawSegment[color=black, line width=0.7mm](F_2, F_3)
+						\tkzDrawSegment[color=black, line width=0.7mm](F_3, F_4)
+						
+						% textos das marcas: x_{i-1}, x_i, x_{i+1}
+						\node at (4, -0.5) {$x_{i-1}$};
+						\node at (6, -0.5) {$x_{i}$};
+						\node at (7, -0.5) {$x_{i+1}$};
+						
+						% linha (pontilhada) em x_i
+						\tkzDefPoints{
+							6/0/PT_1,
+							6/6/PT_2}
+						\tkzDrawSegment[color=black, line width=0.5mm, dashed](PT_1, PT_2)
+						
+						% nome da função $\phi_i(x)$
+						\node at (4, 3) {$\phi_i(x)$};
+						
+						% marcador dos intervalos $h_{i-1}$, $h_i$
+						\node at (5, -1.2) {$h_{i-1}$};
+						\tkzDefPoints{
+							4/-0.8/M_1,
+							4/-0.7/M_11,
+							4/-0.9/M_12,
+							6/-0.8/M_2,
+							6/-0.7/M_21,
+							6/-0.9/M_22,
+							7/-0.8/M_3,
+							7/-0.7/M_31,
+							7/-0.9/M_32}
+						\tkzDrawSegment[color=black, line width=0.5mm](M_1, M_2)
+						\tkzDrawSegment[color=black, line width=0.5mm](M_11, M_12)
+						\tkzDrawSegment[color=black, line width=0.5mm](M_21, M_22)
+						\tkzDrawSegment[color=black, line width=0.5mm](M_2, M_3)
+						\tkzDrawSegment[color=black, line width=0.5mm](M_31, M_32)
+						\node at (6.5, -1.2) {$h_i$};
+						\node at (-0.2, 6) {$1$};
+					\end{tikzpicture}
+				}
+				\fonteElaboradaPeloAutor
+			\end{figure}
+		\end{frame}
+	}
+	
+	\begin{frame}
+		\frametitle{Funções Triangulares}
+		\justify
+		
+		Substituindo a função aproximada
+		$$
+			v(x)=\sum_{i=1}^n a_i \phi_i (x)
+		$$
+		no funcional $I$, tem-se
+		\begin{multline*}
+			I = \int_{0}^{1} \left [
+				p(x) \left (
+					\sum_{i=1}^{n} a_i \phi_i '(x)
+				\right )^2
+				+ q(x) \left (
+					\sum_{i=1}^{n} a_i \phi_i (x)
+				\right )^2
+			\right ] dx -
+			\\
+			- \int_{0}^{1} \left [
+				- 2f(x) \left (
+					\sum_{i=1}^{n} a_i \phi_i (x)
+				\right )
+			\right ] dx
+			\text{.}
+		\end{multline*}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Funções Triangulares}
+		\justify
+		
+		Aplicando a condição de estacionariedade
+		$$
+			\frac{\partial I}{\partial a_j} = 0
+			\text{,}
+		$$
+		onde $j=1,2,\dots,n$ e fazendo as devidas manipulações chega-se no sistema
+		\pause
+		$$
+			M\cdot A = B
+			\text{,}
+		$$
+		\pause
+		com $M=[m_{j,i}]$, $B=[b_j]$ e
+		$$
+			m_{j,i}=\int_{0}^{1} \left [
+				2p(x)\phi_i'(x)\phi_j'(x)
+				+
+				2q(x)\phi_i(x)\phi_j(x)
+			\right ]dx
+			\text{,}
+		$$
+		$$
+			b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
+			\text{.}
+		$$
 	\end{frame}
 	
 	\section{Método de Rayleigh-Ritz e a Linguagem Python}
@@ -907,9 +1168,7 @@ dv2 = diff(dv, x)
 
 f = (E*I*((dv2)**2)) / 2 - q * v
 		\end{lstlisting}
-		\begin{center}
-			\footnotesize Fonte: Elaborado pelo autor, 2019.
-		\end{center}
+		\fonteElaboradoPeloAutor
 	\end{frame}
 	
 	\begin{frame}
@@ -946,9 +1205,7 @@ eq3 = integrate(df_a4, (x, 0, l))
 sol = solve([eq1, eq2, eq3], [a2, a3, a4])
 print(sol)
 		\end{lstlisting}
-		\begin{center}
-			\footnotesize Fonte: Elaborado pelo autor, 2019.
-		\end{center}
+		\fonteElaboradoPeloAutor
 	\end{frame}
 	
 	\encapsulateBackgroundLessFrames{
@@ -956,7 +1213,8 @@ print(sol)
 		\begin{figure}
 			\caption{Resultado encontrado para $a_2$, $a_3$ e $a_4$}
 			\includegraphics[scale=1.8]{../figuras/code/code_solve_mrr_exemplo_livro.png}
-			\\{\footnotesize Fonte: Elaborada pelo autor, 2019.}
+			\fonteElaboradaPeloAutor
+			%\\{\footnotesize Fonte: Elaborada pelo autor, 2019.}
 		\end{figure}
 	\end{frame}
 	}
@@ -969,9 +1227,7 @@ a1 = a1.subs(a3, sol[a3])
 a1 = a1.subs(a4, sol[a4])
 print("a1: ", a1)
 		\end{lstlisting}
-		\begin{center}
-			\footnotesize Fonte: Elaborado pelo autor, 2019.
-		\end{center}
+		\fonteElaboradoPeloAutor
 		\vspace{-10pt}
 		\begin{lstlisting}[style=Python, numbers=left, firstnumber=31, caption={Determinando a função $v$ e a Máxima Deflexão}, captionpos=t]
 v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
@@ -979,9 +1235,7 @@ print("v(x) = ", v)
 maxdef = v.subs(x, l/2)
 print("Maxima deflexao: ", maxdef)
 		\end{lstlisting}
-		\begin{center}
-			\footnotesize Fonte: Elaborado pelo autor, 2019.
-		\end{center}
+		\fonteElaboradoPeloAutor
 	\end{frame}
 	
 	\encapsulateBackgroundLessFrames{
@@ -989,18 +1243,67 @@ print("Maxima deflexao: ", maxdef)
 		\begin{figure}
 			\caption{Execução completa dos Códigos 1, 2, 3 e 4}
 			\includegraphics[scale=1.6]{../figuras/code/code_solve_mrr_exemplo_livro_presentation.png}
-			\\{\footnotesize Fonte: Elaborada pelo autor, 2019.}
+			\fonteElaboradaPeloAutor
+			%\\{\footnotesize Fonte: Elaborada pelo autor, 2019.}
 		\end{figure}
 	\end{frame}
 	}
 	
 	\begin{frame}
 		\frametitle{Funções Triangulares na Linguagem Python}
+		\justify
 		
-		{\color{red}Explicar sobre o uso da Linguagem Python e as funções triangulares.}
+		O sistema $M\cdot A=B$ onde
+		$$
+			m_{j,i}=\int_{0}^{1} \left [
+				2p(x)\phi_i'(x)\phi_j'(x)
+				+
+				2q(x)\phi_i(x)\phi_j(x)
+			\right ]dx
+			\text{,}
+		$$
+		$$
+			b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
+		$$
+		pode ser resolvido numericamente utilizando a linguagem Python.
 	\end{frame}
 	
-	%\section{Referências}
+	\begin{frame}
+		\frametitle{Funções Triangulares na Linguagem Python}
+		\justify
+		
+		Para comparação do método, será utilizado um exemplo onde $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$. A função exata para esse problema é conhecida, $y(x)=(x-1)(e^{-x}-1)$.
+	\end{frame}
+	
+	\encapsulateBackgroundLessFrames{
+		\begin{frame}
+			\begin{figure}
+				\caption{Resolução do Exemplo com 5 segmentos}
+				\includegraphics[scale=0.45]{../figuras/code/code_plot_mrr_triangulate.png}
+				\fonteElaboradaPeloAutor
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\begin{figure}
+				\caption{Resolução do Exemplo com 10 segmentos}
+				\includegraphics[scale=0.45]{../figuras/code/code_plot_mrr_triangulate_n10.png}
+				\fonteElaboradaPeloAutor
+			\end{figure}
+		\end{frame}
+	}
+	
+	\makesubtitleframe{FIM!\\\vspace{20pt}OBRIGADO!}
+	
+	%
+	% Exibe as referências citadas nos slides
+	% Observação: O parâmetro [allowframebreaks]
+	%             na frente do ambiente frame
+	%             permite que o slide seja quebrado
+	%             passando-se a um próximo quando
+	%             o conteúdo passar do seu tamanho.
+	%
+	\section{Referências}
 	\makesubtitleframe{Referências}
 	\begin{frame}[allowframebreaks]
 		\frametitle{Referências}
