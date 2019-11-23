@@ -4,8 +4,9 @@ from sympy import symbols
 from sympy.matrices import zeros
 from sympy.solvers import linsolve
 import matplotlib.pyplot as pyplot
+import matplotlib.patches as patches
 
-n = 5
+n = 10
 space = 1/(n + 1)
 intervals = numpy.arange(0, 1.0001, space)
 
@@ -101,4 +102,7 @@ axes = fig.add_subplot(1, 1, 1)
 axes.plot(plot_interval, plot_aprox, color='tab:blue')
 axes.plot(plot_interval, plot_original, color='tab:orange')
 axes.set_title('Rayleigh-Ritz With n=' + str(n))
+blue_legend = patches.Patch(color='tab:blue', label='Aproximação')
+orange_legend = patches.Patch(color='tab:orange', label='Exata')
+pyplot.legend(handles=[blue_legend, orange_legend])
 pyplot.show()
