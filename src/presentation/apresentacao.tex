@@ -1,19 +1,20 @@
 \documentclass{beamer}
 
 % Pacotes utilizados
-\usepackage[brazil]{babel}
-\usepackage[alf]{abntex2cite}
+\usepackage[brazil]{babel} % idioma português brasileiro
+\usepackage[alf]{abntex2cite} % para citações abnt
 \usepackage{graphicx,hyperref,url}
 \usepackage{uegCCETtheme} % pacote customizado para o curso
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{ragged2e}
 \usepackage{subcaption}
-\usepackage{listings}
-\usepackage{tikz, tkz-euclide, tkz-fct}
+\usepackage{listings} % codigos
+\usepackage{tikz, tkz-euclide, tkz-fct} % desenhos tikz
 \usetikzlibrary{babel}
 \usetkzobj{all}
 
+% estilo dos códigos
 \renewcommand{\lstlistingname}{Código}
 \lstdefinestyle{Python}{
 	language={Python},
@@ -55,22 +56,31 @@
 %             em locais como o rodapé enquanto que o título
 %             longo é usado em lugares como a capa, por exemplo.
 
-% declara ambientes matemáticos
-\newtheorem{definicao}{Definição}
-\newtheorem{lema}{Lema}
-
+% comandos para inserir fonte em imagens
+% e códigos
 \newcommand{\fonte}[1]{
 	\begin{center}
 		\footnotesize Fonte: #1
 	\end{center}
 }
-
 \newcommand{\fonteElaboradoPeloAutor}{
 	\fonte{Elaborado pelo autor, 2019.}
 }
-
 \newcommand{\fonteElaboradaPeloAutor}{
 	\fonte{Elaborada pelo autor, 2019.}
+}
+
+% comando de pause condicional (\cpause)
+\newif\ifcompilepause
+\compilepausetrue % comente essa linha para 
+                  % desativar todos os \cpause
+                  % e gerar a apresentação
+                  % estatica sem as quebras
+                  % de frame.
+\newcommand{\cpause}{
+	\ifcompilepause
+	\pause
+	\fi
 }
 
 \begin{document}
@@ -97,7 +107,7 @@
 
 		Uma das formas de se encontrar a função $y(x)$ corresponde na determinação da chamada equação de Euler-Lagrange associada ao problema e, então, sua resolução.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		Outra abordagem ao problema consiste na aproximação de $y(x)$ por meio de outras funções, por exemplo, com o Método de Rayleigh-Ritz.
 	\end{frame}
@@ -127,7 +137,7 @@
 		\begin{itemize}
 			\justifying
 		    \item Pierre de Fermat em 1629.
-		    \pause
+		    \cpause
 		    \item Cálculo diferencial em 1665 (Isaac Newton) e 1676 (Gottfried Leibniz).
 		\end{itemize}
 	\end{frame}
@@ -152,7 +162,7 @@
 		Segundo \citeonline{hist_courant} e \citeonline{hist_still},
 		\begin{itemize}
 			\item A Solução de Jacob Bernoulli (1697) apresenta o aspecto da curva variável.
-			\pause
+			\cpause
 		
 			\item Euler e Lagrange.
 		\end{itemize}
@@ -166,11 +176,11 @@
 		\begin{itemize}
 			\justifying
 			\item O método leva o nome dos pesquisadores Lord Rayleigh e Walter Ritz.
-			\pause
+			\cpause
 			\item Estudado, primeiro, por Lord Rayleigh com problemas de energias potencial e cinética de sistemas.
-			\pause
+			\cpause
 			\item A Generalização foi feita por Walter Ritz.
-			\pause
+			\cpause
 			\item Não se sabe exatamente quando o método passou a se chamar "Método de Rayleigh-Ritz".
 		\end{itemize}
 	\end{frame}
@@ -181,11 +191,11 @@
 
 		Uma das aplicações mais usuais nos trabalhos acadêmicos é o seu uso para a determinação das chamadas frequências naturais.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		\citeonline{deep_ritz} estuda a aplicação do Método junto a Inteligência Aritifical, propondo o método chamado de \textit{Deep Ritz Method} para a resolução de problemas variacionais.
 	\end{frame}
@@ -197,11 +207,11 @@
 		\begin{itemize}
 			\justifying
 			\item Criada por Guido van Rossum por volta de 1990.
-			\pause
+			\cpause
 			\item Desenvolvimento \textit{open-source}.
-			\pause
+			\cpause
 			\item Atualmente há cerca de 1000 colaboradores no GitHub.
-			\pause
+			\cpause
 			\item Diversas bibliotecas de rotinas voltadas a computação científica.
 		\end{itemize}
 	\end{frame}
@@ -219,7 +229,7 @@
 		$$
 		seja um valor mínimo ou máximo.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		Variar $y$ por meio de funções admissíveis
 		$$
@@ -253,7 +263,7 @@
 			I(\varepsilon) = \int_{x_1}^{x_2} f(x, Y_{\varepsilon}, Y', Y'', \dots, Y^{(n)})dx
 			\text{.}
 		$$
-		\pause
+		\cpause
 		
 		Fazendo $I'(0)=0$ e realizando as devidas manipulações, obtem-se a equação de Euler-Lagrange
 		\begin{block}{Equação de Euler-Lagrange Geral}
@@ -290,7 +300,7 @@
 		\justify
 		
 		Um exemplo de uso da equação de Euler-Lagrange
-		\pause
+		\cpause
 		\begin{block}{Curva de Menor Comprimento entre dois Pontos}
 			É sabido do cálculo diferencial e integral que o comprimento, $I$, de uma curva $y(x)$ entre dois pontos é determinado por
 			$$
@@ -317,21 +327,21 @@
 			= 0
 			\text{,}
 		$$
-		onde $f(x, y, y')=\sqrt{1+(y'(x))^2}$. \pause Assim,
+		onde $f(x, y, y')=\sqrt{1+(y'(x))^2}$. \cpause Assim,
 		$$
 			-\frac{d}{dx} \left (
 				\frac{y'(x)}{\sqrt{1+(y'(x))^2}}
 			\right )
 			= 0
 		$$
-		\pause
+		\cpause
 		$$
 			\frac{y''(x)}{
 				\sqrt{1+(y'(x))^2}
 			}
 			= 0
 		$$
-		\pause
+		\cpause
 		$$
 			y''(x)=0
 			\text{.}
@@ -342,15 +352,15 @@
 		\frametitle{Curva de Menor Comprimento entre dois Pontos}
 		\justify
 		
-		Resolvendo a equação $y''(x)=0$\pause ,
+		Resolvendo a equação $y''(x)=0$\cpause ,
 		$$
 			\int y''(x)dx = \int 0 dx \Longrightarrow y'(x) = C_1
 		$$
-		\pause
+		\cpause
 		$$
 			\int y'(x)dx = \int C_1 dx \Longrightarrow y(x) = C_1 x + C_2
 		$$
-		\pause
+		\cpause
 		Portanto, $y(x)=C_1 x + C_2$.
 	\end{frame}
 	
@@ -367,7 +377,7 @@
 		
 		A determinação da função exata $y(x)$ nem sempre é fácil ou possível. O método de Rayleigh-Ritz, segundo \cite{mefassan} e \cite{MRR_Deflex}, propõe que a função $y(x)$ seja substituida por uma função aproximadora $v(x)$.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		Considere o funcional
 		$$
@@ -387,11 +397,11 @@
 		$$
 		onde os $a_i\in\mathbb{R}$ são chamados de parâmetros de deslocamento e as $\phi_i(x)$ são funções de forma e devem ser linearmente independente.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		Substituindo $y$ por $v$ no funcional, tem-se $I=I(a_1, a_2, \dots, a_n)$.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		A condição de máximo ou mínimo para $I$ é, agora, que
 		$$
@@ -504,20 +514,22 @@
 		\frametitle{Método de Rayleigh-Ritz}
 		\justify
 		
-		Considere a função aproximadora $v_3(x)=a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4$. \pause Das condições de contorno essenciais
+		Considere a função aproximadora $v_3(x)=a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4$. \cpause Das condições de contorno essenciais
 		$$
 			v_3(0)=0\Longrightarrow a_0 = 0\text{,}
 		$$
-		\pause
+		\cpause
 		$$
 			v_3(l)=0\Longrightarrow a_1 = -a_2l - a_3l^2 - a_4l^3\text{.}
 		$$
-		\pause
+		\cpause
 		Logo, 
 		$$v_3(x)=a_2(x^2-lx)+a_3(x^3-l^2x) + a_4(x^4-l^3x)\text{,}$$
-		\pause 
+		\cpause 
+		\vspace{-5pt}
 		$$v_3'(x)=a_2(2x-l)+a_3(3x^2-l^2)+a_4(4x^3-l^3)\text{,}$$
-		\pause
+		\cpause
+		\vspace{-5pt}
 		$$v_3''(x)=2a_2 + 6a_3x + 12a_4x^2\text{.}$$
 	\end{frame}
 	
@@ -569,13 +581,13 @@
 				8a_2 + 18a_3 l + \dfrac{144}{5} a_4 l^2 =-\dfrac{3ql^2}{10EI}
 			\end{cases}
 		$$
-		\pause
+		\cpause
 		Resolvendo o sistema, tem-se
 		$$
 			a_2 = 0
 			\text{,}
 		$$
-		\pause
+		\cpause
 		$$
 			a_3 = -\frac{ql}{12EI}
 			\text{,}
@@ -590,13 +602,13 @@
 			a_4 = \frac{q}{24EI}
 			\text{.}
 		$$
-		\pause
+		\cpause
 		Como $a_1=-a_2l - a_3l^2-a_4l^3$,
 		$$
 			a_1 = \frac{ql^3}{24EI}
 			\text{.}
 		$$
-		\pause
+		\cpause
 		A função $v_3$ é
 		$$
 			v_3(x)=
@@ -618,7 +630,7 @@
 			v(x)=\frac{ql^3}{24EI}x - \frac{ql}{12EI}x^3 + \frac{q}{24EI}x^4
 			\text{,}
 		$$
-		\pause
+		\cpause
 		sendo a máxima deflexão da viga
 		$$
 			v\left (\frac{l}{2}\right )
@@ -627,7 +639,7 @@
 			= \frac{5ql^4}{384EI}
 			\text{.}
 		$$
-		\pause
+		\cpause
 		
 		Comparando as funções $v_3(x)$ e $v(x)$ percebe-se que o resultado encontrado pelo Método de Rayleigh-Ritz e o resultado analítico são iguais.
 	\end{frame}
@@ -674,7 +686,7 @@
 							\end{cases}
 			   		$$
 			   		onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$.
-				\end{column}\pause
+				\end{column}\cpause
 				\begin{column}{0.45\textwidth}
 					\begin{figure}
 						\caption{Função Triangular $\phi_i(x)$}
@@ -791,12 +803,12 @@
 			\text{,}
 		$$
 		onde $j=1,2,\dots,n$ e fazendo as devidas manipulações chega-se no sistema
-		\pause
+		\cpause
 		$$
 			M\cdot A = B
 			\text{,}
 		$$
-		\pause
+		\cpause
 		com $M=[m_{j,i}]$, $A=[a_j]$, $B=[b_j]$ e
 		$$
 			m_{j,i}=\int_{0}^{1} \left [
@@ -831,7 +843,7 @@
 		$$
 		do Exemplo sobre o Método de Rayleigh-Ritz.
 		\vspace{10pt}
-		\pause
+		\cpause
 		
 		Seja a função aproximadora $v_3(x)$,
 		$$
@@ -949,7 +961,7 @@ print("Maxima deflexao: ", maxdef)
 			b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
 			\text{.}
 		$$
-		\pause
+		\cpause
 		Esse sistema pode ser resolvido numericamente utilizando a linguagem Python.
 	\end{frame}
 	
@@ -968,14 +980,14 @@ print("Maxima deflexao: ", maxdef)
 				\right ] dx
 				\text{,}
 		$$
-		\pause
+		\cpause
 		e para comparação, serão utilizadas as funções
 		\begin{itemize}
 			\item $p(x)=e^x$;
 			\item $q(x)=e^x$;
 			\item $f(x)=x+(2-x)e^x$.
 		\end{itemize}
-		\pause
+		\cpause
 		
 		Para essas funções, a função exata é conhecida
 		$$
