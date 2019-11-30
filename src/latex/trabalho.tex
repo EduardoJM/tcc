@@ -34,7 +34,7 @@
     twoside,			% para impressão em recto e verso. Oposto a oneside
 	a4paper,			% tamanho do papel.
 	% -- opções da classe abntex2 --
-	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
 	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
 	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
@@ -274,7 +274,7 @@
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
-\titulo{\textbf{Uma Introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz com Aplicações em Python.}}
+\titulo{\textbf{Uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz com aplicações em \textit{Python}.}}
 \autor{EDUARDO JOSÉ DE OLIVEIRA}
 \local{Anápolis}
 \data{2019}
@@ -333,9 +333,7 @@ Curso de Matemática}
 \usepackage{genealogytree}
 % Cria um comando utilizado para inserir a data de nascimento
 % e morte como nota de rodapé.
-\newcommand{\bdDate}[2]{
-	\footnote{\gtrsymBorn\text{ }#1 - \gtrsymDied\text{ }#2}
-}
+\newcommand{\bdDate}[2]{\footnote{\gtrsymBorn\text{ }#1 - \gtrsymDied\text{ }#2}}
 
 
 \usepackage{mathptmx}
@@ -364,28 +362,21 @@ Curso de Matemática}
 \makeindex[name=remissivo, title={Índice Remissivo}, options=-s indexstyle, columns=2]
 
 \begin{document}
-
 % Seleciona o idioma do documento (conforme pacotes do babel)
-%\selectlanguage{english}
 \selectlanguage{brazil}
-
 % Retira espaço extra obsoleto entre as frases.
-\frenchspacing 
+\frenchspacing
 
-%\sffamily
 
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
 \pretextual
-
 % ---
 % Capa
 % ---
-
 \imprimircapa
 % ---
-
 % ---
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
@@ -443,37 +434,6 @@ Curso de Matemática}
 \end{fichacatalografica}
 % ---
 
-\iffalse
-% ---
-% Inserir errata
-% ---
-\begin{errata}
-Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
-
-\vspace{\onelineskip}
-
-FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
-reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
-rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
-cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
-Zootecnia, Universidade de São Paulo, São Paulo, 2011.
-
-\begin{table}[htb]
-\center
-\footnotesize
-\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
-  \hline
-   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
-    \hline
-    1 & 10 & auto-conclavo & autoconclavo\\
-   \hline
-\end{tabular}
-\end{table}
-
-\end{errata}
-% ---
-\fi
-
 % ---
 % Inserir folha de aprovação
 % ---
@@ -504,30 +464,20 @@ Zootecnia, Universidade de São Paulo, São Paulo, 2011.
 %    \end{minipage}%
 %    \vspace*{\fill}
 \end{center}
-\vfill  
-      
+\vfill
+
    Trabalho de Curso de Matemática apresentado à Banca Examinadora como parte dos requisitos para a obtenção do grau de graduado em Licenciatura em Matemática. 
    
-   Banca Examinadora do Trabalho de Curso de Matemática do Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo da Universidade Estadual de Goiás, \imprimirlocal, 10 de agosto de 2018.
+   Banca Examinadora do Trabalho de Curso de Matemática do Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo da Universidade Estadual de Goiás, \imprimirlocal, 26 de novembro de 2019.
 
 \vfill
 
    \assinatura{\textbf{\imprimirorientador} Presidente da Banca Examinadora \\ Orientador(a) } 
    \vfill
-   \assinatura{\textbf{Títulação e nome do professor} \\ 1º Membro da Banca Examinadora}
+   \assinatura{\textbf{Dr. Fabiano Boaventura de Miranda} \\ 1º Membro da Banca Examinadora}
    \vfill
-   \assinatura{\textbf{Títulação e nome do professor} \\ 2º Membro da Banca Examinadora}
+   \assinatura{\textbf{Me. Cleber Giugioli Carrasco} \\ 2º Membro da Banca Examinadora}
 \vfill
-   %\assinatura{\textbf{Professor} \\ Convidado 3}
-   %\assinatura{\textbf{Professor} \\ Convidado 4}
-      
-%   \begin{center}
-%    \vspace*{0.5cm}
-%    {\large\imprimirlocal}
-%    \par
-%    {\large\imprimirdata}
-%    \vspace*{1cm}
-%  \end{center}
   
 \end{folhadeaprovacao}
 % ---
@@ -587,7 +537,7 @@ Por último, gostaria de agradecer a todos os integrantes do Grupo Alegria, espe
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}[RESUMO]
-Apresenta-se neste trabalho uma introdução ao Cálculo Variacional e ao Método de Rayleigh-Ritz. Um dos principais problemas pertinentes ao Cálculo Variacional é o de encontrar uma função exata que torna um determinado funcional estacionário. Mediante uma revisão bibliográfica buscou-se apresentar ferramentas para se encontrar a função exata que torna o funcional estacionário, dentre as quais, a primeira dessas ferramentas, apresentadas no trabalho, é a equação de Euler-Lagrange. Outra ferramenta apresentada é o método de Rayleigh-Ritz, que visa aproximar a função exata desejada. Complementando os estudos do método de Rayleigh-Ritz, são apresentadas, também, aplicações com a linguagem de programação Python.
+Apresenta-se neste trabalho uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz. Um dos principais problemas pertinentes ao cálculo variacional é o de encontrar uma função exata que torna um determinado funcional estacionário. Mediante uma revisão bibliográfica buscou-se apresentar ferramentas para se encontrar a função exata que torna o funcional estacionário, dentre as quais, a primeira dessas ferramentas, apresentadas no trabalho, é a equação de Euler-Lagrange. Outra ferramenta apresentada é o método de Rayleigh-Ritz, que visa aproximar a função exata desejada. Complementando os estudos do método de Rayleigh-Ritz, são apresentadas, também, aplicações com a linguagem de programação Python.
 
 \textbf{Palavras-chave}: Cálculo Variacional. Equação de Euler-Lagrange. Método de Rayleigh-Ritz. Programação. Python.
 \end{resumo}
@@ -657,38 +607,38 @@ Apresenta-se neste trabalho uma introdução ao Cálculo Variacional e ao Métod
 
 %{\color{red}Escrever a introdução do trabalho.}
 
-O Cálculo Variacional engloba diversos problemas, sendo um dos mais tratados, o de minimizar ou maximizar funcionais, que são, fundamentalmente, funções que dependem de outras funções \cite{mefassan}.
+O cálculo variacional engloba diversos problemas, sendo um dos mais tratados, o de minimizar ou maximizar funcionais, que são, fundamentalmente, funções que dependem de outras funções \cite{mefassan}.
 
 Desde o enuncidado do problema da braquistócrona, em 1696, que visa encontrar a curva em que uma partícula precisa descrever para sair de um ponto A e chegar a um ponto B, ambos os pontos em um plano vertical, no menor tempo possível estando sobre ação apenas da força gravitacional \cite{calcvar}, diversas técnicas surgiram de modo a descrever esse fenômeno.
 
-Algumas das principais contribuições para a área do Cálculo Variacional se devem aos matemáticos Euler e Lagrange, criando generalizações para métodos específicos utilizados, até então, na resolução de cada problema proposto \cite{hist_courant}.
+Algumas das principais contribuições para a área do cálculo variacional se devem aos matemáticos Euler e Lagrange, criando generalizações para métodos específicos utilizados, até então, na resolução de cada problema proposto \cite{hist_courant}.
 
 Além dos métodos que permitem a resolução analítica dos problemas, surgem métodos que fornecem resoluções aproximadas e que são utilizados, principalmente, em aplicações à engenharia. O método de Rayleigh-Ritz, por exemplo, prevê o uso de uma função aproximadora no lugar da função exata, permitindo, assim, resoluções aproximadas para o problema do funcional \cite{mefassan}.
 
-A justificativa para o trabalho é a importância acadêmica dos temas, tendo em vista a grande gama de aplicações do Cálculo Variacional e do Método de Rayleigh-Ritz, desde os problemas clássicos, como a braquistócrona, a problemas não convencionais, como, por exemplo, a solução de Schwarzschild para as Equações de Einstein, tratada por \citeonline{calcvar_campos}, e a determinação da forma que um cabo longo, inestensível, assume quando suspenso por suas extremidades, em alturas iguais, o chamado problema da catenária, mostrado por \citeonline{calcvar}. 
+A justificativa para o trabalho é a importância acadêmica dos temas, tendo em vista a grande gama de aplicações do cálculo variacional e do método de Rayleigh-Ritz, desde os problemas clássicos, como a braquistócrona, a problemas não convencionais, como, por exemplo, a solução de Schwarzschild para as Equações de Einstein, tratada por \citeonline{calcvar_campos}, e a determinação da forma que um cabo longo, inestensível, assume quando suspenso por suas extremidades, em alturas iguais, o chamado problema da catenária, mostrado por \citeonline{calcvar}. 
 
-O método de Rayleigh-Ritz, por sua vez, tem diversas aplicações, principalmente na área das engenharias, por exemplo, na determinação das frequências naturais, como tratado por \citeonline{RRM_Applications}, e no estudo da deflexão de vigas, de acordo com \citeonline{MRR_Deflex}. O método tem sido aplicado, atualmente, junto a tecnologias como as técnicas de aprendizado de máquinas, conforme \citeonline{deep_ritz}, objetivando abordagens modernas da área de inteligência artificial para os problemas do Cálculo Variacional. 
+O método de Rayleigh-Ritz, por sua vez, tem diversas aplicações, principalmente na área das engenharias, por exemplo, na determinação das frequências naturais, como tratado por \citeonline{RRM_Applications}, e no estudo da deflexão de vigas, de acordo com \citeonline{MRR_Deflex}. O método tem sido aplicado, atualmente, junto a tecnologias como as técnicas de aprendizado de máquinas, conforme \citeonline{deep_ritz}, objetivando abordagens modernas da área de inteligência artificial para os problemas do cálculo variacional. 
 
-O primeiro objetivo do trabalho é o de introduzir, de forma clara e concisa, o Cálculo Variacional por meio do estudo das Equações de Euler-Lagrange para funcionais que dependem de uma única variável, da função e das suas derivadas, até a ordem $n$ desejada. O segundo objetivo é explicar o método de Rayleigh-Ritz, de forma simples e introdutória, desenvolvendo exemplos básicos. O terceiro, e último, objetivo do trabalho consiste em apresentar formas de se utilizar a computação para os cálculos do método de Rayleigh-Ritz por meio da linguagem de programação Python.
+O primeiro objetivo do trabalho é o de introduzir, de forma clara e concisa, o cálculo variacional por meio do estudo das Equações de Euler-Lagrange para funcionais que dependem de uma única variável, da função e das suas derivadas, até a ordem $n$ desejada. O segundo objetivo é explicar o método de Rayleigh-Ritz, de forma simples e introdutória, desenvolvendo exemplos básicos. O terceiro, e último, objetivo do trabalho consiste em apresentar formas de se utilizar a computação para os cálculos do método de Rayleigh-Ritz por meio da linguagem de programação Python.
 
 O trabalho foi realizado por meio de um levantamento bibliográfico em artigos, dissertações, livros, artigos e outros documentos acadêmicos.
 
 A monografia foi dividida em quatro capítulos, tendo, ainda, três apêndices. O primeiro capítulo, entitulado de Contexto Histórico, apresenta, de forma breve e sucinta, a visão geral e o contexto histórico sobre os máximos e mínimos, o cálculo variacional, o método de Rayleigh-Ritz e a linguagem de programação Python. 
 
-O segundo capítulo, Cálculo Variacional, expõe um dos problemas clássicos do Cálculo Variacional e, partindo desse problema, são deduzidas as equações de Euler-Lagrange para funcionais que dependem de uma variável, da função e de derivadas da função até a ordem $n$, além de serem estudadas as Condições de Contorno Naturais e Essenciais. Além disso, são apresentados, no segundo Capítulo, exemplos de uso da equação de Euler-Lagrange e das Condições de Contorno. 
+O segundo capítulo, Cálculo Variacional, expõe um dos problemas clássicos do cálculo variacional e, partindo desse problema, são deduzidas as equações de Euler-Lagrange para funcionais que dependem de uma variável, da função e de derivadas da função até a ordem $n$, além de serem estudadas as Condições de Contorno Naturais e Essenciais. Além disso, são apresentados, no segundo capítulo, exemplos de uso da equação de Euler-Lagrange e das Condições de Contorno. 
 
 O terceiro capítulo, Método de Rayleigh-Ritz, define o método de Rayleigh-Ritz e o trabalha de forma analítica, através de exemplo, além de iniciar o estudo das funções triangulares como funções de forma. 
 
-O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem Python, aborda o uso da linguagem de programação Python para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no Capítulo 3, que discretizam a curva exata.
+O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem Python, aborda o uso da linguagem de programação Python para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no terceiro capítulo, que discretizam a curva exata.
 
-No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo Método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Resolução de Breve Introdução à \textit{Python}, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.
+No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Resolução de Breve Introdução à \textit{Python}, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.
 
 \chapter{CONTEXTO HISTÓRICO}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
 
-Para elucidar a história do Cálculo Variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema atribuído a área do Cálculo Variacional.
+Para elucidar a história do cálculo variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema atribuído a área do cálculo variacional.
 
-\section{Máximos e Mínimos}
+\section{Máximos e mínimos}
 
 Os problemas de máximo e mínimo são corriqueiros na vida cotidiana, por exemplo, quando se quer encontrar o caminho com menor distância entre dois lugares para se caminhar uma menor distância, dentre vários outros problemas mais elaborados. Para esse exemplo específico não é necessário o uso de matemática avançada, porém, quanto mais complexidades são adicionadas aos problemas, mais ferramentas matemáticas são necessárias para a resolução, exata ou aproximada. Para simplificar estes processos, surgem os métodos para o cálculo de máximos e mínimos das funções.
 
@@ -702,11 +652,11 @@ O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$
 
 %\textit{\color{red}Falar de modo geral que as maiores contribuições foram de Euler e Lagrange no cálculo variacional}
 
-\section{O Cálculo Variacional}
+\section{O cálculo variacional}
 
 %Johann Bernoulli, em 1969, deu ínicio ao estudo de uma classe de problemas cujo um dos mais antigos é o problema isoperimétrico. \cite{hist_courant}. O problema isoperimétrico consiste em "[d]ado um comprimento $L>0$, encontrar, dentre todas as curvas do plano de comprimento $L$, aquela que engloba a maior área" \cite[p. 1]{cbm_isoperimetrico}.
 
-O ponto de partida do \index[remissivo]{Cálculo Variacional}Cálculo Variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do \index[remissivo]{Problema da braquistócrona}problema da braquistócrona no jornal científico \textit{Acta Eruditorium} \cite{hist_courant}.
+O ponto de partida do \index[remissivo]{Cálculo Variacional}cálculo variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do \index[remissivo]{Problema da braquistócrona}problema da braquistócrona no jornal científico \textit{Acta Eruditorium} \cite{hist_courant}.
 
 O problema pode ser enunciado como:
 \begin{citacao}
@@ -719,28 +669,28 @@ A solução de Jakob Bernoulli considerava o aspecto da curva variável, sendo c
 
 Os métodos para a resolução de problemas deste tipo eram específicos com adaptações para cada caso, sendo que os métodos gerais para a resolução só foram desenvolvidos com o envolvimento dos matemáticos Euler e Lagrange nos estudos desses problemas \cite{hist_courant}.
 
-\section{O Método de Rayleigh-Ritz}
+\section{O método de Rayleigh-Ritz}
 
 O processo de minimização de funcionais envolve diretamente a resolução de equações diferenciais que, na maioria das vezes, pode não ter solução analítica. Uma forma de se contornar esse problema é o uso de soluções aproximadas e, com esse intuito, surge o método de Rayleigh-Ritz, fazendo o uso de funções admissíveis.
 
 O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\bdDate{1842}{1919} e Walter Ritz\bdDate{1878}{1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
 
-Lord Rayleigh, em 1877, trabalhando com as energias potencial e cinética de sistemas, assumiu um padrão de vibração numa determinada frequência calculando a frequência de vibração livre por meio do equacionamento das energias potencial e cinética. Esse método ficou conhecido como \index[remissivo]{Método de Rayleigh}Método de Rayleigh e a sua precisão depende de quão próximo o padrão de vibração escolhido está do correto \cite{LEISSA_2005}.
+Lord Rayleigh, em 1877, trabalhando com as energias potencial e cinética de sistemas, assumiu um padrão de vibração numa determinada frequência calculando a frequência de vibração livre por meio do equacionamento das energias potencial e cinética. Esse método ficou conhecido como \index[remissivo]{Método de Rayleigh}método de Rayleigh e a sua precisão depende de quão próximo o padrão de vibração escolhido está do correto \cite{LEISSA_2005}.
 
-Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simples para a resolução de problemas de valor de contorno e de autovalores numericamente para qualquer nível de exatidão necessário usando funcionais \cite{LEISSA_2005}. Esse procedimento foi chamado de \index[remissivo]{Método de Ritz}Método de Ritz.
+Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simples para a resolução de problemas de valor de contorno e de autovalores numericamente para qualquer nível de exatidão necessário usando funcionais \cite{LEISSA_2005}. Esse procedimento foi chamado de \index[remissivo]{Método de Ritz}método de Ritz.
 
-Não se sabe exatamente quando o nome Rayleigh passou a ser agregado ao Método de Ritz, transformando-se em "Método de Rayleigh-Ritz". Uma das razões pelas quais isso ocorreu é o fato de que o método de Rayleigh pode ser considerado como um caso especial do método de Ritz quando uma única função admissível é utilizada para a aproximação \cite{LEISSA_2005}.
+Não se sabe exatamente quando o nome Rayleigh passou a ser agregado ao método de Ritz, transformando-se em "método de Rayleigh-Ritz". Uma das razões pelas quais isso ocorreu é o fato de que o método de Rayleigh pode ser considerado como um caso especial do método de Ritz quando uma única função admissível é utilizada para a aproximação \cite{LEISSA_2005}.
 
 O método de Rayleigh foi utilizado frequentemente, porém, nas últimas décadas o método de Ritz ou, como é chamado hoje, de Rayleigh-Ritz se mostrou aplicável a uma gama enorme de problemas devido, principalmente, a revolução tecnológica promovida pelos computadores, a partir da invenção dos transistores e microprocessadores \cite{LEISSA_2005}.
 
-\subsection{Aplicações do Método de Rayleigh-Ritz}
+\subsection{Aplicações do método de Rayleigh-Ritz}
 
 O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, porém, a análise estrutural uma das áreas em que o método é mais utilizado. Seu uso é empregado, principalmente, com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada [a] força que provocou o seu movimento. Em palavras similares, representa o quanto [a] estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
 
 \citeonline{RRM_Applications} exemplificam essa aplicação ao procurar as frequências naturais em um tipo específico de viga, chamada de consola, que é uma viga apoiada apenas em uma de suas extremidades. A Figura \ref{fig:cantilever} mostra uma representação de uma viga desse tipo, onde a curva $w(x,t)$ representa o deslocamento dinâmico. Diversos outros trabalhos trazem essa mesma abordagem ao método, visando analisar frequências naturais de vibração, como, por exemplo, o trabalho de \citeonline{mrr_beams}, que estuda a frequência natural de vigas seguindo o modelo de Timoshenko e de Euler usando o método de Rayleigh-Ritz. \citeonline{GROSSI_2001} mostra a aplicação do método à problemas envolvendo placas, ao invés de vigas.
 
 \begin{figure}[h]
-	\caption{Modelo de uma Viga Consola vibrando.}
+	\caption{Modelo de uma viga consola vibrando.}
 	\centering
 	\begin{tikzpicture}
 		\tkzInit[xmin=-0, xmax=6, ymin=-0.6, ymax=2]
@@ -799,7 +749,7 @@ O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, p
 
 %{\color{red}Citar aplicações do Método de Rayleigh-Ritz.}
 
-Além da abordagem convencional do método, existem trabalhos que visam aliar o método à técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirmam que modelos baseados em redes neurais profundas podem ser utilizados em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (Método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. Esse método utiliza-se de representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
+Além da abordagem convencional do método, existem trabalhos que visam aliar o método à técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirmam que modelos baseados em redes neurais profundas podem ser utilizados em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. Esse método utiliza-se de representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
 
 Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia da abordagem é a solução para a equação de Poisson em duas dimensões. A Figura \ref{fig:deep_ritz_poisson} apresenta a solução utilizando dois métodos diferentes, sendo a Figura \ref{fig:deep_ritz_poisson_a} a solução pelo \textit{Deep Ritz Method} com 811 parâmetros e a Figura \ref{fig:deep_ritz_poisson_b} a solução pelo método das diferenças finitas com 1681 parâmetros.
 
@@ -824,7 +774,7 @@ Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia d
 
 Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplicação moderna do método de Rayleigh-Ritz e serve, inclusive, como motivação ao estudo do tema.
 
-\section{A Linguagem Python}
+\section{A linguagem \textit{Python}}
 
 %{\color{red}Falar sobre a linguagem Python.}
 
@@ -1014,7 +964,7 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 
 A equação diferencial \eqref{eqn:cap_calc_var:euler_lagrange} é chamada de \index[remissivo]{Equação de Euler-Lagrange}equação de Euler-Lagrange e permite encontrar uma função $f$ que maximiza ou minimiza a integral (\ref{eqn:cap_calc_var:int_funcional}).
 
-\section{Condições de Contorno Naturais e Essenciais}
+\section{Condições de contorno naturais e essenciais}
 \label{sec:cond_contorno}
 
 Durante o processo para a obtenção da função $y(x)$ que torna o funcional estacionário aparecem algumas condições de contorno que devem ser tratadas cuidadosamente. Por exemplo, tomando o funcional
@@ -1076,7 +1026,9 @@ $$
 $$
 aparecem diversas condições de contorno parecidas com \eqref{eqn:cap_calc_var:condicao_natural_d1} e \eqref{eqn:cap_calc_var:condicao_natural_d2}. Um destes exemplos aparece em \eqref{eqn:cap_calc_var:cond_with_naturalbound}.
 
-Outro tipo de condições de contorno que aparecem com problemas do Cálculo Variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de \index[remissivo]{Condições de Contorno Essenciais}\index[remissivo]{Condições de Contorno de Dirichlet}contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
+Outro tipo de condições de contorno que aparecem com problemas do cálculo variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de \index[remissivo]{Condições de Contorno Essenciais}\index[remissivo]{Condições de Contorno de Dirichlet}contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.
+
+A equação de Euler-Lagrange é uma equação diferencial e, quando resolvida, fornece uma solução geral, em função de suas constantes. Para determinar essas constantes e, deste modo, a solução particular para a equação de Euler-Lagrange trabalhada é necessário o uso tanto das condições de contorno naturais quanto das condições de contorno essenciais, como poderá ser visto no Exemplo \ref{ex:cond_contorno} da Seção \ref{sec:calcvar_exemplos}.
 
 \section{Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior}
 \label{sec:eq_euler_lagrange_superior}
@@ -1416,7 +1368,7 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em \eqref{eqn:cap_calc_var
 
 É importante ressaltar, novamente, que a equação de Euler-Lagrange \eqref{eqn:cap_calc_var:eq_euler_lagrange_twodiff} obtida é uma condição necessária, porém não é condição suficiente para a estacionariedade do funcional.
 
-\subsection{Equação Geral}
+\subsection{Equação geral}
 
 Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem $n$, o processo para a obtenção da equação de Euler-Lagrange é análogo. Em \eqref{eqn:cap_calc_var:func_n_derivadas_pos_separar} deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a $n$-ésima parcela seja integrada $n-1$ vezes, também por partes. Ao fim do processo, a \index[remissivo]{Equação de Euler-Lagrange}equação de Euler-Lagrange será obtida fazendo $I'(0)=0$, isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
 
@@ -1710,9 +1662,9 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 \chapter{MÉTODO DE RAYLEIGH-RITZ}
 \label{cap:mrr}
 
-Um dos objetivos do Cálculo Variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é encontrando a Equação de Euler-Lagrange, ver Seção \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior} do Capítulo \ref{cap:calc_var}, associada ao problema e, então, resolvê-la. 
+Um dos objetivos do cálculo variacional é encontrar uma função $y(x)$ que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função $y(x)$ é encontrando a Equação de Euler-Lagrange, ver Seção \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior} do Capítulo \ref{cap:calc_var}, associada ao problema e, então, resolvê-la. 
 
-A resolução de equações diferenciais e a determinação da solução exata por meio das condições de contorno do problema é, entretanto,  uma tarefa trabalhosa e, em muitos casos, até não factível. Para se esquivar de problemas como esses, surgem alguns métodos, dentre os quais está o Método de Rayleigh-Ritz.
+A resolução de equações diferenciais e a determinação da solução exata por meio das condições de contorno do problema é, entretanto,  uma tarefa trabalhosa e, em muitos casos, até não factível. Para se esquivar de problemas como esses, surgem alguns métodos, dentre os quais está o método de Rayleigh-Ritz.
 
 As explicações e os conceitos aqui utilizados foram elaboradas tomando como referências os autores \citeonline{mefassan} e \citeonline{MRR_Deflex}.
 
@@ -1819,7 +1771,7 @@ com $i=1, 2, 3, \dots, n$.
 		%\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 	\end{figure}
 	
-	Utilize o método o Método de Rayleigh-Ritz para aproximar a função exata $v(x)$ através de funções polinomiais de grau 2, 3 e 4 de modo que o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} se torne estacionário.
+	Utilize o método o método de Rayleigh-Ritz para aproximar a função exata $v(x)$ através de funções polinomiais de grau 2, 3 e 4 de modo que o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} se torne estacionário.
 \end{exemplo}
 
 \begin{solution}
@@ -2443,11 +2395,11 @@ A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no 
 
 Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $v(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, facilitando, desta forma, a escolha das funções de forma. Como a função exata $v(x)$ é uma função polinomial de grau 4, a escolha da função aproximadora como uma função polinomial foi bem prática.
 
-Devido a função exata $v(x)$ ser uma função polinomial de grau 4, caso a função aproximadora escolhida, no Exemplo \ref{ex:mrr_ex_livro}, não fosse uma função polinomial de grau 4 ou superior, dificilmente a mesma se tornaria a função exata no \index[remissivo]{Método de Rayleigh-Ritz}Método de Rayleigh-Ritz.
+Devido a função exata $v(x)$ ser uma função polinomial de grau 4, caso a função aproximadora escolhida, no Exemplo \ref{ex:mrr_ex_livro}, não fosse uma função polinomial de grau 4 ou superior, dificilmente a mesma se tornaria a função exata no \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz.
 
 %{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
-\section{O Uso de Funções Triangulares no Método de Rayleigh-Ritz}
+\section{O uso de funções triangulares no método de Rayleigh-Ritz}
 \label{sec:mrr_triangular}
 
 \citeonline{MRR_Deflex} apresentam o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$. Considere o funcional
@@ -2482,7 +2434,7 @@ onde $h_i = x_{i+1}-x_{i}$ e $h_{i-1}=x_i-x_{i-1}$. A Figura \ref{fig:triangular
 \end{equation}
 
 \begin{figure}[h]
-	\caption{Função Triangular $\phi_i(x)$.}
+	\caption{Função triangular $\phi_i(x)$.}
 	\centering
 	\begin{tikzpicture}
 		\tkzInit[xmin=-0, xmax=10, ymin=0, ymax=6.4]
@@ -2733,13 +2685,13 @@ onde $j=1,2,\dots,n$. Seja as matrizes $M=[m_{j,i}]$ de ordem $n\times n$, $B=[b
 
 A partir de \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, os produtos $\phi_i(x)\phi_j(x)$ e $\phi_i'(x)\phi_j'(x)$ são não nulos apenas quando $i=j-1$, $i=j$ e $i=j+1$. Consequentemente, $m_{j,i}$ é não nulo apenas para $i=j-1$, $i=j$ e $i=j+1$.
 
-A construção do sistema $M\cdot A=B$ e sua resolução, pelo \index[remissivo]{Método de Gauss-Jordan}Método de Gauss-Jordan, será implementado na linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
+A construção do sistema $M\cdot A=B$ e sua resolução, pelo \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan, será implementado na linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
 
 %O sistema construído $M\cdot A=B$ será resolvido utilizando o \index[remissivo]{Método de Gauss-Jordan}Método de Gauss-Jordan, com implementação na linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
 
 %O sistema construído $M\cdot A=B$ será resolvido, utilizando linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
 
-\chapter{UTILIZANDO O MÉTODO DE RAYLEIGH-RITZ NA LINGUAGEM PYTHON}
+\chapter{UTILIZANDO O MÉTODO DE RAYLEIGH-RITZ NA LINGUAGEM \textit{PYTHON}}
 \label{cap:python}
 
 Em se tratando de programação, existem diversas formas de se trabalhar o \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem \index[remissivo]{Python}Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
@@ -2820,7 +2772,7 @@ print(sol)
 O Código \ref{py_code_solve_mrr_ex_livro_diff} é executado rapidamente e o resultado é mostrado na Figura \ref{fig:code_solve_mrr_exemplo_livro}, com $a_2=0$, $a_3=-\dfrac{ql}{12EI}$ e $a_4=\dfrac{q}{24EI}$. Esses resultados são exatamente os mesmos apresentados no Exemplo \ref{ex:mrr_ex_livro}.
 
 \begin{figure}[h]
-	\caption{Resultado Apresentado pelo Código \ref{py_code_solve_mrr_ex_livro_diff}.}
+	\caption{Resultado apresentado pelo Código \ref{py_code_solve_mrr_ex_livro_diff}.}
 	\centering
 	\includegraphics[scale=2.5]{../figuras/code/code_solve_mrr_exemplo_livro.png}
 	\label{fig:code_solve_mrr_exemplo_livro}
@@ -2865,7 +2817,7 @@ Observando, no terminal da Figura \ref{fig:code_solve_mrr_exec_complete}, pela o
 
 Ressaltando, novamente, que a escolha das funções de forma utilizadas na função aproximadora são de suma importância para o método de Rayleigh-Ritz. Para o uso de matemática simbólica, como nesse exemplo, deve-se tomar ainda mais cuidado com a escolha de tais funções pois, em alguns casos, a integração simbólica toma grande custo computacional. Em casos onde a integração simbólica se torna árdua, ou até mesmo impossível, o uso de algoritmos para integração numérica é necessário.
 
-\section{Resolvendo Problemas com o Método de Rayleigh-Ritz Utilizando Funções Triangulares em Python}
+\section{Resolvendo problemas com o método de Rayleigh-Ritz utilizando funções triangulares em \textit{Python}}
 \label{sec:python_triangular}
 
 O sistema $M\cdot A=B$, encontrado na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação \index[remissivo]{Python}Python. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
@@ -2916,7 +2868,7 @@ Para a resolução do problema, o primeiro passo é importar os componentes a se
 
 \newpage
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=1, caption={Importação dos Pacotes Utilizados para a Resolução}, captionpos=t, label=py_code_solve_mrr_tri_import]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=1, caption={Importação dos pacotes utilizados para a resolução}, captionpos=t, label=py_code_solve_mrr_tri_import]
 import numpy
 from math import e
 from sympy import symbols
@@ -3088,15 +3040,15 @@ Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_t
 \addcontentsline{toc}{chapter}{CONSIDERAÇÕES FINAIS}
 % ---
 
-Nesse trabalho, o Cálculo Variacional e o Método de Rayleigh-Ritz foram expostos de forma introdutória, inclusive, desenvolvendo as demonstrações e cálculos, de modo que todo aluno com conhecimentos de cálculo em várias variáveis possa compreender as ideias trabalhadas. No decorrer dos estudos sobre tais temas foi observado a importância e a necessidade de materiais introdutórios sobre ambos os temas.
+Nesse trabalho, o cálculo variacional e o método de Rayleigh-Ritz foram expostos de forma introdutória, inclusive, desenvolvendo as demonstrações e cálculos, de modo que todo aluno com conhecimentos de cálculo em várias variáveis possa compreender as ideias trabalhadas. No decorrer dos estudos sobre tais temas foi observado a importância e a necessidade de materiais introdutórios sobre ambos os temas.
 
-Para o Cálculo Variacional, o enfoque foi dado nas equações de Euler-Lagrange, condição necessária para a estacionariedade de um funcional, de funcionais que dependem de uma váriavel, uma função e de suas derivadas até uma ordem $n$ qualquer. Esse enfoque dado se deve, primeiramente, ao enfoque introdutório do trabalho e, em segundo lugar, a grande gama de aplicações que podem ser desenvolvidas com as ferramentas estudadas, por exemplo, ao se provar que a curva de menor comprimento entre dois pontos é um segmento de reta.
+Para o cálculo variacional, o enfoque foi dado nas equações de Euler-Lagrange, condição necessária para a estacionariedade de um funcional, de funcionais que dependem de uma váriavel, uma função e de suas derivadas até uma ordem $n$ qualquer. Esse enfoque dado se deve, primeiramente, ao enfoque introdutório do trabalho e, em segundo lugar, a grande gama de aplicações que podem ser desenvolvidas com as ferramentas estudadas, por exemplo, ao se provar que a curva de menor comprimento entre dois pontos é um segmento de reta.
 
-Já no Método de Rayleigh-Ritz, o foco foi dividido entre uma introdução ao tema, desenvolvendo todos os cálculos referentes ao exemplo, e o uso da Linguagem de Programação Python para agilizar o processo de minimização dos funcionais de forma rápida e simples, realizando as derivações, integrações e, ainda, resolvendo sistemas de equações.
+Já no método de Rayleigh-Ritz, o foco foi dividido entre uma introdução ao tema, desenvolvendo todos os cálculos referentes ao exemplo, e o uso da Linguagem de Programação Python para agilizar o processo de minimização dos funcionais de forma rápida e simples, realizando as derivações, integrações e, ainda, resolvendo sistemas de equações.
 
 Os estudos desenvolvidos com a linguagem Python mostraram, também, a utilidade da linguagem no meio científico, realizando tanto operações numéricas quanto manipulações simbólicas de forma eficiente. Isso evidencia a importância da linguagem por ser gratuita, de código aberto e multiplataforma, ou seja, uma linguagem acessível.
 
-O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aqui apresentado, pode ser ampliado, por exemplo, para funções de mais variáveis, problemas de fronteira livres onde as condições de contorno são de outra forma, indo, até mesmo, aos métodos modernos que utilizam, por exemplo, inteligência artificial, como o método \textit{Deep Ritz} citado no primeiro capítulo desse trabalho.
+O estudo introdutório ao cálculo variacional e ao método de Rayleigh-Ritz, aqui apresentado, pode ser ampliado, por exemplo, para funções de mais variáveis, problemas de fronteira livres onde as condições de contorno são de outra forma, indo, até mesmo, aos métodos modernos que utilizam, por exemplo, inteligência artificial, como o método \textit{Deep Ritz} citado no primeiro capítulo desse trabalho.
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -3271,7 +3223,7 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 \chapter{ENCONTRANDO A MÁXIMA DEFLEXÃO DA VIGA ESTUDADA}
 \label{apend:max_deflex}
 {
-	Durante o estudo do Método de Rayleigh-Ritz no Exemplo \ref{ex:mrr_ex_livro}, no Capítulo \ref{cap:mrr}, faz-se necessário ter valores para comparação. Com esse objetivo, pode-se determinar a máxima deflexão da viga a partir da solução analítica $v(x)$ do problema, determinada no Exemplo \ref{ex:cond_contorno} da Seção \ref{sec:calcvar_exemplos} do Capítulo \ref{cap:calc_var}, a partir de \eqref{eqn:sol_funcional_analitico},
+	Durante o estudo do método de Rayleigh-Ritz no Exemplo \ref{ex:mrr_ex_livro}, no Capítulo \ref{cap:mrr}, faz-se necessário ter valores para comparação. Com esse objetivo, pode-se determinar a máxima deflexão da viga a partir da solução analítica $v(x)$ do problema, determinada no Exemplo \ref{ex:cond_contorno} da Seção \ref{sec:calcvar_exemplos} do Capítulo \ref{cap:calc_var}, a partir de \eqref{eqn:sol_funcional_analitico},
 	\begin{equation}
 	\label{eqn:max_deflex_func}
 	v(x) = 
@@ -3356,16 +3308,16 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 	
 	{\color{red}Escrever sobre a instalação.}
 	
-	\section{Executando Programas}
+	\section{Executando programas}
 	
 	{\color{red}Explicar sobre a linguagem Python.}
 	
-	\section{Principais Operações}
+	\section{Principais operações}
 	
 	Para facilitar o entendimento dos códigos ao longo do trabalho, é apresentada uma lista com algumas das principais operações na linguagem \textit{Python} na Tabela \ref{table:principais_operacoes}.
 	
 	\begin{table}[h]
-		\caption{Principais Operações na Linguagem \textit{Python}}
+		\caption{Principais operações na linguagem \textit{Python}}
 		\ABNTEXfontereduzida
 		\centering
 		\begin{tabular}{p{0.3\textwidth}p{0.3\textwidth}}
@@ -3386,10 +3338,10 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 		\label{table:principais_operacoes}
 	\end{table}
 	
-	\section{Resolução de Sistemas Lineares}
+	\section{Resolução de sistemas lineares}
 	\label{sec:python_solve_linsys}
 	
-	O sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan, de forma manual. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python, através do comando \textit{linsolve} que utiliza o \index[remissivo]{Método de Gauss-Jordan}Método de Gauss-Jordan.
+	O sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan, de forma manual. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python, através do comando \textit{linsolve} que utiliza o \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan.
 	
 	Deste modo, seja, o sistema com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema}
 	\begin{equation}
@@ -3444,7 +3396,7 @@ print(sol)
 	\end{lstlisting}
 
 	\begin{figure}[h]
-		\caption{Execução do Código para a Resolução do Sistema Linear.}
+		\caption{Execução do código para a resolução do sistema linear.}
 		\centering
 		\includegraphics[scale=2.5]{../figuras/code/code_solve_sis_linear.png}
 		\label{fig:code_solve_sis_linear}
@@ -3483,7 +3435,7 @@ print(sol)
 
 	O código completo utilizado para a resolução do sistema linear com matriz aumentada \eqref{eqn:cap_ap_sis_lin:matriz_sistema} é apresentado em Código \ref{py_code_solve_sys_linear}.
 		
-	\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, caption=Resolução de Sistemas Lineares em Python, captionpos=t, label=py_code_solve_sys_linear]
+	\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, caption={Resolução de sistemas lineares em \textit{Python}}, captionpos=t, label=py_code_solve_sys_linear]
 from sympy import symbols, Matrix
 from sympy.solvers import linsolve
 
