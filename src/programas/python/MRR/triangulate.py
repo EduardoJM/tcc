@@ -99,10 +99,12 @@ for i in plot_interval:
     plot_aprox.append(function(solution, i))
 fig = pyplot.figure()
 axes = fig.add_subplot(1, 1, 1)
-axes.plot(plot_interval, plot_aprox, color='tab:blue')
-axes.plot(plot_interval, plot_original, color='tab:orange')
+color1='tab:blue'
+color2='tab:orange'
+axes.plot(plot_interval, plot_aprox, color=color1)
+axes.plot(plot_interval, plot_original, color=color2)
 axes.set_title('Rayleigh-Ritz With n=' + str(n))
-blue_legend = patches.Patch(color='tab:blue', label='Aproximação')
-orange_legend = patches.Patch(color='tab:orange', label='Exata')
+blue_legend = patches.Patch(color=color1, label='Aproximada')
+orange_legend = patches.Patch(color=color2, label='Exata')
 pyplot.legend(handles=[blue_legend, orange_legend])
 pyplot.show()

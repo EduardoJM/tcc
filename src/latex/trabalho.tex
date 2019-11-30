@@ -166,44 +166,44 @@
 % Cria um novo estilo de formatação de código
 % para a Linguagem de programação Python
 % a ser utilizada no ambiente "lstlisting".
-%\lstdefinestyle{Python}{
-%	language={Python},
-%	basicstyle=\ttfamily\small,
-%	identifierstyle=\color{black},
-%	keywordstyle=\color{blue},
-%	commentstyle=\color{green},
-%	stringstyle=\color{red},
-%	extendedchars=true,
-%	showspaces=false,
-%	showstringspaces=false,
-%	numbers=none,
-%	breaklines=true,
-%	backgroundcolor=\color{yellow!20},
-%	breakautoindent=true,
-%	captionpos=b,
-%	xleftmargin=0pt,
-%	frame=none
-%}
-% Cria estilo de código em preto-e-branco
-% usado apenas para impressão (mais barata)
 \lstdefinestyle{Python}{
 	language={Python},
 	basicstyle=\ttfamily\small,
 	identifierstyle=\color{black},
-	keywordstyle=\color{black},
-	commentstyle=\color{black},
-	stringstyle=\color{black},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green},
+	stringstyle=\color{red},
 	extendedchars=true,
 	showspaces=false,
 	showstringspaces=false,
 	numbers=none,
 	breaklines=true,
-	backgroundcolor=\color{gray!10},
+	backgroundcolor=\color{yellow!20},
 	breakautoindent=true,
 	captionpos=b,
 	xleftmargin=0pt,
 	frame=none
 }
+% Cria estilo de código em preto-e-branco
+% usado apenas para impressão (mais barata)
+%\lstdefinestyle{Python}{
+%	language={Python},
+%	basicstyle=\ttfamily\small,
+%	identifierstyle=\color{black},
+%	keywordstyle=\color{black},
+%	commentstyle=\color{black},
+%	stringstyle=\color{black},
+%	extendedchars=true,
+%	showspaces=false,
+%	showstringspaces=false,
+%	numbers=none,
+%	breaklines=true,
+%	backgroundcolor=\color{gray!10},
+%	breakautoindent=true,
+%	captionpos=b,
+%	xleftmargin=0pt,
+%	frame=none
+%}
 
 \usepackage{subcaption}
 
@@ -230,6 +230,16 @@
 	\fonte{Elaborado pelo autor, 2019.}
 	\vspace{0.4cm}
 }
+
+\makeatletter
+\newcommand{\noEquationSpacing}[1]{
+	{
+		\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+		\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+		#1
+	}
+}
+\makeatother
 
 % ---
 % Pacotes de citações
@@ -351,7 +361,7 @@ Curso de Matemática}
 % compila o indice
 % ---
 \makeindex
-\makeindex[name=remissivo,title=\'Indice Remissivo,options=-s indexstyle,columns=2]
+\makeindex[name=remissivo, title={Índice Remissivo}, options=-s indexstyle, columns=2]
 
 \begin{document}
 
@@ -582,39 +592,6 @@ Apresenta-se neste trabalho uma introdução ao Cálculo Variacional e ao Métod
 \textbf{Palavras-chave}: Cálculo Variacional. Equação de Euler-Lagrange. Método de Rayleigh-Ritz. Programação. Python.
 \end{resumo}
 
-\iffalse
-% resumo em inglês
-\begin{resumo}[Abstract]
- \begin{otherlanguage*}{english}
-   This is the english abstract.
-
-   \vspace{\onelineskip}
- 
-   \noindent 
-   \textbf{Keywords}: latex. abntex. text editoration.
- \end{otherlanguage*}
-\end{resumo}
-
-% resumo em francês 
-\begin{resumo}[Résumé]
- \begin{otherlanguage*}{french}
-    Il s'agit d'un résumé en français.
- 
-   \textbf{Mots-clés}: latex. abntex. publication de textes.
- \end{otherlanguage*}
-\end{resumo}
-
-% resumo em espanhol
-\begin{resumo}[Resumen]
- \begin{otherlanguage*}{spanish}
-   Este es el resumen en español.
-  
-   \textbf{Palabras clave}: latex. abntex. publicación de textos.
- \end{otherlanguage*}
-\end{resumo}
-% ---
-\fi
-
 % ---
 % inserir lista de ilustrações
 % ---
@@ -633,9 +610,9 @@ Apresenta-se neste trabalho uma introdução ao Cálculo Variacional e ao Métod
 % ---
 % inserir lista de tabelas
 % ---
-%\pdfbookmark[0]{\listtablename}{lot}
-%\listoftables*
-%\cleardoublepage
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
 % ---
 
 % ---
@@ -682,11 +659,11 @@ Apresenta-se neste trabalho uma introdução ao Cálculo Variacional e ao Métod
 
 O Cálculo Variacional engloba diversos problemas, sendo um dos mais tratados, o de minimizar ou maximizar funcionais, que são, fundamentalmente, funções que dependem de outras funções \cite{mefassan}.
 
-Desde o enuncidado do problema da braquistócrona, em 1696, que visa encontrar a curva em que uma partícula precisa descrever para sair de um ponto A e chegar a um ponto B, ambos os pontos em um plano vertical, no menor tempo possível estando sobre ação apenas da força gravitacional \cite{calcvar}, diversas técnicas surgiram de modo a facilitar esse trabalho. 
+Desde o enuncidado do problema da braquistócrona, em 1696, que visa encontrar a curva em que uma partícula precisa descrever para sair de um ponto A e chegar a um ponto B, ambos os pontos em um plano vertical, no menor tempo possível estando sobre ação apenas da força gravitacional \cite{calcvar}, diversas técnicas surgiram de modo a descrever esse fenômeno.
 
 Algumas das principais contribuições para a área do Cálculo Variacional se devem aos matemáticos Euler e Lagrange, criando generalizações para métodos específicos utilizados, até então, na resolução de cada problema proposto \cite{hist_courant}.
 
-Além dos métodos que permitem a resolução analítica dos problemas surgem métodos que fornecem resoluções aproximadas e que são utilizados, principalmente, em aplicações a engenharia. O método de Rayleigh-Ritz, por exemplo, prevê o uso de uma função aproximadora no lugar da função exata, permitindo, assim, resoluções aproximadas para o problema do funcional \cite{mefassan}.
+Além dos métodos que permitem a resolução analítica dos problemas, surgem métodos que fornecem resoluções aproximadas e que são utilizados, principalmente, em aplicações à engenharia. O método de Rayleigh-Ritz, por exemplo, prevê o uso de uma função aproximadora no lugar da função exata, permitindo, assim, resoluções aproximadas para o problema do funcional \cite{mefassan}.
 
 A justificativa para o trabalho é a importância acadêmica dos temas, tendo em vista a grande gama de aplicações do Cálculo Variacional e do Método de Rayleigh-Ritz, desde os problemas clássicos, como a braquistócrona, a problemas não convencionais, como, por exemplo, a solução de Schwarzschild para as Equações de Einstein, tratada por \citeonline{calcvar_campos}, e a determinação da forma que um cabo longo, inestensível, assume quando suspenso por suas extremidades, em alturas iguais, o chamado problema da catenária, mostrado por \citeonline{calcvar}. 
 
@@ -704,18 +681,18 @@ O terceiro capítulo, Método de Rayleigh-Ritz, define o método de Rayleigh-Rit
 
 O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem Python, aborda o uso da linguagem de programação Python para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no Capítulo 3, que discretizam a curva exata.
 
-No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo Método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Resolução de Sistemas Lineares Utilizando a Linguagem Python, trata de como resolver sistemas lineares por meio da linguagem de programação Python.
+No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo Método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Resolução de Breve Introdução à \textit{Python}, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.
 
 \chapter{CONTEXTO HISTÓRICO}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
 
-Para elucidar a história do Cálculo Variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema atribuido a área do Cálculo Variacional.
+Para elucidar a história do Cálculo Variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema atribuído a área do Cálculo Variacional.
 
 \section{Máximos e Mínimos}
 
-Os problemas de máximo e mínimo são corriqueiros na vida cotidiana, por exemplo, quando se quer encontrar o caminho com menor distância entre dois lugares para se caminhar uma menor distância, dentre vários outros problemas mais elaborados. Para esse exemplo específico não é necessário o uso de matemática avançada, porém, quanto mais complexidades são adicionadas aos problemas, mais a matemática é necessária para a resolução, exata ou aproximada. Para simplificar estes processos, surgem os métodos para o cálculo de máximos e mínimos das funções.
+Os problemas de máximo e mínimo são corriqueiros na vida cotidiana, por exemplo, quando se quer encontrar o caminho com menor distância entre dois lugares para se caminhar uma menor distância, dentre vários outros problemas mais elaborados. Para esse exemplo específico não é necessário o uso de matemática avançada, porém, quanto mais complexidades são adicionadas aos problemas, mais ferramentas matemáticas são necessárias para a resolução, exata ou aproximada. Para simplificar estes processos, surgem os métodos para o cálculo de máximos e mínimos das funções.
 
-Uma das primeiras formulações matemáticas próxima das atuais para os problemas de máximos e mínimos foi feita por Pierre de Fermat\bdDate{1601}{1665} em 1629 considerando curvas $y=f(x)$. Ele fez comparações de $f(x)$ e $f(x+E)$ para pontos próximos. Esses valores geralmente são diferentes, porém, próximo de máximos ou mínimos a diferença se torna pequena. Deste modo, para achar os pontos de máximo ou mínimo, Fermat fazia
+Uma das primeiras formulações matemáticas próxima das atuais para os problemas de máximos e mínimos foi feita por Pierre de Fermat\bdDate{1601}{1665} em 1629 considerando curvas $y=f(x)$. Ele fez comparações de $f(x)$ e $f(x+E)$, onde $E$ é um número real positivo próximo de zero, ou seja, ele fez comparações do valor da função para pontos próximos. Esses valores geralmente são diferentes, porém, próximo de máximos ou mínimos a diferença se torna pequena. Deste modo, para achar os pontos de máximo ou mínimo, Fermat fazia
 $$
 	\frac{f(x+E)-f(x)}{E}
 $$
@@ -736,7 +713,7 @@ O problema pode ser enunciado como:
 Sejam $A$ e $B$ dois pontos dados em um plano vertical. O problema da braquistócrona consiste em encontrar a curva que uma partícula M precisa descrever para sair de A e chegar em B no menor tempo possível, somente sob a ação da força da gravidade \cite[p. 3]{calcvar}.
 \end{citacao}
 
-O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli\bdDate{1654}{1705} (1697), L'Hôpital\bdDate{1661}{1704} (1697), Leibniz (1697), e Newton (1697). \cite{hist_still}.
+O próprio Johann Bernoulli foi um dos matemáticos que solucionou o problema da braquistócrona. Ele retardou a publicação da sua solução para estimular os matemáticos do seu tempo a testarem suas habilidades nesse novo tipo de problema matemático \cite{hist_courant}. Além de Johann Bernoulli, soluções independentes foram encontradas por diversos matemáticos, como Jakob Bernoulli\bdDate{1654}{1705} (1697), L'Hôpital\bdDate{1661}{1704} (1697), Leibniz (1697), e Newton (1697), \cite{hist_still}.
 
 A solução de Jakob Bernoulli considerava o aspecto da curva variável, sendo considerado o primeiro grande passo para o desenvolvimento do cálculo variacional \cite{hist_still}. Nesse problema, a quantidade a ser minimizada depende de uma curva e não apenas de uma váriavel real \cite{hist_courant}, diferentemente dos problemas relacionados ao cálculo diferencial, o que torna necessária a construção de novas ferramentas matemáticas. 
 
@@ -744,7 +721,7 @@ Os métodos para a resolução de problemas deste tipo eram específicos com ada
 
 \section{O Método de Rayleigh-Ritz}
 
-O processo de minimização de funcionais envolve diretamente a resolução de equações diferenciais que, muitas das vezes, pode não ter solução analítica. Uma forma de se contornar esse problema é o uso de soluções aproximadas e, com esse intuito, surge o método de Rayleigh-Ritz, fazendo o uso de funções admissíveis.
+O processo de minimização de funcionais envolve diretamente a resolução de equações diferenciais que, na maioria das vezes, pode não ter solução analítica. Uma forma de se contornar esse problema é o uso de soluções aproximadas e, com esse intuito, surge o método de Rayleigh-Ritz, fazendo o uso de funções admissíveis.
 
 O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz carrega o nome de dois pesquisadores, Lord Rayleigh\bdDate{1842}{1919} e Walter Ritz\bdDate{1878}{1909}, porém seu desenvolvimento se deve, principalmente, a Walter Ritz, enquanto a solução apresentada por Lord Rayleigh é tratada como introdução, como será descrito abaixo.
 
@@ -754,16 +731,16 @@ Em 1908 e 1909, Walter Ritz publicou dois artigos descrevendo procedimentos simp
 
 Não se sabe exatamente quando o nome Rayleigh passou a ser agregado ao Método de Ritz, transformando-se em "Método de Rayleigh-Ritz". Uma das razões pelas quais isso ocorreu é o fato de que o método de Rayleigh pode ser considerado como um caso especial do método de Ritz quando uma única função admissível é utilizada para a aproximação \cite{LEISSA_2005}.
 
-O método de Rayleigh foi utilizado frequentemente, porém, nas últimas décadas o método de Ritz ou, como é chamado hoje, de Rayleigh-Ritz se mostrou aplicável a uma gama enorme de problemas devido, principalmente, a revolução tecnologica promovida pelos computadores, a partir da invenção dos transistores e microprocessadores \cite{LEISSA_2005}.
+O método de Rayleigh foi utilizado frequentemente, porém, nas últimas décadas o método de Ritz ou, como é chamado hoje, de Rayleigh-Ritz se mostrou aplicável a uma gama enorme de problemas devido, principalmente, a revolução tecnológica promovida pelos computadores, a partir da invenção dos transistores e microprocessadores \cite{LEISSA_2005}.
 
 \subsection{Aplicações do Método de Rayleigh-Ritz}
 
-O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, porém, mais conhecido aplicado a análise estrutural. Seu uso é empregado, principalmente, com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada à força que provocou o seu movimento. Em palavras similares, representa o quanto à estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
+O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, porém, a análise estrutural uma das áreas em que o método é mais utilizado. Seu uso é empregado, principalmente, com o objetivo de encontrar as chamadas frequências naturais. As frequências naturais "indicam a taxa de oscilação livre da estrutura, depois de cessada [a] força que provocou o seu movimento. Em palavras similares, representa o quanto [a] estrutura vibra quando não há força aplicada sobre ela."\text{ }\cite[p. 1]{Vasquez2015}.
 
-\citeonline{RRM_Applications} exemplifica essa aplicação ao procurar as frequências naturais em um tipo específico de viga, chamada de consola, que é uma viga apoiada apenas em uma de suas extremidades. A Figura \ref{fig:cantilever} mostra uma representação de uma viga desse tipo, onde a curva $w(x,t)$ representa o deslocamento dinâmico. Diversos outros trabalhos trazem essa mesma abordagem ao método, visando analisar frequências naturais de vibração, como, por exemplo, o trabalho de \citeonline{mrr_beams}, que estuda a frequência natural de vigas seguindo o modelo de Timoshenko e de Euler usando o método de Rayleigh-Ritz. \citeonline{GROSSI_2001} mostra a aplicação do método a problemas envolvendo placas, ao invés de vigas.
+\citeonline{RRM_Applications} exemplificam essa aplicação ao procurar as frequências naturais em um tipo específico de viga, chamada de consola, que é uma viga apoiada apenas em uma de suas extremidades. A Figura \ref{fig:cantilever} mostra uma representação de uma viga desse tipo, onde a curva $w(x,t)$ representa o deslocamento dinâmico. Diversos outros trabalhos trazem essa mesma abordagem ao método, visando analisar frequências naturais de vibração, como, por exemplo, o trabalho de \citeonline{mrr_beams}, que estuda a frequência natural de vigas seguindo o modelo de Timoshenko e de Euler usando o método de Rayleigh-Ritz. \citeonline{GROSSI_2001} mostra a aplicação do método à problemas envolvendo placas, ao invés de vigas.
 
 \begin{figure}[h]
-	\caption{Modelo de uma Viga Consola Vibrando.}
+	\caption{Modelo de uma Viga Consola vibrando.}
 	\centering
 	\begin{tikzpicture}
 		\tkzInit[xmin=-0, xmax=6, ymin=-0.6, ymax=2]
@@ -822,7 +799,7 @@ O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, p
 
 %{\color{red}Citar aplicações do Método de Rayleigh-Ritz.}
 
-Além da abordagem convencional do método, existem trabalhos que visam aliar o método a técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirma que modelos baseados redes neurais profundas podem ser utilizadas em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (Método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. O método proposto faz o uso da representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
+Além da abordagem convencional do método, existem trabalhos que visam aliar o método à técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirmam que modelos baseados em redes neurais profundas podem ser utilizados em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{Deep Ritz Method} (Método de Ritz Profundo, em tradução literal) para a resolução de problemas variacionais. Esse método utiliza-se de representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
 
 Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia da abordagem é a solução para a equação de Poisson em duas dimensões. A Figura \ref{fig:deep_ritz_poisson} apresenta a solução utilizando dois métodos diferentes, sendo a Figura \ref{fig:deep_ritz_poisson_a} a solução pelo \textit{Deep Ritz Method} com 811 parâmetros e a Figura \ref{fig:deep_ritz_poisson_b} a solução pelo método das diferenças finitas com 1681 parâmetros.
 
@@ -845,7 +822,7 @@ Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia d
 	\legend{\ABNTEXfontereduzida Fonte: \citeonline[p. 5]{deep_ritz}.}
 \end{figure}
 
-Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplicação moderna do método de Rayleigh-Ritz e serve, inclusive, como uma motivação ao estudo do tema.
+Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplicação moderna do método de Rayleigh-Ritz e serve, inclusive, como motivação ao estudo do tema.
 
 \section{A Linguagem Python}
 
@@ -853,25 +830,25 @@ Os exemplos acima citados mostram tanto aplicações clássicas quanto uma aplic
 
 %{\color{red}Citar alguns dos principais pacotes para programação cientifica (NumPy, SciPy, Matplotlib, Sympy).}
 
-A linguagem de programação \index[remissivo]{Python}Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas \textemdash\text{ }atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}}. Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
+A linguagem de programação \index[remissivo]{Python}Python foi criada por volta de 1990 por Guido van Rossum no \textit{Stichting Mathematisch Centrum} nos Países Baixos \cite{Python_history}. Guido é o seu principal criador, porém, com o desenvolvimento \textit{open source}, a mesma apresenta colaborações de diversas pessoas \textemdash\text{ }atualmente, há cerca de mil colaboradores no repositório da linguagem no GitHub\footnote{\url{https://github.com/python/cpython/}.}. Em 2001, foi criada a \textit{Python Software Foundation}, organização sem fins lucrativos, responsável por possuir a propriedade intelectual relacionada a Linguagem Python \cite{Python_history}.
 
-As principais motivações para o uso da linguagem Python neste trabalho é o seu funcionamento simples, a facilidade de uso, grande comunidade de usuários, além do fato de ser uma linguagem de gratuita e de código aberto tornando-a, deste modo, acessível.
+As principais motivações para o uso da linguagem Python neste trabalho é o seu funcionamento simples, a facilidade de uso, grande comunidade de usuários, além do fato de ser uma linguagem de programação gratuita e de código aberto tornando-a, deste modo, acessível.
 
 Além dos diversos colaboradores diretos no desenvolvimento da linguagem, existem os colaboradores indiretos que criam, por exemplo, os pacotes com funções prontas para o uso. Dentre os pacotes científicos mais conhecidos estão alguns do ecossistema \textit{SciPy}:
 
 \begin{itemize}
 	\item \index[remissivo]{NumPy}\textit{NumPy} é um pacote utilizado para computação científica contendo objetos para trabalhar com \textit{arrays} (arranjos em português) multidimensionais, rotinas de operações em \textit{arrays}, transformadas de Fourier, álgebra linear, estatística, dentre outras funcionalidades \cite{NumPy}.
 	
-	\item \index[remissivo]{SciPy}\textit{SciPy library} contém módulos para matemática, ciências e engenharia. As funções trazidas pela \textit{SciPy} permitem o trabalho com álgebra linear, cálculo, interpolação, manipulação de arquivos, otimização, processamento de sinais, entre outros \cite{SciPy}.
+	\item \index[remissivo]{SciPy}\textit{SciPy} contém módulos para matemática, ciências e engenharia. As funções trazidas pela \textit{SciPy} permitem o trabalho com álgebra linear, cálculo, interpolação, manipulação de arquivos, otimização, processamento de sinais, entre outros \cite{SciPy}.
 	
-	\item \index[remissivo]{Matplotlib}\textit{Matplotlib} é uma biblioteca que permite plotar dados, tornando a visualização dos mesmos tão simples quanto possível \cite{Matplotlib}. Segundo \citeonline{Matplotlib}, a biblioteca possui um ambiente de estados de máquina similar ao utilizado no \textit{software} comercial MATLAB, trazendo uma experiência similar para usuários familiarizados com o MATLAB.
+	\item \index[remissivo]{Matplotlib}\textit{Matplotlib} é uma biblioteca que permite plotar dados, tornando a visualização dos mesmos tão simples quanto possível \cite{Matplotlib}. Segundo \citeonline{Matplotlib}, a biblioteca possui um ambiente de estados de máquina similar ao utilizado no \textit{software} comercial MATLAB\footnote{O MATLAB, comercializado pela \textit{MathWorks}, é uma ferramenta matemática e um ambiente de desenvolvimento integrado voltado para o desenvolvimento de programas de natureza técnica, como, por exemplo, programas de cálculo numérico.}, trazendo uma experiência similar para usuários familiarizados com o MATLAB.
 	
-	\item \index[remissivo]{SymPy}\textit{SymPy} é uma biblioteca que contém classes e funções que permitem a manipulação simbólica de elementos matemáticos, isto é, os elementos matemáticos são representados de forma exata e não aproximados \cite{SymPy}. Por exemplo, ao se utilizar uma calculadora científica e fizermos algum cálculo com o número $\pi$, será apresentado no visor o cálculo utilizando uma aproximação para $\pi$. Já na matemática simbólica, $\pi$ não seria aproximado e, portanto, o número continuaria sendo representado pela letra grega. É importante perceber que, em determinados casos, a abordagem aproximada é mais eficiente e, em outros, a abordagem simbólica.
+	\item \index[remissivo]{SymPy}\textit{SymPy} é uma biblioteca que contém classes e funções que permitem a manipulação simbólica de elementos matemáticos, isto é, os elementos matemáticos são representados de forma exata e não aproximados \cite{SymPy}. Por exemplo, ao se utilizar uma calculadora científica para realizar algum cálculo com o número $\pi$, será apresentado no visor o cálculo utilizando uma aproximação para $\pi$. Já na matemática simbólica, $\pi$ não seria aproximado e, portanto, o número continuaria sendo representado pela letra grega. É importante perceber que, em determinados casos, a abordagem aproximada é mais eficiente e, em outros, a abordagem simbólica.
 \end{itemize}
 
 Existem outros pacotes científicos no ecossistema do \textit{SciPy} e, também, fora do ecossistema, porém, serão citados, aqui, apenas esses devido ao fato de que os seus usos são voltados para a matemática e aplicações.
 
-A linguagem e ambos os componentes citados são desenvolvidos em código aberto de forma colaborativa. Uma das vantagens dessa forma de desenvolvimento é o rápido aperfeiçoamento de suas funcionalidades, documentação e, também, a rápida correção de bugs.
+A linguagem e ambos os componentes citados são desenvolvidos em código aberto de forma colaborativa. Uma das vantagens dessa forma de desenvolvimento é o rápido aperfeiçoamento de suas funcionalidades, documentação e, também, a rápida correção de erros.
 
 \chapter{CÁLCULO VARIACIONAL}
 \label{cap:calc_var}
@@ -882,7 +859,7 @@ Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo 
 	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
 \end{equation}
 
-Minimizar o funcional \eqref{eqn:cap_calc_var:int_funcional} é o processo de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$,  que faça com que o mesmo tenha valor mínimo. De modo análogo, maximizar o funcional é encontrar uma função $y=y(x)$, com $y(x_1)=y_1$ e $y(x_2)=y_2$, que faz a integral \eqref{eqn:cap_calc_var:int_funcional} ser um valor máximo. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional será estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
+Minimizar o funcional \eqref{eqn:cap_calc_var:int_funcional} é o processo de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$,  que faça com que o mesmo tenha valor mínimo. De modo análogo, maximizar o funcional é encontrar uma função $y=y(x)$, com $y(x_1)=y_1$ e $y(x_2)=y_2$, que faz a integral \eqref{eqn:cap_calc_var:int_funcional} ser um valor máximo. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
 
 %{\color{red}O que é minimizar, maximizar, extremos?}
 
@@ -899,7 +876,7 @@ Sejam $x_1 < x_2$ fixos e $G(x)$ uma função contínua particular para $x_1 \le
 para cada função diferenciável $\eta (x)$ tal que $\eta (x_1)=\eta (x_2)=0$, concluímos que $G(x)=0$, para todo $x$ de modo que $x_1 \leqslant x \leqslant x_2$.
 
 \begin{proof}
-Suponha que existe $\overline{x}$ tal que $x_1\ < \overline{x} < x_2$ e $G(\overline{x})\neq 0$. Podemos supor, sem perda de generalidade, que $G(\overline{x})>0$. Como $G$ é contínua, existe uma vizinhança $\overline{x_1} \leqslant \overline{x} \leqslant \overline{x_2}$ onde $G(x)>0$ em toda a vizinhança.
+Suponha que existe $\overline{x}$ tal que $x_1<\overline{x}<x_2$ e $G(\overline{x})\neq 0$. Podemos supor, sem perda de generalidade, que $G(\overline{x})>0$. Como $G$ é contínua, existe uma vizinhança $\overline{x_1} \leqslant \overline{x} \leqslant \overline{x_2}$ onde $G(x)>0$ em toda a vizinhança.
 
 É possível construir a seguinte função $\eta (x)$:
 $$
@@ -944,7 +921,7 @@ Reescrevendo a integral (\ref{eqn:cap_calc_var:int_funcional}) utilizando as fun
 I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y_{\varepsilon}, Y')dx\text{.}
 \end{equation}
 
-Note que a função procurada $y(x)$ é o membro da família $Y(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a função que determina os extremos do funcional em \eqref{eqn:cap_calc_var:int_funcional_approx} é a mesma que determina os extremos em \eqref{eqn:cap_calc_var:int_funcional} tomando $\varepsilon=0$.
+Note que a função procurada $y(x)$ é o membro da família $Y_{\varepsilon}(x)$ quando $\varepsilon = 0$. Ou seja, se $\varepsilon = 0$ pode-se substituir $Y_{\varepsilon}$ e $Y'$ por $y$ e $y'$, respectivamente. Deste modo, a função que determina os extremos do funcional em \eqref{eqn:cap_calc_var:int_funcional_approx} é a mesma que determina os extremos em \eqref{eqn:cap_calc_var:int_funcional} tomando $\varepsilon=0$.
 
 A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
 \begin{equation}\label{eqn:cap_calc_var:extrem_condition}
@@ -959,7 +936,7 @@ Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndi
 $$I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y_{\varepsilon}, Y') dx \text{,}$$
 e, aplicando regra da cadeia, obtêm-se
 $$I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{,}$$
-onde o primeiro termo do integrando é nulo, dado ao fato de que $x$ independe de $\varepsilon$, portanto $\dfrac{\partial x}{\partial \varepsilon}=0$, ou seja,
+onde a primeira parcela do integrando é nulo, dado ao fato de que $x$ independe de $\varepsilon$, portanto $\dfrac{\partial x}{\partial \varepsilon}=0$, ou seja,
 \begin{equation}\label{eqn:cap_calc_var:chain_rule}
 I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
 \end{equation}
@@ -1090,7 +1067,7 @@ de onde, geralmente, surgem as duas igualdades
 
 É importante deixar claro que pode acontecer, por exemplo, de $\eta(x_1)=0$ e $\eta(x_2)\neq 0$, ou vice-versa, e, consequentemente, reduz-se uma dessas condições de contorno.
 
-Essas condições de contorno são denominadas condições de \index[remissivo]{Condições de Contorno Naturais}contorno naturais do problema ou, ainda, \index[remissivo]{Condições de Contorno de Neumann}problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$ tornando o funcional estacionário.
+Essas condições de contorno são denominadas condições de \index[remissivo]{Condições de Contorno Naturais}contorno naturais do problema ou, ainda, \index[remissivo]{Condições de Contorno de Neumann}problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar $y(x)$, tornando o funcional estacionário.
 
 Para o caso de funcionais que dependem de derivadas de ordem superior, da forma
 $$
@@ -1565,11 +1542,11 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 \end{solution}
 
 \begin{exemplo}
-	\label{ex:cond_contorno}
-	Considere o funcional
+	\label{ex:cond_contorno}\cite{mefassan}
+	Considere o funcional de energia potencial de uma viga dado por
 	\begin{equation}
 		\label{eqn:cap_calc_var:funcional_pi}
-		I = \frac{1}{2}	\int_{0}^{l}
+		\Pi = \frac{1}{2}	\int_{0}^{l}
 			EI \left (
 				\frac{d^2v}{dx^2}
 			\right )^2 dx
@@ -1577,12 +1554,12 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 			\int_{0}^{l} qv dx
 			\text{,}
 	\end{equation}
-	encontre $v(x)$ de modo que $I$ seja estacionário, com as condições de contorno essenciais, $v(0)=0$ e $v(l)=0$ e as condições de contorno naturais $\dfrac{d^2v}{dx^2}\Big |_{x=0}$ e $\dfrac{d^2v}{dx^2}\Big |_{x=l}$.
+	onde $E$ é o módulo de Young do material, $I$ é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico, $l$ é o comprimento da viga e $q$ é a carga distribuída de forma uniforme sobre a viga. Encontre $v(x)$ de modo que $I$ seja estacionário, com as condições de contorno essenciais, $v(0)=0$ e $v(l)=0$, e as condições de contorno naturais $\dfrac{d^2v}{dx^2}\Big |_{x=0}$ e $\dfrac{d^2v}{dx^2}\Big |_{x=l}$.
 \end{exemplo}
 \begin{solution}
 	A determinação de $v(x)$ pode ser feita diretamente utilizando a equação de Euler-Lagrange (Ver Seção \ref{sec:eq_euler_lagrange}), porém, aqui será repetido o processo, mostrando que as condições de contorno naturais realmente surgem durante o processo de obtenção da equação. Variando $v$ por $\overline{v}_{\varepsilon}=v+\varepsilon \eta$ em \eqref{eqn:cap_calc_var:funcional_pi}, tem-se
 	$$
-		I(\varepsilon) = \frac{1}{2} \int_{0}^{l}
+		\Pi(\varepsilon) = \frac{1}{2} \int_{0}^{l}
 			EI \left (
 				\frac{d^2\overline{v}}{dx^2}
 			\right )^2 dx
@@ -1593,7 +1570,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	de onde, derivando $I(\varepsilon)$ em relação a $\varepsilon$, resulta em
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_conditions_deduce}
-		\frac{dI}{d\varepsilon} = 
+		\frac{d\Pi}{d\varepsilon} = 
 			\int_{0}^{l} EI \left (
 				\frac{d^2\overline{v}}{dx^2}
 			\right ) \cdot 
@@ -1605,9 +1582,9 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 			\text{.}
 	\end{equation}
 	
-	Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $\dfrac{dI}{d\varepsilon}\Big |_{\varepsilon=0}$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
+	Manipulando \eqref{eqn:cap_calc_var:natural_conditions_deduce}, e calculando $\dfrac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0}$, pois $\overline{v}$ pode ser substituido por $v$, naturalmente, chega-se a
 	$$
-		\frac{dI}{d\varepsilon}\Big |_{\varepsilon=0} = 
+		\frac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0} = 
 			\int_{0}^{l} EI \left (
 				\frac{d^2v}{dx^2}
 			\right ) \left (
@@ -1620,7 +1597,7 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 	onde a primeira parcela deve ser integrada, por partes, duas vezes, resultando em
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_conditions_I0}
-		\frac{dI}{d\varepsilon}\Big |_{\varepsilon=0} = 
+		\frac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0} = 
 			\int_{0}^{l} \left (
 				EI\frac{d^4 v}{dx^4}-q 
 			\right ) \eta dx
@@ -1631,10 +1608,10 @@ onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial 
 			\text{.}
 	\end{equation}
 	
-	Aplicando a condição de estacionariedade, $\dfrac{dI}{d\varepsilon}\Big |_{\varepsilon=0}=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
+	Aplicando a condição de estacionariedade, $\dfrac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0}=0$, em \eqref{eqn:cap_calc_var:natural_conditions_I0},
 	\begin{equation}
 		\label{eqn:cap_calc_var:natural_conditions_I0_eq_0}
-		\frac{dI}{d\varepsilon}\Big |_{\varepsilon=0} = 
+		\frac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0} = 
 			\int_{0}^{l} \left (
 				EI\frac{d^4 v}{dx^4}-q 
 			\right ) \eta dx
@@ -1739,7 +1716,7 @@ A resolução de equações diferenciais e a determinação da solução exata p
 
 As explicações e os conceitos aqui utilizados foram elaboradas tomando como referências os autores \citeonline{mefassan} e \citeonline{MRR_Deflex}.
 
-O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituida por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.
+O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz propõe que a função $y(x)$, exata, seja substituída por uma função aproximada $v(x)$ que é formada pela combinação linear de funções $\phi _i(x)$. Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.
 
 Considerando o funcional
 $$
@@ -1751,9 +1728,9 @@ $$
 	v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{,}
 $$
-onde as funções $\phi_i(x)$ são chamadas de \index[remissivo]{Função de Forma}funções de forma e devem ser linearmente independentes. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$, onde $m$ é a ordem da maior derivada do funcional. Os coeficientes $a_i \in \mathbb{R}$ são chamados de parâmetros de deslocamento e $v(x)$ é chamada de \index[remissivo]{Função Aproximadora}função aproximadora.
+onde os coeficientes $a_i \in \mathbb{R}$ são chamados de \index[remissivo]{Parâmetros de Deslocamento}parâmetros de deslocamento, as funções $\phi_i(x)$ são chamadas de \index[remissivo]{Função de Forma}funções de forma e devem ser linearmente independentes. As funções $\phi_i(x)$ devem ser, também, diferenciáveis até a ordem $m$, onde $m$ é a ordem da maior derivada do funcional. A função $v(x)$ é chamada de \index[remissivo]{Função Aproximadora}função aproximadora.
 
-Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$, isto é, $I=I(a_1, a_2, \dots, a_n)$. A condição de máximo ou mínimo para o funcional $I$ é, então, que as suas derivadas parciais em relação a $a_1$, $a_2$, $\dots$, $a_n$ se anulem, então
+Substituindo $y$ por $v$ no funcional, $I$ passa a ser uma função de $a_1$, $a_2$, $\dots$, $a_n$, isto é, $I=I(a_1, a_2, \dots, a_n)$. A condição de máximo ou mínimo para o funcional $I$ é, então, que as suas derivadas parciais em relação a $a_1$, $a_2$, $\dots$, $a_n$ se anulem, ou seja
 $$
 	\frac{\partial I}{\partial a_i} = 0
 	\text{,}
@@ -1761,7 +1738,20 @@ $$
 com $i=1, 2, 3, \dots, n$.
 
 \begin{exemplo}
-	\label{ex:mrr_ex_livro}
+	\label{ex:mrr_ex_livro}\cite{mefassan}		
+	A viga prismática da Figura \ref{fig:test_02} possui o funcional de energia potencial total associado
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:exemplo_func_pi}
+		\Pi = 
+		\frac{1}{2} \int_0^l EI \left [
+			\frac{d^2v}{dx^2}
+		\right ]^2 dx
+		-
+		\int_0^l qvdx
+		\text{,}
+	\end{equation}
+	onde $E$ é o módulo de Young do material, $I$ é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico, $l$ é o comprimento da viga e $q$ é a carga distribuída de forma uniforme sobre a viga.
+	
 	\begin{figure}[h]
 		\caption{Viga prismática.}
 		\centering
@@ -1828,43 +1818,35 @@ com $i=1, 2, 3, \dots, n$.
 		\legend{\ABNTEXfontereduzida Fonte: \citeonline[p. 25]{mefassan}.}
 		%\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 	\end{figure}
-		
-	A viga prismática da Figura \ref{fig:test_02} possui o funcional de energia potencial total associado
-	\begin{equation}
-		\label{eqn:cap_metodo_ray_ritz:exemplo_func_pi}
-		\Pi = 
-		\frac{1}{2} \int_0^l EI \left [
-			\frac{d^2v}{dx^2}
-		\right ]^2 dx
-		-
-		\int_0^l qvdx
-		\text{,}
-	\end{equation}
-	onde $E$ é o módulo de Young do material e I é o momento de inércia da seção transversal da viga em relação ao eixo baricêntrico. 
+	
+	Utilize o método o Método de Rayleigh-Ritz para aproximar a função exata $v(x)$ através de funções polinomiais de grau 2, 3 e 4 de modo que o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} se torne estacionário.
 \end{exemplo}
 
 \begin{solution}
-	É possível encontrar uma função $\overline{v}(x)$ que aproxime a função exata $v(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras:
-	\begin{equation}
-		\label{eqn:cap_metodo_ray_ritz_funcdef_v1}
-		v_1 (x) = a_0 + a_1 x + a_2 x^2
-		\text{,}
-	\end{equation}
-	\begin{equation}
-		\label{eqn:cap_metodo_ray_ritz_funcdef_v2}
-		v_2 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3
-		\text{,}
-	\end{equation}
-	\begin{equation}
-		\label{eqn:cap_metodo_ray_ritz_funcdef_v3}
-		v_3 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4
-		\text{.}
-	\end{equation}
+	É possível encontrar uma função que aproxime a função exata $v(x)$ tornando o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras:
+	\noEquationSpacing
+	{
+		\begin{equation}
+			\label{eqn:cap_metodo_ray_ritz_funcdef_v1}
+			v_1 (x) = a_0 + a_1 x + a_2 x^2
+			\text{,}
+		\end{equation}
+		\begin{equation}
+			\label{eqn:cap_metodo_ray_ritz_funcdef_v2}
+			v_2 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3
+			\text{,}
+		\end{equation}
+		\begin{equation}
+			\label{eqn:cap_metodo_ray_ritz_funcdef_v3}
+			v_3 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4
+			\text{.}
+		\end{equation}
+	}
 	
 	Para parâmetro de comparação com os resultados apresentados pelas funções $v_1(x)$, $v_2(x)$ e $v_3(x)$ definidas em \eqref{eqn:cap_metodo_ray_ritz_funcdef_v1}, \eqref{eqn:cap_metodo_ray_ritz_funcdef_v2} e \eqref{eqn:cap_metodo_ray_ritz_funcdef_v3}, será utilizado o valor de máxima deflexão da Viga da Figura \ref{fig:test_02}. Esse valor foi determinado no Apêndice \ref{apend:max_deflex}, em \eqref{eqn:max_deflex_resultado}, como
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}
-		y(\frac{l}{2})=\frac{5ql^4}{384EI}
+		v\left (\frac{l}{2} \right)=\frac{5ql^4}{384EI}
 		\text{,}
 	\end{equation}
 	
@@ -1948,10 +1930,10 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	$$
 	
-	Calculando $v(\frac{l}{2})$ a título de comparação com o valor exato de máxima deflexão da viga, dado por \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato},
+	Calculando $v_1(\frac{l}{2})$ a título de comparação com o valor exato de máxima deflexão da viga, dado por \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato},
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:ex1_max_deflex_apv1}
-		v_1(\frac{l}{2}) = \frac{ql^4}{96EI}
+		v_1\left (\frac{l}{2} \right) = \frac{ql^4}{96EI}
 		\text{.}
 	\end{equation}
 	
@@ -1965,15 +1947,18 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	Derivando a função $v_2$ em função de x, duas vezes, pode-se obter
-	$$
-	v_2'(x) = a_2(2x-l) + a_3(3x^2-l^2)
-	$$
-
-	\begin{equation}
-		\label{eqn:cap_metodo_ray_ritz:v2_diff_organizada}
-		v_2''(x) = 2a_2 + 6a_3 x \text{.}
-	\end{equation}
+	Derivando a função $v_2$ em função de $x$, duas vezes, pode-se obter
+	
+	\noEquationSpacing
+	{
+		$$
+		v_2'(x) = a_2(2x-l) + a_3(3x^2-l^2)
+		$$
+		\begin{equation}
+			\label{eqn:cap_metodo_ray_ritz:v2_diff_organizada}
+			v_2''(x) = 2a_2 + 6a_3 x \text{.}
+		\end{equation}
+	}
 	
 	Substituindo \eqref{eqn:cap_metodo_ray_ritz:v2_organizada} e \eqref{eqn:cap_metodo_ray_ritz:v2_diff_organizada} em $\Pi$, tem-se
 	$$
@@ -2377,7 +2362,18 @@ com $i=1, 2, 3, \dots, n$.
 		\text{.}
 	\end{equation}
 	
-	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}. Chamando $C=-\dfrac{ql^2}{12EI}$ e $D=-\dfrac{3ql^2}{10EI}$, tem-se a matriz aumentada.
+	É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com \eqref{eq:exemp_rayritz_approx3_eq1}, \eqref{eq:exemp_rayritz_approx3_eq2} e \eqref{eq:exemp_rayritz_approx3_eq3}:
+	
+	\begin{equation}
+		\label{eqn:cap_metodo_ray_ritz:sistema}
+		\begin{cases}
+			2a_2 + 3a_3l + 4a_4l^2 = -\dfrac{ql^2}{12EI}\\[10pt]
+			a_2 + 2a_3 l + 3a_4 l^2 = - \dfrac{ql^2}{24EI}\\[10pt]
+			8a_2 + 18a_3 l + \frac{144}{5} a_4 l^2 = -\dfrac{3ql^2}{10EI}
+		\end{cases}
+	\end{equation}
+	
+	Chamando $C=-\dfrac{ql^2}{12EI}$ e $D=-\dfrac{3ql^2}{10EI}$, tem-se a matriz aumentada do sistema linear \eqref{eqn:cap_metodo_ray_ritz:sistema}.
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:matriz_sistema}
 		\begin{amatrix}{3}
@@ -2387,7 +2383,7 @@ com $i=1, 2, 3, \dots, n$.
 		\end{amatrix}
 		\text{,}
 	\end{equation}
-	donde, resolvendo o sistema (Veja o Apêndice \ref{apend:res_sis_lin}), obtem-se os valores
+	donde, resolvendo o sistema (Veja a Seção \ref{sec:python_solve_linsys} do Apêndice \ref{apend:python}), obtem-se os valores
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz_coef_v3_a2}
 		a_2=0\text{,}
@@ -2401,7 +2397,7 @@ com $i=1, 2, 3, \dots, n$.
 		a_4=\frac{q}{24EI}\text{.}
 	\end{equation}
 		
-	Deste modo, substituindo \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a2}, \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a3} e \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a2} em \eqref{eqn:cap_metodo_ray_ritz:func_def_v3}, a função $v_3(x)$ é escrita como
+	Deste modo, substituindo \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a2}, \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a3} e \eqref{eqn:cap_metodo_ray_ritz_coef_v3_a4} em \eqref{eqn:cap_metodo_ray_ritz:func_def_v3}, a função $v_3(x)$ é escrita como
 	\begin{equation}
 		\label{eqn:cap_metodo_ray_ritz:func_v3}
 		v_3(x) =
@@ -2436,23 +2432,25 @@ com $i=1, 2, 3, \dots, n$.
 		v_3(\frac{l}{2})=\frac{5ql^4}{384EI}
 		\text{,}
 	$$
-	que é o valor exato de $y(\frac{l}{2})$ indicado em \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}. Não apenas isto, mas a função $v_3(x)$, indicada em \eqref{eqn:cap_metodo_ray_ritz:func_v3} ou em \eqref{eqn:cap_metodo_ray_ritz:func_v3_forma2}, é a função $y(x)$ exata.
+	que é o valor exato de $v(\frac{l}{2})$ indicado em \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}. Não apenas isto, mas a função $v_3(x)$, indicada em \eqref{eqn:cap_metodo_ray_ritz:func_v3} ou em \eqref{eqn:cap_metodo_ray_ritz:func_v3_forma2}, é a função $v(x)$ exata.
 	
 	%O resultado encontrado, $v_3(x)$, é a função exata que torna o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário.
 	
 	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{solution}
 
-A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $y(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, facilitando, desta forma, a escolha das funções de forma.
+A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Existem alguns critérios de convergência, que não serão tratados aqui devido sua complexidade, porém, ainda com os critérios de convergência a escolha das funções aproximadoras é uma tarefa que envolve tentativas e erros até que o resultado seja satisfatório. 
 
-No Exemplo \ref{ex:mrr_ex_livro}, por exemplo, se a função aproximadora escolhida não fosse $v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4$, dificilmente a mesma tomaria a forma da função exata, $v(x)$, após a determinação de seus coeficientes.
+Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $v(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, facilitando, desta forma, a escolha das funções de forma. Como a função exata $v(x)$ é uma função polinomial de grau 4, a escolha da função aproximadora como uma função polinomial foi bem prática.
+
+Devido a função exata $v(x)$ ser uma função polinomial de grau 4, caso a função aproximadora escolhida, no Exemplo \ref{ex:mrr_ex_livro}, não fosse uma função polinomial de grau 4 ou superior, dificilmente a mesma se tornaria a função exata no \index[remissivo]{Método de Rayleigh-Ritz}Método de Rayleigh-Ritz.
 
 %{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
 \section{O Uso de Funções Triangulares no Método de Rayleigh-Ritz}
 \label{sec:mrr_triangular}
 
-\citeonline{MRR_Deflex} apresenta o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$. Considere o funcional
+\citeonline{MRR_Deflex} apresentam o uso de funções triangulares como funções de forma, visando a discretização da função $y(x)$. Considere o funcional
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_funcional}
 	I = \int_{0}^{1} \left [ 
@@ -2597,7 +2595,7 @@ $$
 	\frac{\partial I}{\partial a_j} = 0
 	\text{,}
 $$
-onde $j=1$, $2$, $\dots$, $n$. Utilizando o Teorema \ref{teorema:regra_de_leibniz} (Regra de Leibniz),
+onde $j=1$, $2$, $\dots$, $n$. Utilizando A Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}),
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada}
 	\frac{\partial I}{\partial a_j} = 
@@ -2615,7 +2613,42 @@ onde $j=1$, $2$, $\dots$, $n$. Utilizando o Teorema \ref{teorema:regra_de_leibni
 
 Em \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada} foi utilizado o fato de que a derivada de $\displaystyle \sum_{i=1}^{n} a_i \phi_i(x)$ em relação a algum $a_j$, onde $1\leqslant j\leqslant n$, resulta em $\phi_j(x)$. O mesmo vale para a derivada de $\displaystyle \sum_{i=1}^{n} a_i \phi_i'(x)$ em relação a algum $a_j$, $1\leqslant j\leqslant n$, que resulta em $\phi_j'(x)$.
 
-Manipulando as ordens de integração e de soma em \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada} tem-se
+Aplicando a distributividade na primeira e segunda parcela do integrando em \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada}, tem-se
+$$
+	\frac{\partial I}{\partial a_j} = \int_0^1 \left [
+		\sum_{i=1}^n \left ( 2p(x)a_i \phi_i'(x)\phi_j'(x) \right)
+		+
+		\sum_{i=1}^n \left ( 2q(x)a_i\phi_i(x)\phi_j(x) \right)
+		- 2f(x)\phi_j(x)
+	\right ] dx
+$$
+$$
+	\frac{\partial I}{\partial a_j} = \int_0^1 \left [
+		\sum_{i=1}^n \left (
+			2p(x)a_i \phi_i'(x)\phi_j'(x)
+			+
+			2q(x)a_i\phi_i(x)\phi_j(x)
+		\right )
+	\right ] dx
+	- \int_0^1 2f(x)\phi_j(x)dx
+	\text{,}
+$$
+de onde, alterando a ordem de integração e soma, resulta em
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_aj_evidence}
+	\frac{\partial I}{\partial a_j} = \sum_{i=1}^n \left (
+		\int_0^1 \left [
+			2p(x)a_i\phi_i'(x)\phi_j'(x)
+			+
+			2q(x)a_i\phi_i(x)\phi_j(x)
+		\right ] dx
+	\right )
+	- \int_0^1 2f(x)\phi_j(x)dx
+	\text{.}
+\end{equation}
+
+%Manipulando as ordens de integração e de soma em \eqref{eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada} tem-se
+De \eqref{eqn:cap_metodo_ray_ritz:tri_func_aj_evidence}, como $a_i$ é constante na integração em relação a $x$, tem-se
 $$
 	\frac{\partial I}{\partial a_j} = \sum_{i=1}^{n} \left (
 		a_i \int_{0}^{1} \left [
@@ -2628,7 +2661,21 @@ $$
 	\int_{0}^{1} 2f(x)\phi_j(x)dx
 	\text{,}
 $$
-que, aplicando a condição $\dfrac{\partial I}{\partial a_j}=0$, resulta em um sistema de $n$ equações com $n$ incógnitas da forma
+que, aplicando a condição $\dfrac{\partial I}{\partial a_j}=0$, obtêm-se
+$$
+	\sum_{i=1}^{n} \left (
+		a_i \int_{0}^{1} \left [
+			2p(x)\phi_i'(x)\phi_j'(x)
+			+
+			2q(x)\phi_i(x)\phi_j(x)
+		\right ]
+	\right )
+	-
+	\int_{0}^{1} 2f(x)\phi_j(x)dx
+	= 0
+	\text{,}
+$$
+resultando em um sistema de $n$ equações com $n$ incógnitas da forma
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_sistema}
 	\sum_{i=1}^{n} \left (
@@ -2644,7 +2691,7 @@ que, aplicando a condição $\dfrac{\partial I}{\partial a_j}=0$, resulta em um 
 \end{equation}
 onde $j=1$, $2$, $\dots$, $n$.
 
-O sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na forma matricial $M\cdot A=B$, onde $M=[m_{j, i}]$ é a matriz de coeficientes, $A=[a_i]$ é a matriz coluna de incógnitas e $B=[b_j]$ é a matriz contendo os termos independentes. Assim, de \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema},
+Chamando
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_mji}
 	m_{j,i}=\int_{0}^{1} \left [
@@ -2654,22 +2701,50 @@ O sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na f
 	\right ]dx
 	\text{,}
 \end{equation}
+e
 \begin{equation}
 	\label{eqn:cap_metodo_ray_ritz:tri_func_bj}
 	b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
-	\text{.}
+	\text{,}
 \end{equation}
+o sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na forma 
+\begin{equation}
+	\label{eqn:cap_metodo_ray_ritz:tri_func_sistema_generic}
+	\displaystyle\sum_{i=1}^n a_i\cdot m_{j,i}=b_j
+	\text{,}
+\end{equation}
+onde $j=1,2,\dots,n$. Seja as matrizes $M=[m_{j,i}]$ de ordem $n\times n$, $B=[b_j]$ de ordem $n\times 1$ e $A=[a_j]$ de ordem $n\times 1$, então o sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema_generic} é escrito como $M\cdot A=B$. A matriz $M$ é a matriz de coeficientes, a matriz $A$ é a matriz coluna de incógnitas e $B$ é a matriz coluna contendo os termos independentes.
+
+%O sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na forma matricial $M\cdot A=B$, onde $M=[m_{j, i}]$ é a matriz de coeficientes, $A=[a_i]$ é a matriz coluna de incógnitas e $B=[b_j]$ é a matriz contendo os termos independentes. Assim, de \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema},
+%\begin{equation}
+%	\label{eqn:cap_metodo_ray_ritz:tri_func_mji}
+%	m_{j,i}=\int_{0}^{1} \left [
+%		2p(x)\phi_i'(x)\phi_j'(x)
+%		+
+%		2q(x)\phi_i(x)\phi_j(x)
+%	\right ]dx
+%	\text{,}
+%\end{equation}
+%\begin{equation}
+%	\label{eqn:cap_metodo_ray_ritz:tri_func_bj}
+%	b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
+%	\text{.}
+%\end{equation}
 
 A partir de \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, os produtos $\phi_i(x)\phi_j(x)$ e $\phi_i'(x)\phi_j'(x)$ são não nulos apenas quando $i=j-1$, $i=j$ e $i=j+1$. Consequentemente, $m_{j,i}$ é não nulo apenas para $i=j-1$, $i=j$ e $i=j+1$.
 
-O sistema construído $M\cdot A=B$ é resolvido, utilizando a linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
+A construção do sistema $M\cdot A=B$ e sua resolução, pelo \index[remissivo]{Método de Gauss-Jordan}Método de Gauss-Jordan, será implementado na linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
+
+%O sistema construído $M\cdot A=B$ será resolvido utilizando o \index[remissivo]{Método de Gauss-Jordan}Método de Gauss-Jordan, com implementação na linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
+
+%O sistema construído $M\cdot A=B$ será resolvido, utilizando linguagem de programação Python na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
 
 \chapter{UTILIZANDO O MÉTODO DE RAYLEIGH-RITZ NA LINGUAGEM PYTHON}
 \label{cap:python}
 
-Se tratando de programação, existem diversas formas de se trabalhar o \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem \index[remissivo]{Python}Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
+Em se tratando de programação, existem diversas formas de se trabalhar o \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem \index[remissivo]{Python}Python por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação Python.
 
-Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, 
+Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, tem-se
 $$
 	\Pi = 
 		\frac{1}{2} \int_0^l EI \left [
@@ -2793,7 +2868,7 @@ Ressaltando, novamente, que a escolha das funções de forma utilizadas na funç
 \section{Resolvendo Problemas com o Método de Rayleigh-Ritz Utilizando Funções Triangulares em Python}
 \label{sec:python_triangular}
 
-O sistema $M\cdot A=B$, construído na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação \index[remissivo]{Python}Python. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
+O sistema $M\cdot A=B$, encontrado na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação \index[remissivo]{Python}Python. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
 
 Viabilizando a implementação do algoritmo, faz-se necessário relembrar $m_{j,i}$ e $b_j$, obtidos em \eqref{eqn:cap_metodo_ray_ritz:tri_func_mji} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_bj}, respectivamente:
 \begin{equation}
@@ -2848,19 +2923,20 @@ from sympy import symbols
 from sympy.matrices import zeros
 from sympy.solvers import linsolve
 import matplotlib.pyplot as pyplot
+import matplotlib.patches as patches
 \end{lstlisting}
 \codigofonte
 
-Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:python_tri_func_phi} e \eqref{eqn:python_tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado. A variável \textit{n} representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.
+Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:python_tri_func_phi} e \eqref{eqn:python_tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}\footnote{A função \textit{numpy.arange} cria valores espaçados uniformemente dentro de um determinado intervalo.}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado. A variável \textit{n} representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=7, caption={Criação dos intervalos numéricos}, captionpos=t, label=py_code_solve_mrr_tri_interval]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=8, caption={Criação dos intervalos numéricos}, captionpos=t, label=py_code_solve_mrr_tri_interval]
 n = 5
 space = 1/(n + 1)
 intervals = numpy.arange(0, 1.0001, space)
 \end{lstlisting}
 \codigofonte
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=10, caption={Função de forma $\phi$ e sua derivada}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=11, caption={Função de forma $\phi$ e sua derivada}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
 def fi(i, x):
     if x <= intervals[i - 1]:
         return 0
@@ -2889,7 +2965,7 @@ Numericamente, as funções $\phi_i(x)$ e $\phi_i'(x)$ foram programadas utiliza
 
 No Código \ref{py_code_solve_mrr_tri_form_func} o método utilizado para a integração numérica, que implementa a chamada regra do trapézio, é mostrado. Dentro do método, a variável \textit{steps} define em quantos intervalos o domínio de integração será dividido. Os parâmetros opcionais \textit{*args}, do método \textit{integrate}, são passados para a função a ser integrada, \textit{func}, e serão utilizados para passar os índices $i$ e $j$ quando necessário.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=31, caption={Algoritmo para integração numérica usando a regra dos trapézios}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=32, caption={Algoritmo para integração numérica usando a regra dos trapézios}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
 def integrate(func, start, end, *args):
     steps = 10000
     h = ((end - start) / steps)
@@ -2907,7 +2983,7 @@ def integrate(func, start, end, *args):
 
 Para a integração numérica por meio do algoritmo implementado em Código \ref{py_code_solve_mrr_tri_integrate} é preciso definir funções com os integrandos de \eqref{eqn:python_tri_func_mji} e \eqref{eqn:python_tri_func_bj}. Essas funções são chamadas, no código, de \textit{m\underline{\hspace{.1in}}intern} e \textit{b\underline{\hspace{0.1in}}intern}, respectivamente. Na implementação do Código \ref{py_code_solve_mrr_tri_m_b}, os métodos \textit{m(i, j)} e \textit{b(i)} calculam os elementos das matrizes $M$ e $B$, respectivamente. Nesses métodos, é somado 1 aos índices $i$ e $j$ pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma $\phi_i(x)$, elas são indexadas a partir de 1.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=43, caption={Funções utilizadas para criação das matrizes do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=44, caption={Funções utilizadas para criação das matrizes do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
 def p(x):
     return e**x
 
@@ -2939,7 +3015,7 @@ def b(i):
 O próximo passo, consiste em criar a matriz aumentada do sistema, os símbolos que representam as incógnitas e, então, resolvê-lo. Isso é feito no Código \ref{py_code_solve_mrr_tri_solvesys}.
 
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=68, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=69, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
 M = zeros(n, n+1)
 for i in range(0, n):
     M[i, n] = b(i)
@@ -2953,9 +3029,9 @@ solution, = linsolve(M, coeficients)
 \end{lstlisting}
 \codigofonte
 
-Utilizando a solução do Código \ref{py_code_solve_mrr_tri_solvesys} e a função exata $y(x)=(x-1)(e^{-x}-1)$, é possível criar funções, numéricas, representando a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código \ref{py_code_solve_mrr_tri_plot}.
+Utilizando a solução do Código \ref{py_code_solve_mrr_tri_solvesys} e a função exata $y(x)=(x-1)(e^{-x}-1)$, é possível implementar métodos que representam a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código \ref{py_code_solve_mrr_tri_plot}.
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=78, caption={Plotagem das funções exata e aproximada}, captionpos=t, label=py_code_solve_mrr_tri_plot]
+\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=79, caption={Plotagem das funções exata e aproximada}, captionpos=t, label=py_code_solve_mrr_tri_plot]
 def function(solution, x):
     value = 0
     i = 0
@@ -2973,32 +3049,37 @@ for i in plot_interval:
     plot_aprox.append(function(solution, i))
 fig = pyplot.figure()
 axes = fig.add_subplot(1, 1, 1)
-axes.plot(plot_interval, plot_aprox, color='tab:blue')
-axes.plot(plot_interval, plot_original, color='tab:orange')
+color1='tab:blue'
+color2='tab:orange'
+axes.plot(plot_interval, plot_aprox, color=color1)
+axes.plot(plot_interval, plot_original, color=color2)
 axes.set_title('Rayleigh-Ritz With n=' + str(n))
+blue_legend = patches.Patch(color=color1, label='Aproximada')
+orange_legend = patches.Patch(color=color2, label='Exata')
+pyplot.legend(handles=[blue_legend, orange_legend])
 pyplot.show()
 \end{lstlisting}
 \codigofonte
 
-Os Códigos \ref{py_code_solve_mrr_tri_import}, \ref{py_code_solve_mrr_tri_interval}, \ref{py_code_solve_mrr_tri_form_func}, \ref{py_code_solve_mrr_tri_integrate}, \ref{py_code_solve_mrr_tri_m_b}, \ref{py_code_solve_mrr_tri_solvesys} e \ref{py_code_solve_mrr_tri_plot} são sequênciais e devem ser executados dentro de um único arquivo, por isso suas numerações estão sequênciais. O resultado da execução do código para a resolução do sistema é mostrado na Figura \ref{fig:code_plot_mrr_triangulate}, onde a curva de cor laranja é a curva original e a curva de cor azul é a discretização. Para maior precisão do método, pode-se aumentar o valor da variável \textit{n} do Código \ref{py_code_solve_mrr_tri_interval}, por exemplo, para 10. O gráfico plotado para $n=10$ é apresentado na Figura \ref{fig:code_plot_mrr_triangulate_n10}.
+Os Códigos \ref{py_code_solve_mrr_tri_import}, \ref{py_code_solve_mrr_tri_interval}, \ref{py_code_solve_mrr_tri_form_func}, \ref{py_code_solve_mrr_tri_integrate}, \ref{py_code_solve_mrr_tri_m_b}, \ref{py_code_solve_mrr_tri_solvesys} e \ref{py_code_solve_mrr_tri_plot} são sequênciais e devem ser executados dentro de um único arquivo, por isso suas numerações estão sequênciais. O resultado da execução do código para a resolução do sistema é mostrado na Figura \ref{fig:code_plot_mrr_triangulate}, onde a curva de cor laranja é a solução exata e a curva de cor azul é a discretização. Para maior precisão do método, pode-se aumentar o valor da variável \textit{n} do Código \ref{py_code_solve_mrr_tri_interval}, por exemplo, para 10. O gráfico plotado para $n=10$ é apresentado na Figura \ref{fig:code_plot_mrr_triangulate_n10}.
+
+Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_tri_interval} maior a precisão, porém, com maior custo computacional. Consequentemente, quanto maior o valor de \textit{n}, mais tempo o computador levará para a resolução do problema.
 
 \begin{figure}[h]
 	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=5$.}
 	\centering
-	\includegraphics[scale=0.8]{../figuras/code/code_plot_mrr_triangulate.png}
+	\includegraphics[scale=0.65]{../figuras/code/code_plot_mrr_triangulate.png}
 	\label{fig:code_plot_mrr_triangulate}
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-\begin{figure}[b]
+\begin{figure}[h]
 	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=10$.}
 	\centering
-	\includegraphics[scale=0.8]{../figuras/code/code_plot_mrr_triangulate_n10.png}
+	\includegraphics[scale=0.65]{../figuras/code/code_plot_mrr_triangulate_n10.png}
 	\label{fig:code_plot_mrr_triangulate_n10}
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
-
-Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_tri_interval} maior a precisão, porém, com maior custo computacional. Consequentemente, quanto maior o valor de \textit{n}, mais tempo o computador levará para a resolução do problema.
 
 % ---
 % Considerações Finais
@@ -3011,11 +3092,11 @@ Nesse trabalho, o Cálculo Variacional e o Método de Rayleigh-Ritz foram expost
 
 Para o Cálculo Variacional, o enfoque foi dado nas equações de Euler-Lagrange, condição necessária para a estacionariedade de um funcional, de funcionais que dependem de uma váriavel, uma função e de suas derivadas até uma ordem $n$ qualquer. Esse enfoque dado se deve, primeiramente, ao enfoque introdutório do trabalho e, em segundo lugar, a grande gama de aplicações que podem ser desenvolvidas com as ferramentas estudadas, por exemplo, ao se provar que a curva de menor comprimento entre dois pontos é um segmento de reta.
 
-Já no Método de Rayleigh-Ritz o foco foi dividido entre uma introdução ao tema, desenvolvendo todos os cálculos referentes ao exemplo, e o uso da Linguagem de Programação Python para agilizar o processo de minimização dos funcionais de forma rápida e simples, realizando as derivações, integrações e, ainda, resolvendo sistemas de equações.
+Já no Método de Rayleigh-Ritz, o foco foi dividido entre uma introdução ao tema, desenvolvendo todos os cálculos referentes ao exemplo, e o uso da Linguagem de Programação Python para agilizar o processo de minimização dos funcionais de forma rápida e simples, realizando as derivações, integrações e, ainda, resolvendo sistemas de equações.
 
 Os estudos desenvolvidos com a linguagem Python mostraram, também, a utilidade da linguagem no meio científico, realizando tanto operações numéricas quanto manipulações simbólicas de forma eficiente. Isso evidencia a importância da linguagem por ser gratuita, de código aberto e multiplataforma, ou seja, uma linguagem acessível.
 
-O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aqui apresentado, pode ser ampliado, por exemplo, para funções de mais variáveis, problemas de fronteira livres onde as condições de contorno são de outra forma, indo, até mesmo, aos métodos modernos que utilizam, por exemplo, inteligência artificial, como o método \textit{Deep Ritz} citado no primeiro Capítulo desse trabalho.
+O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aqui apresentado, pode ser ampliado, por exemplo, para funções de mais variáveis, problemas de fronteira livres onde as condições de contorno são de outra forma, indo, até mesmo, aos métodos modernos que utilizam, por exemplo, inteligência artificial, como o método \textit{Deep Ritz} citado no primeiro capítulo desse trabalho.
 
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
@@ -3266,10 +3347,49 @@ O estudo introdutório ao Cálculo Variacional e ao Método de Rayleigh-Ritz, aq
 	\end{equation}
 }
 
-\chapter{RESOLUÇÃO DE SISTEMAS LINEARES UTILIZANDO A LINGUAGEM PYTHON}
-\label{apend:res_sis_lin}
+\chapter{BREVE INTRODUÇÃO À LINGUAGEM \textit{PYTHON}}
+\label{apend:python}
 {
-	O sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python.
+	\section{Instalando}
+	
+	A linguagem de programação \index[remissivo]{Python}\textit{Python} é distribuida gratuitamente e pode ser baixada no seu site\footnote{\url{https://www.python.org/}.}. É necessário ressaltar, também, que em distribuições \textit{Linux}, como o \textit{Linux Mint}, a linguagem geralmente já vem instalada por padrão. Devido a isso e, também, ao fato de que usuários de ambientes \textit{Linux} costumam ter conhecimentos avançados sobre instalação de programas será explicado nessa seção apenas a instalação no sistema operacional \textit{Windows}.
+	
+	{\color{red}Escrever sobre a instalação.}
+	
+	\section{Executando Programas}
+	
+	{\color{red}Explicar sobre a linguagem Python.}
+	
+	\section{Principais Operações}
+	
+	Para facilitar o entendimento dos códigos ao longo do trabalho, é apresentada uma lista com algumas das principais operações na linguagem \textit{Python} na Tabela \ref{table:principais_operacoes}.
+	
+	\begin{table}[h]
+		\caption{Principais Operações na Linguagem \textit{Python}}
+		\ABNTEXfontereduzida
+		\centering
+		\begin{tabular}{p{0.3\textwidth}p{0.3\textwidth}}
+			\toprule
+			\textbf{Operação} & \textbf{Descrição}\\
+			\midrule
+			\ABNTEXfontereduzida
+			\textit{x + y} & Soma de $x$ e $y$\\
+			\textit{x - y} & Subtração de $x$ por $y$\\
+			\textit{x * y} & Produto de $x$ por $y$\\
+			\textit{x / y} & Divisão de $x$ por $y$\\
+			\textit{x // y} & Parte inteira da divisão de $x$ por $y$\\
+			\textit{x \% y} & O resto da divisão de $x$ por $y$\\
+			\textit{x ** y} & $x$ elevado a potência $y$\\
+			\bottomrule
+		\end{tabular}\\
+		{\vspace{5pt}\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+		\label{table:principais_operacoes}
+	\end{table}
+	
+	\section{Resolução de Sistemas Lineares}
+	\label{sec:python_solve_linsys}
+	
+	O sistema linear com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema} pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan, de forma manual. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação Python, através do comando \textit{linsolve} que utiliza o \index[remissivo]{Método de Gauss-Jordan}Método de Gauss-Jordan.
 	
 	Deste modo, seja, o sistema com matriz aumentada \eqref{eqn:cap_metodo_ray_ritz:matriz_sistema}
 	\begin{equation}
@@ -3316,7 +3436,7 @@ A = Matrix([
 ])
 	\end{lstlisting}
 	
-	A resolução do sistema é feita pelo método \textit{linsolve} já importado. Primeiro, definimos três novos símbolos, $a_1$, $a_2$ e $a_3$ que são as incógnitas do sistema e então, executamos o método passando como argumento a matriz $A$ definida e os símbolos.
+	A resolução do sistema é feita pelo método \textit{linsolve} já importado. O método \textit{linsolve} da linguagem Python utiliza o método de Gauss-Jordan para a resolução de sistemas lineares \cite{SymPy}. Primeiro, definimos três novos símbolos, $a_1$, $a_2$ e $a_3$ que são as incógnitas do sistema e então, executamos o método passando como argumento a matriz $A$ definida e os símbolos.
 	\begin{lstlisting}[style=Python]
 a2, a3, a4 = symbols("a2 a3 a4")
 sol, = linsolve(A, [a2, a3, a4])
