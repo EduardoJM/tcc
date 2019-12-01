@@ -345,6 +345,7 @@ Curso de Matemática}
 % pacotes utilizados para a configuração do índice remissivo
 \usepackage{imakeidx}
 \usepackage{hyperref}
+
 % Altera as configurações do index (página de índice remissivo)
 % alterando o estilo da página para o estilo 'abntchapfirst' do
 % abntex, fazendo com que o número de página vá para o local
@@ -631,7 +632,7 @@ O terceiro capítulo, Método de Rayleigh-Ritz, define o método de Rayleigh-Rit
 
 O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem \textit{Python}, aborda o uso da linguagem de programação \textit{Python} para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no terceiro capítulo, que discretizam a curva exata.
 
-No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Resolução de Breve Introdução à \textit{Python}, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.
+No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Breve Introdução à Linguagem \textit{Python}, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.
 
 \chapter{CONTEXTO HISTÓRICO}
 %\addcontentsline{toc}{chapter}{Contexto Histórico}
@@ -799,17 +800,24 @@ A linguagem e ambos os componentes citados são desenvolvidos em código aberto 
 \chapter{CÁLCULO VARIACIONAL}
 \label{cap:calc_var}
 
-Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo variacional é o de minimizar ou maximizar o funcional
+Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo variacional é o de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$, que faça com que o funcional
 \begin{equation}
 	\label{eqn:cap_calc_var:int_funcional}
-	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
+	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{,}
 \end{equation}
+onde $f(x, y, y')$ é uma função de classe $C^1$ (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}), tenha valor mínimo ou máximo. Esse processo é chamado de minimizar ou maximizar o funcional. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
 
-Minimizar o funcional \eqref{eqn:cap_calc_var:int_funcional} é o processo de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$,  que faça com que o mesmo tenha valor mínimo. De modo análogo, maximizar o funcional é encontrar uma função $y=y(x)$, com $y(x_1)=y_1$ e $y(x_2)=y_2$, que faz a integral \eqref{eqn:cap_calc_var:int_funcional} ser um valor máximo. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
+%Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo variacional é o de minimizar ou maximizar o funcional
+%\begin{equation}
+%	\label{eqn:cap_calc_var:int_funcional}
+%	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
+%\end{equation}
+
+%Minimizar o funcional \eqref{eqn:cap_calc_var:int_funcional} é o processo de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$,  que faça com que o mesmo tenha valor mínimo. De modo análogo, maximizar o funcional é encontrar uma função $y=y(x)$, com $y(x_1)=y_1$ e $y(x_2)=y_2$, que faz a integral \eqref{eqn:cap_calc_var:int_funcional} ser um valor máximo. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
 
 %{\color{red}O que é minimizar, maximizar, extremos?}
 
-Para para encontrar a equação $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
+Para para encontrar a função $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
 
 \section{Equação de Euler-Lagrange}
 \label{sec:eq_euler_lagrange}
@@ -3294,19 +3302,69 @@ O estudo introdutório ao cálculo variacional e ao método de Rayleigh-Ritz, aq
 \chapter{BREVE INTRODUÇÃO À LINGUAGEM \textit{PYTHON}}
 \label{apend:python}
 {
+	Durante o trabalho, são utilizados trechos de códigos na linguagem \textit{Python}. Para auxiliar a introdução nesse universo, é apresentado aqui, uma breve explicação sobre sua instalação e execução de programas. Na última seção, é apresentado o código utilizado para a resolução de sistemas lineares na linguagem.
+
 	\section{Instalando}
 	
-	A linguagem de programação \index[remissivo]{Python}\textit{Python} é distribuida gratuitamente e pode ser baixada no seu site\footnote{\url{https://www.python.org/}.}. É necessário ressaltar, também, que em distribuições \textit{Linux}, como o \textit{Linux Mint}, a linguagem geralmente já vem instalada por padrão. Devido a isso e, também, ao fato de que usuários de ambientes \textit{Linux} costumam ter conhecimentos avançados sobre instalação de programas será explicado nessa seção apenas a instalação no sistema operacional \textit{Windows}.
+	A linguagem de programação \index[remissivo]{Python}\textit{Python} é distribuida gratuitamente e pode ser baixada no seu site\footnote{\url{https://www.python.org/}.}. É necessário ressaltar, também, que em distribuições \textit{Linux}, como o \textit{Linux Mint}, a linguagem geralmente já vem instalada por padrão. Devido a isso e, também, ao fato de que usuários de ambientes \textit{Linux} costumam ter conhecimentos avançados sobre instalação de programas, será explicado nessa seção apenas a instalação no sistema operacional \textit{Windows}.
 	
-	{\color{red}Escrever sobre a instalação.}
+	O executável da linguagem \textit{Python} pode ser baixado em seu site, na aba \textit{Downloads}, como pode ser visto na Figura \ref{fig:python_pagina}.
+	
+	\begin{figure}[h]
+		\caption{Página de \textit{download} da linguagem \textit{Python}.}
+		\centering
+		\includegraphics[scale=0.4]{../figuras/python/python_download.png}
+		\label{fig:python_pagina}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}
+	
+	Sua instalação é extremamente simples e rápida. Basta executar o instalador baixado da página da Figura \ref{fig:python_pagina}, marcar a opção \textit{"Add Python 3.8 to PATH"}, como na Figura \ref{fig:python_instalador} para facilitar a execução de códigos com a linguagem e clicar em \textit{Install Now}, isto é, instalar agora e esperar até que a instalação termine.
+	
+	\begin{figure}[h]
+		\caption{Instalador da linguagem \textit{Python} no \textit{Windows}.}
+		\centering
+		\includegraphics[scale=0.6]{../figuras/python/python_install.png}
+		\label{fig:python_instalador}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}
+	
+	Após a instalação da linguagem, é necessário instalar alguns pacotes utilizados aqui neste trabalho. Para tanto, é preciso executar o \textit{prompt} de comandos do \textit{Windows}, ou terminal em distribuições \textit{Linux}. No \textit{Windows}, basta digitar \textit{cmd} na barra de pesquisa do menu iniciar, como na Figura \ref{fig:python_barra_busca}.
+	
+	\begin{figure}[h]
+		\caption{Barra de busca com o \textit{prompt} de comandos do \textit{Windows}.}
+		\centering
+		\includegraphics[scale=0.5]{../figuras/python/barra_busca.png}
+		\label{fig:python_barra_busca}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}
+	
+	Com o \textit{prompt} de comandos aberto, deve-se executar o código \textit{pip install numpy} para instalar o pacote \textit{numpy}. Após a instalação, uma janela parecida com a Figura \ref{fig:python_pip_numpy} deve ser vista. Esse mesmo processo deve ser repetido com os comandos \textit{pip install sympy} para instalar o pacote \textit{sympy} e \text{pip install matplotlib} para instalar o pacote \textit{matplotlib}. Esses três pacotes são utilizados durante este trabalho.
+	
+	\begin{figure}[h]
+		\caption{\textit{Prompt} de comandos após a instalação do pacote \textit{numpy}.}
+		\centering
+		\includegraphics[scale=0.6]{../figuras/python/python_pip_numpy.png}
+		\label{fig:python_pip_numpy}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}
 	
 	\section{Executando programas}
 	
-	{\color{red}Explicar sobre a linguagem Python.}
+	Para executar programas, ou \textit{scripts}, na linguagem \textit{Python}, existem diversas formas, sendo a mais convencional delas executar via o \textit{prompt} de comandos do \textit{Windows} ou no terminal do \textit{Linux}. No \textit{Windows} pode-se utilizar o ambiente de desenvolvimento que é instalado junto a linguagem, chamado de IDLE. Ao abri-lo, deve-se ir no menu \textit{File} e, então, em \textit{New File} para criar um novo arquivo. O código deve ser escrito nesse novo arquivo e salvo. Para executar este código basta, então, ir no menu \textit{Run} e, depois, em \textit{Run Module}, como na Figura \ref{fig:python_runmodule}.
+	
+	\begin{figure}[h]
+		\caption{Janela do IDLE com o menu \textit{Run} aberto.}
+		\centering
+		\includegraphics[scale=0.6]{../figuras/python/python_runmodule.png}
+		\label{fig:python_runmodule}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+	\end{figure}
+	
+	A segunda forma, indicada para usuários que detenham um nível de conhecimento mais alto sobre sistemas operacionais, é executar, no \textit{prompt} de comandos ou no terminal a linha \textit{python arquivo.py}, onde \textit{arquivo.py} representa o caminho para o arquivo no sistema. Por exemplo, como os códigos deste trabalho foram desenvolvidos em um ambiente \textit{Linux}, todos os códigos foram executados deste modo.
 	
 	\section{Principais operações}
 	
-	Para facilitar o entendimento dos códigos ao longo do trabalho, é apresentada uma lista com algumas das principais operações na linguagem \textit{Python} na Tabela \ref{table:principais_operacoes}.
+	Para facilitar o entendimento dos códigos ao longo do trabalho, é apresentada uma lista com algumas das principais operações aritméticas na linguagem \textit{Python} na Tabela \ref{table:principais_operacoes}.
 	
 	\begin{table}[h]
 		\caption{Principais operações na linguagem \textit{Python}}
@@ -3390,7 +3448,7 @@ print(sol)
 	\begin{figure}[h]
 		\caption{Execução do código para a resolução do sistema linear.}
 		\centering
-		\includegraphics[scale=2.5]{../figuras/code/code_solve_sis_linear.png}
+		\includegraphics[scale=2]{../figuras/code/code_solve_sis_linear.png}
 		\label{fig:code_solve_sis_linear}
 		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 	\end{figure}
