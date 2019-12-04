@@ -396,43 +396,43 @@ Curso de Matemática}
 % com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
 % o conteúdo de implementação deste arquivo pelo comando abaixo:
 %
-% \begin{fichacatalografica}
-%     \includepdf[pages=1]{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
+ \begin{fichacatalografica}
+     \includepdf[pages=1]{arquivos/ficha_catalografica.pdf}
+ \end{fichacatalografica}
 
-\begin{fichacatalografica}
-	\sffamily
-	\vspace*{\fill}					% Posição vertical
-	\begin{center}					% Minipage Centralizado
-	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
-	\small
-	\imprimirautor
-	%Sobrenome, Nome do autor
-	
-	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-	\imprimirlocal, \imprimirdata-
-	
-	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-	
-	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
-	
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
-	\imprimirdata.}\\
-	
-	\hspace{0.5cm}
-		1. Cálculo Variacional. 
-		2. Equação de Euler-Lagrange. 
-		3. Método de Rayleigh-Ritz. 
-		4. Programação. 
-		5. Python. 
-		I. Orientador. 
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título 			
-	\end{minipage}}
-	\end{center}
-\end{fichacatalografica}
+%\begin{fichacatalografica}
+%	\sffamily
+%	\vspace*{\fill}					% Posição vertical
+%	\begin{center}					% Minipage Centralizado
+%	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+%	\small
+%	\imprimirautor
+%	%Sobrenome, Nome do autor
+%	
+%	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+%	\imprimirlocal, \imprimirdata-
+%	
+%	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+%	
+%	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+%	
+%	\hspace{0.5cm}
+%	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+%	\imprimirdata.}\\
+%	
+%	\hspace{0.5cm}
+%		1. Cálculo Variacional. 
+%		2. Equação de Euler-Lagrange. 
+%		3. Método de Rayleigh-Ritz. 
+%		4. Programação. 
+%		5. Python. 
+%		I. Orientador. 
+%		II. Universidade xxx.
+%		III. Faculdade de xxx.
+%		IV. Título 			
+%	\end{minipage}}
+%	\end{center}
+%\end{fichacatalografica}
 % ---
 
 % ---
@@ -444,43 +444,44 @@ Curso de Matemática}
 % do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
 % imagem da página assinada pela banca com o comando abaixo:
 %
-% \includepdf{folhadeaprovacao_final.pdf}
+\includepdf{arquivos/folha_aprovacao.pdf}
+\cleardoublepage
 %
-\begin{folhadeaprovacao}
-
-  \begin{center}
-  {\ABNTEXchapterfont\bfseries\large\imprimirtitulo}
+%\begin{folhadeaprovacao}
+%
+%  \begin{center}
+%  {\ABNTEXchapterfont\bfseries\large\imprimirtitulo}
+%%    {\ABNTEXchapterfont\large\imprimirautor}
+%
+%    \vspace*{\fill}\vspace*{\fill}
+%    \begin{center}
 %    {\ABNTEXchapterfont\large\imprimirautor}
-
-    \vspace*{\fill}\vspace*{\fill}
-    \begin{center}
-    {\ABNTEXchapterfont\large\imprimirautor}
-%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-    \end{center}
-    \vspace*{\fill}
-    
-%    \hspace{.45\textwidth}
-%    \begin{minipage}{.5\textwidth}
-%        \imprimirpreambulo
-%    \end{minipage}%
+%%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+%    \end{center}
 %    \vspace*{\fill}
-\end{center}
-\vfill
-
-   Trabalho de Curso de Matemática apresentado à Banca Examinadora como parte dos requisitos para a obtenção do grau de graduado em Licenciatura em Matemática. 
-   
-   Banca Examinadora do Trabalho de Curso de Matemática do Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo da Universidade Estadual de Goiás, \imprimirlocal, 26 de novembro de 2019.
-
-\vfill
-
-   \assinatura{\textbf{\imprimirorientador} Presidente da Banca Examinadora \\ Orientador(a) } 
-   \vfill
-   \assinatura{\textbf{Dr. Fabiano Boaventura de Miranda} \\ 1º Membro da Banca Examinadora}
-   \vfill
-   \assinatura{\textbf{Me. Cleber Giugioli Carrasco} \\ 2º Membro da Banca Examinadora}
-\vfill
-  
-\end{folhadeaprovacao}
+%    
+%%    \hspace{.45\textwidth}
+%%    \begin{minipage}{.5\textwidth}
+%%        \imprimirpreambulo
+%%    \end{minipage}%
+%%    \vspace*{\fill}
+%\end{center}
+%\vfill
+%
+%   Trabalho de Curso de Matemática apresentado à Banca Examinadora como parte dos requisitos para a obtenção do grau de graduado em Licenciatura em Matemática. 
+%   
+%   Banca Examinadora do Trabalho de Curso de Matemática do Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo da Universidade Estadual de Goiás, \imprimirlocal, 26 de novembro de 2019.
+%
+%\vfill
+%
+%   \assinatura{\textbf{\imprimirorientador} Presidente da Banca Examinadora \\ Orientador(a) } 
+%   \vfill
+%   \assinatura{\textbf{Dr. Fabiano Boaventura de Miranda} \\ 1º Membro da Banca Examinadora}
+%   \vfill
+%   \assinatura{\textbf{Me. Cleber Giugioli Carrasco} \\ 2º Membro da Banca Examinadora}
+%\vfill
+%  
+%\end{folhadeaprovacao}
 % ---
 
 % ---
@@ -540,7 +541,7 @@ Por último, gostaria de agradecer a todos os integrantes do Grupo Alegria, espe
 \begin{resumo}[RESUMO]
 Apresenta-se neste trabalho uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz. Um dos principais problemas pertinentes ao cálculo variacional é o de encontrar uma função exata que torna um determinado funcional estacionário. Mediante uma revisão bibliográfica buscou-se apresentar ferramentas para se encontrar a função exata que torna o funcional estacionário, dentre as quais, a primeira dessas ferramentas, apresentadas no trabalho, é a equação de Euler-Lagrange. Outra ferramenta apresentada é o método de Rayleigh-Ritz, que visa aproximar a função exata desejada. Complementando os estudos do método de Rayleigh-Ritz, são apresentadas, também, aplicações com a linguagem de programação \textit{Python}.
 
-\textbf{Palavras-chave}: Cálculo Variacional. Equação de Euler-Lagrange. Método de Rayleigh-Ritz. Programação. \textit{Python}.
+\textbf{Palavras-chave}: Métodos Variacionais. Equação de Euler-Lagrange. Método de Rayleigh-Ritz. Programação. \textit{Python}.
 \end{resumo}
 
 % ---
@@ -2689,7 +2690,7 @@ onde $j=1,2,\dots,n$. Seja as matrizes $M=[m_{j,i}]$ de ordem $n\times n$, $B=[b
 
 A partir de \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, os produtos $\phi_i(x)\phi_j(x)$ e $\phi_i'(x)\phi_j'(x)$ são não nulos apenas quando $i=j-1$, $i=j$ e $i=j+1$. Consequentemente, $m_{j,i}$ é não nulo apenas para $i=j-1$, $i=j$ e $i=j+1$.
 
-A construção do sistema $M\cdot A=B$ e sua resolução, pelo \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan, será implementado na linguagem de programação \textit{Python} na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
+A construção do sistema $M\cdot A=B$ e sua resolução, pelo \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan, serão implementado na linguagem de programação \textit{Python} na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.
 
 \chapter{UTILIZANDO O MÉTODO DE RAYLEIGH-RITZ NA LINGUAGEM \textit{PYTHON}}
 \label{cap:python}
