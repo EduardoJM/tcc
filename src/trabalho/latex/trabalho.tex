@@ -1,5 +1,3 @@
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Como o modelo faz o uso do bibtex para as referências,
 % quando as mesmas são alteradas, quando as citações são
@@ -30,56 +28,42 @@
 \documentclass[
 	% -- opções da classe memoir --
 	12pt,				% tamanho da fonte
-	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-    twoside,			% para impressão em recto e verso. Oposto a oneside
-	a4paper,			% tamanho do papel.
+	openright,			% capítulos começam em página ímpar (insere página vazia caso preciso)
+    twoside,			% para impressão em frente e verso.
+	a4paper,			% tamanho do papel (folhas A4).
 	% -- opções da classe abntex2 --
 	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
-	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
-	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
-	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
 	% -- opções do pacote babel --
 	english,			% idioma adicional para hifenização
 	french,				% idioma adicional para hifenização
 	spanish,			% idioma adicional para hifenização
 	brazil				% o último idioma é o principal do documento
 	]{abntex2}
-
 % ---
 % Pacotes básicos 
 % ---
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{lastpage}			% Usado pela Ficha catalográfica
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-% Pacote para o uso de cores no documento
-\usepackage{color}
-% Pacote para a inclusão\manipulação de imagens
-\usepackage{graphicx}
+\usepackage{color}				% Pacote para o uso de cores no documento
+\usepackage{graphicx}			% Pacote para a inclusão\manipulação de imagens
 \usepackage{microtype} 			% para melhorias de justificação
-% ---
-		
-% ---
-% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
-% ---
-\usepackage{lipsum}				% para geração de dummy text
-% ---
-
 % ---
 % Pacotes para escrita matemática
 % ---
 \usepackage{amsmath}
-
-\usepackage{amssymb}	 % qed
-\usepackage{amsthm}      % Teoremas
-
+\usepackage{amssymb}	 		% qed
+\usepackage{amsthm}     		% Teoremas
+%
+% Configuração e criação de ambientes matemáticos
+% 
+% Ambiente para criação de matriz
 \newenvironment{amatrix}[1]{%
-  \left(\begin{array}{@{}*{#1}{c}|c@{}}
+	\left(\begin{array}{@{}*{#1}{c}|c@{}}
 }{%
-  \end{array}\right)
+	\end{array}\right)
 }
-
 % Cria um novo ambiente para Teorema
 \newtheorem{teorema}{Teorema}
 % Cria um novo ambiente para Definição
@@ -117,8 +101,6 @@
 	\end{proof}
 }
 \makeatother
-
-
 % Reseta o numerador do ambiente Lema ao fim de todo
 % capítulo. Assim, os Lemas serão indexados por capítulo
 % e não no documento todo. Por exemplo, no Capítulo 1,
@@ -130,16 +112,14 @@
 \numberwithin{definicao}{chapter}
 \numberwithin{exemplo}{chapter}
 \numberwithin{figure}{chapter}
-
 % Pacotes do Tikz utilizados para desenho
 \usepackage{tikz, tkz-euclide, tkz-fct}
 \usetikzlibrary{babel}
 \usetkzobj{all}
-
-% Pacote para a inclusão de códigos e para gerar
-% "Syntax Highlight" (Coloração do Código)
+% ---
+% Pacotes para a inclusão de códigos e syntax highlight
+% ---
 \usepackage{listings}
-
 % Define o nome de marcação para os Blocos de Código
 \renewcommand{\lstlistingname}{Código}
 % Define o nome de marcação para a Lista de Códigos
@@ -204,9 +184,8 @@
 %	xleftmargin=0pt,
 %	frame=none
 %}
-
 \usepackage{subcaption}
-
+% Recria o comando \fonte para adequações
 \makeatletter
 \renewcommand{\ABNTEXcaptionfontedelim}{,}
 \renewcommand{\fonte}[2][\fontename]{%
@@ -224,13 +203,13 @@
 	\endgroup
 }
 \makeatother
-
+% Comando para inserir fonte nos códigos
 \newcommand{\codigofonte}{
 	\vspace{-0.4cm}
 	\fonte{Elaborado pelo autor, 2019.}
 	\vspace{0.4cm}
 }
-
+% Cria um comando para reduzir o espaçamento vertical de equações
 \makeatletter
 \newcommand{\noEquationSpacing}[1]{
 	{
@@ -240,20 +219,13 @@
 	}
 }
 \makeatother
-
 % ---
 % Pacotes de citações
 % ---
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 % Pacote abntex2cite para citações no padrão ABNT
 \usepackage[alf]{abntex2cite}
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
-
-
-
-% Backref para a escrita do trabalho
+% Backref para a escrita do trabalho (indica onde as referências são citadas)
 %\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
 %\renewcommand{\backref}{}
 %\renewcommand*{\backrefalt}[4]{
@@ -264,8 +236,10 @@
 %	\else
 %		Citado #1 vezes nas páginas #2.%
 %	\fi}%
-% ---
 
+% Os códigos acima são utilizados apenas para controle de referências
+% durante a escrita. Para a compilação final e/ou impressão, utilizar
+% as configurações abaixo
 % Backref para produção
 \renewcommand{\backrefpagesname}{}
 \renewcommand{\backref}{}
@@ -291,7 +265,6 @@ Curso de Matemática}
 % o nome da instituição e a área de concentração 
 \preambulo{Trabalho de Curso (TC) apresentado a Coordenação Adjunta de TC, como parte dos requisitos para obtenção do título de Graduado no Curso de Matemática da Universidade Estadual de Goiás.} %sob a orientação do Professor(a) titulação e nome do professor(a).}
 % ---
-
 
 % ---
 % Configurações de aparência do PDF final
@@ -335,17 +308,16 @@ Curso de Matemática}
 % e morte como nota de rodapé.
 \newcommand{\bdDate}[2]{\footnote{\gtrsymBorn\text{ }#1 - \gtrsymDied\text{ }#2}}
 
-
 \usepackage{mathptmx}
 \renewcommand{\ABNTEXchapterfont}{\normalfont}
 
-% 
+% pacote utilizado para incluir pdfs como página
+% por exemplo, a ficha catalografica e a folha de
+% aprovação
 \usepackage{pdfpages}
-
 % pacotes utilizados para a configuração do índice remissivo
 \usepackage{imakeidx}
 \usepackage{hyperref}
-
 % Altera as configurações do index (página de índice remissivo)
 % alterando o estilo da página para o estilo 'abntchapfirst' do
 % abntex, fazendo com que o número de página vá para o local
@@ -355,9 +327,8 @@ Curso de Matemática}
     \thispagestyle{abntchapfirst}
   }
 }
-
 % ---
-% compila o indice
+% compila os indices (sumário e indice remissivo)
 % ---
 \makeindex
 \makeindex[name=remissivo, title={Índice Remissivo}, options=-s indexstyle, columns=2]
@@ -368,125 +339,26 @@ Curso de Matemática}
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing
 
-
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
 \pretextual
-% ---
 % Capa
-% ---
 \imprimircapa
-% ---
-% ---
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
-% ---
 \imprimirfolhaderosto*
-% ---
 
-% ---
-% Inserir a ficha bibliografica
-% ---
+% Ficha catalografica
+\begin{fichacatalografica}
+	\includepdf[pages=1]{arquivos/ficha_catalografica.pdf}
+\end{fichacatalografica}
 
-% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
-% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
-% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
-% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
-% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
-% o conteúdo de implementação deste arquivo pelo comando abaixo:
-%
- \begin{fichacatalografica}
-     \includepdf[pages=1]{arquivos/ficha_catalografica.pdf}
- \end{fichacatalografica}
-
-%\begin{fichacatalografica}
-%	\sffamily
-%	\vspace*{\fill}					% Posição vertical
-%	\begin{center}					% Minipage Centralizado
-%	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
-%	\small
-%	\imprimirautor
-%	%Sobrenome, Nome do autor
-%	
-%	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
-%	\imprimirlocal, \imprimirdata-
-%	
-%	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
-%	
-%	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
-%	
-%	\hspace{0.5cm}
-%	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
-%	\imprimirdata.}\\
-%	
-%	\hspace{0.5cm}
-%		1. Cálculo Variacional. 
-%		2. Equação de Euler-Lagrange. 
-%		3. Método de Rayleigh-Ritz. 
-%		4. Programação. 
-%		5. Python. 
-%		I. Orientador. 
-%		II. Universidade xxx.
-%		III. Faculdade de xxx.
-%		IV. Título 			
-%	\end{minipage}}
-%	\end{center}
-%\end{fichacatalografica}
-% ---
-
-% ---
-% Inserir folha de aprovação
-% ---
-
-% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
-% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
-% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
-% imagem da página assinada pela banca com o comando abaixo:
-%
+% folha de aprovação
 \includepdf{arquivos/folha_aprovacao.pdf}
 \cleardoublepage
-%
-%\begin{folhadeaprovacao}
-%
-%  \begin{center}
-%  {\ABNTEXchapterfont\bfseries\large\imprimirtitulo}
-%%    {\ABNTEXchapterfont\large\imprimirautor}
-%
-%    \vspace*{\fill}\vspace*{\fill}
-%    \begin{center}
-%    {\ABNTEXchapterfont\large\imprimirautor}
-%%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-%    \end{center}
-%    \vspace*{\fill}
-%    
-%%    \hspace{.45\textwidth}
-%%    \begin{minipage}{.5\textwidth}
-%%        \imprimirpreambulo
-%%    \end{minipage}%
-%%    \vspace*{\fill}
-%\end{center}
-%\vfill
-%
-%   Trabalho de Curso de Matemática apresentado à Banca Examinadora como parte dos requisitos para a obtenção do grau de graduado em Licenciatura em Matemática. 
-%   
-%   Banca Examinadora do Trabalho de Curso de Matemática do Câmpus Anápolis de Ciências Exatas e Tecnológicas Henrique Santillo da Universidade Estadual de Goiás, \imprimirlocal, 26 de novembro de 2019.
-%
-%\vfill
-%
-%   \assinatura{\textbf{\imprimirorientador} Presidente da Banca Examinadora \\ Orientador(a) } 
-%   \vfill
-%   \assinatura{\textbf{Dr. Fabiano Boaventura de Miranda} \\ 1º Membro da Banca Examinadora}
-%   \vfill
-%   \assinatura{\textbf{Me. Cleber Giugioli Carrasco} \\ 2º Membro da Banca Examinadora}
-%\vfill
-%  
-%\end{folhadeaprovacao}
-% ---
 
-% ---
-% Dedicatória
-% ---
+% dedicatoria
 \begin{dedicatoria}
 	\vspace*{\fill}
 	\centering
@@ -497,11 +369,8 @@ Curso de Matemática}
 		possibilitaram a minha caminhada até aqui.
 	} \vspace*{\fill}
 \end{dedicatoria}
-% ---
 
-% ---
-% Agradecimentos
-% ---
+% agradecimentos
 \begin{agradecimentos}[AGRADECIMENTOS]
 Agradeço a minha mãe, Elza Oliveira, e meu irmão, Danilo Oliveira, por me acompanharem até aqui e possibilitarem que eu concluísse a graduação. Quero agradecer, de forma póstuma, meu pai, Lourenço Bernardes, por, mesmo em sua partida, promoveu, em mim, tamanho crescimento emocional e intelectual. Por último, gostaria de agradecer a toda a minha família.
 
@@ -515,11 +384,8 @@ Agradeço, ainda, a todos aqueles que, mesmo desconhecidos, acalentaram meu cora
 
 Por último, gostaria de agradecer a todos os integrantes do Grupo Alegria, especialmente do Grupo Alegria Anápolis, por ensinarem que cada um de nós é capaz de realizar muito mais do que imagina, que o verdadeiro amor está nas pequenas coisas e, principalmente, que através do amor é possível mudar toda a história da humanidade.
 \end{agradecimentos}
-% ---
 
-% ---
 % Epígrafe
-% ---
 \begin{epigrafe}
     \vspace*{\fill}
 	\begin{flushright}
@@ -530,13 +396,8 @@ Por último, gostaria de agradecer a todos os integrantes do Grupo Alegria, espe
 		(Carl Sagan)}
 	\end{flushright}
 \end{epigrafe}
-% ---
 
-% ---
-% RESUMOS
-% ---
-
-% resumo em português
+% resumo
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}[RESUMO]
 Apresenta-se neste trabalho uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz. Um dos principais problemas pertinentes ao cálculo variacional é o de encontrar uma função exata que torna um determinado funcional estacionário. Mediante uma revisão bibliográfica buscou-se apresentar ferramentas para se encontrar a função exata que torna o funcional estacionário, dentre as quais, a primeira dessas ferramentas, apresentadas no trabalho, é a equação de Euler-Lagrange. Outra ferramenta apresentada é o método de Rayleigh-Ritz, que visa aproximar a função exata desejada. Complementando os estudos do método de Rayleigh-Ritz, são apresentadas, também, aplicações com a linguagem de programação \textit{Python}.
@@ -544,70 +405,35 @@ Apresenta-se neste trabalho uma introdução ao cálculo variacional e ao métod
 \textbf{Palavras-chave}: Métodos Variacionais. Equação de Euler-Lagrange. Método de Rayleigh-Ritz. Programação. \textit{Python}.
 \end{resumo}
 
-% ---
-% inserir lista de ilustrações
-% ---
+% lista de ilustrações
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
-% ---
 
-% Lista de códigos
+% lista de códigos
 \pdfbookmark[0]{\lstlistlistingname}{lol}
 \begin{KeepFromToc}
 \lstlistoflistings
 \end{KeepFromToc}
 \cleardoublepage
 
-% ---
 % inserir lista de tabelas
-% ---
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
-% ---
 
-% ---
-% inserir lista de abreviaturas e siglas
-% ---
-%\begin{siglas}
-%  \item[ABNT] Associação Brasileira de Normas Técnicas
-%  \item[abnTeX] ABsurdas Normas para TeX
-%\end{siglas}
-% ---
-
-% ---
-% inserir lista de símbolos
-% ---
-%\begin{simbolos}
-%  \item[$ \Gamma $] Letra grega Gama
-%  \item[$ \Lambda $] Lambda
-%  \item[$ \zeta $] Letra grega minúscula zeta
-%  \item[$ \in $] Pertence
-%\end{simbolos}
-% ---
-
-
-% ---
-% inserir o sumario
-% ---
+% sumario
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
-% ---
 
 % ----------------------------------------------------------
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
 
-% ----------------------------------------------------------
-% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
-% ----------------------------------------------------------
 \chapter*[INTRODUÇÃO]{INTRODUÇÃO}
 \addcontentsline{toc}{chapter}{INTRODUÇÃO}
-
-%{\color{red}Escrever a introdução do trabalho.}
 
 O cálculo variacional engloba diversos problemas, sendo um dos mais tratados, o de minimizar ou maximizar funcionais, que são, fundamentalmente, funções que dependem de outras funções \cite{mefassan}.
 
@@ -636,7 +462,6 @@ O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem \textit{P
 No Apêndice A, Conceitos de Análise no $\mathbb{R}^n$, são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Breve Introdução à Linguagem \textit{Python}, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.
 
 \chapter{CONTEXTO HISTÓRICO}
-%\addcontentsline{toc}{chapter}{Contexto Histórico}
 
 Para elucidar a história do cálculo variacional é importante mostrar um pouco da história dos máximos e mínimos de funções, problema pertinente ao cálculo diferencial, para, então, adentrar aos problemas de máximos e mínimos de funcionais, problema atribuído a área do cálculo variacional.
 
@@ -652,11 +477,7 @@ e, após realizar a divisão, considerava $E=0$. Após considerar o valor de $E$
 
 O que Fermat fez, de fato, foi igualar a primeira derivada de uma função a $0$. É importante ressaltar que esse método utilizado por Fermat veio antes mesmo da invenção do cálculo diferencial por Isaac Newton\bdDate{1642}{1727} em 1665-1666 e Gottfried Wilhelm Leibniz\bdDate{1646}{1716} em 1676, de forma independente \cite{boyer}.
 
-%\textit{\color{red}Falar de modo geral que as maiores contribuições foram de Euler e Lagrange no cálculo variacional}
-
 \section{O cálculo variacional}
-
-%Johann Bernoulli, em 1969, deu ínicio ao estudo de uma classe de problemas cujo um dos mais antigos é o problema isoperimétrico. \cite{hist_courant}. O problema isoperimétrico consiste em "[d]ado um comprimento $L>0$, encontrar, dentre todas as curvas do plano de comprimento $L$, aquela que engloba a maior área" \cite[p. 1]{cbm_isoperimetrico}.
 
 O ponto de partida do \index[remissivo]{Cálculo Variacional}cálculo variacional se deu com Johann Bernoulli\bdDate{1667}{1748}, em 1696, com a publicação do \index[remissivo]{Problema da braquistócrona}problema da braquistócrona no jornal científico \textit{Acta Eruditorium} \cite{hist_courant}.
 
@@ -745,12 +566,6 @@ O método de Rayleigh-Ritz possui aplicações nas mais diversas áreas sendo, p
 	\legend{\ABNTEXfontereduzida Fonte: Adaptada de \citeonline[p. 23]{RRM_Applications}.}
 \end{figure}
 
-%\citeonline{ritz_image_proc} estuda o método de Rayleigh-Ritz para minimização da variação total usando \textit{splines} de duas variáveis, em triangulações e mostra aplicações desse estudo no processamento digital de imagens, mais especificamente ao problema de redução de ruídos.
-
-%Um outro tipo de aplicação para o Método de Rayleigh-Ritz é o de encontrar as frequências naturais das chamadas consolas, vigas apoiadas apenas em uma das extremidades \cite{RRM_Applications}.
-
-%{\color{red}Citar aplicações do Método de Rayleigh-Ritz.}
-
 Além da abordagem convencional do método, existem trabalhos que visam aliar o método à técnicas de inteligência artificial, como o aprendizado de máquina. \citeonline{deep_ritz} afirmam que modelos baseados em redes neurais profundas podem ser utilizados em tarefas como a resolução de equações diferenciais parciais ou a modelagem molecular. Além disso, o trabalho propõe um método chamado de \textit{deep Ritz method} (método de Ritz profundo, em tradução literal) para a resolução de problemas variacionais. Esse método utiliza-se de representações de funções de redes neurais artificiais no contexto do método de Ritz \cite{deep_ritz}. 
 
 Um dos exemplos mostrados por \citeonline{deep_ritz} para ilustrar a eficácia da abordagem é a solução para a equação de Poisson em duas dimensões. A Figura \ref{fig:deep_ritz_poisson} apresenta a solução utilizando dois métodos diferentes, sendo a Figura \ref{fig:deep_ritz_poisson_a} a solução pelo \textit{deep Ritz method} com 811 parâmetros e a Figura \ref{fig:deep_ritz_poisson_b} a solução pelo método das diferenças finitas com 1681 parâmetros.
@@ -807,16 +622,6 @@ Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo 
 	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{,}
 \end{equation}
 onde $f(x, y, y')$ é uma função de classe $C^1$ (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}), tenha valor mínimo ou máximo. Esse processo é chamado de minimizar ou maximizar o funcional. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
-
-%Um dos problemas pertinentes ao \index[remissivo]{Cálculo Variacional}cálculo variacional é o de minimizar ou maximizar o funcional
-%\begin{equation}
-%	\label{eqn:cap_calc_var:int_funcional}
-%	I = \int_{x_1}^{x_2} f(x,y,y')dx\text{.}
-%\end{equation}
-
-%Minimizar o funcional \eqref{eqn:cap_calc_var:int_funcional} é o processo de encontrar uma função $y=y(x)$, satisfazendo as condições de contorno $y(x_1)=y_1$ e $y(x_2)=y_2$,  que faça com que o mesmo tenha valor mínimo. De modo análogo, maximizar o funcional é encontrar uma função $y=y(x)$, com $y(x_1)=y_1$ e $y(x_2)=y_2$, que faz a integral \eqref{eqn:cap_calc_var:int_funcional} ser um valor máximo. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores $x_1$, $x_2$, $y_1$ e $y_2$ são números dados.
-
-%{\color{red}O que é minimizar, maximizar, extremos?}
 
 Para para encontrar a função $y=y(x)$ procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.
 
@@ -1398,17 +1203,6 @@ $$
 	\text{,}
 $$
 onde a primeira parcela, $\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )$, representa $\dfrac{\partial f}{\partial y}$.
-
-%{\color{red}Durante o processo para a obtenção da equação de Euler-Lagrange, (...)}
-
-%Durante o processo para a obtenção dos extremos de um funcional, donde se deduz a equação de Euler-Lagrange, como nas seções \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior}, surgem algumas condições de contorno, como, por exemplo, o termo
-%$$
-%	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}
-%	=0
-%$$
-%na equação \eqref{eqn:cap_calc_var:integration_parts}.
-
-%Durante o processo de encontrar um extremo para um funcional, surgem algumas condições de contorno... {\color{red}(Escrever sobre).}
 
 \section{Exemplos}
 \label{sec:calcvar_exemplos}
@@ -2391,9 +2185,6 @@ com $i=1, 2, 3, \dots, n$.
 	$$
 	que é o valor exato de $v(\frac{l}{2})$ indicado em \eqref{eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato}. Não apenas isto, mas a função $v_3(x)$, indicada em \eqref{eqn:cap_metodo_ray_ritz:func_v3} ou em \eqref{eqn:cap_metodo_ray_ritz:func_v3_forma2}, é a função $v(x)$ exata.
 	
-	%O resultado encontrado, $v_3(x)$, é a função exata que torna o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} estacionário.
-	
-	%Encontrar a função $y(x)$ exata, analiticamente, utilizando funções aproximadoras é possível apenas quando se conhece o formato da função exata. Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} tem sua equação de Euler-Lagrange associada com resolução analítica, facilitando, assim, o conhecimento do formato da função aproximada.}
 \end{solution}
 
 A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Existem alguns critérios de convergência, que não serão tratados aqui devido sua complexidade, porém, ainda com os critérios de convergência a escolha das funções aproximadoras é uma tarefa que envolve tentativas e erros até que o resultado seja satisfatório. 
@@ -2401,8 +2192,6 @@ A função $v_3(x)$, apresentada em \eqref{eqn:cap_metodo_ray_ritz:func_v3}, no 
 Por exemplo, o funcional \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} do Exemplo \ref{ex:mrr_ex_livro} tem sua função $v(x)$ exata conhecida, do Exemplo \ref{ex:cond_contorno}, facilitando, desta forma, a escolha das funções de forma. Como a função exata $v(x)$ é uma função polinomial de grau 4, a escolha da função aproximadora como uma função polinomial foi bem prática.
 
 Devido a função exata $v(x)$ ser uma função polinomial de grau 4, caso a função aproximadora escolhida, no Exemplo \ref{ex:mrr_ex_livro}, não fosse uma função polinomial de grau 4 ou superior, dificilmente a mesma se tornaria a função exata no \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz.
-
-%{\color{red}Mostrar a equação de Euler-Lagrange associada a \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} e resolver analiticamente demonstrando a igualdade da função exata e aproximada $v_3(x)$.}
 
 \section{O uso de funções triangulares no método de Rayleigh-Ritz}
 \label{sec:mrr_triangular}
@@ -2671,22 +2460,6 @@ o sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na f
 	\text{,}
 \end{equation}
 onde $j=1,2,\dots,n$. Seja as matrizes $M=[m_{j,i}]$ de ordem $n\times n$, $B=[b_j]$ de ordem $n\times 1$ e $A=[a_j]$ de ordem $n\times 1$, então o sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema_generic} é escrito como $M\cdot A=B$. A matriz $M$ é a matriz de coeficientes, a matriz $A$ é a matriz coluna de incógnitas e $B$ é a matriz coluna contendo os termos independentes.
-
-%O sistema \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema} pode ser escrito na forma matricial $M\cdot A=B$, onde $M=[m_{j, i}]$ é a matriz de coeficientes, $A=[a_i]$ é a matriz coluna de incógnitas e $B=[b_j]$ é a matriz contendo os termos independentes. Assim, de \eqref{eqn:cap_metodo_ray_ritz:tri_func_sistema},
-%\begin{equation}
-%	\label{eqn:cap_metodo_ray_ritz:tri_func_mji}
-%	m_{j,i}=\int_{0}^{1} \left [
-%		2p(x)\phi_i'(x)\phi_j'(x)
-%		+
-%		2q(x)\phi_i(x)\phi_j(x)
-%	\right ]dx
-%	\text{,}
-%\end{equation}
-%\begin{equation}
-%	\label{eqn:cap_metodo_ray_ritz:tri_func_bj}
-%	b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
-%	\text{.}
-%\end{equation}
 
 A partir de \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}, os produtos $\phi_i(x)\phi_j(x)$ e $\phi_i'(x)\phi_j'(x)$ são não nulos apenas quando $i=j-1$, $i=j$ e $i=j+1$. Consequentemente, $m_{j,i}$ é não nulo apenas para $i=j-1$, $i=j$ e $i=j+1$.
 
@@ -3034,12 +2807,8 @@ Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_t
 	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
 \end{figure}
 
-% ---
-% Considerações Finais
-% ---
 \chapter*{CONSIDERAÇÕES FINAIS}
 \addcontentsline{toc}{chapter}{CONSIDERAÇÕES FINAIS}
-% ---
 
 Nesse trabalho, o cálculo variacional e o método de Rayleigh-Ritz foram expostos de forma introdutória, inclusive, desenvolvendo as demonstrações e cálculos, de modo que todo aluno com conhecimentos de cálculo em várias variáveis possa compreender as ideias trabalhadas. No decorrer dos estudos sobre tais temas foi observado a importância e a necessidade de materiais introdutórios sobre ambos os temas.
 
@@ -3055,28 +2824,15 @@ O estudo introdutório ao cálculo variacional e ao método de Rayleigh-Ritz, aq
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
 \postextual
-% ----------------------------------------------------------
 
-% ----------------------------------------------------------
 % Referências bibliográficas
-% ----------------------------------------------------------
 \bibliography{../references}
-
-% ----------------------------------------------------------
-% Glossário
-% ----------------------------------------------------------
-%
-% Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%
-%\glossary
 
 % ----------------------------------------------------------
 % Apêndices
 % ----------------------------------------------------------
 
-% ---
 % Inicia os apêndices
-% ---
 \begin{apendicesenv}
 
 % Imprime uma página indicando o início dos apêndices
