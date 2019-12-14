@@ -240,4 +240,5 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
-
+*.gnuplot
+*.tkzfct.table
