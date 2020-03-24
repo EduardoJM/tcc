@@ -17,11 +17,8 @@
             background-color: #01579b
         }
 
-        .docs-toc-toggle {
-            min-height: 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .docs-sidebar {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         @media (min-width: 768px) {
@@ -52,6 +49,8 @@
             width: 100%;
             align-items: center;
             justify-content: center;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
         }
         .docs-toc-nav ul {
             list-style: none;
@@ -93,6 +92,9 @@
             font-size: 0.9rem;
         }
 
+        .docs-content{
+            padding-top: 6rem;
+        }
 
         .docs-content p {
             text-align: justify;
@@ -222,6 +224,7 @@
     <div class="container-fluid">
         <div class="row flex-xl-nowrap">
             <div class="col-md-3 docs-sidebar">
+                
                 <button class="btn btn-link docs-toc-toggle d-md-none p-0 ml-3 collapsed" type="button" data-toggle="collapse" data-target="#docs-toc-nav">
                     Alternar Conteúdos
                 </button>
