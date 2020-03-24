@@ -263,12 +263,8 @@
         document.addEventListener("DOMContentLoaded", function() {
             // citations
             var html = document.querySelector('main.docs-content').innerHTML;
-            html = searchCitations(html, 'cite', function(name, page){
-                return cite(name, page);
-            });
-            html = searchCitations(html, 'citeonline', function(name, page){
-                return citeonline(name, page);
-            });
+            html = searchCitations(html, 'cite', cite);
+            html = searchCitations(html, 'citeonline', citeonline);
             document.querySelector('main.docs-content').innerHTML = html;
 			// lemas
 			createNumbers('.docs-lema', {

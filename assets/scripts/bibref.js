@@ -156,6 +156,7 @@ function cite(name, page) {
             return '(' + name + ', ' + year + ')';
         }
     }
+    console.log("not parsed (cite) " + name);
     return '';
 }
 
@@ -171,6 +172,7 @@ function citeonline(name, page) {
             return name + ' (' + year + ')';
         }
     }
+    console.log("not parsed (citeonline) " + name);
     return '';
 }
 
