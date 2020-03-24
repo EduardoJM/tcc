@@ -178,6 +178,7 @@ function searchCitations(html, command, callback) {
     var citeReg = RegExp('\\\\' + command + '\\{(.*?)\\}', 'ig');
     while ((match = citeReg.exec(html)) !== null) {
         console.log(match);
+    }/*
         var before = html.substr(0, match.index);
         var after = html.substr(citeReg.lastIndex, html.length - citeReg.lastIndex);
         var citation = callback(match[1], null);
@@ -187,7 +188,7 @@ function searchCitations(html, command, callback) {
         } else {
             console.log("Reference not found (" + command + "): " + match[1]);
         }
-    }
+    }*/
     var citeRegPaged = RegExp('\\\\' + command + '\\[(.*?)\\]\\{(.*?)\\}', 'ig');
     while ((match = citeRegPaged.exec(html)) !== null) {
         var before = html.substr(0, match.index);
