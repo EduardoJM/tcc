@@ -308,7 +308,9 @@
 					if (references[label].type == 'equation') {
 						eqrefs[i].innerHTML = '(' + references[label].value + ')';
 					}
-				}
+				} else {
+                    console.log("eqref not found: " + label);
+                }
 			}
             // katex math
             renderMathInElement(document.body, {});
