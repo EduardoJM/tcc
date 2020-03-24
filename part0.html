@@ -1,0 +1,31 @@
+---
+layout: default
+title: Introdução
+---
+<h1 class="docs-title">Introdução</h1>
+
+<p>O cálculo variacional engloba diversos problemas, sendo um dos mais tratados, o de minimizar ou maximizar funcionais, que são, fundamentalmente, funções que dependem de outras funções \cite{mefassan}.</p>
+
+<p>Desde o enuncidado do problema da braquistócrona, em 1696, que visa encontrar a curva em que uma partícula precisa descrever para sair de um ponto A e chegar a um ponto B, ambos os pontos em um plano vertical, no menor tempo possível estando sobre ação apenas da força gravitacional \cite{calcvar}, diversas técnicas surgiram de modo a descrever esse fenômeno.</p>
+
+<p>Algumas das principais contribuições para a área do cálculo variacional se devem aos matemáticos Euler e Lagrange, criando generalizações para métodos específicos utilizados, até então, na resolução de cada problema proposto \cite{hist_courant}.</p>
+
+<p>Além dos métodos que permitem a resolução analítica dos problemas, surgem métodos que fornecem resoluções aproximadas e que são utilizados, principalmente, em aplicações à engenharia. O método de Rayleigh-Ritz, por exemplo, prevê o uso de uma função aproximadora no lugar da função exata, permitindo, assim, resoluções aproximadas para o problema do funcional \cite{mefassan}.</p>
+
+<p>A justificativa para o trabalho é a importância acadêmica dos temas, tendo em vista a grande gama de aplicações do cálculo variacional e do método de Rayleigh-Ritz, desde os problemas clássicos, como a braquistócrona, a problemas não convencionais, como, por exemplo, a solução de Schwarzschild para as Equações de Einstein, tratada por \citeonline{calcvar_campos}, e a determinação da forma que um cabo longo, inestensível, assume quando suspenso por suas extremidades, em alturas iguais, o chamado problema da catenária, mostrado por \citeonline{calcvar}.</p>
+
+<p>O método de Rayleigh-Ritz, por sua vez, tem diversas aplicações, principalmente na área das engenharias, por exemplo, na determinação das frequências naturais, como tratado por \citeonline{RRM_Applications}, e no estudo da deflexão de vigas, de acordo com \citeonline{MRR_Deflex}. O método tem sido aplicado, atualmente, junto a tecnologias como as técnicas de aprendizado de máquinas, conforme \citeonline{deep_ritz}, objetivando abordagens modernas da área de inteligência artificial para os problemas do cálculo variacional. </p>
+
+<p>O primeiro objetivo do trabalho é o de introduzir, de forma clara e concisa, o cálculo variacional por meio do estudo das Equações de Euler-Lagrange para funcionais que dependem de uma única variável, da função e das suas derivadas, até a ordem \(n\) desejada. O segundo objetivo é explicar o método de Rayleigh-Ritz, de forma simples e introdutória, desenvolvendo exemplos básicos. O terceiro, e último, objetivo do trabalho consiste em apresentar formas de se utilizar a computação para os cálculos do método de Rayleigh-Ritz por meio da linguagem de programação <i>Python</i>.</p>
+
+<p>O trabalho foi realizado por meio de um levantamento bibliográfico em artigos, dissertações, livros, artigos e outros documentos acadêmicos.</p>
+
+<p>A monografia foi dividida em quatro capítulos, tendo, ainda, três apêndices. O primeiro capítulo, entitulado de Contexto Histórico, apresenta, de forma breve e sucinta, a visão geral e o contexto histórico sobre os máximos e mínimos, o cálculo variacional, o método de Rayleigh-Ritz e a linguagem de programação <i>Python</i>.</p>
+
+<p>O segundo capítulo, Cálculo Variacional, expõe um dos problemas clássicos do cálculo variacional e, partindo desse problema, são deduzidas as equações de Euler-Lagrange para funcionais que dependem de uma variável, da função e de derivadas da função até a ordem \(n\), além de serem estudadas as Condições de Contorno Naturais e Essenciais. Além disso, são apresentados, no segundo capítulo, exemplos de uso da equação de Euler-Lagrange e das Condições de Contorno. </p>
+
+<p>O terceiro capítulo, Método de Rayleigh-Ritz, define o método de Rayleigh-Ritz e o trabalha de forma analítica, através de exemplo, além de iniciar o estudo das funções triangulares como funções de forma. </p>
+
+<p>O quarto capítulo, Utilizando o Método de Rayleigh-Ritz na Linguagem <i>Python</i>, aborda o uso da linguagem de programação <i>Python</i> para a resolução de problemas através do método de Rayleigh-Ritz, primeiramente de forma analítica e, logo em seguida, por meio das funções triangulares, cujo estudo foi iniciado no terceiro capítulo, que discretizam a curva exata.</p>
+
+<p>No Apêndice A, Conceitos de Análise no \(\mathbb{R}^n\), são apresentados alguns conceitos da área, tais como a definição de conjuntos compactos e a Regra de Leibniz para a derivação sob o sinal da integral, utilizados no decorrer do trabalho, por exemplo, ao deduzir a equação de Euler-Lagrange. No Apêndice B, Encontrando a Máxima Deflexão da Viga Estudada, é estudado a máxima deflexão por meio da solução analítica do primeiro exemplo estudado pelo método de Rayleigh-Ritz a fim de se ter comparações durante o estudo do método. Já o Apêndice C, entitulado Breve Introdução à Linguagem <i>Python</i>, traz uma breve introdução sobre a linguagem, explicando como instalar a mesma, executar programas, as principais operações e, ainda, sobre como resolver sistemas lineares por meio dessa linguagem.</p>

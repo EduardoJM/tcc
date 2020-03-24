@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz com aplicações em Python</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" />
+    <style>
+        .docs-sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 4rem;
+            z-index: 1000;
+            height: calc(100vh - 4rem);
+        }
+
+        .docs-navbar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1070;
+            min-height: 4rem;
+            background-color: #01579b
+        }
+
+        .docs-toc-item > .docs-toc-link {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .docs-toc-item:not(.active) .docs-toc-sidenav {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .docs-sidebar {
+                border-right: 1px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+
+
+        .docs-content p {
+            text-align: justify;
+            text-indent: 2cm;
+            position: relative;
+        }
+        .docs-content ul {
+            margin-left: 1cm;
+        }
+        .docs-content li > p {
+            text-indent: 0;
+        }
+        .docs-content .alert > p {
+            margin-bottom: 0;
+            text-indent: 0;
+        }
+
+        .docs-content .docs-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .docs-content .anchor {
+            position: absolute;
+            top: -5rem;
+        }
+
+
+        .picture {
+            margin: 20px 0;
+        }
+        .picture-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .picture-container > img {
+            max-width: 100%;
+        }
+        .picture-caption {
+            font-weight: bold;
+            text-align: center;
+        }
+        .picture-subcaption {
+            text-align: center;
+        }
+        .picture-source {
+            text-align: center;
+        }
+
+        .docs-equation {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+        }
+        .docs-equation > .docs-equation-eq {
+            flex: 1;
+        }
+
+		.docs-lema,
+		.docs-example {
+			display: flex;
+			flex-direction: column;
+			background: #EEE;
+			border-radius: 4px;
+			margin: 20px 0;
+		}
+		.docs-lema > .docs-lema-title,
+		.docs-lema > .docs-lema-proof-title,
+		.docs-example > .docs-example-title,
+		.docs-example > .docs-example-sol-title {
+			padding: 4px 8px;
+			font-weight: bold;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			margin-bottom: 4px;
+		}
+		.docs-lema > .docs-lema-content,
+		.docs-lema > .docs-lema-proof,
+		.docs-example > .docs-example-content,
+		.docs-example > .docs-example-sol {
+			padding: 4px 8px;
+		}
+		.docs-lema > .docs-lema-proof-qed,
+		.docs-example > .docs-example-sol-qed {
+			padding: 4px 8px;
+			display: flex;
+			flex-direction: row;
+			justify-content: end;
+		}
+		.docs-lema > .docs-lema-proof-qed > .docs-lema-proof-qed-symbol,
+		.docs-example > .docs-example-sol-qed > .docs-example-sol-qed-symbol {
+			width: 16px;
+			height: 16px;
+			border: 1px solid #000;
+		}
+    </style>
+</head>
+<body>
+
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row docs-navbar">
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Início</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-md-3 col-xl-2 docs-sidebar">
+                <nav class="docs-toc-nav">
+                    <div class="docs-toc-item">
+                        <a class="docs-toc-link" href="#">Introdução</a>
+                    </div>
+                    <div class="docs-toc-item active">
+                        <a class="docs-toc-link" href="#">Contexto Histórico</a>
+                        <ul class="nav docs-toc-sidenav">
+                            <li class="active docs-toc-sidenav-active">
+                                <a href="#">Máximos e mínimos</a>
+                            </li>
+                            <li>
+                                <a href="#">O cálculo variacional</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content">
+
+				{{ content }}
+
+            </main>
+        </div>
+    </div>
+
+    
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <!-- BibRef -->
+    <script src="assets/scripts/bibref.js"></script>
+    <script>
+		var references = [];
+		function createNumbers(query, options) {
+			var objs = document.querySelectorAll(query);
+			var id = 1;
+			for (var i = 0; i < objs.length; i++) {
+				if (options.style == 'title') {
+					var titleObj = objs[i].querySelector(options.titleQuery);
+					var title = options.titlePrefix + id;
+					id++;
+					titleObj.innerHTML = title;
+				}
+			}
+		}
+        document.addEventListener("DOMContentLoaded", function() {
+            // citations
+            var html = document.querySelector('main.docs-content').innerHTML;
+            html = searchCitations(html, 'cite', function(name, page){
+                return cite(name, page);
+            });
+            html = searchCitations(html, 'citeonline', function(name, page){
+                return citeonline(name, page);
+            });
+            document.querySelector('main.docs-content').innerHTML = html;
+			// lemas
+			createNumbers('.docs-lema', {
+				style: 'title',
+				titleQuery: '.docs-lema-title',
+				titlePrefix: 'Lema 2.'
+			});
+			// examples
+			createNumbers('.docs-example', {
+				style: 'title',
+				titleQuery: '.docs-example-title',
+				titlePrefix: 'Exemplo 2.'
+			});
+            // equations
+            var eqs = document.querySelectorAll('.docs-equation');
+            var chap = 2;
+            var equationId = 1;
+            for(var i = 0; i < eqs.length; i++) {
+                var eq = eqs[i];
+                var label = eq.getAttribute('data-label');
+                if (label == null || label == undefined) {
+                    continue;
+                }
+                var numBox = eq.querySelector('.docs-equation-num');
+                if (numBox == null || numBox == undefined) {
+                    continue;
+                }
+                numBox.innerHTML = '(' + chap + '.' + equationId + ')';
+				references[label] = {
+					type: 'equation',
+					value: chap + '.' + equationId
+				}
+                equationId++;
+            }
+			// eqref's
+			var eqrefs = document.querySelectorAll('[eqref]');
+			for(var i = 0; i < eqrefs.length; i++) {
+				var label = eqrefs[i].getAttribute('eqref');
+				console.log(label);
+				if (references.hasOwnProperty(label)) {
+					if (references[label].type == 'equation') {
+						eqrefs[i].innerHTML = '(' + references[label].value + ')';
+					}
+				}
+			}
+            // katex math
+            renderMathInElement(document.body, {});
+        });
+    </script>
+</body>
+</html>
