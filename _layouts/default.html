@@ -25,19 +25,53 @@
             background-color: #01579b
         }
 
-        .docs-toc-item > .docs-toc-link {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .docs-toc-item:not(.active) .docs-toc-sidenav {
-            display: none;
-        }
-
         @media (min-width: 768px) {
             .docs-sidebar {
                 border-right: 1px solid rgba(0, 0, 0, 0.1);
             }
+        }
+
+        /*
+         * Sidenav TOC
+         */
+        .docs-toc-nav {
+
+        }
+        .docs-toc-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 1rem;
+        }
+        .docs-toc-nav ul ul {
+            margin-left: 5px;
+        }
+        .docs-toc-nav > ul > li > a {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #444;
+            transition: color 0.3s;
+        }
+        .docs-toc-nav > ul > li > a:hover {
+            color: #000;
+            text-decoration: none;
+        }
+        .docs-toc-nav > ul > li > ul {
+            margin-bottom: 10px;
+        }
+        .docs-toc-nav > ul > li > ul > li > a {
+            color: #444;
+            transition: color 0.3s;
+        }
+        .docs-toc-nav > ul > li > ul > li > a:hover {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .docs-toc-nav > ul > li > ul > li > ul > li > a{
+            color: #444;
+            font-style: italic;
+            font-size: 0.9rem;
         }
 
 
@@ -154,25 +188,39 @@
 
     <div class="container-fluid">
         <div class="row flex-xl-nowrap">
-            <div class="col-md-3 col-xl-2 docs-sidebar">
+            <div class="col-md-3 docs-sidebar">
                 <nav class="docs-toc-nav">
-                    <div class="docs-toc-item">
-                        <a class="docs-toc-link" href="#">Introdução</a>
-                    </div>
-                    <div class="docs-toc-item active">
-                        <a class="docs-toc-link" href="#">Contexto Histórico</a>
-                        <ul class="nav docs-toc-sidenav">
-                            <li class="active docs-toc-sidenav-active">
-                                <a href="#">Máximos e mínimos</a>
-                            </li>
-                            <li>
-                                <a href="#">O cálculo variacional</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li><a href="part0.html#intro">Introdução</a></li>
+                        <li><a href="part1.html#contexto-historico">Contexto Histórico</a>
+                            <ul>
+                                <li><a href="part1.html#maximos-minimos">Máximos e mínimos</a></li>
+                                <li><a href="part1.html#calculo-variacional">O cálculo variacional</a></li>
+                                <li><a href="part1.html#rayleigh-ritz">O método de Rayleigh-Ritz</a>
+                                    <ul>
+                                        <li><a href="part1.html#apl-rayleigh-ritz">Aplicações do método de Rayleigh-Ritz</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="part1.html#python">A linguagem <i>Python</i></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="part2.html#calculo-variacional">Cálculo Variacional</a>
+                            <ul>
+                                <li><a href="part2.html#eq-euler-lagrange">Equação de Euler-Lagrange</a></li>
+                                <li><a href="part2.html#cond-contorno">Condições de contorno naturais e essenciais</a></li>
+                                <li><a href="part2.html#eq-euler-lagrange-multi">Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior</a>
+                                    <ul>
+                                        <li><a href="part2.html#eq-euler-lagrange-multi-proc">Processo para funcionais que dependem de derivadas de segunda ordem</a></li>
+                                        <li><a href="part2.html#eq-euler-lagrange-multi-geral">Equação Geral</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="part2.html#exemplo">Exemplos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </nav>
             </div>
-            <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content">
+            <main class="col-md-9 py-md-3 pl-md-5 docs-content">
 
 				{{ content }}
 
