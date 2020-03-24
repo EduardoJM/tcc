@@ -7,9 +7,9 @@ title: Cálculo Variacional
 <p>Um dos problemas pertinentes ao <a class="anchor" name="rem-calc-var-1"></a>cálculo variacional é o de encontrar uma função \(y=y(x)\), satisfazendo as condições de contorno \(y(x_1)=y_1\) e \(y(x_2)=y_2\), que faça com que o funcional
 <div class="docs-equation" data-label="eqn:cap_calc_var:int_funcional">
     <div class="docs-equation-eq">
-    \[
+    <div class='docs-equation-hbox'>\[
     I = \int_{x_1}^{x_2} f(x,y,y')dx\text{,}
-    \]
+    \]</div>
     </div>
     <div class="docs-equation-num">
 
@@ -26,24 +26,24 @@ onde \(f(x, y, y')\) é uma função de classe \(C^1\) (Ver Definição \ref{def
 <div class="docs-lema" data-label="lema:cap_calcvar_lema_1">
     <div class="docs-lema-title"></div>
     <div class="docs-lema-content">
-        <p>Sejam \(x_1 &lt; x_2\) fixos e \(G(x)\) uma função contínua particular para \(x_1 \leqslant x \leqslant x_2\). Se \[\int_{x_1}^{x_2} \eta (x) G(x) dx = 0\] para cada função diferenciável \(\eta (x)\) tal que \(\eta (x_1)=\eta (x_2)=0\), concluímos que \(G(x)=0\), para todo \(x\) de modo que \(x_1 \leqslant x \leqslant x_2\).</p>
+        <p>Sejam \(x_1 &lt; x_2\) fixos e \(G(x)\) uma função contínua particular para \(x_1 \leqslant x \leqslant x_2\). Se <div class='docs-equation-hbox'>\[\int_{x_1}^{x_2} \eta (x) G(x) dx = 0\]</div> para cada função diferenciável \(\eta (x)\) tal que \(\eta (x_1)=\eta (x_2)=0\), concluímos que \(G(x)=0\), para todo \(x\) de modo que \(x_1 \leqslant x \leqslant x_2\).</p>
     </div>
     <div class="docs-lema-proof-title">Prova</div>
     <div class="docs-lema-proof">
         <p>Suponha que existe \(\overline{x}\) tal que \(x_1&lt;\overline{x}&lt;x_2\) e \(G(\overline{x})\neq 0\). Podemos supor, sem perda de generalidade, que \(G(\overline{x})>0\). Como \(G\) é contínua, existe uma vizinhança \(\overline{x_1} \leqslant \overline{x} \leqslant \overline{x_2}\) onde \(G(x)>0\) em toda a vizinhança.</p>
         <p>É possível construir a seguinte função \(\eta (x)\):
-        \[
+        <div class='docs-equation-hbox'>\[
             \eta (x) = 
             \begin{cases}
                 0 											& \text{para } x_1 \leqslant x &lt; \overline{x_1}\\
                 (x-\overline{x_1})^2(x-\overline{x_2})^2	& \text{para } \overline{x_1} \leqslant x \leqslant \overline{x_2}\\
                 0											& \text{para } \overline{x_2} &lt; x \leqslant x_2
             \end{cases}
-        \]
+        \]</div>
         e então reescrever a integral do seguinte modo:
-        \[
+        <div class='docs-equation-hbox'>\[
             \int_{x_1}^{x_2}\eta (x) G(x)dx =\int_{\overline{x_1}}^{\overline{x_2}}(x-\overline{x_1})^2(x-\overline{x_2})^2G(x)dx\text{.}
-        \]</p>
+        \]</div></p>
                     
         <p>Como \(G(x) > 0\) em \(\overline{x_1} \leqslant x \leqslant \overline{x_2}\), a integral do lado direito é estritamente positiva, contradizendo a hipótese. Portanto, \(G(\overline{x})=0\). A demonstração considerando \(G(\overline{x})&lt;0\) é análoga.</p>
     </div>
@@ -55,18 +55,18 @@ onde \(f(x, y, y')\) é uma função de classe \(C^1\) (Ver Definição \ref{def
 <p>Suponha \(x_1\), \(x_2\), \(y_1\), \(y_2\) dados, \(f\) uma função de \(x\), \(y\) e \(y'\) duas vezes diferenciável. É preciso construir uma família de <a class="anchor" name="rem-func-adms-1"></a>funções admissíveis<sup><a href="#footnote-1">1</a></sup>, \(Y_{\varepsilon}(x)\), definida por:
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_admissible">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 	Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)\text{,}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 onde \(\eta (x)\) é uma função diferenciável arbitrária para a qual \(\eta (x_1)=\eta (x_2) = 0\). O número \(\varepsilon\) é o parâmetro da família. A representação gráfica das funções admissíveis pode ser vista na <a href="#pic-2-1">Figura 2.1</a>. Assim, a derivada de \(Y\) em relação a \(x\), \(Y'(x)\), é
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_admissible_diff">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		Y'(x)=y'(x)+\varepsilon \eta '(x)\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -94,9 +94,9 @@ onde \(\eta (x)\) é uma função diferenciável arbitrária para a qual \(\eta 
 <p>Reescrevendo a integral <span eqref="eqn:cap_calc_var:int_funcional"></span> utilizando as funções admissíveis definidas, tem-se
 <div class="docs-equation" data-label="eqn:cap_calc_var:int_funcional_approx">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 	I(\varepsilon)=\int_{x_1}^{x_2}f(x, Y_{\varepsilon}, Y')dx\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -107,9 +107,9 @@ onde \(\eta (x)\) é uma função diferenciável arbitrária para a qual \(\eta 
 <p>A condição necessária para que uma função de uma variável real tenha um extremo em algum ponto é que sua primeira derivada se anule nesse ponto. Então, é necessário que
 <div class="docs-equation" data-label="eqn:cap_calc_var:extrem_condition">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 	I'(0)=0\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -118,67 +118,67 @@ onde \(\eta (x)\) é uma função diferenciável arbitrária para a qual \(\eta 
 <p>Com o intuito de que não haja confusão com as notações, é necessário deixar claro que \(I'(\varepsilon)\) é a derivada de \(I\) em relação a \(\varepsilon\), enquanto que \(y'\), \(Y'\), \(\eta'\) são derivadas em relação a \(x\).</p>
 
 <p>Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de <span eqref="eqn:cap_calc_var:int_funcional_approx"></span> pode ser escrita como
-\[
+<div class='docs-equation-hbox'>\[
 	I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y_{\varepsilon}, Y') dx \text{,}
-\]
+\]</div>
 e, aplicando regra da cadeia, obtêm-se
-\[
+<div class='docs-equation-hbox'>\[
 	I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial x}\frac{\partial x}{\partial \varepsilon} + \frac{\partial f}{\partial Y} \frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'} \frac{\partial Y'}{\partial \varepsilon} \right )dx\text{,}
-\]
+\]</div>
 onde a primeira parcela do integrando é nulo, dado ao fato de que \(x\) independe de \(\varepsilon\), portanto \(\dfrac{\partial x}{\partial \varepsilon}=0\), ou seja,
 <div class="docs-equation" data-label="eqn:cap_calc_var:chain_rule">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 	I'(\varepsilon)=\int_{x_1}^{x_2}\left ( \frac{\partial f}{\partial Y}\frac{\partial Y}{\partial \varepsilon} + \frac{\partial f}{\partial Y'}\frac{\partial Y'}{\partial \varepsilon} \right ) dx \text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>Derivando <span eqref="eqn:cap_calc_var:func_admissible"></span> em função de \(\varepsilon\), tem-se \(\dfrac{\partial Y}{\partial \varepsilon}=\dfrac{\partial y}{\partial \varepsilon}+\dfrac{\partial}{\partial \varepsilon}(\varepsilon \eta)\), de onde conclui-se que \(\dfrac{\partial Y}{\partial \varepsilon}=\eta\), pois \(y\) e \(\eta\) independem de \(\varepsilon\). O mesmo acontece com <span eqref="eqn:cap_calc_var:func_admissible_diff"></span>, donde verifica-se que \(\dfrac{\partial Y'}{\partial \varepsilon}=\eta'\). Deste modo, de <span eqref="eqn:cap_calc_var:chain_rule"></span>, obtêm-se a integral
-\[
+<div class='docs-equation-hbox'>\[
 	I'(\varepsilon)=\int_{x_1}^{x_2}\left ( 
 		\frac{\partial f}{\partial Y} \eta +
 		\frac{\partial f}{\partial Y'} \eta '
 	\right )dx \text{.}
-\]
+\]</div>
 </p>
 
 <p>Para calcular \(I'(0)\), tem-se que \(\varepsilon=0\) e, então, podemos trocar \(Y\) e \(Y'\) por \(y\) e \(y'\), respectivamente, obtendo
-\[
+<div class='docs-equation-hbox'>\[
 	I'(0)=\int_{x_1}^{x_2}\left (
 		\frac{\partial f}{\partial y} \eta +
 		\frac{\partial f}{\partial y'} \eta '
 	\right )dx
-\]
-\[
+\]</div>
+<div class='docs-equation-hbox'>\[
 	I'(0)=
 		\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 		+
 		\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta' dx \text{.}
-\]
+\]</div>
 </p>
 
 <p>Integrando a segunda parcela, por partes, tomando \(u=\dfrac{\partial f}{\partial y'}\) e \(dv=\eta'dx\) de onde obtêm-se \(du=\dfrac{d}{dx}\left ( \dfrac{\partial f}{\partial y'} \right )dx\) e \(v=\eta\), segue que,
-\[
+<div class='docs-equation-hbox'>\[
 	I'(0)=
 		\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 		+
 		\left (
 		uv \Big|_{x_1}^{x_2} - \int_{x_1}^{x_2}vdu
 		\right )
-\]
+\]</div>
 <div class="docs-equation" data-label="eqn:cap_calc_var:integration_parts">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(0)=
 			\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 			+
 			\left (
 				\frac{\partial f}{\partial y'}\eta \Biggr|_{x_1}^{x_2} - \int_{x_1}^{x_2} \frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right ) \eta dx
 			\right )
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -187,16 +187,16 @@ onde a primeira parcela do integrando é nulo, dado ao fato de que \(x\) indepen
 <p>Sabe-se que \(\dfrac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}=0\), devido ao fato de que \(\eta(x_1)=\eta(x_2)=0\), portanto, <span eqref="eqn:cap_calc_var:integration_parts"></span> pode ser reescrita como
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_admitindo_eta_0">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(0)=
 			\int_{x_1}^{x_2} \frac{\partial f}{\partial y}\eta dx
 			-
 			\int_{x_1}^{x_2} \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right ) \eta dx
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
-\[
+<div class='docs-equation-hbox'>\[
 	I'(0)=\int_{x_1}^{x_2}\left (
 		\frac{\partial f}{\partial y} -
 		\frac{d}{dx}
@@ -204,9 +204,9 @@ onde a primeira parcela do integrando é nulo, dado ao fato de que \(x\) indepen
 			\frac{\partial f}{\partial y'}
 		\right )
 	\right )\eta dx
-\]
+\]</div>
 que, a partir da condição necessária <span eqref="eqn:cap_calc_var:extrem_condition"></span>, deve ser igualada a \(0\):
-\[
+<div class='docs-equation-hbox'>\[
 	I'(0)=\int_{x_1}^{x_2}\left (
 		\frac{\partial f}{\partial y} -
 		\frac{d}{dx}
@@ -214,13 +214,13 @@ que, a partir da condição necessária <span eqref="eqn:cap_calc_var:extrem_con
 			\frac{\partial f}{\partial y'}
 		\right )
 	\right )\eta dx = 0	\text{.}
-\]
+\]</div>
 permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 <div class="docs-equation" data-label="eqn:cap_calc_var:euler_lagrange">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial f}{\partial y} - \frac{d}{dx} \left ( \frac{\partial f}{\partial y'} \right )=0 \text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -231,14 +231,14 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 <h2 class="docs-subtitle" id="cond-contorno">Condições de contorno naturais e essenciais</h2>
 
 <p>Durante o processo para a obtenção da função \(y(x)\) que torna o funcional estacionário aparecem algumas condições de contorno que devem ser tratadas cuidadosamente. Por exemplo, tomando o funcional
-\[
+<div class='docs-equation-hbox'>\[
 	I=\int_{x_1}^{x_2} f(x, y, y')dx
 	\text{,}
-\]
+\]</div>
 tem-se, da Seção \ref{sec:eq_euler_lagrange}, que sua condição de estacionariedade é dada por
 <div class="docs-equation" data-label="eqn:cap_calc_var:cond_boundary">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\int_{x_1}^{x_2} \left (
 			\frac{\partial f}{\partial y}
 			-
@@ -249,14 +249,14 @@ tem-se, da Seção \ref{sec:eq_euler_lagrange}, que sua condição de estacionar
 		+
 		\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
 		\text{,}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 onde, como já tratado, \(\eta\) representa uma variação da função exata conhecida.</p>
 
 <p>Admitiu-se, em <span eqref="eqn:cap_calc_var:func_admitindo_eta_0"></span>, que \(\eta(x_1)=\eta(x_2)=0\), porém isso nem sempre acontece. Existem casos em que, para que a condição de estacionariedade <span eqref="eqn:cap_calc_var:cond_boundary"></span> seja válida é preciso, primeiro, que a primeira parcela de <span eqref="eqn:cap_calc_var:cond_boundary"></span> seja nula, donde se resulta a equação de Euler-Lagrange
-\[
+<div class='docs-equation-hbox'>\[
 	\frac{\partial f}{\partial y}
 	-
 	\frac{d}{dx}\left (
@@ -264,28 +264,28 @@ onde, como já tratado, \(\eta\) representa uma variação da função exata con
 	\right )
 	= 0
 	\text{,}
-\]
+\]</div>
 e, ainda, que
-\[
+<div class='docs-equation-hbox'>\[
 	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2} = 0
 	\text{,}
-\]
+\]</div>
 de onde, geralmente, surgem as duas igualdades
 <div class="docs-equation" data-label="eqn:cap_calc_var:condicao_natural_d1">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial f}{\partial y'} \Big |_{x=x_1} = 0
 		\text{,}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 <div class="docs-equation" data-label="eqn:cap_calc_var:condicao_natural_d2">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial f}{\partial y'} \Big |_{x=x_2} = 0
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -296,10 +296,10 @@ de onde, geralmente, surgem as duas igualdades
 <p>Essas condições de contorno são denominadas condições de <a class="anchor" name="rem-cond-cont-nat-1"></a>contorno naturais do problema ou, ainda, <a class="anchor" name="rem-cond-cont-neum-1"></a>problema de valor de contorno de Neumann. Elas tendem a aparecer normalmente durante o processo de encontrar \(y(x)\), tornando o funcional estacionário.</p>
 
 <p>Para o caso de funcionais que dependem de derivadas de ordem superior, da forma
-\[
+<div class='docs-equation-hbox'>\[
 	I=\int_{x_1}^{x_2} f(x, y, y', \dots, y^{(n)}) dx
 	\text{,}
-\]
+\]</div>
 aparecem diversas condições de contorno parecidas com <span eqref="eqn:cap_calc_var:condicao_natural_d1"></span> e <span eqref="eqn:cap_calc_var:condicao_natural_d2"></span>. Um destes exemplos aparece em <span eqref="eqn:cap_calc_var:cond_with_naturalbound"></span>.</p>
 
 <p>Outro tipo de condições de contorno que aparecem com problemas do cálculo variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de <a class="anchor" name="rem-cond-cont-ess-1"></a><a class="anchor" name="rem-cond-cont-diri-1"></a>contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.</p>
@@ -311,56 +311,56 @@ aparecem diversas condições de contorno parecidas com <span eqref="eqn:cap_cal
 <p>Existem também, funcionais que dependem de mais funções, funções de mais de uma variável ou, ainda, que dependem de derivadas de ordem superior. O último caso será mostrado aqui, tendo em vista seu uso nos próximos capítulos. Considere o funcional
 <div class="docs-equation" data-label="eqn:cap_calc_var:funcional_n_derivadas">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I=\int_{x_1}^{x_2} f(x, y, y', y'', \dots, y^{(n)})dx
 		\text{,}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 onde \(y^{(n)}\) representa a \(n\)-ésima derivada de \(y\). Pode-se aproximar \(y(x)\) através de <a class="anchor" name="rem-func-adms-2"></a>funções admissíveis \(Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)\), onde \(\eta(x_1)=\eta(x_2)=0\) e \(\eta(x)\) deve ser uma função de classe \(C^n\) (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}). Desse modo,
-\[
+<div class='docs-equation-hbox'>\[
 	Y'(x)=y'(x)+\varepsilon \eta ' (x)
 	\text{,}
-\]
-\[
+\]</div>
+<div class='docs-equation-hbox'>\[
 	Y''(x)=y''(x)+\varepsilon \eta '' (x)
 	\text{,}
-\]
-\[
+\]</div>
+<div class='docs-equation-hbox'>\[
 	\vdots
-\]
-\[
+\]</div>
+<div class='docs-equation-hbox'>\[
 	Y^{(n)} (x)= y^{(n)}(x)+\varepsilon \eta^{(n)} (x)
 	\text{.}
-\]
+\]</div>
 </p>
 
 <p>Substituindo \(y\), \(y'\), \(y''\), \(\dots\), \(y^{(n)}\) por suas funções admissíveis \(Y\), \(Y'\), \(Y''\), \(\dots\), \(Y^{(n)}\) em <span eqref="eqn:cap_calc_var:funcional_n_derivadas"></span>, o funcional pode ser escrito como
-\[
+<div class='docs-equation-hbox'>\[
 	I(\varepsilon) = \int_{x_1}^{x_2}
 		f(x, Y_{\varepsilon}, Y', Y'', \dots, Y^{(n)})
 		dx
 	\text{,}
-\]
+\]</div>
 donde, derivando em função de \(\varepsilon\), por meio da Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), tem-se
 <div class="docs-equation" data-label="eqn:cap_calc_var:diff_func_n_derivadas_leibniz">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(\varepsilon) = 
 		\int_{x_1}^{x_2}
 			\frac{\partial f}{\partial \varepsilon}
 			(x, Y_{\varepsilon}, Y', Y'', \dots, Y^{(n)})
 			dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>Aplicando a Regra da Cadeia em <span eqref="eqn:cap_calc_var:diff_func_n_derivadas_leibniz"></span>, \(I'(\varepsilon)\) pode ser escrita como
-\[
+<div class='docs-equation-hbox'>\[
 	I'(\varepsilon)=\int_{x_1}^{x_2}
 	\left (
 		\frac{\partial f}{\partial x}
@@ -381,11 +381,11 @@ donde, derivando em função de \(\varepsilon\), por meio da Regra de Leibniz (T
 		\frac{\partial Y^{(n)}}{\partial \varepsilon}
 	\right ) dx
 	\text{,}
-\]
+\]</div>
 onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende de \(\varepsilon\), assim,
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(\varepsilon)=\int_{x_1}^{x_2}
 		\left (
 			\frac{\partial f}{\partial Y}
@@ -403,7 +403,7 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 			\frac{\partial Y^{(n)}}{\partial \varepsilon}
 		\right ) dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -412,7 +412,7 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 <p>Derivando as funções admissíveis \(Y\), \(Y'\), \(Y''\), \(\dots\), \(Y^{(n)}\) em relação a \(\varepsilon\), como já feito anteriormente, é possível substituir em <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia"></span>, os valores de \(\dfrac{\partial Y}{\partial \varepsilon}\) por \(\eta(x)\) e \(\dfrac{\partial Y^{(i)}}{\partial \varepsilon}\) por \(\eta^{(i)}(x)\) onde \(i=1, 2, \dots, n\). Assim, <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_regra_cadeia"></span> pode ser reescrito como
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_n_derivadas_replace_0">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(\varepsilon)=
 		\int_{x_1}^{x_2} \left (
 			\frac{\partial f}{\partial Y} \eta
@@ -426,14 +426,14 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 			\frac{\partial f}{\partial Y^{(n)}} \eta^{(n)}
 		\right ) dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>Fazendo \(\varepsilon=0\), pode-se substituir \(Y\), \(Y'\), \(Y''\), \(\dots\), \(Y^{(n)}\) por \(y\), \(y'\), \(y''\), \(\dots\), \(y^{(n)}\), respectivamente, então
-\[
+<div class='docs-equation-hbox'>\[
 	I'(0)= \int_{x_1}^{x_2} \left (
 		\frac{\partial f}{\partial y} \eta
 		+
@@ -445,10 +445,10 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 		+
 		\frac{\partial f}{\partial y^{(n)}} \eta^{(n)}
 	\right )dx
-\]
+\]</div>
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_n_derivadas_pos_separar">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(0)= 
 		\int_{x_1}^{x_2}
 			\frac{\partial f}{\partial y} \eta
@@ -468,7 +468,7 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 			\frac{\partial f}{\partial y^{(n)}} \eta^{(n)}
 		dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -479,14 +479,14 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 <h3 class="docs-subsubtitle" id="eq-euler-lagrange-multi-proc">Processo para funcionais que dependem de derivadas de segunda ordem</h3>
 
 <p>Fazendo uso de <span eqref="eqn:cap_calc_var:funcional_n_derivadas"></span> e <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_separar"></span> pode-se considerar o caso em que \(n=2\), onde o funcional é dado por
-\[
+<div class='docs-equation-hbox'>\[
 	I=\int_{x_1}^{x_2} f(x, y, y', y'')dx
 	\text{,}
-\]
+\]</div>
 e \(I'(0)\) é dado por
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_2_derivada_integracao">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(0)=
 		\int_{x_1}^{x_2}
 			\frac{\partial f}{\partial y}
@@ -503,7 +503,7 @@ e \(I'(0)\) é dado por
 			\eta''
 		dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -513,7 +513,7 @@ e \(I'(0)\) é dado por
 \(du=\dfrac{d}{dx} \left (
 	\dfrac{\partial f}{\partial y'}
 \right ) dx\) e \(v=\eta\), logo
-\[
+<div class='docs-equation-hbox'>\[
 	\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta ' dx
 	=
 	\frac{\partial f}{\partial y'}\eta \Big |_{x_1}^{x_2}
@@ -523,11 +523,11 @@ e \(I'(0)\) é dado por
 			\frac{\partial f}{\partial y'}
 		\right ) \eta dx
 	\text{,}
-\]
+\]</div>
 mas \(\eta(x_1)=\eta(x_2)=0\), ou seja, a integral pode ser reescrita como
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_2_derivadas_membro2">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\int_{x_1}^{x_2} \frac{\partial f}{\partial y'}\eta ' dx
 		=
 		-
@@ -536,7 +536,7 @@ mas \(\eta(x_1)=\eta(x_2)=0\), ou seja, a integral pode ser reescrita como
 				\frac{\partial f}{\partial y'}
 			\right ) \eta dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -548,7 +548,7 @@ mas \(\eta(x_1)=\eta(x_2)=0\), ou seja, a integral pode ser reescrita como
 \right) dx\) e \(v=\eta '\). Assim,
 <div class="docs-equation" data-label="eqn:cap_calc_var:el_diff_2_eta2">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial y''}
 		\eta ''
@@ -562,14 +562,14 @@ mas \(\eta(x_1)=\eta(x_2)=0\), ou seja, a integral pode ser reescrita como
 			\right )
 		\eta ' dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>Integrando, por partes, a segunda parcela de <span eqref="eqn:cap_calc_var:el_diff_2_eta2"></span>, tomando \(u=\dfrac{d}{dx}\left (\dfrac{\partial f}{\partial y''}\right )\) e \(dv=\eta'dx\), de onde \(du=\dfrac{d^2}{dx^2}\left ( \dfrac{\partial f}{\partial y''} \right ) dx\) e \(v=\eta\). Portanto,
-\[
+<div class='docs-equation-hbox'>\[
 	\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial y''}
 		\eta'' dx
@@ -587,11 +587,11 @@ mas \(\eta(x_1)=\eta(x_2)=0\), ou seja, a integral pode ser reescrita como
 		\eta dx
 	\right ]
 	\text{,}
-\]
+\]</div>
 e, como \(\eta(x_1)=\eta(x_2)=0\),
 <div class="docs-equation" data-label="eqn:cap_calc_var:el_diff_2_eta2_complete">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial y''}
 		\eta'' dx
@@ -604,14 +604,14 @@ e, como \(\eta(x_1)=\eta(x_2)=0\),
 			\right )
 		\eta dx
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>Voltando a <span eqref="eqn:cap_calc_var:func_2_derivada_integracao"></span>, e substituindo os valores de <span eqref="eqn:cap_calc_var:func_2_derivadas_membro2"></span> e <span eqref="eqn:cap_calc_var:el_diff_2_eta2_complete"></span>, tem-se
-\[
+<div class='docs-equation-hbox'>\[
 	I'(0)=
 	\int_{x_1}^{x_2}
 		\frac{\partial f}{\partial y}
@@ -629,11 +629,11 @@ e, como \(\eta(x_1)=\eta(x_2)=0\),
 			\frac{\partial f}{\partial y''}
 		\right ) \eta dx
 	\text{,}
-\]
+\]</div>
 de onde, reorganizando os termos e colocando \(\eta\) em evidência, e, finalmente, fazendo \(I'(0)=0\), obtem-se
 <div class="docs-equation" data-label="eqn:cap_calc_var:cond_with_naturalbound">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(0)=
 		\int_{x_1}^{x_2}
 		\left (
@@ -651,7 +651,7 @@ de onde, reorganizando os termos e colocando \(\eta\) em evidência, e, finalmen
 		\frac{\partial f}{\partial y''}\eta' \Big |_{x_1}^{x_2}
 		= 0
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -660,7 +660,7 @@ de onde, reorganizando os termos e colocando \(\eta\) em evidência, e, finalmen
 <p>A segunda parcela de <span eqref="eqn:cap_calc_var:cond_with_naturalbound"></span>, \(\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}\), é uma das chamadas <a class="anchor" name="rem-cond-cont-nat-2"></a>Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais são tratadas na Seção \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_2_derivadas_final">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		I'(0)=
 		\int_{x_1}^{x_2}
 		\left (
@@ -675,14 +675,14 @@ de onde, reorganizando os termos e colocando \(\eta\) em evidência, e, finalmen
 			\right )
 		\right ) \eta dx
 		\text{,}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em <span eqref="eqn:cap_calc_var:func_2_derivadas_final"></span>, a <a class="anchor" name="rem-eq-euler-lagrange-2"></a>equação de Euler-Lagrange obtida é
 <div class="docs-equation" data-label="eqn:cap_calc_var:eq_euler_lagrange_twodiff">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial f}{\partial y}
 		-
 		\frac{d}{dx}\left (
@@ -693,7 +693,7 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em <span eqref="eqn:cap_ca
 			\frac{\partial f}{\partial y''}
 		\right )
 		=0 \text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -706,7 +706,7 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em <span eqref="eqn:cap_ca
 <p>Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem \(n\), o processo para a obtenção da equação de Euler-Lagrange é análogo. Em <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_separar"></span> deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a \(n\)-ésima parcela seja integrada \(n-1\) vezes, também por partes. Ao fim do processo, a <a class="anchor" name="rem-eq-euler-lagrange-3"></a>equação de Euler-Lagrange será obtida fazendo \(I'(0)=0\), isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
 <div class="docs-equation" data-label="eqn:cap_calc_var:euler_lagrange_nesimo">
 	<div class="docs-equation-eq">
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial f}{\partial y}
 		- \frac{d}{dx}\left ( \frac{\partial f}{\partial y'} \right )
 		+ \frac{d^2}{dx^2}\left ( \frac{\partial f}{\partial y''} \right )
@@ -715,20 +715,20 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em <span eqref="eqn:cap_ca
 		+ (-1)^n \frac{d^n}{dx^n}\left (\frac{\partial f}{\partial y^{(n)}} \right )
 		= 0
 		\text{.}
-	\]
+	\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>A equação <span eqref="eqn:cap_calc_var:euler_lagrange_nesimo"></span> é escrita, também, como
-\[
+<div class='docs-equation-hbox'>\[
 	\sum_{i=0}^n (-1)^i\frac{d^i}{dx^i}\left (
 		\frac{\partial f}{\partial y^{(i)}}
 	\right )
 	= 0
 	\text{,}
-\]
+\]</div>
 onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )\), representa \(\dfrac{\partial f}{\partial y}\).</p>
 
 <h2 class="docs-subtitle" id="exemplo">Exemplos</h2>
@@ -739,10 +739,10 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>(Curva de Menor Comprimento entre Dois Pontos) É sabido, do cálculo diferencial e integral, que o comprimento, \(I\), de uma curva \(y(x)\) é determinado por
 		<div class="docs-equation" data-label="eqn:ex_reta_funcional">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				I=\int_{x_1}^{x_2}\sqrt{1+(y'(x))^2}dx
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -754,7 +754,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>Como o funcional de <span eqref="eqn:ex_reta_funcional"></span> depende apenas de \(y'(x)\), sua equação de Euler-Lagrange será da forma
 		<div class="docs-equation" data-label="eqn:ex_reta_eq_euler_lagrange">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{\partial f}{\partial y}
 				-
 				\frac{d}{dx} \left (
@@ -762,7 +762,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 				\right )
 				= 0
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -771,18 +771,18 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>De <span eqref="eqn:ex_reta_eq_euler_lagrange"></span>, fazendo as devidas derivações, tem-se a equação
 		<div class="docs-equation" data-label="eqn:ex_reta_prim_deriv">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				-\frac{d}{dx} \left (
 					\frac{y'(x)}{\sqrt{1+(y'(x))^2}}
 				\right )
 				= 0
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		de onde tem-se
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{
 				y''(x)\sqrt{1+(y'(x))^2}
 				-
@@ -793,17 +793,17 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 				1+(y'(x))^2
 			}
 			=0\text{,}
-		\]
+		\]</div>
 		e, devido ao fato de que o denominador \(1+(y'(x))^2\geqslant 1\), pode-se analisar apenas o numerador, ou seja,
-		\[
+		<div class='docs-equation-hbox'>\[
 			y''(x)\sqrt{1+(y'(x))^2}
 			-
 			\frac{(y'(x))^2 y''(x)}{
 				\sqrt{1+(y'(x))^2}
 			}
 			= 0
-		\]
-		\[
+		\]</div>
+		<div class='docs-equation-hbox'>\[
 			\frac{
 				y''(x)(1+(y'(x))^2)-(y'(x))^2y''(x)
 			}{
@@ -811,25 +811,25 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 			}
 			= 0
 			\text{,}
-		\]
+		\]</div>
 		resultando, após manipulações no numerador, em
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{y''(x)}{
 				\sqrt{1+(y'(x))^2}
 			}
 			= 0
 			\text{,}
-		\]
+		\]</div>
 		e, finalmente, \(y''(x)=0\).</p>
 		
 		<p>A equação diferencial \(y''(x)=0\) pode ser resolvida por meio de integrações sucessivas
-		\[
+		<div class='docs-equation-hbox'>\[
 			\int y''(x)dx = \int 0 dx \Longrightarrow y'(x) = C_1
-		\]
-		\[
+		\]</div>
+		<div class='docs-equation-hbox'>\[
 			\int y'(x)dx = \int C_1 dx \Longrightarrow y(x) = C_1 x + C_2
 			\text{,}
-		\]
+		\]</div>
 		ou seja, \(y(x)=C_1x+C_2\). Deste modo, a curva de menor comprimento entre os dois pontos é um segmento de reta.</p>
 	
 	</div>
@@ -844,7 +844,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>\cite{mefassan} Considere o funcional de energia potencial de uma viga dado por
 		<div class="docs-equation" data-label="eqn:cap_calc_var:funcional_pi">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\Pi = \frac{1}{2}	\int_{0}^{l}
 					EI \left (
 						\frac{d^2v}{dx^2}
@@ -852,7 +852,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 					-
 					\int_{0}^{l} qv dx
 					\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -862,7 +862,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
     <div class="docs-example-sol">
 
 		<p>A determinação de \(v(x)\) pode ser feita diretamente utilizando a equação de Euler-Lagrange (Ver Seção \ref{sec:eq_euler_lagrange}), porém, aqui será repetido o processo, mostrando que as condições de contorno naturais realmente surgem durante o processo de obtenção da equação. Variando \(v\) por \(\overline{v}_{\varepsilon}=v+\varepsilon \eta\) em <span eqref="eqn:cap_calc_var:funcional_pi"></span>, tem-se
-		\[
+		<div class='docs-equation-hbox'>\[
 			\Pi(\varepsilon) = \frac{1}{2} \int_{0}^{l}
 				EI \left (
 					\frac{d^2\overline{v}}{dx^2}
@@ -870,11 +870,11 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 				-
 				\int_{0}^{l} q\overline{v} dx
 				\text{,}
-		\]
+		\]</div>
 		de onde, derivando \(I(\varepsilon)\) em relação a \(\varepsilon\), resulta em
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_conditions_deduce">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d\Pi}{d\varepsilon} = 
 					\int_{0}^{l} EI \left (
 						\frac{d^2\overline{v}}{dx^2}
@@ -885,14 +885,14 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 					-
 					\int_{0}^{l} q\frac{d\overline{v}}{d\varepsilon} dx
 					\text{.}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		</p>
 		
 		<p>Manipulando <span eqref="eqn:cap_calc_var:natural_conditions_deduce"></span>, e calculando \(\dfrac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0}\), pois \(\overline{v}\) pode ser substituido por \(v\), naturalmente, chega-se a
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0} = 
 				\int_{0}^{l} EI \left (
 					\frac{d^2v}{dx^2}
@@ -902,11 +902,11 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 				-
 				\int_{0}^{l}q\eta dx
 			\text{,}
-		\]
+		\]</div>
 		onde a primeira parcela deve ser integrada, por partes, duas vezes, resultando em
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_conditions_I0">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0} = 
 					\int_{0}^{l} \left (
 						EI\frac{d^4 v}{dx^4}-q 
@@ -916,7 +916,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 					-
 					EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
 					\text{.}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -925,7 +925,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>Aplicando a condição de estacionariedade, \(\dfrac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0}=0\), em <span eqref="eqn:cap_calc_var:natural_conditions_I0"></span>,
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_conditions_I0_eq_0">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d\Pi}{d\varepsilon}\Big |_{\varepsilon=0} = 
 					\int_{0}^{l} \left (
 						EI\frac{d^4 v}{dx^4}-q 
@@ -936,7 +936,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 					EI\frac{d^3 v}{dx^3} \eta \Big |_{0}^{l}
 					= 0
 					\text{.}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -945,47 +945,47 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>É preciso, então, que os termos de <span eqref="eqn:cap_calc_var:natural_conditions_I0_eq_0"></span> se anulem. A primeira parcela de <span eqref="eqn:cap_calc_var:natural_conditions_I0_eq_0"></span> resulta na equação de Euler-Lagrange
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_eq_euler_lagr">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				EI\frac{d^4v}{dx^4} - q = 0
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		enquanto que as duas outras parcelas são as condições de contorno naturais do problema
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_cond1">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d^2 v}{dx^2}\Big |_{x=0} = 0
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_cond1_l">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d^2 v}{dx^2}\Big |_{x=l} = 0
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_cond2">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d^3 v}{dx^3}\Big |_{x=0} = 0
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_cond2_l">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{d^3 v}{dx^3}\Big |_{x=l} = 0
 				\text{.}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -994,40 +994,40 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 		<p>A equação de Euler-Lagrange <span eqref="eqn:cap_calc_var:natural_eq_euler_lagr"></span> pode ser facilmente resolvida, isolando \(\dfrac{d^4 v}{dx^4}\) e integrando ambos os lados da equação quatro vezes seguidas. Ao final desse processo, a função \(v\) encontrada será
 		<div class="docs-equation" data-label="eqn:cap_calc_var:natural_funcao_v">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v(x)=\frac{q}{24EI}x^4 + \frac{C_1}{6}x^3 + \frac{C_2}{2}x^2 + C_3x + C_4
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		onde os coeficientes \(C_1\), \(C_2\), \(C_3\) e \(C_4\) podem ser determinados através do uso das condições de contorno naturais e essenciais.</p>
 	
 		<p>Da condição de contorno essencial, \(v(0)=0\), resulta que o coeficiente \(C_4=0\). Aplicando, então as condições de contorno naturais <span eqref="eqn:cap_calc_var:natural_cond1"></span>, tem-se
-		\[
+		<div class='docs-equation-hbox'>\[
 			\left (
 				\frac{q}{2EI}x^2 + C_1x + C_2
 			\right ) \Big |_{x=0}
 			= 0
 			\text{,}
-		\]
+		\]</div>
 		resultando no valor do coeficiente \(C_2=0\). Utilizando o outro extremo de <span eqref="eqn:cap_calc_var:natural_cond1"></span>, tem-se
-		\[
+		<div class='docs-equation-hbox'>\[
 			\left (
 				\frac{q}{2EI}x^2 + C_1x + C_2
 			\right ) \Big |_{x=l}
 			=0
 			\text{,}
-		\]
+		\]</div>
 		onde
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{ql^2}{2EI}+C_1l=0
 			\text{,}
-		\]
+		\]</div>
 		resultando em \(C_1=-\dfrac{ql}{2EI}\).</p>
 	
 		<p>Para o último coeficiente, \(C_3\), será utilizado a outra condição de contorno essencial, \(v(l)=0\),
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{q}{24EI}l^4
 			-
 			\frac{ql^4}{12EI}
@@ -1035,13 +1035,13 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 			C_3l
 			= 0
 			\text{,}
-		\]
+		\]</div>
 		tendo, assim, como resultado, \(C_3=\dfrac{ql^3}{24EI}\).</p>
 	
 		<p>Substituindo, então, os coeficientes \(C_1\), \(C_2\), \(C_3\) e \(C_4\) determinados na função \(v(x)\), encontrada em <span eqref="eqn:cap_calc_var:natural_funcao_v"></span>,
 		<div class="docs-equation" data-label="eqn:sol_funcional_analitico">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v(x) = 
 					\frac{q}{24EI} x^4
 					-
@@ -1049,7 +1049,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
 					+
 					\frac{ql^3}{24EI} x
 					\text{.}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>

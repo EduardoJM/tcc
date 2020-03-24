@@ -17,6 +17,13 @@
             background-color: #01579b
         }
 
+        .docs-toc-toggle {
+            min-height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         @media (min-width: 768px) {
             .docs-sidebar {
                 border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -39,6 +46,13 @@
         /*
          * Sidenav TOC
          */
+        .docs-toc-toggle {
+            display: flex;
+            min-height: 4rem;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
         .docs-toc-nav ul {
             list-style: none;
             margin: 0;
@@ -143,9 +157,15 @@
             flex-direction: row;
             align-items: center;
             justify-content: start;
+            max-width: 100%;
         }
         .docs-equation > .docs-equation-eq {
             flex: 1;
+            overflow-x: auto;
+        }
+        .docs-equation-hbox {
+            max-width: 100%;
+            overflow-x: auto;
         }
 
 		.docs-lema,

@@ -13,22 +13,22 @@ title: Método de Rayleigh-Ritz
 <p>O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz propõe que a função \(y(x)\), exata, seja substituída por uma função aproximada \(v(x)\) que é formada pela combinação linear de funções \(\phi _i(x)\). Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.</p>
 
 <p>Considerando o funcional
-\[
+<div class='docs-equation-hbox'>\[
 	I=\int_{x_1}^{x_2} f(x,y,y',\dots,y^{(m)})dx
 	\text{,}
-\]
+\]</div>
 com as condições de contorno \(y(x_1)=y(x_2)=0\), então a função \(y(x)\) é aproximada por meio da função \(v(x)\) definida como
-\[
+<div class='docs-equation-hbox'>\[
 	v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{,}
-\]
+\]</div>
 onde os coeficientes \(a_i \in \mathbb{R}\) são chamados de \index[remissivo]{Parâmetros de Deslocamento}parâmetros de deslocamento, as funções \(\phi_i(x)\) são chamadas de \index[remissivo]{Função de Forma}funções de forma e devem ser linearmente independentes. As funções \(\phi_i(x)\) devem ser, também, diferenciáveis até a ordem \(m\), onde \(m\) é a ordem da maior derivada do funcional. A função \(v(x)\) é chamada de \index[remissivo]{Função Aproximadora}função aproximadora.</p>
 
 <p>Substituindo \(y\) por \(v\) no funcional, \(I\) passa a ser uma função de \(a_1\), \(a_2\), \(\dots\), \(a_n\), isto é, \(I=I(a_1, a_2, \dots, a_n)\). A condição de máximo ou mínimo para o funcional \(I\) é, então, que as suas derivadas parciais em relação a \(a_1\), \(a_2\), \(\dots\), \(a_n\) se anulem, ou seja
-\[
+<div class='docs-equation-hbox'>\[
 	\frac{\partial I}{\partial a_i} = 0
 	\text{,}
-\]
+\]</div>
 com \(i=1, 2, 3, \dots, n\).</p>
 
 <div class="docs-example" data-label="ex:mrr_ex_livro">
@@ -37,7 +37,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>\cite{mefassan} A viga prismática da <a href="#pic-3-1">Figura 3.1</a> possui o funcional de energia potencial total associado
 		<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:exemplo_func_pi">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\Pi = 
 					\frac{1}{2} \int_0^l EI \left [
 						\frac{d^2v}{dx^2}
@@ -45,7 +45,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 					-
 					\int_0^l qvdx
 					\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -74,28 +74,28 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>É possível encontrar uma função que aproxime a função exata \(v(x)\) tornando o funcional <span eqref="eqn:cap_metodo_ray_ritz:exemplo_func_pi"></span> estacionário utilizando o método de Rayleigh-Ritz. Esse processo será feito utilizando três funções aproximadoras:
 		<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_funcdef_v1">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_1 (x) = a_0 + a_1 x + a_2 x^2
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_funcdef_v2">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_2 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3
 				\text{,}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
 		<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_funcdef_v3">
 			<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_3 (x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4
 				\text{.}
-			\]
+			\]</div>
 			</div>
 			<div class="docs-equation-num"></div>
 		</div>
@@ -104,43 +104,43 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Para parâmetro de comparação com os resultados apresentados pelas funções \(v_1(x)\), \(v_2(x)\) e \(v_3(x)\) definidas em <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v1"></span>, <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v2"></span> e <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v3"></span>, será utilizado o valor de máxima deflexão da Viga da <a href="#pic-3-1">Figura 3.1</a>. Esse valor foi determinado no Apêndice \ref{apend:max_deflex}, em <span eqref="eqn:max_deflex_resultado"></span>, como
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v\left (\frac{l}{2} \right)=\frac{5ql^4}{384EI}
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	</p>
 	
 	<p>Como primeira aproximação, pode-se utilizar a função \(v_1(x)=a_0+a_1x+a_2x^2\), de onde, considerando as condições de contorno essenciais, tem-se que \(v_1(0)=0\), levando a \(a_0=0\), e de \(v_1(l)=0\), concluindo que \(a_1=-a_2l\). Assim, a função é escrita como
-	\[
+	<div class='docs-equation-hbox'>\[
 		v_1(x)=a_2(x^2-lx)
 		\text{.}
-	\]
+	\]</div>
 	</p>
 	
 	<p>Sua derivada é \(v_1'(x)=a_2(2x-l)\) e, a derivada de segunda ordem é \(v_1''(x)=2a_2\). Substituindo esses valores no funcional <span eqref="eqn:cap_metodo_ray_ritz:exemplo_func_pi"></span>, tem-se que
-	\[
+	<div class='docs-equation-hbox'>\[
 		\Pi =
 		\frac{1}{2}
 		\int_0^l 4 EI a_2 ^2 dx
 		-
 		\int_0^l q a_2 (x^2-lx) dx
 		\text{.}
-	\]
+	\]</div>
 	</p>
 	
 	<p>Da condição de estacionariedade tem-se, que \(\dfrac{\partial \Pi}{\partial a_2} = 0\) e, consequentemente
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\frac{\partial}{\partial a_2} \left [
 			\int_0^l \left ( 2EIa_2 ^2 - a_2 q (x^2 -lx) \right ) dx
 		\right]
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\int_0^l
@@ -148,16 +148,16 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			2EIa_2^2 - a_2 q(x^2-lx)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\int_0^l \left [
 			4EIa_2 - q(x^2-lx)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\left [ 
 			4EIa_2 x \Big |_0^l
 			-
@@ -166,45 +166,45 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			\right ) \Big |_0^l
 		\right ] 
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		4EIa_2l
 		-
 		q \left (\frac{l^3}{3} - \frac{l^3}{2} \right )
 		= 0
-	\]	
-	\[
+	\]</div>	
+	<div class='docs-equation-hbox'>\[
 		4EIa_2l+\frac{ql^3}{6} = 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		a_2=\frac{-ql^2}{24EI}\text{.}
-	\]
+	\]</div>
 	</p>
 
 	<p>Com o valor de \(a_2\) conhecido, é possível determinar o valor de \(a_1=-a_2l\), resultando em
-	\[
+	<div class='docs-equation-hbox'>\[
 		a_1=\frac{ql^3}{24EI}
 		\text{.}
-	\]
+	\]</div>
 	</p>
 	
 	<p>Assim, a função aproximadora \(v_1\) pode ser escrita como
-	\[
+	<div class='docs-equation-hbox'>\[
 		v_1(x)=
 		\frac{ql^3}{24EI}x
 		-
 		\frac{ql^2}{24EI}x^2
 		\text{.}
-	\]
+	\]</div>
 	</p>
 	
 	<p>Calculando \(v_1(\frac{l}{2})\) a título de comparação com o valor exato de máxima deflexão da viga, dado por <span eqref="eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato"></span>,
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:ex1_max_deflex_apv1">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_1\left (\frac{l}{2} \right) = \frac{ql^4}{96EI}
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -213,33 +213,33 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Note que há uma grande diferença entre o valor encontrado pela função \(v_1(x)\), <span eqref="eqn:cap_metodo_ray_ritz:ex1_max_deflex_apv1"></span>, e o valor exato, <span eqref="eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato"></span>. Visando uma melhoria nessa aproximação, faz-se necessário o uso da função definida \(v_2(x)=a_0+a_1x+a_2x^2+a_3x^3\). Das condições de contorno essenciais, \(v_2(0)=0\), de onde \(a_0=0\), e \(v_2(l)=0\), isolando \(a_1=-a_2 l - a_3 l^2\). Assim, a função \(v_2(x)\) é
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:v2_organizada">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_2(x)=
 				a_2(x^2-lx)
 				+
 				a_3(x^3-l^2x)
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	</p>
 	
 	<p>Derivando a função \(v_2\) em função de \(x\), duas vezes, pode-se obter
-	\[
+	<div class='docs-equation-hbox'>\[
 		v_2'(x) = a_2(2x-l) + a_3(3x^2-l^2)
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:v2_diff_organizada">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_2''(x) = 2a_2 + 6a_3 x \text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	
 	<p>Substituindo <span eqref="eqn:cap_metodo_ray_ritz:v2_organizada"></span> e <span eqref="eqn:cap_metodo_ray_ritz:v2_diff_organizada"></span> em \(\Pi\), tem-se
-	\[
+	<div class='docs-equation-hbox'>\[
 		\Pi=
 		\frac{1}{2}
 		\int_0^l
@@ -255,33 +255,33 @@ com \(i=1, 2, 3, \dots, n\).</p>
 				a_3(x^3-l^2x)
 			\right ) dx
 		\text{.}
-	\]
+	\]</div>
 	</p>
 
 	<p>Derivando \(\Pi\) em função de \(a_2\) é possível obter
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\int_0^l \left [
 			2EI(2a_2+6a_3x)-q(x^2-lx)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_2}
 		=
 		\int_0^l \left [
 			EI(4a_2+12a_3x)-q(x^2-lx)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\int_0^l \left [
 			4EIa_2 + 12EIa_3x - qx^2 + qlx
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		4EIa_2 x \Big |_0^l
 		+
 		\frac{12a_3EI}{2} x^2 \Big |_0^l
@@ -290,8 +290,8 @@ com \(i=1, 2, 3, \dots, n\).</p>
 		+
 		\frac{ql}{2} x^2 \Big |_0^l
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		4EIa_2l
 		+
 		6a_3EIl^2
@@ -299,27 +299,27 @@ com \(i=1, 2, 3, \dots, n\).</p>
 		\frac{2ql^3}{6}
 		-
 		\frac{3ql^3}{6}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		4a_2 + 6a_3l
 		=
 		\frac{-ql^2}{6EI}
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eq:exemp_rayritz_approx2_eq1">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				2a_2 + 3a_3l
 				=
 				\frac{-ql^2}{12EI}
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	</p>
 	
 	<p>Derivando \(\Pi\) em relação a \(a_3\) tem-se que
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_3}
 		=
 		\int_0^l \left [
@@ -328,24 +328,24 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			q(x^3 - l^2x)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\int_0^l \left [
 			EI(12a_2 + 36a_3x)x
 			-
 			q(x^3 - l^2x)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		\int_0^l \left [
 			EI(12a_2 x + 36a_3x^2)
 			-
 			q(x^3 - l^2x)
 		\right ] dx = 0
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI \left (
 			\frac{12a_2}{2}x^2 \Big |_0^l
 			+
@@ -358,8 +358,8 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			\frac{l^2x^2}{2} \Big |_0^l
 		\right )
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI(6a_2l^2 + 12a_3l^3)
 		-
 		q \left (
@@ -370,15 +370,15 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			\frac{l^4}{2}
 		\right )
 		=0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		6a_2 + 12a_3l = -\frac{ql^4}{4EIl^2}
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eq:exemp_rayritz_approx2_eq2">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				2a_2 + 4a_3l = -\frac{ql^2}{12EI}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -387,38 +387,38 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Montando um sistema de equações com <span eqref="eq:exemp_rayritz_approx2_eq1"></span> e <span eqref="eq:exemp_rayritz_approx2_eq2"></span>:
 	<div class="docs-equation" data-label="eqn:ex_rayritz_sistema_2">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\begin{cases}
-					2a_2+3a_3l=\dfrac{-ql^2}{12EI}\\[10pt]
+					2a_2+3a_3l=\dfrac{-ql^2}{12EI}\<div class='docs-equation-hbox'>\[10pt]
 					2a_2+4a_3l=\dfrac{-ql^2}{12EI}
 				\end{cases}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	é possível encontrar os valores de \(a_2\) e \(a_3\). </p>
 	
 	<p>Subtraindo as equações em <span eqref="eqn:ex_rayritz_sistema_2"></span>, tem-se
-	\[
+	<div class='docs-equation-hbox'>\[
 		4a_3l-3a_3l=-\frac{ql^2}{12EI}+\frac{ql^2}{12EI}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		a_3=0\text{.}
-	\]
+	\]</div>
 	</p>
 	
 	<p>Consequentemente,
-	\[
+	<div class='docs-equation-hbox'>\[
 		a_2=-\frac{ql^2}{24EI}
 		\text{.}
-	\]</p>
+	\]</div></p>
 
 	<p>Assim, a função \(v_2(x)\) é a mesma que \(v_1(x)\), não permitindo uma melhoria na aproximação desejada, sendo, portanto, inútil para esse caso. Ainda, visando melhor aproximação, deve-se passar para a próxima função aproximadora escolhida, \(v_3(x)\).</p>
 	
 	<p>Utilizando a função \(v_3(x)=a_0+a_1x+a_2x^2+a_3x^3+a_4x^4\), tem-se das condições de contorno essensiais que \(v_3(0)=0\), donde \(a_0=0\) e, \(v_3(l)=0\), isto é \(a_1l+a_2l^2+a_3l^3+a_4l^4=0\), donde pode-se concluir que \(a_1=-a_2l-a_3l^2-a_4l^3\). Substituindo \(a_0\) e \(a_1\) em \(v_3(x)\), podemos encontrar a função
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:func_def_v3">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_3(x)=
 				a_2 (x^2 - lx)
 				+
@@ -426,24 +426,24 @@ com \(i=1, 2, 3, \dots, n\).</p>
 				+
 				a_4 (x^4 - l^3x)
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	</p>
 	
 	<p>Derivando \(v_3\) em relação a \(x\), duas vezes:
-	\[
+	<div class='docs-equation-hbox'>\[
 		v_3'(x)=
 		a_2(2x - l)
 		+
 		a_3(3x^2 - l^2)
 		+
 		a_4(4x^3 - l^3)
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:func_def_v3_diff">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_3''(x)=
 				2a_2
 				+
@@ -451,14 +451,14 @@ com \(i=1, 2, 3, \dots, n\).</p>
 				+
 				12a_4 x^2
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	</p>
 	
 	<p>Substituindo <span eqref="eqn:cap_metodo_ray_ritz:func_def_v3"></span> e <span eqref="eqn:cap_metodo_ray_ritz:func_def_v3_diff"></span> em \(\Pi\),
-	\[
+	<div class='docs-equation-hbox'>\[
 		\Pi = \frac{1}{2} \int_0^l \left [
 			EI(2a_2+6a_3x+12a_4x^2)^2
 		\right ] dx
@@ -471,13 +471,13 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			a_4(x^4 - l^3x)
 		\right ] dx
 		\text{,}
-	\]
+	\]</div>
 	de onde pode-se derivar \(\Pi\) em relação a \(a_2\), \(a_3\) e \(a_4\) para obter um sistema de equações permitindo a determinação de \(a_2\), \(a_3\) e \(a_4\).</p>
 	
 	<p>Fazendo \(\dfrac{\partial \Pi}{\partial a_2} = 0\):
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:exemp_v3_diff_a2">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{\partial \Pi}{\partial a_2}
 				=
 				\int_0^l \left [
@@ -486,19 +486,19 @@ com \(i=1, 2, 3, \dots, n\).</p>
 					q(x^2 - lx)
 				\right ] dx
 				= 0
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
-	\[
+	<div class='docs-equation-hbox'>\[
 		\int_0^l \left [
 			EI(4a_2 + 12a_3x + 24a_4x^2)
 			-
 			q(x^2 - lx)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI \left (
 			4a_2 x \Big |_0^l
 			+
@@ -513,23 +513,23 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			\frac{lx^2}{2} \Big |_0^l
 		\right )
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI(4a_2l + 6a_3l^2 + 8a_4l^3)
 		=
 		\frac{ql^3}{3}
 		-
 		\frac{ql^3}{2}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		4a_2l + 6a_3l^2 + 8a_4l^3 = -\frac{ql^3}{6EI}
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eq:exemp_rayritz_approx3_eq1">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				2a_2 + 3a_3l + 4a_4l^2 = -\frac{ql^2}{12EI}
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -538,7 +538,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Fazendo \(\dfrac{\partial \Pi}{\partial a_3} = 0\), tem-se
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:exemp_v3_diff_a3">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{\partial \Pi}{\partial a_3}
 				=
 				\int_0^l \left [
@@ -547,11 +547,11 @@ com \(i=1, 2, 3, \dots, n\).</p>
 					q(x^3 - l^2x)
 				\right ] dx
 				= 0
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
-	\[
+	<div class='docs-equation-hbox'>\[
 		\frac{\partial \Pi}{\partial a_3}
 		=
 		\int_0^l \left [
@@ -560,8 +560,8 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			q(x^3-l^2x)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI \left (
 			\frac{12a_2}{2} x^2 \Big |_0^l
 			+
@@ -576,30 +576,30 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			\frac{l^2 x}{2} \Big |_0^l
 		\right )
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI(6a_2 l^2 + 12a_3 l^3 + 18a_4 l^4)
 		=
 		\frac{ql^4}{4}
 		-
 		\frac{ql^4}{2}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI(6a_2 l^2 + 12a_3 l^3 + 18a_4 l^4)
 		=
 		-\frac{ql^4}{4}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		6a_2 + 12a_3 l + 18a_4 l^2
 		=
 		-\frac{ql^2}{4EI}
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eq:exemp_rayritz_approx3_eq2">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				a_2 + 2a_3 l + 3a_4 l^2 = - \frac{ql^2}{24EI}
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -608,7 +608,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Por último, fazendo \(\dfrac{\partial \Pi}{\partial a_4}=0\), tem-se	
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:exemp_v3_diff_a4">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\frac{\partial \Pi}{\partial a_4}
 				=
 				\int_0^l \left [
@@ -617,19 +617,19 @@ com \(i=1, 2, 3, \dots, n\).</p>
 					q(x^4 - l^3x)
 				\right ] dx
 				= 0
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
-	\[
+	<div class='docs-equation-hbox'>\[
 		\int_0^l \left [
 			EI(24a_2 x^2 + 72 a_3 x^3 + 144 a_4 x^4)
 			-
 			q(x^4 - l^3 x)
 		\right ] dx
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI \left ( 
 			\frac{24a_2}{3}x^3 \Big |_0^l
 			+
@@ -644,8 +644,8 @@ com \(i=1, 2, 3, \dots, n\).</p>
 			\frac{l^3x^2}{2} \Big |_0^l
 		\right )
 		= 0
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI \left (
 			8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
 		\right )
@@ -653,27 +653,27 @@ com \(i=1, 2, 3, \dots, n\).</p>
 		\frac{ql^5}{5}
 		-
 		\frac{ql^5}{2}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		EI \left (
 			8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
 		\right )
 		=
 		-\frac{3ql^5}{10}
-	\]
-	\[
+	\]</div>
+	<div class='docs-equation-hbox'>\[
 		8a_2 l^3 + 18 a_3 l^4 + \frac{144}{5} a_4 l^5
 		=
 		-\frac{3ql^5}{10EI}
-	\]
+	\]</div>
 	<div class="docs-equation" data-label="eq:exemp_rayritz_approx3_eq3">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				8a_2 + 18a_3 l + \frac{144}{5} a_4 l^2 
 				=
 				-\frac{3ql^2}{10EI}
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -682,13 +682,13 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>É obtido, assim, um sistema linear de 3 equações em 3 incógnitas, com <span eqref="eq:exemp_rayritz_approx3_eq1"></span>, <span eqref="eq:exemp_rayritz_approx3_eq2"></span> e <span eqref="eq:exemp_rayritz_approx3_eq3"></span>:	
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:sistema">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\begin{cases}
-					2a_2 + 3a_3l + 4a_4l^2 = -\dfrac{ql^2}{12EI}\\[10pt]
-					a_2 + 2a_3 l + 3a_4 l^2 = - \dfrac{ql^2}{24EI}\\[10pt]
+					2a_2 + 3a_3l + 4a_4l^2 = -\dfrac{ql^2}{12EI}\<div class='docs-equation-hbox'>\[10pt]
+					a_2 + 2a_3 l + 3a_4 l^2 = - \dfrac{ql^2}{24EI}\<div class='docs-equation-hbox'>\[10pt]
 					8a_2 + 18a_3 l + \frac{144}{5} a_4 l^2 = -\dfrac{3ql^2}{10EI}
 				\end{cases}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -697,39 +697,39 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Chamando \(C=-\dfrac{ql^2}{12EI}\) e \(D=-\dfrac{3ql^2}{10EI}\), tem-se a matriz aumentada do sistema linear <span eqref="eqn:cap_metodo_ray_ritz:sistema"></span>.
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:matriz_sistema">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				\begin{pmatrix}{3}
 					2	& 	3l	&	4l^2 				& C \\
 					1	& 	2l	&	3l^2			 	& \frac{1}{2}C \\
 					8 	& 	18l & 	\frac{144}{5} l^2	& D
 				\end{pmatrix}
 				\text{,}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	donde, resolvendo o sistema (Veja a Seção \ref{sec:python_solve_linsys} do Apêndice \ref{apend:python}), obtem-se os valores
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_coef_v3_a2">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				a_2=0\text{,}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_coef_v3_a3">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				a_3=-\frac{ql}{12EI}\text{,}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_coef_v3_a4">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				a_4=\frac{q}{24EI}\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -738,13 +738,13 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Deste modo, substituindo <span eqref="eqn:cap_metodo_ray_ritz_coef_v3_a2"></span>, <span eqref="eqn:cap_metodo_ray_ritz_coef_v3_a3"></span> e <span eqref="eqn:cap_metodo_ray_ritz_coef_v3_a4"></span> em <span eqref="eqn:cap_metodo_ray_ritz:func_def_v3"></span>, a função \(v_3(x)\) é escrita como
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:func_v3">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_3(x) =
 				\frac{q}{24EI} ( x^4 - l^3 x )
 				-
 				\frac{ql}{24EI} ( x^3 - l^2 x )
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -753,10 +753,10 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Utilizando os três valores, <span eqref="eqn:cap_metodo_ray_ritz_coef_v3_a2"></span>, <span eqref="eqn:cap_metodo_ray_ritz_coef_v3_a3"></span> e <span eqref="eqn:cap_metodo_ray_ritz_coef_v3_a4"></span>, da solução do sistema linear com matriz aumentada <span eqref="eqn:cap_metodo_ray_ritz:matriz_sistema"></span>, é possível determinar o coeficiente \(a_1=-a_2l-a_3l^2-a_4l^3\), que é
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_coef_v3_a1">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 			a_1 = \frac{ql^3}{24EI}
 			\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -765,7 +765,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	<p>Não há, de fato, necessidade para a obtenção do valor do coeficiente \(a_1\), pois \(v_3(x)\) foi escrita de forma independente de \(a_1\) em <span eqref="eqn:cap_metodo_ray_ritz:func_def_v3"></span>. Este apenas foi feito para que a função \(v_3(x)\) possa ser escrita, a partir de <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v3"></span>, como
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:func_v3_forma2">
 		<div class="docs-equation-eq">
-			\[
+			<div class='docs-equation-hbox'>\[
 				v_3(x)=
 					\frac{ql^3}{24EI} x
 					-
@@ -773,7 +773,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 					+
 					\frac{q}{24EI} x^4
 				\text{.}
-			\]
+			\]</div>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
@@ -781,10 +781,10 @@ com \(i=1, 2, 3, \dots, n\).</p>
 
 
 	<p>O valor de máxima deflexão, \(v_3(\frac{l}{2})\) é dado por
-	\[
+	<div class='docs-equation-hbox'>\[
 		v_3(\frac{l}{2})=\frac{5ql^4}{384EI}
 		\text{,}
-	\]
+	\]</div>
 	que é o valor exato de \(v(\frac{l}{2})\) indicado em <span eqref="eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato"></span>. Não apenas isto, mas a função \(v_3(x)\), indicada em <span eqref="eqn:cap_metodo_ray_ritz:func_v3"></span> ou em <span eqref="eqn:cap_metodo_ray_ritz:func_v3_forma2"></span>, é a função \(v(x)\) exata.</p>
 	
 	</div>
@@ -804,7 +804,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 <p>\citeonline{MRR_Deflex} apresentam o uso de funções triangulares como funções de forma, visando a discretização da função \(y(x)\). Considere o funcional
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_funcional">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			I = \int_{0}^{1} \left [ 
 				p(x) \left ( 
 					\frac{dy}{dx}
@@ -813,33 +813,33 @@ com \(i=1, 2, 3, \dots, n\).</p>
 				- 2f(x)y(x) 
 			\right ] dx
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos. A \index[remissivo]{Função Triangular}função triangular trabalhada é definida como
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_phi">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			\phi_i (x) = 
 				\begin{cases}
-					0 							& \text{se } 0 \leqslant x \leqslant x_{i - 1}\\[5pt]
-					\dfrac{x-x_{i-1}}{h_{i-1}} 	& \text{se } x_{i-1} &lt; x \leqslant x_i\\[10pt]
-					\dfrac{x_{i+1}-x}{h_i}		& \text{se } x_i &lt; x \leqslant x_{i+1}\\[5pt]
+					0 							& \text{se } 0 \leqslant x \leqslant x_{i - 1}\<div class='docs-equation-hbox'>\[5pt]
+					\dfrac{x-x_{i-1}}{h_{i-1}} 	& \text{se } x_{i-1} &lt; x \leqslant x_i\<div class='docs-equation-hbox'>\[10pt]
+					\dfrac{x_{i+1}-x}{h_i}		& \text{se } x_i &lt; x \leqslant x_{i+1}\<div class='docs-equation-hbox'>\[5pt]
 					0							& \text{se } x_{i+1}&lt;x\leqslant 1
 				\end{cases}
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 onde \(h_i = x_{i+1}-x_{i}\) e \(h_{i-1}=x_i-x_{i-1}\). A <a href="#pic-3-2">Figura 3.2</a> apresenta uma ilustração da função \(\phi_i(x)\) definida. A função exata, \(y(x)\), que torna um funcional estacionário, é aproximado, então, por meio da função aproximadora
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_app_v">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			v(x)=\sum_{i=1}^{n} a_i \phi_i(x)
 			\text{.}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -865,30 +865,30 @@ onde \(h_i = x_{i+1}-x_{i}\) e \(h_{i-1}=x_i-x_{i-1}\). A <a href="#pic-3-2">Fig
 <p>A primeira derivada das funções \(\phi_i(x)\) em relação a \(x\) é escrita como
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_phi_diff">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			\phi_i ' (x) = 
 				\begin{cases}
-					0 							& \text{se } 0 \leqslant x &lt; x_{i - 1}\\[5pt]
-					\dfrac{1}{h_{i-1}} 			& \text{se } x_{i-1} &lt; x &lt; x_i\\[10pt]
-					\dfrac{-1}{h_i}				& \text{se } x_i &lt; x &lt; x_{i+1}\\[5pt]
+					0 							& \text{se } 0 \leqslant x &lt; x_{i - 1}\<div class='docs-equation-hbox'>\[5pt]
+					\dfrac{1}{h_{i-1}} 			& \text{se } x_{i-1} &lt; x &lt; x_i\<div class='docs-equation-hbox'>\[10pt]
+					\dfrac{-1}{h_i}				& \text{se } x_i &lt; x &lt; x_{i+1}\<div class='docs-equation-hbox'>\[5pt]
 					0							& \text{se } x_{i+1}&lt;x\leqslant 1
 				\end{cases}
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 de onde a derivada de \(v(x)\) em relação a \(x\) é
-\[
+<div class='docs-equation-hbox'>\[
 	v'(x)=\sum_{i=1}^{n} a_i \phi_i '(x)
 	\text{.}
-\]
+\]</div>
 </p>
 
 <p>Aproximando \(y(x)\) por meio da função \(v(x)\) definida em <span eqref="eqn:cap_metodo_ray_ritz:tri_func_app_v"></span>, o funcional <span eqref="eqn:cap_metodo_ray_ritz:tri_func_funcional"></span> é escrito como
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_funcional_approx">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			I = \int_{0}^{1} \left [
 				p(x) \left (
 					\sum_{i=1}^{n} a_i \phi_i '(x)
@@ -901,21 +901,21 @@ de onde a derivada de \(v(x)\) em relação a \(x\) é
 				\right )
 			\right ] dx
 			\text{.}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>Para determinar os coeficientes \(a_j\), as derivadas parciais de <span eqref="eqn:cap_metodo_ray_ritz:tri_func_funcional_approx"></span> em relação aos \(a_j\) devem ser todas nulas, ou seja,
-\[
+<div class='docs-equation-hbox'>\[
 	\frac{\partial I}{\partial a_j} = 0
 	\text{,}
-\]
+\]</div>
 onde \(j=1\), \(2\), \(\dots\), \(n\). Utilizando A Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}),
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{\partial I}{\partial a_j} = 
 			\int_{0}^{1} \left [
 				2p(x) \left (
@@ -927,7 +927,7 @@ onde \(j=1\), \(2\), \(\dots\), \(n\). Utilizando A Regra de Leibniz (Teorema \r
 				- 2f(x)\phi_j(x)
 			\right ] dx
 			\text{.}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -936,15 +936,15 @@ onde \(j=1\), \(2\), \(\dots\), \(n\). Utilizando A Regra de Leibniz (Teorema \r
 <p>Em <span eqref="eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada"></span> foi utilizado o fato de que a derivada de \(\displaystyle \sum_{i=1}^{n} a_i \phi_i(x)\) em relação a algum \(a_j\), onde \(1\leqslant j\leqslant n\), resulta em \(\phi_j(x)\). O mesmo vale para a derivada de \(\displaystyle \sum_{i=1}^{n} a_i \phi_i'(x)\) em relação a algum \(a_j\), \(1\leqslant j\leqslant n\), que resulta em \(\phi_j'(x)\).</p>
 
 <p>Aplicando a distributividade na primeira e segunda parcela do integrando em <span eqref="eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada"></span>, tem-se
-\[
+<div class='docs-equation-hbox'>\[
 	\frac{\partial I}{\partial a_j} = \int_0^1 \left [
 		\sum_{i=1}^n \left ( 2p(x)a_i \phi_i'(x)\phi_j'(x) \right)
 		+
 		\sum_{i=1}^n \left ( 2q(x)a_i\phi_i(x)\phi_j(x) \right)
 		- 2f(x)\phi_j(x)
 	\right ] dx
-\]
-\[
+\]</div>
+<div class='docs-equation-hbox'>\[
 	\frac{\partial I}{\partial a_j} = \int_0^1 \left [
 		\sum_{i=1}^n \left (
 			2p(x)a_i \phi_i'(x)\phi_j'(x)
@@ -954,11 +954,11 @@ onde \(j=1\), \(2\), \(\dots\), \(n\). Utilizando A Regra de Leibniz (Teorema \r
 	\right ] dx
 	- \int_0^1 2f(x)\phi_j(x)dx
 	\text{,}
-\]
+\]</div>
 de onde, alterando a ordem de integração e soma, resulta em
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_aj_evidence">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			\frac{\partial I}{\partial a_j} = \sum_{i=1}^n \left (
 				\int_0^1 \left [
 					2p(x)a_i\phi_i'(x)\phi_j'(x)
@@ -968,14 +968,14 @@ de onde, alterando a ordem de integração e soma, resulta em
 			\right )
 			- \int_0^1 2f(x)\phi_j(x)dx
 			\text{.}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 </p>
 
 <p>De <span eqref="eqn:cap_metodo_ray_ritz:tri_func_aj_evidence"></span>, como \(a_i\) é constante na integração em relação a \(x\), tem-se
-\[
+<div class='docs-equation-hbox'>\[
 	\frac{\partial I}{\partial a_j} = \sum_{i=1}^{n} \left (
 		a_i \int_{0}^{1} \left [
 			2p(x)\phi_i'(x)\phi_j'(x)
@@ -986,9 +986,9 @@ de onde, alterando a ordem de integração e soma, resulta em
 	-
 	\int_{0}^{1} 2f(x)\phi_j(x)dx
 	\text{,}
-\]
+\]</div>
 que, aplicando a condição \(\dfrac{\partial I}{\partial a_j}=0\), obtêm-se
-\[
+<div class='docs-equation-hbox'>\[
 	\sum_{i=1}^{n} \left (
 		a_i \int_{0}^{1} \left [
 			2p(x)\phi_i'(x)\phi_j'(x)
@@ -1000,11 +1000,11 @@ que, aplicando a condição \(\dfrac{\partial I}{\partial a_j}=0\), obtêm-se
 	\int_{0}^{1} 2f(x)\phi_j(x)dx
 	= 0
 	\text{,}
-\]
+\]</div>
 resultando em um sistema de \(n\) equações com \(n\) incógnitas da forma
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_sistema">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			\sum_{i=1}^{n} \left (
 				a_i \int_{0}^{1} \left [
 					2p(x)\phi_i'(x)\phi_j'(x)
@@ -1015,7 +1015,7 @@ resultando em um sistema de \(n\) equações com \(n\) incógnitas da forma
 			=
 			\int_{0}^{1} 2f(x)\phi_j(x)dx
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
@@ -1025,34 +1025,34 @@ onde \(j=1\), \(2\), \(\dots\), \(n\).
 <p>Chamando
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_mji">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			m_{j,i}=\int_{0}^{1} \left [
 				2p(x)\phi_i'(x)\phi_j'(x)
 				+
 				2q(x)\phi_i(x)\phi_j(x)
 			\right ]dx
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 e
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_bj">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
 o sistema <span eqref="eqn:cap_metodo_ray_ritz:tri_func_sistema"></span> pode ser escrito na forma 
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_sistema_generic">
 	<div class="docs-equation-eq">
-		\[
+		<div class='docs-equation-hbox'>\[
 			\displaystyle\sum_{i=1}^n a_i\cdot m_{j,i}=b_j
 			\text{,}
-		\]
+		\]</div>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
