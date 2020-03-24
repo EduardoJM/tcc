@@ -24,6 +24,8 @@
         @media (min-width: 768px) {
             .docs-sidebar {
                 border-right: 1px solid rgba(0, 0, 0, 0.1);
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
             .docs-toc-nav {
                 display: block !important;
@@ -37,7 +39,7 @@
                     height: calc(100vh - 4rem);
                 }
                 .docs-toc-nav {
-                    max-height:calc(100vh - 9rem);
+                    max-height:calc(100vh - 4rem);
                     overflow-y:auto
                 }
             }
@@ -54,6 +56,10 @@
             justify-content: center;
             margin-left: 0 !important;
             padding-left: 0 !important;
+        }
+        .docs-toc-nav {
+            padding-left: 5px;
+            padding-right: 5px;
         }
         .docs-toc-nav ul {
             list-style: none;
