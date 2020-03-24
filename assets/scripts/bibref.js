@@ -156,7 +156,6 @@ function cite(name, page) {
             return '(' + name + ', ' + year + ')';
         }
     }
-    console.log("not parsed (cite) " + name);
     return '';
 }
 
@@ -172,16 +171,17 @@ function citeonline(name, page) {
             return name + ' (' + year + ')';
         }
     }
-    console.log("not parsed (citeonline) " + name);
     return '';
 }
 
 function searchCitations(html, command, callback) {
     var citeReg = RegExp('\\\\' + command + '\\{(.*?)\\}', 'ig');
     while ((match = citeReg.exec(html)) !== null) {
+        console.log(match);
         var before = html.substr(0, match.index);
         var after = html.substr(citeReg.lastIndex, html.length - citeReg.lastIndex);
         var citation = callback(match[1], null);
+        console.log("parsing: " + match[1] + ' as result ' + citation);
         if (citation != '') {
             html = before + citation + after;
         } else {

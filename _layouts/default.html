@@ -303,7 +303,7 @@
 			var eqrefs = document.querySelectorAll('[eqref]');
 			for(var i = 0; i < eqrefs.length; i++) {
 				var label = eqrefs[i].getAttribute('eqref');
-				console.log(label);
+				// console.log(label);
 				if (references.hasOwnProperty(label)) {
 					if (references[label].type == 'equation') {
 						eqrefs[i].innerHTML = '(' + references[label].value + ')';
