@@ -28,7 +28,10 @@
                     top: 4rem;
                     z-index: 1000;
                     height: calc(100vh - 4rem);
-                    overflow-y: auto;
+                }
+                .docs-toc-nav {
+                    max-height:calc(100vh - 9rem);
+                    overflow-y:auto
                 }
             }
         }
@@ -199,7 +202,10 @@
     <div class="container-fluid">
         <div class="row flex-xl-nowrap">
             <div class="col-md-3 docs-sidebar">
-                <nav class="docs-toc-nav">
+                <button class="btn btn-link docs-toc-toggle d-md-none p-0 ml-3 collapsed" type="button" data-toggle="collapse" data-target="#docs-toc-nav">
+                    Alternar Conteúdos
+                </button>
+                <nav class="docs-toc-nav collapse" id="docs-toc-nav">
                     <ul>
                         <li><a href="part0.html#intro">Introdução</a></li>
                         <li><a href="part1.html#contexto-historico">Contexto Histórico</a>
