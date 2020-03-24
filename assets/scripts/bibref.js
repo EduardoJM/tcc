@@ -174,23 +174,31 @@ function citeonline(name, page) {
     return '';
 }
 
+function getNextCitation(reg, html) {
+    var match = reg.exec(html);
+    if (match == null) {
+        match = reg.exec(html);
+    }
+    return match;
+}
+
 function searchCitations(html, command, callback) {
     var citeReg = RegExp('\\\\' + command + '\\{(.*?)\\}', 'ig');
-    while ((match = citeReg.exec(html)) !== null) {
-        console.log(match);
-    }/*
+    var match = getNextCitation(citeReg, html);
+    while (match != null) {
         var before = html.substr(0, match.index);
         var after = html.substr(citeReg.lastIndex, html.length - citeReg.lastIndex);
         var citation = callback(match[1], null);
-        console.log("parsing: " + match[1] + ' as result ' + citation);
         if (citation != '') {
             html = before + citation + after;
         } else {
             console.log("Reference not found (" + command + "): " + match[1]);
         }
-    }*/
+        match = getNextCitation(citeReg, html);
+    }
     var citeRegPaged = RegExp('\\\\' + command + '\\[(.*?)\\]\\{(.*?)\\}', 'ig');
-    while ((match = citeRegPaged.exec(html)) !== null) {
+    match = getNextCitation(citeRegPaged, html);
+    while (match !== null) {
         var before = html.substr(0, match.index);
         var after = html.substr(citeRegPaged.lastIndex, html.length - citeRegPaged.lastIndex);
         var citation = callback(match[2], match[1]);
@@ -199,6 +207,7 @@ function searchCitations(html, command, callback) {
         } else {
             console.log("Reference not found (" + command + "): " + match[2]);
         }
+        match = getNextCitation(citeRegPaged, html);
     }
     return html;
 }
