@@ -316,7 +316,8 @@
 			for (var i = 0; i < objs.length; i++) {
 				if (options.style == 'title') {
 					var titleObj = objs[i].querySelector(options.titleQuery);
-					var title = options.titlePrefix + id;
+                    var aRef = '<a class="anchor" name="' + label + '"></a>';
+					var title = aRef + options.titlePrefix + id;
 					id++;
 					titleObj.innerHTML = title;
                     var label = objs[i].getAttribute('data-label');
