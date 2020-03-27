@@ -4,9 +4,9 @@ title: Utilizando o método de Rayleigh-Ritz na linguagem Python
 ---
 <h1 class="docs-title">4 Utilizando o método de Rayleigh-Ritz na linguagem <i>Python</i></h1>
 
-<p>Em se tratando de programação, existem diversas formas de se trabalhar o \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem \index[remissivo]{Python}\textit{Python} por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação \textit{Python}.</p>
+<p>Em se tratando de programação, existem diversas formas de se trabalhar o <a class="anchor" name="rem-mrr-1"></a>método de Rayleigh-Ritz em diversas linguagens. Para este trabalho foi escolhida a linguagem <a class="anchor" name="rem-python-1"></a><i>Python</I> por ser uma liguagem gratuita, de código aberto, e com forte apelo a computação científica. Ainda assim, existem diversas formas de se implementar algoritmos para o uso deste método. O objetivo deste capítulo é de trabalhar e exemplificar como o método pode ser implementado utilizando a linguagem de programação <i>Python</I>.</p>
 
-<p>Voltando ao funcional $\Pi$, definido em \eqref{eqn:cap_metodo_ray_ritz:exemplo_func_pi} no Exemplo \ref{ex:mrr_ex_livro} do Capítulo \ref{cap:mrr}, tem-se
+<p>Voltando ao funcional \(\Pi\), definido em <span eqref="eqn:cap_metodo_ray_ritz:exemplo_func_pi"></span> no <span ref="ex:mrr_ex_livro"></span> do <span ref="cap:mrr"></span>, tem-se
 <div class='docs-equation-hbox'>\[
 	\Pi = 
 		\frac{1}{2} \int_0^l EI \left [
@@ -15,7 +15,7 @@ title: Utilizando o método de Rayleigh-Ritz na linguagem Python
 		-
 		\int_0^l qvdx
 \]</div>
-e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4$, donde aplicando as condições de contorno essenciais, $v_3(0)=0$, obtendo $a_0=0$, e $v_3(l)=0$, encontrando $a_1=-a_2l-a_3l^2-a_4l^3$. Substituindo $a_0$ e $a_1$ em $v_3(x)$, tem-se a função
+e tomando, ainda, a função aproximadora \(v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 + a_4 x^4\), donde aplicando as condições de contorno essenciais, \(v_3(0)=0\), obtendo \(a_0=0\), e \(v_3(l)=0\), encontrando \(a_1=-a_2l-a_3l^2-a_4l^3\). Substituindo \(a_0\) e \(a_1\) em \(v_3(x)\), tem-se a função
 <div class='docs-equation-hbox'>\[
 	v_3(x)=
 	a_2 (x^2 - lx)
@@ -27,7 +27,7 @@ e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 
 \]</div>
 </p>
 
-<p>Derivando $v_3$ em relação a $x$ duas vezes,
+<p>Derivando \(v_3\) em relação a \(x\) duas vezes,
 <div class='docs-equation-hbox'>\[
 	v_3''(x)=
 	2a_2
@@ -39,7 +39,7 @@ e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 
 \]</div>
 </p>
 
-<p>Para a determinação dos parâmetros $a_2$, $a_3$ e $a_4$, deve-se substituir $v_3(x)$ no funcional $\Pi$, e resolver o sistema 
+<p>Para a determinação dos parâmetros \(a_2\), \(a_3\) e \(a_4\), deve-se substituir \(v_3(x)\) no funcional \(\Pi\), e resolver o sistema 
 <div class='docs-equation-hbox'>\[
 	\begin{cases}
 		\dfrac{\partial \Pi}{\partial a_2}=0\\[10pt]
@@ -50,92 +50,136 @@ e tomando, ainda, a função aproximadora $v_3(x)=a_0+a_1 x + a_2 x^2 + a_3 x^3 
 \]</div>
 </p>
 
-<p>Tanto a derivação quanto a integração podem ser feitas manualmente ou utilizando o pacote \textit{SymPy} em \textit{Python}, como feito no Código \ref{py_code_solve_mrr_ex_livro_diff}.</p>
+<p>Tanto a derivação quanto a integração podem ser feitas manualmente ou utilizando o pacote <i>SymPy</I> em <i>Python</I>, como feito no <a href="#code-4-1">Código 4.1</a>.</p>
 
-<!--\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, caption={Código para a resolução do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_ex_livro_diff]-->
-<pre><code class="language-python line-numbers" data-start="1">from sympy import symbols, integrate, diff, Matrix
-from sympy.solvers import solve
+<p><a class="anchor" name="code-4-1"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.1 - Código para a resolução do <span ref="ex:mrr_ex_livro"></span>.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="1">from sympy import symbols, integrate, diff, Matrix
+				from sympy.solvers import solve
+				
+				l, E, I, x, q = symbols('l E I x q')
+				a2, a3, a4 = symbols("a2 a3 a4")
+				
+				v = a2 * (x**2 - l*x) 
+				v = v + a3 * (x**3 - l**2 * x)
+				v = v + a4 * (x**4 - l**3 * x)
+				
+				dv = diff(v, x)
+				dv2 = diff(dv, x)
+				
+				f = (E*I*((dv2)**2)) / 2 - q * v
+				
+				df_a2 = diff(f, a2)
+				df_a3 = diff(f, a3)
+				df_a4 = diff(f, a4)
+				
+				eq1 = integrate(df_a2, (x, 0, l))
+				eq2 = integrate(df_a3, (x, 0, l))
+				eq3 = integrate(df_a4, (x, 0, l))
+				
+				sol = solve([eq1, eq2, eq3], [a2, a3, a4])
+				print(sol)
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-l, E, I, x, q = symbols('l E I x q')
-a2, a3, a4 = symbols("a2 a3 a4")
+<p>O <a href="#code-4-1">Código 4.1</a> é executado rapidamente e o resultado é mostrado na <a href="#pic-4-1">Figura 4.1</a>, com \(a_2=0\), \(a_3=-\dfrac{ql}{12EI}\) e \(a_4=\dfrac{q}{24EI}\). Esses resultados são exatamente os mesmos apresentados no <span ref="ex:mrr_ex_livro"></span>.</p>
 
-v = a2 * (x**2 - l*x) 
-v = v + a3 * (x**3 - l**2 * x)
-v = v + a4 * (x**4 - l**3 * x)
+<p><a class="anchor" name="pic-4-1"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Figura 4.1 - Resultado apresentado pelo <a href="#code-4-1">Código 4.1</a>.</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-container">
+			<img src="images/terminal/code_solve_mrr_exemplo_livro.png" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+	</div>
+</div>
 
-dv = diff(v, x)
-dv2 = diff(dv, x)
+<p>O valor de \(a_1=-a_2l-a_3l^2-a_4l^3\) é determinado substituindo os valores de \(a_2\), \(a_3\) e \(a_4\). Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a própria linguagem, adicionando o <a href="#code-4-2">Código 4.2</a> ao final do <a href="#code-4-1">Código 4.1</a>. Os comandos <i>a1 = a1.subs(a2, sol[a2])</I> indica que a variável <i>a1</I> receberá o valor de <i>a1</I> substituindo o simbólo <i>a2</i> pela solução do sistema encontrada no <a href="#code-4-1">Código 4.1</a>.</p>
 
-f = (E*I*((dv2)**2)) / 2 - q * v
+<p><a class="anchor" name="code-4-2"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.2 - Código para a determinação do coeficiente \(a_1\) do <span ref="ex:mrr_ex_livro"></span>.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="26">a1 = -a2*l - a3*l**2 - a4 * l**3
+				a1 = a1.subs(a2, sol[a2])
+				a1 = a1.subs(a3, sol[a3])
+				a1 = a1.subs(a4, sol[a4])
+				print(a1)
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-df_a2 = diff(f, a2)
-df_a3 = diff(f, a3)
-df_a4 = diff(f, a4)
+<p>É possível, ainda, construir uma função \(v(x)\) utilizando os coeficientes \(a_1\), \(a_2\), \(a_3\) e \(a_4\) (O coeficiente \(a_0\) foi ignorado devido ao seu valor ser nulo) com o <a href="#code-4-3">Código 4.3</a>. Utilizando, novamente, o comando <i>subs</i> e a função definida no <a href="#code-4-3">Código 4.3</a>, pode-se calcular o valor de \(v_3(x)\) em algum ponto, como, por exemplo, em \(x=\dfrac{l}{2}\). O valor \(v_3(\frac{l}{2})\) é o valor de máxima deflexão.</p>
 
-eq1 = integrate(df_a2, (x, 0, l))
-eq2 = integrate(df_a3, (x, 0, l))
-eq3 = integrate(df_a4, (x, 0, l))
+<p><a class="anchor" name="code-4-3"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.3 - Código para a definição da função \(v_3(x)\) do <span ref="ex:mrr_ex_livro"></span>.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="31">v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
+				print(v)
+				maxdef = v.subs(x, l/2)
+				print(maxdef)
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-sol = solve([eq1, eq2, eq3], [a2, a3, a4])
-print(sol)
-</code></pre>
-<!--\end{lstlisting}
-\codigofonte
+<p>É importante observar, no <a href="#code-4-3">Código 4.3</a>, que ao construir a variável <i>v</i> para representar a função, no primeiro coeficiente foi utilizado a variável <i>a1</i>, enquanto que nas demais, foi utilizado <i>sol[a2]</i>, <i>sol[a3]</i> e <i>sol[a4]</i>. Isso se deve ao fato de que os valores para os coeficientes \(a_2\), \(a_3\) e \(a_4\) foram encontrados pela resolução do sistema, sendo a variável <i>sol</i> a sua solução. Já, <i>a1</i> foi definida como sendo a equação do termo \(a_1\) isolado em função de \(a_2\), \(a_3\) e \(a_4\).</p>
 
-O Código \ref{py_code_solve_mrr_ex_livro_diff} é executado rapidamente e o resultado é mostrado na Figura \ref{fig:code_solve_mrr_exemplo_livro}, com $a_2=0$, $a_3=-\dfrac{ql}{12EI}$ e $a_4=\dfrac{q}{24EI}$. Esses resultados são exatamente os mesmos apresentados no Exemplo \ref{ex:mrr_ex_livro}.
+<p>Os Códigos: <a href="#code-4-1">Código 4.1</a>, <a href="#code-4-2">Código 4.2</a> e <a href="#code-4-3">Código 4.3</a> são executados em sequência e, por essa razão, estão com numeração de linhas sequenciais: O <a href="#code-4-1">Código 4.1</a> tendo as linhas de 1 a 25, o <a href="#code-4-2">Código 4.2</a> de 26 a 30 e o <a href="#code-4-3">Código 4.3</a> de 31 a 34. A <a href="#pic-4-2">Figura 4.2</a> mostra o resultado da execução dos Códigos <a href="#code-4-1">Código 4.1</a>, <a href="#code-4-2">Código 4.2</a> e <a href="#code-4-3">Código 4.3</a> no terminal.</p>
 
-\begin{figure}[h]
-	\caption{Resultado apresentado pelo Código \ref{py_code_solve_mrr_ex_livro_diff}.}
-	\centering
-	\includegraphics[scale=2.5]{../figuras/code/code_solve_mrr_exemplo_livro.png}
-	\label{fig:code_solve_mrr_exemplo_livro}
-	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
-\end{figure}
+<p><a class="anchor" name="pic-4-2"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Figura 4.2 - Resultado apresentado pelos Códigos: <a href="#code-4-1">Código 4.1</a>, <a href="#code-4-2">Código 4.2</a> e <a href="#code-4-3">Código 4.3</a>.</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-container">
+			<img src="images/terminal/code_solve_mrr_exec_complete.png" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+	</div>
+</div>
 
-O valor de $a_1=-a_2l-a_3l^2-a_4l^3$ é determinado substituindo os valores de $a_2$, $a_3$ e $a_4$. Esse processo pode ser realizado de modo manual ou, mais rapidamente, utilizando a própria linguagem, adicionando o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} ao final do Código \ref{py_code_solve_mrr_ex_livro_diff}. Os comandos \textit{a1 = a1.subs(a2, sol[a2])} indica que a variável \textit{a1} receberá o valor de \textit{a1} substituindo o simbólo \textit{a2} pela solução do sistema encontrada no Código \ref{py_code_solve_mrr_ex_livro_diff}.
-\newpage
+<p>Observando, no terminal da <a href="#pic-4-2">Figura 4.2</a>, pela ordem dos comandos <i>print</i> executados no código, a primeira linha apresenta a solução do sistema, a segunda linha apresenta o valor do coeficiente \(a_1\), a terceira linha apresenta a função \(v_3(x)\) e a quarta linha apresenta o resultado de \(v_3(\frac{l}{2})\) que é o valor de máxima deflexão da viga.</p>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=26, caption={Código para a determinação do coeficiente $a_1$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_isolatedcoef_ex_livro]
-a1 = -a2*l - a3*l**2 - a4 * l**3
-a1 = a1.subs(a2, sol[a2])
-a1 = a1.subs(a3, sol[a3])
-a1 = a1.subs(a4, sol[a4])
-print(a1)
-\end{lstlisting}
-\codigofonte
+<p>Ressaltando, novamente, que a escolha das funções de forma utilizadas na função aproximadora são de suma importância para o método de Rayleigh-Ritz. Para o uso de matemática simbólica, como nesse exemplo, deve-se tomar ainda mais cuidado com a escolha de tais funções pois, em alguns casos, a integração simbólica toma grande custo computacional. Em casos onde a integração simbólica se torna árdua, ou até mesmo impossível, o uso de algoritmos para integração numérica é necessário.</p>
 
-É possível, ainda, construir uma função $v(x)$ utilizando os coeficientes $a_1$, $a_2$, $a_3$ e $a_4$ (O coeficiente $a_0$ foi ignorado devido ao seu valor ser nulo) com o Código \ref{py_code_solve_mrr_maxdef_ex_livro}. Utilizando, novamente, o comando \textit{subs} e a função definida no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, pode-se calcular o valor de $v_3(x)$ em algum ponto, como, por exemplo, em $x=\dfrac{l}{2}$. O valor $v_3(\frac{l}{2})$ é o valor de máxima deflexão.
+<h2 class="docs-subtitle">Resolvendo problemas com o método de Rayleigh-Ritz utilizando funções triangulares em <i>Python</i></h2>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=31, caption={Código para a definição da função $v_3(x)$ do Exemplo \ref{ex:mrr_ex_livro}}, captionpos=t, label=py_code_solve_mrr_maxdef_ex_livro]
-v = a1*x + sol[a2]*x**2 + sol[a3]*x**3 + sol[a4]*x**4
-print(v)
-maxdef = v.subs(x, l/2)
-print(maxdef)
-\end{lstlisting}
-\codigofonte
+<p>O sistema \(M\cdot A=B\), encontrado na <span ref="sec:mrr_triangular"></span> do <span ref="cap:mrr"></span>, pode ser resolvido, numericamente, utilizando a linguagem de programação <a class="anchor" name="rem-python-2"></a><i>Python</i>. A título de comparação serão utilizadas as funções \(p(x)=e^x\), \(q(x)=e^x\) e \(f(x)=x+(2-x)e^x\) que possui função exata \(y(x)\) conhecida dada por \(y(x)=(x-1)(e^{-x}-1)\).</p>
 
-É importante observar, no Código \ref{py_code_solve_mrr_maxdef_ex_livro}, que ao construir a variável \textit{v} para representar a função, no primeiro coeficiente foi utilizado a variável \textit{a1}, enquanto que nas demais, foi utilizado \textit{sol[a2]}, \textit{sol[a3]} e \textit{sol[a4]}. Isso se deve ao fato de que os valores para os coeficientes $a_2$, $a_3$ e $a_4$ foram encontrados pela resolução do sistema, sendo a variável \textit{sol} a sua solução. Já, \textit{a1} foi definida como sendo a equação do termo $a_1$ isolado em função de $a_2$, $a_3$ e $a_4$.
-
-Os Códigos \ref{py_code_solve_mrr_ex_livro_diff}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} são executados em sequência e, por essa razão, estão com numeração de linhas sequenciais: O Código \ref{py_code_solve_mrr_ex_livro_diff} tendo as linhas de 1 a 25, o Código \ref{py_code_solve_mrr_isolatedcoef_ex_livro} de 26 a 30 e o Código \ref{py_code_solve_mrr_maxdef_ex_livro} de 31 a 34. A Figura \ref{fig:code_solve_mrr_exec_complete} mostra o resultado da execução dos Códigos \ref{py_code_solve_mrr_ex_livro_diff}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro} no terminal.
-
-\begin{figure}[h]
-	\caption{Resultado apresentado pelos Códigos \ref{py_code_solve_mrr_ex_livro_diff}, \ref{py_code_solve_mrr_isolatedcoef_ex_livro} e \ref{py_code_solve_mrr_maxdef_ex_livro}.}
-	\centering
-	\includegraphics[scale=2.5]{../figuras/code/code_solve_mrr_exec_complete.png}
-	\label{fig:code_solve_mrr_exec_complete}
-	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
-\end{figure}
-
-Observando, no terminal da Figura \ref{fig:code_solve_mrr_exec_complete}, pela ordem dos comandos \textit{print} executados no código, a primeira linha apresenta a solução do sistema, a segunda linha apresenta o valor do coeficiente $a_1$, a terceira linha apresenta a função $v_3(x)$ e a quarta linha apresenta o resultado de $v_3(\frac{l}{2})$ que é o valor de máxima deflexão da viga.
-
-Ressaltando, novamente, que a escolha das funções de forma utilizadas na função aproximadora são de suma importância para o método de Rayleigh-Ritz. Para o uso de matemática simbólica, como nesse exemplo, deve-se tomar ainda mais cuidado com a escolha de tais funções pois, em alguns casos, a integração simbólica toma grande custo computacional. Em casos onde a integração simbólica se torna árdua, ou até mesmo impossível, o uso de algoritmos para integração numérica é necessário.
-
-\section{Resolvendo problemas com o método de Rayleigh-Ritz utilizando funções triangulares em \textit{Python}}
-\label{sec:python_triangular}
-
-O sistema $M\cdot A=B$, encontrado na Seção \ref{sec:mrr_triangular} do Capítulo \ref{cap:mrr}, pode ser resolvido, numericamente, utilizando a linguagem de programação \index[remissivo]{Python}\textit{Python}. A título de comparação serão utilizadas as funções $p(x)=e^x$, $q(x)=e^x$ e $f(x)=x+(2-x)e^x$ que possui função exata $y(x)$ conhecida dada por $y(x)=(x-1)(e^{-x}-1)$.
-
-Viabilizando a implementação do algoritmo, faz-se necessário relembrar $m_{j,i}$ e $b_j$, obtidos em \eqref{eqn:cap_metodo_ray_ritz:tri_func_mji} e \eqref{eqn:cap_metodo_ray_ritz:tri_func_bj}, respectivamente:
+<p>Viabilizando a implementação do algoritmo, faz-se necessário relembrar \(m_{j,i}\) e \(b_j\), obtidos em <span eqref="eqn:cap_metodo_ray_ritz:tri_func_mji"></span> e <span eqref="eqn:cap_metodo_ray_ritz:tri_func_bj"></span>, respectivamente:
 \begin{equation}
 	\label{eqn:python_tri_func_mji}
 	m_{j,i}=\int_{0}^{1} \left [
@@ -150,197 +194,305 @@ Viabilizando a implementação do algoritmo, faz-se necessário relembrar $m_{j,
 	b_j=\int_{0}^{1} 2f(x)\phi_j(x)dx
 	\text{.}
 \end{equation}
+</p>
 
-É útil, também, a definição da função de forma $\phi_i(x)$, feita em \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi}, e sua derivada, $\phi_i'(x)$, obtida em \eqref{eqn:cap_metodo_ray_ritz:tri_func_phi_diff}:
-
+<p>É útil, também, a definição da função de forma \(\phi_i(x)\), feita em <span eqref="eqn:cap_metodo_ray_ritz:tri_func_phi"></span>, e sua derivada, \(\phi_i'(x)\), obtida em <span eqref="eqn:cap_metodo_ray_ritz:tri_func_phi_diff"></span>:
 \begin{equation}
 	\label{eqn:python_tri_func_phi}
 	\phi_i (x) = 
 		\begin{cases}
-			0 							& \mbox{se } 0 \leqslant x \leqslant x_{i - 1}\\
-			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \mbox{se } x_{i-1} < x \leqslant x_i\\
-			\dfrac{x_{i+1}-x}{h_i}		& \mbox{se } x_i < x \leqslant x_{i+1}\\
-			0							& \mbox{se } x_{i+1}<x\leqslant 1
+			0 							& \text{se } 0 \leqslant x \leqslant x_{i - 1}\\
+			\dfrac{x-x_{i-1}}{h_{i-1}} 	& \text{se } x_{i-1} &lt; x \leqslant x_i\\
+			\dfrac{x_{i+1}-x}{h_i}		& \text{se } x_i &lt; x \leqslant x_{i+1}\\
+			0							& \text{se } x_{i+1}&lt;x\leqslant 1
 		\end{cases}
 	\text{,}
 \end{equation}
-
 \begin{equation}
 	\label{eqn:python_tri_func_phi_diff}
 	\phi_i ' (x) = 
 		\begin{cases}
-			0 							& \mbox{se } 0 \leqslant x < x_{i - 1}\\
-			\dfrac{1}{h_{i-1}} 			& \mbox{se } x_{i-1} < x < x_i\\
-			\dfrac{-1}{h_i}				& \mbox{se } x_i < x < x_{i+1}\\
-			0							& \mbox{se } x_{i+1}<x\leqslant 1
+			0 							& \text{se } 0 \leqslant x &lt; x_{i - 1}\\
+			\dfrac{1}{h_{i-1}} 			& \text{se } x_{i-1} &lt; x &lt; x_i\\
+			\dfrac{-1}{h_i}				& \text{se } x_i &lt; x &lt; x_{i+1}\\
+			0							& \text{se } x_{i+1}&lt;x\leqslant 1
 		\end{cases}
 	\text{.}
 \end{equation}
+</p>
 
-Para a resolução do problema, o primeiro passo é importar os componentes a serem utilizados. No Código \ref{py_code_solve_mrr_tri_import} são importados os componentes \textit{numpy}, utilizado para a criação de alguns intervalos numéricos espaçados. Do pacote \textit{math} é importando a constante $e$. Do pacote \textit{sympy} é importado o método \textit{symbols} para a definição de símbolos matemáticos, de \textit{sympy.matrices} é importado o método \textit{zeros} para a criação de um matriz de tamanho determinado preenchida por números zeros e de \textit{sympy.solvers} é importado o método \textit{linsolve} utilizado para a resolução de sistemas lineares. Por último, é importado o pacote \textit{matplotlib.pyplot} como \textit{pyplot}\footnote{Utilizar o comando \textit{import matplotlib.pyplot as pyplot} faz com que, em vez de sempre escrever \textit{matplotlib.pyplot}, se possa escrever apenas \textit{pyplot} nos próximos comandos.} utilizado para plotar gráficos.
+<p>Para a resolução do problema, o primeiro passo é importar os componentes a serem utilizados. No <a href="#code-4-4">Código 4.4</a> são importados os componentes <i>numpy</i>, utilizado para a criação de alguns intervalos numéricos espaçados. Do pacote <i>math</i> é importando a constante \(e\). Do pacote <i>sympy</i> é importado o método <i>symbols</i> para a definição de símbolos matemáticos, de <i>sympy.matrices</i> é importado o método <i>zeros</i> para a criação de um matriz de tamanho determinado preenchida por números zeros e de <i>sympy.solvers</i> é importado o método <i>linsolve</i> utilizado para a resolução de sistemas lineares. Por último, é importado o pacote <i>matplotlib.pyplot</i> como <i>pyplot</i>\footnote{Utilizar o comando <i>import matplotlib.pyplot as pyplot</i> faz com que, em vez de sempre escrever <i>matplotlib.pyplot</i>, se possa escrever apenas <i>pyplot</i> nos próximos comandos.} utilizado para plotar gráficos.</p>
 
+<p><a class="anchor" name="code-4-4"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.4 - Importação dos pacotes utilizados para a resolução.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="1">import numpy
+				from math import e
+				from sympy import symbols
+				from sympy.matrices import zeros
+				from sympy.solvers import linsolve
+				import matplotlib.pyplot as pyplot
+				import matplotlib.patches as patches
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=1, caption={Importação dos pacotes utilizados para a resolução}, captionpos=t, label=py_code_solve_mrr_tri_import]
-import numpy
-from math import e
-from sympy import symbols
-from sympy.matrices import zeros
-from sympy.solvers import linsolve
-import matplotlib.pyplot as pyplot
-import matplotlib.patches as patches
-\end{lstlisting}
-\codigofonte
+<p>Para o uso das funções de forma \(\phi_i(x)\) e \(\phi_i'(x)\), definidas em <span eqref="eqn:python_tri_func_phi"></span> e <span eqref="eqn:python_tri_func_phi_diff"></span>, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função <i>numpy.arange</i>\footnote{A função <i>numpy.arange</i> cria valores espaçados uniformemente dentro de um determinado intervalo.}, em <a href="#code-4-5">Código 4.5</a>. No comando <i>arange</i>. O uso do extremo \(1.0001\) é apenas para garantir que o número \(1\) esteja no conjunto gerado. A variável <i>n</i> representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.</p>
 
-Para o uso das funções de forma $\phi_i(x)$ e $\phi_i'(x)$, definidas em \eqref{eqn:python_tri_func_phi} e \eqref{eqn:python_tri_func_phi_diff}, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função \textit{numpy.arange}\footnote{A função \textit{numpy.arange} cria valores espaçados uniformemente dentro de um determinado intervalo.}, em Código \ref{py_code_solve_mrr_tri_interval}. No comando \textit{arange}. O uso do extremo $1.0001$ é apenas para garantir que o número $1$ esteja no conjunto gerado. A variável \textit{n} representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.
+<p><a class="anchor" name="code-4-5"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.5 - Criação dos intervalos numéricos.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="8">n = 5
+				space = 1/(n + 1)
+				intervals = numpy.arange(0, 1.0001, space)
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=8, caption={Criação dos intervalos numéricos}, captionpos=t, label=py_code_solve_mrr_tri_interval]
-n = 5
-space = 1/(n + 1)
-intervals = numpy.arange(0, 1.0001, space)
-\end{lstlisting}
-\codigofonte
+<p><a class="anchor" name="code-4-6"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.6 - Função de forma \(\phi\) e sua derivada.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="11">def fi(i, x):
+				if x <= intervals[i - 1]:
+					return 0
+				elif x <= intervals[i]:
+					h = (intervals[i] - intervals[i - 1])
+					return ((x - intervals[i - 1]) / h)
+				elif x <= intervals[i + 1]:
+					h = (intervals[i + 1] - intervals[i])
+					return ((intervals[i + 1] - x) / h)
+				else:
+					return 0
+			
+			def fi_diff(i, x):
+				if x <= intervals[i - 1]:
+					return 0
+				elif x <= intervals[i]:
+					return (1 / (intervals[i] - intervals[i - 1]))
+				elif x <= intervals[i + 1]:
+					return (1 / (intervals[i] - intervals[i + 1]))
+				else:
+					return 0
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=11, caption={Função de forma $\phi$ e sua derivada}, captionpos=t, label=py_code_solve_mrr_tri_form_func]
-def fi(i, x):
-    if x <= intervals[i - 1]:
-        return 0
-    elif x <= intervals[i]:
-        h = (intervals[i] - intervals[i - 1])
-        return ((x - intervals[i - 1]) / h)
-    elif x <= intervals[i + 1]:
-        h = (intervals[i + 1] - intervals[i])
-        return ((intervals[i + 1] - x) / h)
-    else:
-        return 0
+<p>Numericamente, as funções \(\phi_i(x)\) e \(\phi_i'(x)\) foram programadas utilizando condicionais, em <a href="#code-4-6">Código 4.6</a>.</p>
 
-def fi_diff(i, x):
-    if x <= intervals[i - 1]:
-        return 0
-    elif x <= intervals[i]:
-        return (1 / (intervals[i] - intervals[i - 1]))
-    elif x <= intervals[i + 1]:
-        return (1 / (intervals[i] - intervals[i + 1]))
-    else:
-        return 0
-\end{lstlisting}
-\codigofonte
+<p>No <a href="#code-4-6">Código 4.6</a> o método utilizado para a integração numérica, que implementa a chamada regra do trapézio, é mostrado. Dentro do método, a variável <i>steps</i> define em quantos intervalos o domínio de integração será dividido. Os parâmetros opcionais <i>*args</i>, do método <i>integrate</i>, são passados para a função a ser integrada, <i>func</i>, e serão utilizados para passar os índices <i>i</i> e <i>j</i> quando necessário.</p>
 
-Numericamente, as funções $\phi_i(x)$ e $\phi_i'(x)$ foram programadas utilizando condicionais, em Código \ref{py_code_solve_mrr_tri_form_func}.
+<p><a class="anchor" name="code-4-7"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.7 - Algoritmo para integração numérica usando a regra dos trapézios.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="32">def integrate(func, start, end, *args):
+				steps = 10000
+				h = ((end - start) / steps)
+				half = h / 2
+				value = 0
+				for i in range(0, steps):
+					dh = func(start + h * i + half, *args)
+					if i == 0 or i == (steps - 1):
+						value += dh
+					else:
+						value += (2 * dh)
+				return (value * (h / 2))
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-No Código \ref{py_code_solve_mrr_tri_form_func} o método utilizado para a integração numérica, que implementa a chamada regra do trapézio, é mostrado. Dentro do método, a variável \textit{steps} define em quantos intervalos o domínio de integração será dividido. Os parâmetros opcionais \textit{*args}, do método \textit{integrate}, são passados para a função a ser integrada, \textit{func}, e serão utilizados para passar os índices $i$ e $j$ quando necessário.
+<p>Para a integração numérica por meio do algoritmo implementado em <a href="#code-4-7">Código 4.7</a> é preciso definir funções com os integrandos de <span eqref="eqn:python_tri_func_mji"></span> e <span eqref="eqn:python_tri_func_bj"></span>. Essas funções são chamadas, no código, de <i>m_intern</i> e <i>b_intern</i>, respectivamente. Na implementação do <a href="#code-4-8">Código 4.8</a>, os métodos <i>m(i, j)</i> e <i>b(i)</i> calculam os elementos das matrizes \(M\) e \(B\), respectivamente. Nesses métodos, é somado 1 aos índices \(i\) e \(j\) pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma \(\phi_i(x)\), elas são indexadas a partir de 1.</p>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=32, caption={Algoritmo para integração numérica usando a regra dos trapézios}, captionpos=t, label=py_code_solve_mrr_tri_integrate]
-def integrate(func, start, end, *args):
-    steps = 10000
-    h = ((end - start) / steps)
-    half = h / 2
-    value = 0
-    for i in range(0, steps):
-        dh = func(start + h * i + half, *args)
-        if i == 0 or i == (steps - 1):
-            value += dh
-        else:
-            value += (2 * dh)
-    return (value * (h / 2))
-\end{lstlisting}
-\codigofonte
+<p><a class="anchor" name="code-4-8"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.8 - Funções utilizadas para criação das matrizes do sistema linear.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="44">def p(x):
+				return e**x
+			
+			def q(x):
+				return e**x
+			
+			def f(x):
+				return (x+(2-x)*e**x)
+			
+			def m_intern(x, i, j):
+				value = p(x) * fi_diff(i, x) * fi_diff(j, x)
+				value = value + q(x) * fi(i, x) * fi(j, x)
+				return value
+			
+			def m(i, j):
+				i = i + 1
+				j = j + 1
+				return integrate(m_intern, 0, 1, i, j)
+			
+			def b_intern(x, i):
+				return (f(x) * fi(i, x))
+			
+			def b(i):
+				i = i + 1
+				return integrate(b_intern, 0, 1, i)
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-Para a integração numérica por meio do algoritmo implementado em Código \ref{py_code_solve_mrr_tri_integrate} é preciso definir funções com os integrandos de \eqref{eqn:python_tri_func_mji} e \eqref{eqn:python_tri_func_bj}. Essas funções são chamadas, no código, de \textit{m\underline{\hspace{.1in}}intern} e \textit{b\underline{\hspace{0.1in}}intern}, respectivamente. Na implementação do Código \ref{py_code_solve_mrr_tri_m_b}, os métodos \textit{m(i, j)} e \textit{b(i)} calculam os elementos das matrizes $M$ e $B$, respectivamente. Nesses métodos, é somado 1 aos índices $i$ e $j$ pois, na programação os elementos são indexados a partir de 0 e, na forma como definimos as funções de forma $\phi_i(x)$, elas são indexadas a partir de 1.
+<p>O próximo passo, consiste em criar a matriz aumentada do sistema, os símbolos que representam as incógnitas e, então, resolvê-lo. Isso é feito no <a href="#code-4-9">Código 4.9</a>.</p>
 
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=44, caption={Funções utilizadas para criação das matrizes do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_m_b]
-def p(x):
-    return e**x
+<p><a class="anchor" name="code-4-9"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.9 - Definição e resolução do sistema linear.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="69">M = zeros(n, n+1)
+				for i in range(0, n):
+					M[i, n] = b(i)
+					M[i, i] = m(i, i)
+					if (i - 1) >= 0:
+						M[i, i - 1] = m(i, i - 1)
+					if (i + 1) < n:
+						M[i, i + 1] = m(i, i + 1)
+				coeficients = symbols('a_0:{}'.format(n))
+				solution, = linsolve(M, coeficients)
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-def q(x):
-    return e**x
+<p>Utilizando a solução do <a href="#code-4-9">Código 4.9</a> e a função exata \(y(x)=(x-1)(e^{-x}-1)\), é possível implementar métodos que representam a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código <a href="#code-4-10">Código 4.10</a>.</p>
 
-def f(x):
-    return (x+(2-x)*e**x)
+<p><a class="anchor" name="code-4-10"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código 4.10 - Plotagem das funções exata e aproximada.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre><code class="language-python line-numbers" data-start="79">def function(solution, x):
+				value = 0
+				i = 0
+				for c in solution:
+					value += c * fi(i + 1, x)
+					i = i + 1
+				return value
+			def function_original(x):
+				return ((x - 1) * (e**(-x) - 1))
+			
+			plot_interval = numpy.arange(0.0, 1.0, 0.01)
+			plot_original = function_original(plot_interval)
+			plot_aprox = []
+			for i in plot_interval:
+				plot_aprox.append(function(solution, i))
+			fig = pyplot.figure()
+			axes = fig.add_subplot(1, 1, 1)
+			color1='tab:blue'
+			color2='tab:orange'
+			axes.plot(plot_interval, plot_aprox, color=color1)
+			axes.plot(plot_interval, plot_original, color=color2)
+			axes.set_title('Rayleigh-Ritz With n=' + str(n))
+			blue_legend = patches.Patch(color=color1, label='Aproximada')
+			orange_legend = patches.Patch(color=color2, label='Exata')
+			pyplot.legend(handles=[blue_legend, orange_legend])
+			pyplot.show()
+			</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
 
-def m_intern(x, i, j):
-    value = p(x) * fi_diff(i, x) * fi_diff(j, x)
-    value = value + q(x) * fi(i, x) * fi(j, x)
-    return value
+<p>Os Códigos: <a href="#code-4-4">Código 4.4</a>, <a href="#code-4-5">Código 4.5</a>, <a href="#code-4-6">Código 4.6</a>, <a href="#code-4-7">Código 4.7</a>, <a href="#code-4-8">Código 4.8</a>, <a href="#code-4-9">Código 4.9</a> e <a href="#code-4-10">Código 4.10</a> são sequênciais e devem ser executados dentro de um único arquivo, por isso suas numerações estão sequênciais. O resultado da execução do código para a resolução do sistema é mostrado na <a href="#pic-4-3">Figura 4.3</a>, onde a curva de cor laranja é a solução exata e a curva de cor azul é a discretização. Para maior precisão do método, pode-se aumentar o valor da variável <i>n</i> do <a href="#code-4-5">Código 4.5</a>, por exemplo, para 10. O gráfico plotado para \(n=10\) é apresentado na <a href="#pic-4-4">Figura 4.4</a>.</p>
 
-def m(i, j):
-    i = i + 1
-    j = j + 1
-    return integrate(m_intern, 0, 1, i, j)
+<p>Quanto maior o valor da variável <i>n</i> no <a href="#code-4-5">Código 4.5</a> maior a precisão, porém, com maior custo computacional. Consequentemente, quanto maior o valor de <i>n</i>, mais tempo o computador levará para a resolução do problema.</p>
 
-def b_intern(x, i):
-    return (f(x) * fi(i, x))
+<p><a class="anchor" name="pic-4-3"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Figura 4.3 - Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com \(n=5\).</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-container">
+			<img src="images/code/code_plot_mrr_triangulate.png" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+	</div>
+</div>
 
-def b(i):
-    i = i + 1
-    return integrate(b_intern, 0, 1, i)
-\end{lstlisting}
-\codigofonte
+<p><a class="anchor" name="pic-4-4"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Figura 4.3 - Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com \(n=10\).</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-container">
+			<img src="images/code/code_plot_mrr_triangulate_n10.png" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+	</div>
+</div>
 
-O próximo passo, consiste em criar a matriz aumentada do sistema, os símbolos que representam as incógnitas e, então, resolvê-lo. Isso é feito no Código \ref{py_code_solve_mrr_tri_solvesys}.
-
-
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=69, caption={Definição e resolução do sistema linear}, captionpos=t, label=py_code_solve_mrr_tri_solvesys]
-M = zeros(n, n+1)
-for i in range(0, n):
-    M[i, n] = b(i)
-    M[i, i] = m(i, i)
-    if (i - 1) >= 0:
-        M[i, i - 1] = m(i, i - 1)
-    if (i + 1) < n:
-        M[i, i + 1] = m(i, i + 1)
-coeficients = symbols('a_0:{}'.format(n))
-solution, = linsolve(M, coeficients)
-\end{lstlisting}
-\codigofonte
-
-Utilizando a solução do Código \ref{py_code_solve_mrr_tri_solvesys} e a função exata $y(x)=(x-1)(e^{-x}-1)$, é possível implementar métodos que representam a função exata e a função aproximada, plotando-as no mesmo gráfico, como feito no Código \ref{py_code_solve_mrr_tri_plot}.
-
-\begin{lstlisting}[style=Python, xleftmargin=2em, numbers=left, firstnumber=79, caption={Plotagem das funções exata e aproximada}, captionpos=t, label=py_code_solve_mrr_tri_plot]
-def function(solution, x):
-    value = 0
-    i = 0
-    for c in solution:
-        value += c * fi(i + 1, x)
-        i = i + 1
-    return value
-def function_original(x):
-    return ((x - 1) * (e**(-x) - 1))
-
-plot_interval = numpy.arange(0.0, 1.0, 0.01)
-plot_original = function_original(plot_interval)
-plot_aprox = []
-for i in plot_interval:
-    plot_aprox.append(function(solution, i))
-fig = pyplot.figure()
-axes = fig.add_subplot(1, 1, 1)
-color1='tab:blue'
-color2='tab:orange'
-axes.plot(plot_interval, plot_aprox, color=color1)
-axes.plot(plot_interval, plot_original, color=color2)
-axes.set_title('Rayleigh-Ritz With n=' + str(n))
-blue_legend = patches.Patch(color=color1, label='Aproximada')
-orange_legend = patches.Patch(color=color2, label='Exata')
-pyplot.legend(handles=[blue_legend, orange_legend])
-pyplot.show()
-\end{lstlisting}
-\codigofonte
-
-Os Códigos \ref{py_code_solve_mrr_tri_import}, \ref{py_code_solve_mrr_tri_interval}, \ref{py_code_solve_mrr_tri_form_func}, \ref{py_code_solve_mrr_tri_integrate}, \ref{py_code_solve_mrr_tri_m_b}, \ref{py_code_solve_mrr_tri_solvesys} e \ref{py_code_solve_mrr_tri_plot} são sequênciais e devem ser executados dentro de um único arquivo, por isso suas numerações estão sequênciais. O resultado da execução do código para a resolução do sistema é mostrado na Figura \ref{fig:code_plot_mrr_triangulate}, onde a curva de cor laranja é a solução exata e a curva de cor azul é a discretização. Para maior precisão do método, pode-se aumentar o valor da variável \textit{n} do Código \ref{py_code_solve_mrr_tri_interval}, por exemplo, para 10. O gráfico plotado para $n=10$ é apresentado na Figura \ref{fig:code_plot_mrr_triangulate_n10}.
-
-Quanto maior o valor da variável \textit{n} no Código \ref{py_code_solve_mrr_tri_interval} maior a precisão, porém, com maior custo computacional. Consequentemente, quanto maior o valor de \textit{n}, mais tempo o computador levará para a resolução do problema.
-
-\begin{figure}[h]
-	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=5$.}
-	\centering
-	\includegraphics[scale=0.65]{../figuras/code/code_plot_mrr_triangulate.png}
-	\label{fig:code_plot_mrr_triangulate}
-	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
-\end{figure}
-
-\begin{figure}[h]
-	\caption{Resultado do método de Rayleigh-Ritz utilizando funções de forma triangulares com $n=10$.}
-	\centering
-	\includegraphics[scale=0.65]{../figuras/code/code_plot_mrr_triangulate_n10.png}
-	\label{fig:code_plot_mrr_triangulate_n10}
-	\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
-\end{figure}-->
+<script type="text/javascript">
+window.references = [];
+window.references['ex:mrr_ex_livro'] = {
+	type: 'example',
+	value: 'Exemplo 2.1',
+	extLink: 'part3.html#ex:mrr_ex_livro'
+};
+window.references['cap:mrr'] = {
+	type: 'chapter',
+	value: 'Capítulo 3',
+	extLink: 'part3.html#mrr'
+};
+window.references['sec:mrr_triangular'] = {
+	type: 'section',
+	value: 'Seção 3.1',
+	extLink: 'part3.html#uso-tri-mrr'
+};
+</script>
