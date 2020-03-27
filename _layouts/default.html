@@ -316,6 +316,9 @@
         if (!window.references) {
 		    window.references = [];
         }
+        if (!window.chapter) {
+            window.chapter = "";
+        }
 		function createNumbers(query, options) {
 			var objs = document.querySelectorAll(query);
 			var id = 1;
@@ -323,8 +326,7 @@
 				if (options.style == 'title') {
                     var label = objs[i].getAttribute('data-label');
 					var titleObj = objs[i].querySelector(options.titleQuery);
-                    var aRef = '<a class="anchor" name="' + label + '"></a>';
-					var title = aRef + options.titlePrefix + id;
+					var title = options.titlePrefix + id;
 					id++;
 					titleObj.innerHTML = title;
                     window.references[label] = {
@@ -345,18 +347,17 @@
                 type: 'lema',
 				style: 'title',
 				titleQuery: '.docs-lema-title',
-				titlePrefix: 'Lema 2.'
+				titlePrefix: 'Lema ' + window.chapter + '.'
 			});
 			// examples
 			createNumbers('.docs-example', {
                 type: 'example',
 				style: 'title',
 				titleQuery: '.docs-example-title',
-				titlePrefix: 'Exemplo 2.'
+				titlePrefix: 'Exemplo ' + window.chapter + '.'
 			});
             // equations
             var eqs = document.querySelectorAll('.docs-equation');
-            var chap = 2;
             var equationId = 1;
             for(var i = 0; i < eqs.length; i++) {
                 var eq = eqs[i];
@@ -368,10 +369,10 @@
                 if (numBox == null || numBox == undefined) {
                     continue;
                 }
-                numBox.innerHTML = '(' + chap + '.' + equationId + ')';
+                numBox.innerHTML = '(' + window.chapter + '.' + equationId + ')';
 				window.references[label] = {
 					type: 'equation',
-					value: chap + '.' + equationId
+					value: window.chapter + '.' + equationId
 				}
                 equationId++;
             }
