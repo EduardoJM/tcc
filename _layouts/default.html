@@ -317,6 +317,11 @@
 					var title = options.titlePrefix + id;
 					id++;
 					titleObj.innerHTML = title;
+                    var label = objs[i].getAttribute('data-label');
+                    references[label] = {
+                        type: options.type,
+                        value: title
+                    };
 				}
 			}
 		}
@@ -328,12 +333,14 @@
             document.querySelector('main.docs-content').innerHTML = html;
 			// lemas
 			createNumbers('.docs-lema', {
+                type: 'lema',
 				style: 'title',
 				titleQuery: '.docs-lema-title',
 				titlePrefix: 'Lema 2.'
 			});
 			// examples
 			createNumbers('.docs-example', {
+                type: 'example',
 				style: 'title',
 				titleQuery: '.docs-example-title',
 				titlePrefix: 'Exemplo 2.'
@@ -372,6 +379,16 @@
                     console.log("eqref not found: " + label);
                 }
 			}
+            // ref's
+            var refs = document.querySelectorAll('[ref]');
+            for(var i = 0; i < refs.length; i++) {
+                var label = refs[i].getAttribute('ref');
+                if (references.hasOwnProperty(label)) {
+                    refs[i].innerHTML = '<a href="#' + label + '">' + references[label].value + '</a>';
+                } else {
+                    console.log("ref not found: " + label);
+                }
+            }
             // katex math
             renderMathInElement(document.body, {});
         });
