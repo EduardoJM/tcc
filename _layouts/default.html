@@ -315,12 +315,12 @@
 			var id = 1;
 			for (var i = 0; i < objs.length; i++) {
 				if (options.style == 'title') {
+                    var label = objs[i].getAttribute('data-label');
 					var titleObj = objs[i].querySelector(options.titleQuery);
                     var aRef = '<a class="anchor" name="' + label + '"></a>';
 					var title = aRef + options.titlePrefix + id;
 					id++;
 					titleObj.innerHTML = title;
-                    var label = objs[i].getAttribute('data-label');
                     window.references[label] = {
                         type: options.type,
                         value: title
