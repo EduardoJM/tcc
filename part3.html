@@ -4,13 +4,13 @@ title: Método de Rayleigh-Ritz
 ---
 <h1 class="docs-title" id="mrr">3 Método de Rayleigh-Ritz</h1>
 
-<p>Um dos objetivos do cálculo variacional é encontrar uma função \(y(x)\) que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função \(y(x)\) é encontrando a Equação de Euler-Lagrange, ver Seção \ref{sec:eq_euler_lagrange} e \ref{sec:eq_euler_lagrange_superior} do Capítulo \ref{cap:calc_var}, associada ao problema e, então, resolvê-la. </p>
+<p>Um dos objetivos do cálculo variacional é encontrar uma função \(y(x)\) que, dentre as funções admissíveis torna o funcional estacionário. Uma das formas para se encontrar a função \(y(x)\) é encontrando a Equação de Euler-Lagrange, ver <span ref="sec:eq_euler_lagrange"></span> e <span ref="sec:eq_euler_lagrange_superior"></span> do <span ref="cap:calc_var"></span>, associada ao problema e, então, resolvê-la. </p>
 
 <p>A resolução de equações diferenciais e a determinação da solução exata por meio das condições de contorno do problema é, entretanto,  uma tarefa trabalhosa e, em muitos casos, até não factível. Para se esquivar de problemas como esses, surgem alguns métodos, dentre os quais está o método de Rayleigh-Ritz.</p>
 
 <p>As explicações e os conceitos aqui utilizados foram elaboradas tomando como referências os autores \citeonline{mefassan} e \citeonline{MRR_Deflex}.</p>
 
-<p>O \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz propõe que a função \(y(x)\), exata, seja substituída por uma função aproximada \(v(x)\) que é formada pela combinação linear de funções \(\phi _i(x)\). Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.</p>
+<p>O <a class="anchor" name="rem-mrr-1"></a>método de Rayleigh-Ritz propõe que a função \(y(x)\), exata, seja substituída por uma função aproximada \(v(x)\) que é formada pela combinação linear de funções \(\phi _i(x)\). Uma das vantagens do uso do método é que ele não requer que as condições de contorno naturais sejam satisfeitas \cite{GROSSI_2001}. Deste modo, o método é empregado principalmente em problemas onde as condições de contorno naturais são de difícil resolução.</p>
 
 <p>Considerando o funcional
 <div class='docs-equation-hbox'>\[
@@ -22,7 +22,7 @@ com as condições de contorno \(y(x_1)=y(x_2)=0\), então a função \(y(x)\) �
 	v(x) = \sum_{i=1}^n a_i \phi _i (x)
 	\text{,}
 \]</div>
-onde os coeficientes \(a_i \in \mathbb{R}\) são chamados de \index[remissivo]{Parâmetros de Deslocamento}parâmetros de deslocamento, as funções \(\phi_i(x)\) são chamadas de \index[remissivo]{Função de Forma}funções de forma e devem ser linearmente independentes. As funções \(\phi_i(x)\) devem ser, também, diferenciáveis até a ordem \(m\), onde \(m\) é a ordem da maior derivada do funcional. A função \(v(x)\) é chamada de \index[remissivo]{Função Aproximadora}função aproximadora.</p>
+onde os coeficientes \(a_i \in \mathbb{R}\) são chamados de <a class="anchor" name="rem-param-desloc-1"></a>parâmetros de deslocamento, as funções \(\phi_i(x)\) são chamadas de <a class="anchor" name="rem-func-forma-1"></a>funções de forma e devem ser linearmente independentes. As funções \(\phi_i(x)\) devem ser, também, diferenciáveis até a ordem \(m\), onde \(m\) é a ordem da maior derivada do funcional. A função \(v(x)\) é chamada de <a class="anchor" name="rem-func-approx-1"></a>função aproximadora.</p>
 
 <p>Substituindo \(y\) por \(v\) no funcional, \(I\) passa a ser uma função de \(a_1\), \(a_2\), \(\dots\), \(a_n\), isto é, \(I=I(a_1, a_2, \dots, a_n)\). A condição de máximo ou mínimo para o funcional \(I\) é, então, que as suas derivadas parciais em relação a \(a_1\), \(a_2\), \(\dots\), \(a_n\) se anulem, ou seja
 <div class='docs-equation-hbox'>\[
@@ -794,11 +794,11 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	</div>
 </div>
 
-<p>A função \(v_3(x)\), apresentada em <span eqref="eqn:cap_metodo_ray_ritz:func_v3"></span>, no Exemplo \ref{ex:mrr_ex_livro}, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Existem alguns critérios de convergência, que não serão tratados aqui devido sua complexidade, porém, ainda com os critérios de convergência a escolha das funções aproximadoras é uma tarefa que envolve tentativas e erros até que o resultado seja satisfatório. </p>
+<p>A função \(v_3(x)\), apresentada em <span eqref="eqn:cap_metodo_ray_ritz:func_v3"></span>, no <span ref="ex:mrr_ex_livro"></span>, é a função exata procurada. A escolha correta das funções de forma para a construção da função aproximadora é de suma importância para um bom resultado no método de Rayleigh-Ritz. Existem alguns critérios de convergência, que não serão tratados aqui devido sua complexidade, porém, ainda com os critérios de convergência a escolha das funções aproximadoras é uma tarefa que envolve tentativas e erros até que o resultado seja satisfatório. </p>
 
-<p>Por exemplo, o funcional <span eqref="eqn:cap_metodo_ray_ritz:exemplo_func_pi"></span> do Exemplo \ref{ex:mrr_ex_livro} tem sua função \(v(x)\) exata conhecida, do Exemplo \ref{ex:cond_contorno}, facilitando, desta forma, a escolha das funções de forma. Como a função exata \(v(x)\) é uma função polinomial de grau 4, a escolha da função aproximadora como uma função polinomial foi bem prática.</p>
+<p>Por exemplo, o funcional <span eqref="eqn:cap_metodo_ray_ritz:exemplo_func_pi"></span> do <span ref="ex:mrr_ex_livro"></span> tem sua função \(v(x)\) exata conhecida, do Exemplo <span ref="ex:cond_contorno"></span>, facilitando, desta forma, a escolha das funções de forma. Como a função exata \(v(x)\) é uma função polinomial de grau 4, a escolha da função aproximadora como uma função polinomial foi bem prática.</p>
 
-<p>Devido a função exata \(v(x)\) ser uma função polinomial de grau 4, caso a função aproximadora escolhida, no Exemplo \ref{ex:mrr_ex_livro}, não fosse uma função polinomial de grau 4 ou superior, dificilmente a mesma se tornaria a função exata no \index[remissivo]{Método de Rayleigh-Ritz}método de Rayleigh-Ritz.</p>
+<p>Devido a função exata \(v(x)\) ser uma função polinomial de grau 4, caso a função aproximadora escolhida, no <span ref="ex:mrr_ex_livro"></span>, não fosse uma função polinomial de grau 4 ou superior, dificilmente a mesma se tornaria a função exata no <a class="anchor" name="rem-mrr-2"></a>método de Rayleigh-Ritz.</p>
 
 <h2 class="docs-subtitle" id="uso-tri-mrr">3.1 O uso de funções triangulares no método de Rayleigh-Ritz</h2>
 
@@ -818,7 +818,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
-associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos. A \index[remissivo]{Função Triangular}função triangular trabalhada é definida como
+associado ao Problema de Valor de Contorno que modela a deflexão de uma viga apoiada sobre seus extremos. A <a class="anchor" name="rem-func-tri-1"></a>função triangular trabalhada é definida como
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_phi">
 	<div class="docs-equation-eq">
 		\[
@@ -1061,4 +1061,28 @@ onde \(j=1,2,\dots,n\). Seja as matrizes \(M=[m_{j,i}]\) de ordem \(n\times n\),
 
 <p>A partir de <span eqref="eqn:cap_metodo_ray_ritz:tri_func_phi"></span> e <span eqref="eqn:cap_metodo_ray_ritz:tri_func_phi_diff"></span>, os produtos \(\phi_i(x)\phi_j(x)\) e \(\phi_i'(x)\phi_j'(x)\) são não nulos apenas quando \(i=j-1\), \(i=j\) e \(i=j+1\). Consequentemente, \(m_{j,i}\) é não nulo apenas para \(i=j-1\), \(i=j\) e \(i=j+1\).</p>
 
-<p>A construção do sistema \(M\cdot A=B\) e sua resolução, pelo \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan, serão implementado na linguagem de programação \textit{Python} na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.</p>
+<p>A construção do sistema \(M\cdot A=B\) e sua resolução, pelo <a class="anchor" name="rem-mgj-1"></a>método de Gauss-Jordan, serão implementado na linguagem de programação \textit{Python} na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.</p>
+
+<script type="text/javascript">
+window.references = [];
+window.references['sec:eq_euler_lagrange'] = {
+	type: 'section',
+	value: 'Seção 2.1',
+	extLink: 'part2.html#eq-euler-lagrange'
+};
+window.references['sec:eq_euler_lagrange_superior'] = {
+	type: 'section',
+	value: 'Seção 2.3',
+	extLink: 'part2.html#eq-euler-lagrange-multi'
+};
+window.references['cap:calc_var'] = {
+	type: 'chapter',
+	value: 'Capítulo 2',
+	extLink: 'part2.html#calculo-variacional'
+};
+window.references['ex:cond_contorno'] = {
+	type: 'example',
+	value: 'Exemplo 2.2',
+	extLink: 'part2.html#ex:cond_contorno'
+};
+</script>
