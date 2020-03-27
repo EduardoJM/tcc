@@ -215,7 +215,7 @@ que, a partir da condição necessária <span eqref="eqn:cap_calc_var:extrem_con
 		\right )
 	\right )\eta dx = 0	\text{.}
 \]</div>
-permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
+permitindo, pelo Lema <span ref="lema:cap_calcvar_lema_1"></span>, obter a seguinte equação:
 <div class="docs-equation" data-label="eqn:cap_calc_var:euler_lagrange">
 	<div class="docs-equation-eq">
 	\[
@@ -235,7 +235,7 @@ permitindo, pelo Lema \ref{lema:cap_calcvar_lema_1}, obter a seguinte equação:
 	I=\int_{x_1}^{x_2} f(x, y, y')dx
 	\text{,}
 \]</div>
-tem-se, da Seção \ref{sec:eq_euler_lagrange}, que sua condição de estacionariedade é dada por
+tem-se, da Seção <span ref="sec:eq_euler_lagrange"></span>, que sua condição de estacionariedade é dada por
 <div class="docs-equation" data-label="eqn:cap_calc_var:cond_boundary">
 	<div class="docs-equation-eq">
 	\[
@@ -304,7 +304,7 @@ aparecem diversas condições de contorno parecidas com <span eqref="eqn:cap_cal
 
 <p>Outro tipo de condições de contorno que aparecem com problemas do cálculo variacional são condições de contorno geométricas. As condições de contorno geométricas precisam, necessariamente serem satisfeitas e são denominadas de condições de <a class="anchor" name="rem-cond-cont-ess-1"></a><a class="anchor" name="rem-cond-cont-diri-1"></a>contorno essenciais ou, ainda, problemas de valor de contorno de Dirichlet.</p>
 
-<p>A equação de Euler-Lagrange é uma equação diferencial e, quando resolvida, fornece uma solução geral, em função de suas constantes. Para determinar essas constantes e, deste modo, a solução particular para a equação de Euler-Lagrange trabalhada é necessário o uso tanto das condições de contorno naturais quanto das condições de contorno essenciais, como poderá ser visto no <span ref="ex:cond_contorno"></span> da Seção \ref{sec:calcvar_exemplos}.</p>
+<p>A equação de Euler-Lagrange é uma equação diferencial e, quando resolvida, fornece uma solução geral, em função de suas constantes. Para determinar essas constantes e, deste modo, a solução particular para a equação de Euler-Lagrange trabalhada é necessário o uso tanto das condições de contorno naturais quanto das condições de contorno essenciais, como poderá ser visto no <span ref="ex:cond_contorno"></span> da <span ref="sec:calcvar_exemplos"></span>.</p>
 
 <h2 class="docs-subtitle" id="eq-euler-lagrange-multi">Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior</h2>
 
@@ -657,7 +657,7 @@ de onde, reorganizando os termos e colocando \(\eta\) em evidência, e, finalmen
 </div>
 </p>
 
-<p>A segunda parcela de <span eqref="eqn:cap_calc_var:cond_with_naturalbound"></span>, \(\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}\), é uma das chamadas <a class="anchor" name="rem-cond-cont-nat-2"></a>Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais são tratadas na Seção \ref{sec:cond_contorno}. Devido, então, ao fato de que a mesma deve-se anular, resta que
+<p>A segunda parcela de <span eqref="eqn:cap_calc_var:cond_with_naturalbound"></span>, \(\dfrac{\partial f}{\partial y''}\eta '\Big|_{x_1}^{x_2}\), é uma das chamadas <a class="anchor" name="rem-cond-cont-nat-2"></a>Condições de Contorno Naturais e deve-se anular para que o funcional se torne estacionário. Porém, o foco nessa parte é tratar a equação de Euler-Lagrange, que é uma condição necessária, mas não suficiente, para que o funcional se torne estacionário. As Condições de Contorno Naturais são tratadas na <span ref="sec:cond_contorno"></span>. Devido, então, ao fato de que a mesma deve-se anular, resta que
 <div class="docs-equation" data-label="eqn:cap_calc_var:func_2_derivadas_final">
 	<div class="docs-equation-eq">
 	\[
@@ -679,7 +679,7 @@ de onde, reorganizando os termos e colocando \(\eta\) em evidência, e, finalmen
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
-onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em <span eqref="eqn:cap_calc_var:func_2_derivadas_final"></span>, a <a class="anchor" name="rem-eq-euler-lagrange-2"></a>equação de Euler-Lagrange obtida é
+onde, utilizando o Lema <span ref="lema:cap_calcvar_lema_1"></span> em <span eqref="eqn:cap_calc_var:func_2_derivadas_final"></span>, a <a class="anchor" name="rem-eq-euler-lagrange-2"></a>equação de Euler-Lagrange obtida é
 <div class="docs-equation" data-label="eqn:cap_calc_var:eq_euler_lagrange_twodiff">
 	<div class="docs-equation-eq">
 	\[
@@ -703,7 +703,7 @@ onde, utilizando o Lema \ref{lema:cap_calcvar_lema_1} em <span eqref="eqn:cap_ca
 
 <h3 class="docs-subsubtitle" id="eq-euler-lagrange-multi-geral">Equação geral</h3>
 
-<p>Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem \(n\), o processo para a obtenção da equação de Euler-Lagrange é análogo. Em <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_separar"></span> deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a \(n\)-ésima parcela seja integrada \(n-1\) vezes, também por partes. Ao fim do processo, a <a class="anchor" name="rem-eq-euler-lagrange-3"></a>equação de Euler-Lagrange será obtida fazendo \(I'(0)=0\), isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema \ref{lema:cap_calcvar_lema_1}. Deste modo, a equação encontrada é
+<p>Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem \(n\), o processo para a obtenção da equação de Euler-Lagrange é análogo. Em <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_separar"></span> deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a \(n\)-ésima parcela seja integrada \(n-1\) vezes, também por partes. Ao fim do processo, a <a class="anchor" name="rem-eq-euler-lagrange-3"></a>equação de Euler-Lagrange será obtida fazendo \(I'(0)=0\), isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema <span ref="lema:cap_calcvar_lema_1"></span>. Deste modo, a equação encontrada é
 <div class="docs-equation" data-label="eqn:cap_calc_var:euler_lagrange_nesimo">
 	<div class="docs-equation-eq">
 	\[
@@ -861,7 +861,7 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
     <div class="docs-example-sol-title">Solução</div>
     <div class="docs-example-sol">
 
-		<p>A determinação de \(v(x)\) pode ser feita diretamente utilizando a equação de Euler-Lagrange (Ver Seção \ref{sec:eq_euler_lagrange}), porém, aqui será repetido o processo, mostrando que as condições de contorno naturais realmente surgem durante o processo de obtenção da equação. Variando \(v\) por \(\overline{v}_{\varepsilon}=v+\varepsilon \eta\) em <span eqref="eqn:cap_calc_var:funcional_pi"></span>, tem-se
+		<p>A determinação de \(v(x)\) pode ser feita diretamente utilizando a equação de Euler-Lagrange (Ver Seção <span ref="sec:eq_euler_lagrange"></span>), porém, aqui será repetido o processo, mostrando que as condições de contorno naturais realmente surgem durante o processo de obtenção da equação. Variando \(v\) por \(\overline{v}_{\varepsilon}=v+\varepsilon \eta\) em <span eqref="eqn:cap_calc_var:funcional_pi"></span>, tem-se
 		<div class='docs-equation-hbox'>\[
 			\Pi(\varepsilon) = \frac{1}{2} \int_{0}^{l}
 				EI \left (
@@ -1060,3 +1060,21 @@ onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial
         <span class="docs-example-sol-qed-symbol"></span>
     </div>
 </div>
+<script type="text/javascript">
+window.references = [];
+window.references['sec:cond_contorno'] = {
+	type: 'section',
+	value: 'Seção 2.2',
+	extLink: '#docs-subtitle'
+};
+window.references['sec:eq_euler_lagrange'] = {
+	type: 'section',
+	value: 'Seção 2.1',
+	extLink: '#eq-euler-lagrange'
+};
+window.references['sec:calcvar_exemplos'] = {
+	type: 'section',
+	value: 'Seção 2.4',
+	extLink: '#exemplo'
+};
+</script>
