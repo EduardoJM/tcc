@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" />
     <style>
+        /*
         .docs-navbar {
             position: -webkit-sticky;
             position: sticky;
@@ -16,6 +17,7 @@
             min-height: 4rem;
             background-color: #01579b
         }
+        */
 
         .docs-sidebar {
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -34,12 +36,17 @@
                 .docs-sidebar {
                     position: -webkit-sticky;
                     position: sticky;
+                    /* this is for navbar:
                     top: 4rem;
+                    height: calc(100vh - 4rem);*/
+                    top: 0;
+                    height: 100vh;
                     z-index: 1000;
-                    height: calc(100vh - 4rem);
                 }
                 .docs-toc-nav {
-                    max-height:calc(100vh - 4rem);
+                    /* this is for navbar:
+                    max-height:calc(100vh - 4rem);*/
+                    max-height: 100vh;
                     overflow-y:auto
                 }
             }
@@ -219,6 +226,7 @@
 </head>
 <body>
 
+    <!--
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row docs-navbar">
         <div class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
@@ -228,6 +236,7 @@
             </ul>
         </div>
     </header>
+    -->
 
 
     <div class="container-fluid">
@@ -281,8 +290,8 @@
             </div>
             <main class="col-md-9 py-md-3 pl-md-5 docs-content">
 
-				{{ content }}
-
+                {{ content }}
+                
             </main>
         </div>
     </div>
