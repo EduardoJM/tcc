@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Template</title>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous" />
+    <!-- Local -->
+    <link rel="stylesheet" href="assets/styles/docs.css" />
+</head>
+<body>
+    
+    <header>
+        <nav class="blue darken-4">
+            <div class="nav-wrapper">
+                <ul class="left hide-on-large-only">
+                    <li>
+                        <a data-target="sidebar" class="sidenav-trigger" href="#">
+                            <i class="material-icons">menu</i>
+                        </a>
+                    </li>
+                </ul>
+                <form id="search-form">
+                    <div class="input-field">
+                        <input class="autocomplete" id="search-bar-input" type="text" required="required" />
+                        <label class="label-icon" for="search-bar-input"><i class="material-icons">search</i></label>
+                    </div>
+                </form>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul id="sidebar" class="sidenav sidenav-fixed">
+            <li class="logo">
+                <img src="https://static.softblue.com.br/images/sbv3/sbv3_logotipoSoftblue.png" />
+            </li>
+            <!-- Início -->
+            <li class="bold">
+                <a href="#">Início</a>
+            </li>
+            <!-- Pré-Textual -->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-blue" tabindex="0">
+                            <span>
+                                Pré-Textual
+                            </span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="#">Resumo</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lista de Ilustrações</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lista de Códigos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lista de Tabelas</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Sumário -->
+            <li class="bold">
+                <a class="waves-effect waves-blue" href="#">Sumário</a>
+            </li>
+            <!-- Introdução -->
+            <li class="bold">
+                <a class="waves-effect waves-blue" href="#">Introdução</a>
+            </li>
+            <!-- Contexto Histórico -->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-blue" tabindex="0">
+                            <span>
+                                Contexto Histórico
+                            </span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="#">Contexto Histórico</a>
+                                </li>
+                                <li>
+                                    <a href="#">Máximos e mínimos</a>
+                                </li>
+                                <li>
+                                    <a href="#">O cálculo variacional</a>
+                                </li>
+                                <li>
+                                    <a href="#">O método de Rayleigh-Ritz</a>
+                                </li>
+                                <li>
+                                    <a href="#">A linguagem Python</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Cálculo Variacional -->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-blue" tabindex="0">
+                            <span>
+                                Cálculo Variacional
+                            </span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="#">Cálculo Variacional</a>
+                                </li>
+                                <li>
+                                    <a href="#">Equação de Euler-Lagrange</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="ellipsis-block">
+                                            Condições de contorno naturais e essenciais
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="ellipsis-block">
+                                            Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Exemplos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Método de Rayleigh-Ritz -->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-blue" tabindex="0">
+                            <span>
+                                Método de Rayleigh-Ritz
+                            </span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="#">Método de Rayleigh-Ritz</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="ellipsis-block">
+                                            O uso de funções triangulares no método de Rayleigh-Ritz
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Utilizando o Método de Rayleigh-Ritz na linguagem Python -->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-blue" tabindex="0">
+                            <span class="ellipsis-block">
+                                Utilizando o Método de Rayleigh-Ritz na Linguagem Python
+                            </span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="ellipsis-block">
+                                            Utilizando o Método de Rayleigh-Ritz na Linguagem Python
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="ellipsis-block">
+                                            Resolvendo problemas com o método de Rayleigh-Ritz utilizando funções triangulares em Python
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Considerações Finais -->
+            <li class="bold">
+                <a class="waves-effect waves-blue" href="#">Considerações Finais</a>
+            </li>
+            <!-- Apêndices -->
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-blue" tabindex="0">
+                            <span>Apêndices</span>
+                            <i class="material-icons">arrow_drop_down</i>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="#">Conceitos de Análise no R<sup>n</sup></a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="ellipsis-block">
+                                            Encontrando a máxima deflexão da viga estudada
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Breve introdução à linguagem Python</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Índice Remissivo -->
+            <li class="bold">
+                <a class="waves-effect waves-blue" href="#">Índice Remissivo</a>
+            </li>
+            <!-- Referências -->
+            <li class="bold">
+                <a class="waves-effect waves-blue" href="#">Referências</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="content-heading blue darken-4 white-text">
+            <div class="container">
+                <h1 {% if page.hash %} id="{{ page.hash }}" {% endif %} class="title light">
+                    {{ page.title }}
+                </h1>
+            </div>
+        </div>
+
+        <div class="container">
+
+            {{ content }}
+                
+        </div>
+    </main>
+
+    <input type="text" id="temp-copy" style="position: fixed; top: 0; left: 0; z-index: -9999999; width: 0; height: 0;" />
+
+    <!-- Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- KaTeX -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+    <!-- Local -->
+    <script src="assets/data/bib.js"></script>
+    <script src="assets/scripts/bibref.js"></script>
+    <script src="assets/scripts/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+#sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+#sidebar .ellipsis-block {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#sidebar > li.bold > a {
+    padding: 0 16px;
+}
+#sidebar > li.logo {
+    padding: 32px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sidebar .collapsible-header {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: start;
+}
+#sidebar .collapsible-header > span {
+    flex: 1;
+}
+#sidebar .collapsible-header > i {
+    margin: 0;
+    transition: all 0.5s;
+}
+#sidebar .collapsible .active .collapsible-header i {
+    transform: rotateZ(-180deg);
+}
+#sidebar .waves-effect.waves-blue .waves-ripple {
+    background: #2196f3; /* blue */
+}
+
+header > nav .sidenav-trigger {
+    margin: 0;
+}
+header > nav > .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+header > nav > .nav-wrapper > form {
+    flex: 1;
+}
+#search-form {
+    position: relative;
+}
+#search-form input[type=text]{
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    background: #1565c0; /* blue darken-3 */
+    border-radius: 4px;
+    transition: all 0.5s;
+    padding-left: 40px;
+    color: #FFF;
+}
+#search-form input[type=text]:focus {
+    background: #FFF;
+    color: #000;
+    border: none;
+    box-shadow: unset;
+    border-radius: 4px 4px 0 0;
+}
+#search-form input[type=text] ~ label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    transition: all 0.5s;
+}
+#search-form input[type=text]:focus ~ label i {
+    color: #000;
+}
+#search-form .autocomplete-content > li span {
+    color: #000;
+}
+#search-form .autocomplete-content li .highlight {
+    color: #0d47a1; /* blue darken-4 */
+}
+
+
+main .content-heading {
+    height: 150px;
+}
+main .content-heading .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+main .content-heading h1 {
+    margin: 0;
+    font-size: 3.5rem;
+}
+main h2.subtitle {
+    font-size: 2.4rem;
+}
+main h3.subsubtitle {
+    font-size: 2rem;
+}
+main h1[id] .share-link,
+main h2[id] .share-link,
+main h3[id] .share-link,
+main h4[id] .share-link,
+main h5[id] .share-link,
+main h6[id] .share-link {
+    margin-left: 25px;
+    opacity: 0;
+    cursor: default;
+    font-size: 0.6em;
+    transition: all 1s;
+}
+main h1[id]:hover .share-link,
+main h2[id]:hover .share-link,
+main h3[id]:hover .share-link,
+main h4[id]:hover .share-link,
+main h5[id]:hover .share-link,
+main h6[id]:hover .share-link {
+    opacity: 1;
+    cursor: pointer;
+}
+
+main p {
+    text-align: justify;
+    text-indent: 2cm;
+}
+
+
+/*
+ * Picture env
+ */
+.picture {
+    margin: 20px 0;
+}
+.picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.picture-container > img {
+    max-width: 100%;
+}
+.picture-caption {
+    font-weight: bold;
+    text-align: center;
+}
+.picture-subcaption {
+    text-align: center;
+}
+.picture-source {
+    text-align: center;
+}
+/*
+ * equations
+ */
+.docs-equation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    max-width: 100%;
+}
+.docs-equation > .docs-equation-eq {
+    flex: 1;
+    overflow-x: auto;
+}
+.docs-equation-hbox {
+    max-width: 100%;
+    overflow-x: auto;
+}
+/*
+ * Example and Lema env
+ */
+.docs-lema,
+.docs-example {
+    display: flex;
+    flex-direction: column;
+    background: #EEE;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+.docs-lema > .docs-lema-title,
+.docs-lema > .docs-lema-proof-title,
+.docs-example > .docs-example-title,
+.docs-example > .docs-example-sol-title {
+    padding: 4px 8px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 4px;
+}
+.docs-lema > .docs-lema-content,
+.docs-lema > .docs-lema-proof,
+.docs-example > .docs-example-content,
+.docs-example > .docs-example-sol {
+    padding: 4px 8px;
+}
+.docs-lema > .docs-lema-proof-qed,
+.docs-example > .docs-example-sol-qed {
+    padding: 4px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.docs-lema > .docs-lema-proof-qed > .docs-lema-proof-qed-symbol,
+.docs-example > .docs-example-sol-qed > .docs-example-sol-qed-symbol {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #000;
+}
+
+
+/* medium and small devices */
+@media (max-width: 992px) {
+    main h1[id] .share-link,
+    main h2[id] .share-link,
+    main h3[id] .share-link,
+    main h4[id] .share-link,
+    main h5[id] .share-link,
+    main h6[id] .share-link {
+        opacity: 0.6; /* can't hover in mobile */
+    }
+}
+
+/* large devices */
+@media (min-width: 992px) {
+    header > nav {
+        padding-left: calc(300px + 10px);
+        padding-right: 10px;
+    }
+    main {
+        padding-left: 300px;
+    }
+    main .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+}
