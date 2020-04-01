@@ -1,0 +1,182 @@
+---
+layout: default
+title: Apêndice A - Conceitos de Análise no \(R^n\)
+hash: analise-rn
+chapter: A
+---
+<p>Durante o desenvolvimento dos resultados do texto, tais como a obtenção da equação de Euler-Lagrange, é necessário o uso de alguns conceitos e resultados de Análise no \(\mathbb{R}^n\). Estes conceitos serão trabalhados neste apêndice, tomando como referência \citeonline{analise_elon2}.</p>
+
+<div class="docs-definition" data-label="def:compactset">
+    <div class="docs-definition-title"></div>
+    <div class="docs-definition-content">
+        <p>Um conjunto \(K\subset \mathbb{R}^n\) é <a class="anchor" name="rem-compact-1"></a>compacto se, e somente se, toda sequência de pontos em \(K\) possui uma subsequência que converge para um ponto de \(K\).</p>
+    </div>
+</div>
+
+<div class="docs-theorem" data-label="teorema:func_uniformemente">
+    <div class="docs-theorem-title"></div>
+    <div class="docs-theorem-content">
+        <p>Seja \(f:X\times K \longrightarrow \mathbb{R}^n\) contínua, onde \(X\subset \mathbb{R}^m\), para algum \(m\), e \(K\) é compacto. Fixemos \(x_0 \in X\). Para todo \(\varepsilon > 0\), existe um \(\delta > 0\) tal que \(x\in X\), \(|x-x_0|&lt;\delta \Longrightarrow |f(x, \alpha)-f(x_0,\alpha)|&lt;\varepsilon\), seja qual for \(\alpha \in K\).</p>
+    </div>
+    <div class="docs-theorem-proof-title">Prova</div>
+    <div class="docs-theorem-proof">
+        <p>Suponha que o teorema não seja válido, então existiriam \(\varepsilon > 0\) e sequências de pontos \(x_k\in X\), \(\alpha_k \in K\) tais que \(|x_k-x_0|&lt;\frac{1}{k}\) e \(|f(x_k,\alpha_k)-f(x_0,\alpha_k)|\geqslant \varepsilon\). Passando a uma subsequência, se necessário e admitindo que \(\lim \alpha_k=\alpha \in K\), devido ao fato de que o conjunto \(K\) é compacto.</p>
+        <p>Como, \(|x_k-x_0|&lt;\frac{1}{k}\), \(-\frac{1}{k}&lt;x_k-x_0&lt;\frac{1}{k}\), então, \(x_0-\frac{1}{k}&lt;x_k&lt;x_0+\frac{1}{k}\), e, como \(\lim \left (x_0-\frac{1}{k} \right ) = x_0\) e \(\lim \left ( x_0 + \frac{1}{k} \right )=x_0\), então, \(\lim x_k=x_0\). Devido a continuidade de \(f\) tem-se \(\varepsilon \leqslant \lim |f(x_k,\alpha_k)-f(x_0,\alpha _k)|=|f(x_0,\alpha)-f(x_0,\alpha)|=0\), uma contradição, pois da hipótese \(\varepsilon >0\).</p>
+    </div>
+    <div class="docs-theorem-proof-qed">
+        <span class="docs-theorem-proof-qed-symbol"></span>
+    </div>
+</div>
+
+<p><a class="anchor" name="rem-regra-leibniz-1"></a>
+<a class="anchor" name="rem-dif-int-1"></a></p>
+<div class="docs-theorem" data-label="teorema:regra_de_leibniz">
+    <div class="docs-theorem-title"></div>
+    <div class="docs-theorem-content">
+        <p><b>(Derivação sob o sinal de integral ou Regra de Leibniz)</b> Dado \(U\subset \mathbb{R}^n\), aberto, seja \(f:U\times[a,b]\longrightarrow \mathbb{R}\) uma função com as seguintes propriedades:
+            <ol style="list-style-type: decimal">
+                <li>
+                    Para todo \(x \in U\), a função \(x \longmapsto f(x,t)\) é integrável em \(a \leqslant t \leqslant b\).
+                </li>
+                <li>
+                    A \(i\)-ésima derivada parcial \(\frac{\partial f}{\partial x_i}(x,t)\) existe para cada \((x,t)\in U\times [a,b]\) e a função \(\frac{\partial f}{\partial x_i}:U\times [a,b]\longrightarrow \mathbb{R}\) assim definida é contínua.
+                </li>
+            </ol>
+            então a função \(\varphi: U\longrightarrow \mathbb{R}\) dada por
+            <div class='docs-equation-hbox'>\[
+                \varphi(x)=\int_a^b f(x,t)dt\text{,}
+            \]</div>
+            possui \(i\)-ésima derivada parcial em cada ponto \(x\in U\), sendo
+            <div class='docs-equation-hbox'>\[
+                \frac{\partial \varphi}{\partial x_i}(x)=\int_a^b \frac{\partial f}{\partial x_i}(x,t)dt\text{.}
+            \]</div>
+        </p>
+    </div>
+    <div class="docs-theorem-proof-title">Prova</div>
+    <div class="docs-theorem-proof">
+        Considere
+        <div class='docs-equation-hbox'>\[
+        \frac{\varphi(x+se_i)-\varphi(x)}{s}
+        =
+        \int_a^b \frac{f(x+se_i, t)-f(x,t)}{s} dt\text{,}
+        \]</div>
+        de onde subtraindo \(\displaystyle \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt\) de ambos os lados, tem-se
+        <div class="docs-equation" data-label="eqn:cap_ap_leibniz:subtract_1">
+            <div class="docs-equation-eq">
+            \[
+                \frac{\varphi(x+se_i)-\varphi(x)}{s}
+                - \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
+                =
+                \int_a^b \left [ 
+                    \frac{f(x+se_i, t)-f(x,t)}{s} 
+                    - \frac{\partial f}{\partial x_i}(x,t)
+                \right ] dt
+            \]
+            </div>
+            <div class="docs-equation-num"></div>
+        </div>
+        
+        Pelo Teorema do Valor Médio para funções reais, existe \(\theta \in [0,1]\) de modo que
+        <div class='docs-equation-hbox'>\[
+            \frac{f(x+se_i,t)-f(x,t)}{s}=\frac{\partial f}{\partial x_i}(x+\theta s e_i,t)\text{,}
+        \]</div>
+        onde \(\theta \in [0,1]\) garante que \(\theta s\) esteja entre \(]0, s[\), satisfazendo as condições do Teorema do Valor Médio. Assim, de <span eqref="eqn:cap_ap_leibniz:subtract_1"></span> tem-se
+        <div class="docs-equation" data-label="eqn:cap_ap_leibniz:tvm">
+            <div class="docs-equation-eq">
+            \[
+                \frac{\varphi(x+se_i)-\varphi(x)}{s}
+                - \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
+                =
+                \int_a^b \left [
+                    \frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+                \right ] dt\text{.}
+            \]
+            </div>
+            <div class="docs-equation-num"></div>
+        </div>
+        
+        Como \(\dfrac{\partial f}{\partial x_i}\) é contínua e \([a,b]\) é compacto, pelo Teorema <span ref="teorema:func_uniformemente"></span>, para todo \(\varepsilon > 0\), existe um \(\delta > 0\), de modo que
+        <div class="docs-equation" data-label="eqn:cap_ap_leibniz:compact_limit">
+            <div class="docs-equation-eq">
+            \[
+                |s|&lt;\delta \Longrightarrow
+                \left | 
+                    \frac{\partial f}{\partial x_i} (x+\theta s e_i, t) - \frac{\partial f}{\partial x_i}(x,t)
+                \right | &lt; \frac{\varepsilon}{b-a}
+            \]
+            </div>
+            <div class="docs-equation-num"></div>
+        </div>
+        seja qual for \(t \in [a,b]\).
+        
+        Usando o fato de que \(\displaystyle \Big |\int_a^b f(x)dx \Big | \leqslant \int_a^b |f(x)| dx\), obtêm-se
+        <div class='docs-equation-hbox'>\[
+            \left |
+                \int_a^b \left [
+                    \frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+                \right ] dt
+            \right |
+            \leqslant
+            \int_a^b\left |
+                \frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+            \right | dt\text{,}
+        \]</div>
+        e, utilizando <span eqref="eqn:cap_ap_leibniz:compact_limit"></span>, tem-se a inequação
+        <div class='docs-equation-hbox'>\[
+            \left |
+                \int_a^b \left [
+                    \frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+                \right ] dt
+            \right |
+            &lt;
+            \int_a^b \frac{\varepsilon}{b-a} dt
+        \]</div>
+        <div class="docs-equation" data-label="eqn:cap_ap_leibniz:epsilon_limit">
+            <div class="docs-equation-eq">
+            \[
+                \left |
+                    \int_a^b \left [
+                        \frac{\partial f}{\partial x_i}(x+\theta s e_i, t)-\frac{\partial f}{\partial x_i}(x,t)
+                    \right ] dt
+                \right |
+                &lt; \varepsilon \text{.}
+            \]
+            </div>
+            <div class="docs-equation-num"></div>
+        </div>
+        
+        De <span eqref="eqn:cap_ap_leibniz:tvm"></span> e <span eqref="eqn:cap_ap_leibniz:epsilon_limit"></span>, verifica-se que
+        <div class='docs-equation-hbox'>\[
+            |s|&lt;\delta \Longrightarrow
+            \left |
+                \frac{\varphi(x+se_i)-\varphi(x)}{s}
+                - \int_a^b \frac{\partial f}{\partial x_i}(x,t) dt
+            \right |
+            &lt; \varepsilon\text{,}
+        \]</div>
+        que é, a definição formal do limite
+        <div class='docs-equation-hbox'>\[
+            \lim_{s\to 0} \frac{\varphi (x+se_i)-\varphi(x)}{s}= \int_a^b \frac{\partial f}{\partial x_i} (x, t)dt \text{,}
+        \]</div>
+        ou seja,
+        <div class='docs-equation-hbox'>\[
+            \frac{\partial \varphi}{\partial x_i}(x)=\int _a^b \frac{\partial f}{\partial x_i}(x,t)dt\text{.}
+        \]</div>
+    </div>
+    <div class="docs-theorem-proof-qed">
+        <span class="docs-theorem-proof-qed-symbol"></span>
+    </div>
+</div>
+
+<div class="docs-definition" data-label="def:cap_conceitos_analise:classe_ck">
+    <div class="docs-definition-title"></div>
+    <div class="docs-definition-content">
+        <p>Seja o aberto \(U\subset\mathbb{R}^n\). Uma função \(f:U\longrightarrow\mathbb{R}\) é dita de classe \(C^0\) quando é contínua. Diz-se, também, que \(f:U\longrightarrow\mathbb{R}\) é de classe \(C^1\) quando existem, em cada ponto \(x\in U\), as derivadas parciais \(\dfrac{\partial f}{\partial x_1}(x)\), \(\dots\), \(\dfrac{\partial f}{\partial x_n}(x)\) e, as \(n\) funções \(\dfrac{\partial f}{\partial x_i}:U\longrightarrow \mathbb{R}\), assim definidas, são contínuas. Mais geralmente, uma função \(f:U\longrightarrow\mathbb{R}\) é dita de classe <a class="anchor" name="rem-func-cl-ck-1"></a>\(C^k\), onde \(k>0\) é um inteiro, quando ela possuir derivadas parciais em todos os pontos de \(U\) e as funções \(\dfrac{\partial f}{\partial x_i}\), \(\dots\), \(\dfrac{\partial f}{\partial x_n}:U\longrightarrow \mathbb{R}\) forem de classe \(C^{k-1}\).</p>
+    </div>
+</div>
+
+<p>A Definição <span ref="def:cap_conceitos_analise:classe_ck"></span> é equivalente a dizer que uma função \(f:U\longrightarrow\mathbb{R}\), onde \(U\subset\mathbb{R}^n\), é dita de classe \(C^k\) se todas as suas derivadas parciais até a ordem \(k\) existirem e, ainda, forem todas contínuas. Completando, \(f\) será de classe \(C^0\) caso seja contínua.</p>
+
+<script type="text/javascript">
+window.chapter = 'A';
+</script>

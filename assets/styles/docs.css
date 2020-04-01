@@ -92,6 +92,9 @@ header > nav > .nav-wrapper > form {
     color: #0d47a1; /* blue darken-4 */
 }
 
+main {
+    padding-bottom: 100px;
+}
 
 main .content-heading {
     min-height: 150px;
@@ -183,9 +186,11 @@ main p {
     overflow-x: auto;
 }
 /*
- * Example and Lema env
+ * Example and Lema and Teorem and Definition env
  */
 .docs-lema,
+.docs-theorem,
+.docs-definition,
 .docs-example {
     display: flex;
     flex-direction: column;
@@ -195,6 +200,9 @@ main p {
 }
 .docs-lema > .docs-lema-title,
 .docs-lema > .docs-lema-proof-title,
+.docs-theorem > .docs-theorem-title,
+.docs-theorem > .docs-theorem-proof-title,
+.docs-definition > .docs-definition-title,
 .docs-example > .docs-example-title,
 .docs-example > .docs-example-sol-title {
     padding: 4px 8px;
@@ -204,11 +212,15 @@ main p {
 }
 .docs-lema > .docs-lema-content,
 .docs-lema > .docs-lema-proof,
+.docs-theorem > .docs-theorem-content,
+.docs-theorem > .docs-theorem-proof,
+.docs-definition > .docs-definition-content,
 .docs-example > .docs-example-content,
 .docs-example > .docs-example-sol {
     padding: 4px 8px;
 }
 .docs-lema > .docs-lema-proof-qed,
+.docs-theorem > .docs-theorem-proof-qed,
 .docs-example > .docs-example-sol-qed {
     padding: 4px 8px;
     display: flex;
@@ -216,6 +228,7 @@ main p {
     justify-content: end;
 }
 .docs-lema > .docs-lema-proof-qed > .docs-lema-proof-qed-symbol,
+.docs-theorem > .docs-theorem-proof-qed > .docs-theorem-proof-qed-symbol,
 .docs-example > .docs-example-sol-qed > .docs-example-sol-qed-symbol {
     width: 16px;
     height: 16px;

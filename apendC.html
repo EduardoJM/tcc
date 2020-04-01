@@ -1,0 +1,329 @@
+---
+layout: default
+title: Apêndice C - Breve introdução à linguagem <i>Python</i>
+hash: encontrando-deflex-viga
+chapter: C
+---
+
+<p>Durante o trabalho, são utilizados trechos de códigos na linguagem <i>Python</i>. Para auxiliar a introdução nesse universo, é apresentado aqui, uma breve explicação sobre sua instalação e execução de programas. Na última seção, é apresentado o código utilizado para a resolução de sistemas lineares na linguagem.</p>
+
+<h2>Instalando</h2>
+	
+<p>A linguagem de programação \index[remissivo]{Python}<i>Python</i> é distribuida gratuitamente e pode ser baixada no seu site\footnote{\url{https://www.python.org/}.}. É necessário ressaltar, também, que em distribuições <i>Linux</i>, como o <i>Linux Mint</i>, a linguagem geralmente já vem instalada por padrão. Devido a isso e, também, ao fato de que usuários de ambientes <i>Linux</i> costumam ter conhecimentos avançados sobre instalação de programas, será explicado nessa seção apenas a instalação no sistema operacional <i>Windows</i>.</p>
+
+<p>O executável da linguagem <i>Python</i> pode ser baixado em seu site, na aba <i>Downloads</i>, como pode ser visto na <a href="#pic-c-1">Figura C.1</a>.</p>
+
+<p><a class="anchor" name="pic-c-1"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Figura C.1 - Página de <i>download</i> da linguagem <i>Python</i>.</div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-container">
+            <img src="images/python/python_download.png" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+    </div>
+</div>
+	
+<p>Sua instalação é extremamente simples e rápida. Basta executar o instalador baixado da página da <a href="#pic-c-1">Figura C.1</a>, marcar a opção <i>"Add Python 3.8 to PATH"</i>, como na <a href="#pic-c-2">Figura C.2</a> para facilitar a execução de códigos com a linguagem e clicar em <i>Install Now</i>, isto é, instalar agora e esperar até que a instalação termine.</p>
+	
+<p><a class="anchor" name="pic-c-2"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Figura C.2 - Instalador da linguagem <i>Python</i> no <i>Windows</i>.</div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-container">
+            <img src="images/python/python_install.png" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+    </div>
+</div>
+	
+<p>Após a instalação da linguagem, é necessário instalar alguns pacotes utilizados aqui neste trabalho. Para tanto, é preciso executar o <i>prompt</i> de comandos do <i>Windows</i>, ou terminal em distribuições <i>Linux</i>. No <i>Windows</i>, basta digitar <i>cmd</i> na barra de pesquisa do menu iniciar, como na <a href="#pic-c-3">Figura C.3</a>.</p>
+	
+<p><a class="anchor" name="pic-c-3"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Figura C.3 - Barra de busca com o <i>prompt</i> de comandos do <i>Windows</i>.</div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-container">
+            <img src="images/python/barra_busca.png" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+    </div>
+</div>
+	
+<p>Com o <i>prompt</i> de comandos aberto, deve-se executar o código <i>pip install numpy</i> para instalar o pacote <i>numpy</i>. Após a instalação, uma janela parecida com a <a href="#pic-c-4">Figura C.4</a> deve ser vista. Esse mesmo processo deve ser repetido com os comandos <i>pip install sympy</i> para instalar o pacote <i>sympy</i> e <i>pip install matplotlib</i> para instalar o pacote <i>matplotlib</i>. Esses três pacotes são utilizados durante este trabalho.</p>
+
+<p><a class="anchor" name="pic-c-4"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Figura C.4 - <i>Prompt</i> de comandos após a instalação do pacote <i>numpy</i>.</div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-container">
+            <img src="images/python/python_pip_numpy.png" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+    </div>
+</div>
+
+<h2>Executando programas</h2>
+	
+<p>Para executar programas, ou <i>scripts</i>, na linguagem <i>Python</i>, existem diversas formas, sendo a mais convencional delas executar via o <i>prompt</i> de comandos do <i>Windows</i> ou no terminal do <i>Linux</i>. No <i>Windows</i> pode-se utilizar o ambiente de desenvolvimento que é instalado junto a linguagem, chamado de IDLE. Ao abri-lo, deve-se ir no menu <i>File</i> e, então, em <i>New File</i> para criar um novo arquivo. O código deve ser escrito nesse novo arquivo e salvo. Para executar este código basta, então, ir no menu <i>Run</i> e, depois, em <i>Run Module</i>, como na <a href="#pic-c-5">Figura C.5</a>.</p>
+
+<p><a class="anchor" name="pic-c-5"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Figura C.5 - Janela do IDLE com o menu <i>Run</i> aberto.</div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-container">
+            <img src="images/python/python_runmodule.png" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+    </div>
+</div>
+
+<p>A segunda forma, indicada para usuários que detenham um nível de conhecimento mais alto sobre sistemas operacionais, é executar, no <i>prompt</i> de comandos ou no terminal a linha <i>python arquivo.py</i>, onde <i>arquivo.py</i> representa o caminho para o arquivo no sistema. Por exemplo, como os códigos deste trabalho foram desenvolvidos em um ambiente <i>Linux</i>, todos os códigos foram executados deste modo.</p>
+
+<h2>Principais operações</h2>
+
+<p>Para facilitar o entendimento dos códigos ao longo do trabalho, é apresentada uma lista com algumas das principais operações aritméticas na linguagem <i>Python</i> na <a href="#table-c-1">Tabela C.1</a>.</p>
+
+<p><a class="anchor" name="table-c-1"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Tabela C.1 - Principais operações na linguagem <i>Python</i>.</div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operação</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>\(x + y\)</td>
+                        <td>Soma de \(x\) e \(y\)</td>
+                    </tr>
+                    <tr>
+                        <td>\(x - y\)</td>
+                        <td>Subtração de \(x\) por \(y\)</td>
+                    </tr>
+                    <tr>
+                        <td>\(x * y\)</td>
+                        <td>Produto de \(x\) por \(y\)</td>
+                    </tr>
+                    <tr>
+                        <td>\(x / y\)</td>
+                        <td>Divisão de \(x\) por \(y\)</td>
+                    </tr>
+                    <tr>
+                        <td>\(x\) // \(y\)</td>
+                        <td>Parte inteira da divisão de \(x\) por \(y\)</td>
+                    </tr>
+                    <tr>
+                        <td>\(x\) % \(y\)</td>
+                        <td>O resto da divisão de \(x\) por \(y\)</td>
+                    </tr>
+                    <tr>
+                        <td>\(x\) ** \(y\)</td>
+                        <td>\(x\) elevado a potência \(y\)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+    </div>
+</div>
+
+<h2>Resolução de sistemas lineares</h2>
+	
+<p>O sistema linear com matriz aumentada <span eqref="eqn:cap_metodo_ray_ritz:matriz_sistema"></span> pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan, de forma manual. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação <i>Python</i>, através do comando <i>linsolve</i> que utiliza o \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan.</p>
+	
+<p>Deste modo, seja, o sistema com matriz aumentada <span eqref="eqn:cap_metodo_ray_ritz:matriz_sistema"></span>
+    <div class="docs-equation" data-label="eqn:cap_ap_sis_lin:matriz_sistema">
+        <div class="docs-equation-eq">
+        \[
+            \begin{pmatrix}{3}
+                2 & 3l  & 4l^2 				 & C \\
+                1 & 2l  & 3l^2				 & \frac{1}{2}C \\
+                8 & 18l & \frac{144}{5} l^2 & D
+            \end{pmatrix}
+            \text{,}
+        \]
+        </div>
+        <div class="docs-equation-num"></div>
+    </div>
+	onde 
+    <div class="docs-equation" data-label="eqn:cap_ap_sis_lin:aux_var_C">
+        <div class="docs-equation-eq">
+        \[
+            C=-\frac{ql^2}{12EI}
+            \text{,}
+        \]
+        </div>
+        <div class="docs-equation-num"></div>
+    </div>
+	e
+    <div class="docs-equation" data-label="eqn:cap_ap_sis_lin:aux_var_D">
+        <div class="docs-equation-eq">
+        \[
+            D=-\frac{3ql^2}{10EI}
+            \text{.}
+        \]
+        </div>
+        <div class="docs-equation-num"></div>
+    </div>
+</p>
+
+<p>Para a resolução do sistema usando <i>Python</i> é necessário, primeiro, importar alguns componentes da biblioteca SymPy:</p>
+
+<div class="row"><div class="col s12">
+<pre><code class="language-python">from sympy import symbols, Matrix
+from sympy.solvers import linsolve</code></pre>
+</div></div>
+	
+<p>Serão importados os componentes <i>symbols</i> para permitir a definição de símbolos matemáticos, <i>Matrix</i> para a manipulação de matrizes e, finalmente, <i>linsolve</i> para a resolução de sistemas lineares.</p>
+	
+<p>Para a definição do sistema, utilizaremos os mesmos símbolos, \(l\), \(C\), e \(D\), que são definidos, dentro da linguagem, utilizando o comando <i>symbols</i> importado:</p>
+<div class="row"><div class="col s12">
+    <pre><code class="language-python">l, C, D = symbols('l C D')</code></pre>
+</div></div>
+	
+<p>A matriz aumentada é definida utilizando o componente <i>Matrix</i> importado. Cada uma de suas linhas é escrita como um Array contendo os elementos das colunas. A matriz é escrita, então, como um Array de linhas.</p>
+<div class="row"><div class="col s12">
+        <pre><code class="language-python">A = Matrix([
+    [2, 3 * l ,  4 * l**2      ,  C  ],
+    [1, 2 * l ,  3 * l**2      ,  C/2],
+    [8, 18 * l,  144 / 5 * l**2,  D  ]
+])</code></pre>
+</div></div>
+	
+<p>A resolução do sistema é feita pelo método <i>linsolve</i> já importado. O método <i>linsolve</i> da linguagem <i>Python</i> utiliza o método de Gauss-Jordan para a resolução de sistemas lineares \cite{SymPy}. Primeiro, definimos três novos símbolos, \(a_1\), \(a_2\) e \(a_3\) que são as incógnitas do sistema e então, executamos o método passando como argumento a matriz \(A\) definida e os símbolos.</p>    
+<div class="row"><div class="col s12">
+    <pre><code class="language-python">a2, a3, a4 = symbols("a2 a3 a4")
+sol, = linsolve(A, [a2, a3, a4])
+print(sol)</code></pre>
+</div></div>
+
+	<!--\begin{figure}[h]
+		\caption{}
+		\centering
+		\includegraphics[scale=2]{../figuras/code/code_solve_sis_linear.png}
+		\label{}
+		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
+    \end{figure}-->
+
+<p><a class="anchor" name="pic-c-6"></a></p>
+<div class="picture">
+    <div class="row">
+        <div class="col-12 picture-caption">Figura C.6 - Execução do código para a resolução do sistema linear.</div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-container">
+            <img src="images/terminal/code_solve_sis_linear.png" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 picture-source">Fonte: Elaborada pelo autor, 2019.</div>
+    </div>
+</div>
+	
+<p>O comando <i>print(sol)</i> exibe a solução do sistema linear, como um Array (Veja <a href="#pic-c-6">Figura C.6</a>). O primeiro valor do Array corresponde a incógnita \(a_2\), o segundo valor a \(a_3\) e o último valor a \(a_4\). Assim, \(a_2=-4.5C+1.25D\), \(a_3=\dfrac{1}{l}(10C-2.5D)\) e \(a_4=\dfrac{1}{l^2}(-5C+1.25D)\). Pode-se converter os números decimais para frações obtendo
+    <div class="docs-equation" data-label="eqn:cap_ap_sis_lin:result_a2">
+        <div class="docs-equation-eq">
+        \[
+            a_2=\frac{5}{4}D-\frac{9}{2}C
+            \text{,}
+        \]
+        </div>
+        <div class="docs-equation-num"></div>
+    </div>
+    <div class="docs-equation" data-label="eqn:cap_ap_sis_lin:result_a3">
+        <div class="docs-equation-eq">
+        \[
+            a_3=\frac{1}{l}\left (
+                10C - \frac{5}{2} D
+            \right ) \text{,}
+        \]
+        </div>
+        <div class="docs-equation-num"></div>
+    </div>
+    <div class="docs-equation" data-label="eqn:cap_ap_sis_lin:result_a4">
+        <div class="docs-equation-eq">
+        \[
+            a_4=\frac{1}{l^2}\left (
+                \frac{5}{4}D-5C
+            \right ) \text{.}
+        \]
+        </div>
+        <div class="docs-equation-num"></div>
+    </div>
+</p>
+
+<p>Substituindo \(C\) e \(D\), de <span eqref="eqn:cap_ap_sis_lin:aux_var_C"></span> e <span eqref="eqn:cap_ap_sis_lin:aux_var_D"></span>, em <span eqref="eqn:cap_ap_sis_lin:result_a2"></span>, <span eqref="eqn:cap_ap_sis_lin:result_a3"></span> e <span eqref="eqn:cap_ap_sis_lin:result_a4"></span> e simplificando os valores obtem-se a solução do sistema
+    <div class='docs-equation-hbox'>\[
+        a_2 = 0\text{,}
+    \]</div>
+    <div class='docs-equation-hbox'>\[
+        a_3 = -\frac{ql}{12EI}\text{,}
+    \]</div>
+    <div class='docs-equation-hbox'>\[
+        a_4 = \frac{q}{24EI}\text{.}
+    \]</div>
+</p>
+
+<p>O código completo utilizado para a resolução do sistema linear com matriz aumentada <span eqref="eqn:cap_ap_sis_lin:matriz_sistema"></span> é apresentado em <a href="#code-c-1">Código C.1</a>.</p>
+        
+<p><a class="anchor" name="code-c-1"></a></p>
+<div class="picture">
+	<div class="row">
+		<div class="col-12 picture-caption">Código C.1 - Resolução de sistemas lineares em <i>Python</i>.</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<pre data-start="1"><code class="language-python line-numbers">from sympy import symbols, Matrix
+from sympy.solvers import linsolve
+
+l, C, D = symbols('l C D')
+
+A = Matrix([
+    [2, 3 * l ,  4 * l**2      ,  C  ],
+    [1, 2 * l ,  3 * l**2      ,  C/2],
+    [8, 18 * l,  144 / 5 * l**2,  D  ]
+])
+
+a2, a3, a4 = symbols("a2 a3 a4")
+sol, = linsolve(A, [a2, a3, a4])
+
+print(sol)</code></pre>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 picture-source">Fonte: Elaborado pelo autor, 2019.</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+window.chapter = 'B';
+</script>

@@ -48,7 +48,10 @@ function makeNumbers(query, options) {
     var objs = document.querySelectorAll(query);
     var id = 1;
     for (var i = 0; i < objs.length; i++) {
-        if (options.type == 'lema' || options.type == 'example') {
+        if (options.type == 'lema' 
+            || options.type == 'example'
+            || options.type == 'definition'
+            || options.type == 'theorem') {
             var label = objs[i].getAttribute('data-label');
             var titleObj = objs[i].querySelector(options.titleQuery);
             var title = options.titlePrefix + id;
@@ -111,6 +114,18 @@ document.addEventListener('DOMContentLoaded', function() {
         type: 'lema',
         titleQuery: '.docs-lema-title',
         titlePrefix: 'Lema ' + window.chapter + '.'
+    });
+    // theorems
+    makeNumbers('.docs-theorem', {
+        type: 'theorem',
+        titleQuery: '.docs-theorem-title',
+        titlePrefix: 'Teorema ' + window.chapter + '.'
+    });
+    // definitions
+    makeNumbers('.docs-definition', {
+        type: 'definition',
+        titleQuery: '.docs-definition-title',
+        titlePrefix: 'Definição ' + window.chapter + '.'
     });
     // examples
     makeNumbers('.docs-example', {

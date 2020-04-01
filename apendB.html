@@ -1,0 +1,136 @@
+---
+layout: default
+title: Apêndice B - Encontrando a máxima deflexão da viga estudada
+hash: encontrando-deflex-viga
+chapter: B
+---
+
+<p>Durante o estudo do método de Rayleigh-Ritz no Exemplo <span ref="ex:mrr_ex_livro"></span>, no Capítulo <span ref="cap:mrr"></span>, faz-se necessário ter valores para comparação. Com esse objetivo, pode-se determinar a máxima deflexão da viga a partir da solução analítica \(v(x)\) do problema, determinada no Exemplo <span ref="ex:cond_contorno"></span> da Seção <span ref="sec:calcvar_exemplos"></span> do Capítulo <span ref="cap:calc_var"></span>, a partir de <span eqref="eqn:sol_funcional_analitico"></span>,
+<div class="docs-equation" data-label="eqn:max_deflex_func">
+    <div class="docs-equation-eq">
+    \[
+        v(x) = 
+            \frac{q}{24EI} x^4
+            -
+            \frac{ql}{12EI} x^3
+            +
+            \frac{ql^3}{24EI} x
+            \text{.}
+    \]
+    </div>
+    <div class="docs-equation-num"></div>
+</div>
+</p>
+
+<p>Derivando <span eqref="eqn:max_deflex_func"></span>, tem-se
+<div class="docs-equation" data-label="eqn:max_deflex_func_diff">
+    <div class="docs-equation-eq">
+    \[
+        v'(x) =
+            \frac{4q}{24EI}x^3
+            -
+            \frac{3ql}{12EI}x^2
+            +
+            \frac{ql^3}{24EI}
+            \text{.}
+    \]
+    </div>
+    <div class="docs-equation-num"></div>
+</div>
+</p>
+
+<p>Fazendo \(v'(x)=0\) é possível determinar os pontos de máximo e mínimo da função, donde
+<div class='docs-equation-hbox'>\[
+    \frac{4q}{24EI}x^3
+    -
+    \frac{6ql}{24EI}x^2
+    +
+    \frac{ql^3}{24EI}
+    = 0
+\]</div>
+<div class="docs-equation" data-label="eqn:max_deflex_equation">
+    <div class="docs-equation-eq">
+    \[
+        4x^3 - 6lx^2 + l^3 = 0
+        \text{.}
+    \]
+    </div>
+    <div class="docs-equation-num"></div>
+</div>
+</p>
+
+<p>A equação <span eqref="eqn:max_deflex_equation"></span> tem como uma de suas soluções o valor \(x_1=\dfrac{l}{2}\), pois
+<div class='docs-equation-hbox'>\[
+    4\left (\frac{l}{2}\right )^3 - 6l\left ( \frac{l}{2}\right )^2+l^3=0
+    \text{,}
+    \]</div>
+de onde, realizando uma divisão do polinômio de <span eqref="eqn:max_deflex_equation"></span> por \(x-\dfrac{l}{2}\) é possível determinar os outros extremos. Deste modo,
+<div class='docs-equation-hbox'>\[
+    4x^3-6lx^2+l^3 = (x-\frac{l}{2})(4x^2-4lx-2l^2)=0
+    \text{,}
+\]</div>
+e, portanto, para a determinação dos outros extremos deve-se resolver a equação de segundo grau \(4x^2-4lx-2l^2=0\), que resulta em \(x_2=\dfrac{(1+\sqrt{3})}{2}l\) e \(x_3=\dfrac{(1-\sqrt{3})}{2}l\).
+</p>
+
+<p>Fazendo o estudo de sinais de \(v'(x)\) resulta que \(x_1=\dfrac{l}{2}\) é ponto de máximo, enquanto que os demais são pontos de mínimo, logo, a máxima deflexão da viga acontece quando \(x=\dfrac{l}{2}\).</p>
+
+<p>Calculando o valor da máxima deflexão,
+<div class='docs-equation-hbox'>\[
+    v\left (\frac{l}{2}\right )=
+        \frac{q}{24EI} \left (
+            \frac{l}{2}
+        \right )^4
+        -
+        \frac{ql}{12EI} \left (
+            \frac{l}{2}
+        \right )^3
+        +
+        \frac{ql^3}{24EI}\left (
+            \frac{l}{2}
+        \right )
+\]</div>
+<div class="docs-equation" data-label="eqn:max_deflex_resultado">
+    <div class="docs-equation-eq">
+    \[
+        v\left (\frac{l}{2}\right )=
+            \frac{5ql^4}{384EI}
+            \text{.}
+    \]
+    </div>
+    <div class="docs-equation-num"></div>
+</div>
+</p>
+
+<script type="text/javascript">
+window.references = [];
+window.references['sec:calcvar_exemplos'] = {
+	type: 'section',
+	value: 'Seção 2.4',
+	extLink: '#exemplo'
+};
+window.references['cap:mrr'] = {
+	type: 'chapter',
+	value: 'Capítulo 3',
+	extLink: 'part3.html#mrr'
+};
+window.references['cap:calc_var'] = {
+	type: 'chapter',
+	value: 'Capítulo 2',
+	extLink: 'part2.html#calculo-variacional'
+};
+window.references['ex:mrr_ex_livro'] = {
+	type: 'example',
+	value: 'Exemplo 2.1',
+	extLink: 'part3.html#ex:mrr_ex_livro'
+};
+window.references['ex:cond_contorno'] = {
+	type: 'example',
+	value: 'Exemplo 2.2',
+	extLink: 'part2.html#ex:cond_contorno'
+};
+window.references['eqn:sol_funcional_analitico'] = {
+	type: 'equation',
+	value: '2.39'
+};
+window.chapter = 'B';
+</script>

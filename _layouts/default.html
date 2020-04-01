@@ -226,7 +226,7 @@
             <!-- Apêndices -->
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
-                    <li class="bold">
+                    <li class="bold {% if page.chapter == 'A' or page.chapter == 'B' or page.chapter == 'C' %} active{% endif %}">
                         <a class="collapsible-header waves-effect waves-blue" tabindex="0">
                             <span>Apêndices</span>
                             <i class="material-icons">arrow_drop_down</i>
@@ -234,17 +234,21 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                    <a href="#">Conceitos de Análise no R<sup>n</sup></a>
+                                    <a href="apendA.html">Conceitos de Análise no R<sup>n</sup></a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="apendB.html">
                                         <span class="ellipsis-block">
                                             Encontrando a máxima deflexão da viga estudada
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">Breve introdução à linguagem Python</a>
+                                    <a href="apendC.html">
+                                        <span class="ellipsis-block">
+                                            Breve introdução à linguagem Python
+                                        </span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>

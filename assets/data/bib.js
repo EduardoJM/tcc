@@ -141,5 +141,13 @@ window.bib = {
             online: 'Grossi e Albarracin'
         },
         year: 2001
+    },
+    analise_elon2: {
+        type: 'book',
+        author: {
+            cite: 'LIMA',
+            online: 'Lima',
+        },
+        year: 2002
     }
 };
