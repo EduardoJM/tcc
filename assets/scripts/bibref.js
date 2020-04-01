@@ -1,3 +1,5 @@
+var notFoundRef = [];
+
 function cite(name, page) {
     if (window.bib == null || window.bib == undefined) {
         return '';
@@ -34,17 +36,22 @@ function citeonline(name, page) {
     return '';
 }
 
-function getNextCitation(reg, html) {
+function getNextCitation(reg, html, labelIndex) {
     var match = reg.exec(html);
     if (match == null) {
         match = reg.exec(html);
+        if (match != null && labelIndex != null && labelIndex != undefined) {
+            if (notFoundRef.hasOwnProperty(match[labelIndex])) {
+                return null;
+            }
+        }
     }
     return match;
 }
 
 function searchCitations(html, command, callback) {
     var citeReg = RegExp('\\\\' + command + '\\{(.*?)\\}', 'ig');
-    var match = getNextCitation(citeReg, html);
+    var match = getNextCitation(citeReg, html, 1);
     while (match != null) {
         var before = html.substr(0, match.index);
         var after = html.substr(citeReg.lastIndex, html.length - citeReg.lastIndex);
@@ -53,11 +60,14 @@ function searchCitations(html, command, callback) {
             html = before + citation + after;
         } else {
             console.log("Reference not found (" + command + "): " + match[1]);
+            notFoundRef[match[1]] = {
+                notFoundOn: command
+            };
         }
-        match = getNextCitation(citeReg, html);
+        match = getNextCitation(citeReg, html, 1);
     }
     var citeRegPaged = RegExp('\\\\' + command + '\\[(.*?)\\]\\{(.*?)\\}', 'ig');
-    match = getNextCitation(citeRegPaged, html);
+    match = getNextCitation(citeRegPaged, html, 2);
     while (match !== null) {
         var before = html.substr(0, match.index);
         var after = html.substr(citeRegPaged.lastIndex, html.length - citeRegPaged.lastIndex);
@@ -66,8 +76,11 @@ function searchCitations(html, command, callback) {
             html = before + citation + after;
         } else {
             console.log("Reference not found (" + command + "): " + match[2]);
+            notFoundRef[match[2]] = {
+                notFoundOn: command
+            };
         }
-        match = getNextCitation(citeRegPaged, html);
+        match = getNextCitation(citeRegPaged, html, 2);
     }
     return html;
 }
