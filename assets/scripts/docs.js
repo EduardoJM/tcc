@@ -94,6 +94,7 @@ function makeNumbersRef(command, callback) {
 document.addEventListener('DOMContentLoaded', function() {
     initialize('.sidenav', M.Sidenav, {});
     initialize('.collapsible', M.Collapsible, {});
+    initialize('.fixed-action-btn', M.FloatingActionButton, {});
     initialize('#search-bar-input', M.Autocomplete, {
         data: {
             'Microsoft': null,
@@ -140,4 +141,12 @@ document.addEventListener('DOMContentLoaded', function() {
     makeHeadingCopyLinks();
     // katex math
     renderMathInElement(document.body, {});
+    
+    // other site functions
+    var reslinks = document.querySelectorAll('.f-update-link');
+    for(var i = 0; i < reslinks.length; i++) {
+        reslinks[i].addEventListener('click', function(){
+            window.location.href = window.location.href;
+        });
+    }
 });

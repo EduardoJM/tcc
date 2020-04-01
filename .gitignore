@@ -1,1 +1,7 @@
 *.old
+.sass-cache
+.jekyll-cache
+_site
+gemfiles
+node_modules
+vendor

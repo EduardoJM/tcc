@@ -94,7 +94,7 @@ header > nav > .nav-wrapper > form {
 
 
 main .content-heading {
-    height: 150px;
+    min-height: 150px;
 }
 main .content-heading .container {
     height: 100%;
