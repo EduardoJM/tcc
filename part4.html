@@ -235,7 +235,12 @@ print(maxdef)</code></pre>
 </div>
 </p>
 
-<p>Para a resolução do problema, o primeiro passo é importar os componentes a serem utilizados. No <a href="#code-4-4">Código 4.4</a> são importados os componentes <i>numpy</i>, utilizado para a criação de alguns intervalos numéricos espaçados. Do pacote <i>math</i> é importando a constante \(e\). Do pacote <i>sympy</i> é importado o método <i>symbols</i> para a definição de símbolos matemáticos, de <i>sympy.matrices</i> é importado o método <i>zeros</i> para a criação de um matriz de tamanho determinado preenchida por números zeros e de <i>sympy.solvers</i> é importado o método <i>linsolve</i> utilizado para a resolução de sistemas lineares. Por último, é importado o pacote <i>matplotlib.pyplot</i> como <i>pyplot</i>\footnote{Utilizar o comando <i>import matplotlib.pyplot as pyplot</i> faz com que, em vez de sempre escrever <i>matplotlib.pyplot</i>, se possa escrever apenas <i>pyplot</i> nos próximos comandos.} utilizado para plotar gráficos.</p>
+<p>Para a resolução do problema, o primeiro passo é importar os componentes a serem utilizados. No <a href="#code-4-4">Código 4.4</a> são importados os componentes <i>numpy</i>, utilizado para a criação de alguns intervalos numéricos espaçados. Do pacote <i>math</i> é importando a constante \(e\). Do pacote <i>sympy</i> é importado o método <i>symbols</i> para a definição de símbolos matemáticos, de <i>sympy.matrices</i> é importado o método <i>zeros</i> para a criação de um matriz de tamanho determinado preenchida por números zeros e de <i>sympy.solvers</i> é importado o método <i>linsolve</i> utilizado para a resolução de sistemas lineares. Por último, é importado o pacote <i>matplotlib.pyplot</i> como <i>pyplot</i><sup><a href="#footnote-1">1</a></sup> utilizado para plotar gráficos.</p>
+
+<p><a name="footnote-1"></a></p>
+<div class="card-panel grey lighten-2">
+1 - Utilizar o comando <i>import matplotlib.pyplot as pyplot</i> faz com que, em vez de sempre escrever <i>matplotlib.pyplot</i>, se possa escrever apenas <i>pyplot</i> nos próximos comandos.
+</div>
 
 <p><a class="anchor" name="code-4-4"></a></p>
 <div class="picture">
@@ -258,7 +263,12 @@ import matplotlib.patches as patches</code></pre>
 	</div>
 </div>
 
-<p>Para o uso das funções de forma \(\phi_i(x)\) e \(\phi_i'(x)\), definidas em <span eqref="eqn:python_tri_func_phi"></span> e <span eqref="eqn:python_tri_func_phi_diff"></span>, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função <i>numpy.arange</i>\footnote{A função <i>numpy.arange</i> cria valores espaçados uniformemente dentro de um determinado intervalo.}, em <a href="#code-4-5">Código 4.5</a>. No comando <i>arange</i>. O uso do extremo \(1.0001\) é apenas para garantir que o número \(1\) esteja no conjunto gerado. A variável <i>n</i> representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.</p>
+<p>Para o uso das funções de forma \(\phi_i(x)\) e \(\phi_i'(x)\), definidas em <span eqref="eqn:python_tri_func_phi"></span> e <span eqref="eqn:python_tri_func_phi_diff"></span>, respectivamente, é preciso criar um conjunto numérico espaçado (aqui o conjunto será igualmente espaçado, mas nada impede o uso de conjuntos com espaçamentos diferentes). Para a criação desse conjunto foi utilizada a função <i>numpy.arange</i><sup><a href="#footnote-2">2</a></sup>, em <a href="#code-4-5">Código 4.5</a>. No comando <i>arange</i>. O uso do extremo \(1.0001\) é apenas para garantir que o número \(1\) esteja no conjunto gerado. A variável <i>n</i> representa a quantidade de divisões a serem utilizadas no intervalo para a discretização da função exata.</p>
+
+<p><a name="footnote-2"></a></p>
+<div class="card-panel grey lighten-2">
+2 - A função <i>numpy.arange</i> cria valores espaçados uniformemente dentro de um determinado intervalo.
+</div>
 
 <p><a class="anchor" name="code-4-5"></a></p>
 <div class="picture">
