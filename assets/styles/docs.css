@@ -139,6 +139,10 @@ main p {
     text-align: justify;
     text-indent: 2cm;
 }
+main p.abstract,
+main p.abstract-keyword {
+    text-indent: 0;
+}
 
 
 /*
