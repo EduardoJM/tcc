@@ -4,7 +4,6 @@ title: 2 Cálculo Variacional
 chapter: 2
 hash: calculo-variacional
 ---
-<!--<h1 class="docs-title" id="calculo-variacional">2 Cálculo Variacional</h1>-->
 
 <p>Um dos problemas pertinentes ao <a class="anchor" name="rem-calc-var-1"></a>cálculo variacional é o de encontrar uma função \(y=y(x)\), satisfazendo as condições de contorno \(y(x_1)=y_1\) e \(y(x_2)=y_2\), que faça com que o funcional
 <div class="docs-equation" data-label="eqn:cap_calc_var:int_funcional">
@@ -21,7 +20,7 @@ onde \(f(x, y, y')\) é uma função de classe \(C^1\) (Ver Definição <span re
 
 <p>Para para encontrar a função \(y=y(x)\) procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.</p>
 
-<h2 class="docs-subtitle" id="eq-euler-lagrange">2.1 Equação de Euler-Lagrange</h2>
+<h2 class="light subtitle" id="eq-euler-lagrange">2.1 Equação de Euler-Lagrange</h2>
 
 <p>De início, é preciso demonstrar um Lema, conhecido como <a class="anchor" name="rem-lem-lagrange-1"></a>Lema de Lagrange, que servirá como base para a dedução da equação de Euler-Lagrange.</p>
 
@@ -230,7 +229,7 @@ permitindo, pelo Lema <span ref="lema:cap_calcvar_lema_1"></span>, obter a segui
 
 <p>A equação diferencial <span eqref="eqn:cap_calc_var:euler_lagrange"></span> é chamada de <a class="anchor" name="rem-eq-euler-lagrange-1"></a>equação de Euler-Lagrange e permite encontrar uma função \(f\) que maximiza ou minimiza a integral <span eqref="eqn:cap_calc_var:int_funcional"></span>.</p>
 
-<h2 class="docs-subtitle" id="cond-contorno">2.2 Condições de contorno naturais e essenciais</h2>
+<h2 class="light subtitle" id="cond-contorno">2.2 Condições de contorno naturais e essenciais</h2>
 
 <p>Durante o processo para a obtenção da função \(y(x)\) que torna o funcional estacionário aparecem algumas condições de contorno que devem ser tratadas cuidadosamente. Por exemplo, tomando o funcional
 <div class='docs-equation-hbox'>\[
@@ -308,7 +307,7 @@ aparecem diversas condições de contorno parecidas com <span eqref="eqn:cap_cal
 
 <p>A equação de Euler-Lagrange é uma equação diferencial e, quando resolvida, fornece uma solução geral, em função de suas constantes. Para determinar essas constantes e, deste modo, a solução particular para a equação de Euler-Lagrange trabalhada é necessário o uso tanto das condições de contorno naturais quanto das condições de contorno essenciais, como poderá ser visto no <span ref="ex:cond_contorno"></span> da <span ref="sec:calcvar_exemplos"></span>.</p>
 
-<h2 class="docs-subtitle" id="eq-euler-lagrange-multi">2.3 Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior</h2>
+<h2 class="light subtitle" id="eq-euler-lagrange-multi">2.3 Equação de Euler-Lagrange para funcionais que dependem das derivadas de ordem superior</h2>
 
 <p>Existem também, funcionais que dependem de mais funções, funções de mais de uma variável ou, ainda, que dependem de derivadas de ordem superior. O último caso será mostrado aqui, tendo em vista seu uso nos próximos capítulos. Considere o funcional
 <div class="docs-equation" data-label="eqn:cap_calc_var:funcional_n_derivadas">
@@ -478,7 +477,7 @@ onde \(\dfrac{\partial x}{\partial \varepsilon} = 0\), pois \(x\) não depende d
 
 <p>As integrações para o caso geral serão omitidas aqui. Nas duas subseções proximas, será mostrado o processo para o caso em que \(n=2\) e a equação geral para derivadas até a ordem \(n\).</p>
 
-<h3 class="docs-subsubtitle" id="eq-euler-lagrange-multi-proc">2.3.1 Processo para funcionais que dependem de derivadas de segunda ordem</h3>
+<h3 class="light subsubtitle" id="eq-euler-lagrange-multi-proc">2.3.1 Processo para funcionais que dependem de derivadas de segunda ordem</h3>
 
 <p>Fazendo uso de <span eqref="eqn:cap_calc_var:funcional_n_derivadas"></span> e <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_separar"></span> pode-se considerar o caso em que \(n=2\), onde o funcional é dado por
 <div class='docs-equation-hbox'>\[
@@ -703,7 +702,7 @@ onde, utilizando o Lema <span ref="lema:cap_calcvar_lema_1"></span> em <span eqr
 
 <p>É importante ressaltar, novamente, que a equação de Euler-Lagrange <span eqref="eqn:cap_calc_var:eq_euler_lagrange_twodiff"></span> obtida é uma condição necessária, porém não é condição suficiente para a estacionariedade do funcional.</p>
 
-<h3 class="docs-subsubtitle" id="eq-euler-lagrange-multi-geral">2.3.2 Equação geral</h3>
+<h3 class="light subsubtitle" id="eq-euler-lagrange-multi-geral">2.3.2 Equação geral</h3>
 
 <p>Para a obtenção da Equação Geral, para funcionais que dependem de derivadas até a ordem \(n\), o processo para a obtenção da equação de Euler-Lagrange é análogo. Em <span eqref="eqn:cap_calc_var:func_n_derivadas_pos_separar"></span> deve-se integrar a segunda parcela por partes uma vez, a terceira parcela duas vezes, a quarta parcela três vezes e assim por diante, até que a \(n\)-ésima parcela seja integrada \(n-1\) vezes, também por partes. Ao fim do processo, a <a class="anchor" name="rem-eq-euler-lagrange-3"></a>equação de Euler-Lagrange será obtida fazendo \(I'(0)=0\), isto é, aplicando a condição de estacionariedade e, por último, utilizando o Lema <span ref="lema:cap_calcvar_lema_1"></span>. Deste modo, a equação encontrada é
 <div class="docs-equation" data-label="eqn:cap_calc_var:euler_lagrange_nesimo">
@@ -733,7 +732,7 @@ onde, utilizando o Lema <span ref="lema:cap_calcvar_lema_1"></span> em <span eqr
 \]</div>
 onde a primeira parcela, \(\dfrac{d^0}{dx^0} \left ( \dfrac{\partial f}{\partial y^0} \right )\), representa \(\dfrac{\partial f}{\partial y}\).</p>
 
-<h2 class="docs-subtitle" id="exemplo">2.4 Exemplos</h2>
+<h2 class="light subtitle" id="exemplo">2.4 Exemplos</h2>
 
 <div class="docs-example" data-label="">
 	<div class="docs-example-title"></div>
