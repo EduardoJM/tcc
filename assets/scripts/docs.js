@@ -138,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
     makeHeadingCopyLinks();
     // katex math
     renderMathInElement(document.body, {});
-    
     // other site functions
     var reslinks = document.querySelectorAll('.f-update-link');
     for(var i = 0; i < reslinks.length; i++) {
