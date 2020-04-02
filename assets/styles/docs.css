@@ -152,6 +152,15 @@ main .picture-list li {
     margin-bottom: 10px;
 }
 
+main .toc {
+    font-size: 1.2rem;
+    margin-top: 50px;
+}
+main .toc ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
 /*
  * Picture env
  */
