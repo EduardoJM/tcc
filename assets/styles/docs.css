@@ -98,12 +98,10 @@ main {
 
 main .content-heading {
     min-height: 150px;
-}
-main .content-heading .container {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: start;
+    padding: 0 10px;
 }
 main .content-heading h1 {
     margin: 0;
@@ -154,7 +152,7 @@ main p {
     align-items: center;
     justify-content: center;
 }
-.picture-container > img {
+.picture-container img {
     max-width: 100%;
 }
 .picture-caption {

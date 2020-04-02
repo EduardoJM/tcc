@@ -103,7 +103,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 		</div>
 	</p>
 	
-	<p>Para parâmetro de comparação com os resultados apresentados pelas funções \(v_1(x)\), \(v_2(x)\) e \(v_3(x)\) definidas em <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v1"></span>, <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v2"></span> e <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v3"></span>, será utilizado o valor de máxima deflexão da Viga da <a href="#pic-3-1">Figura 3.1</a>. Esse valor foi determinado no Apêndice \ref{apend:max_deflex}, em <span eqref="eqn:max_deflex_resultado"></span>, como
+	<p>Para parâmetro de comparação com os resultados apresentados pelas funções \(v_1(x)\), \(v_2(x)\) e \(v_3(x)\) definidas em <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v1"></span>, <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v2"></span> e <span eqref="eqn:cap_metodo_ray_ritz_funcdef_v3"></span>, será utilizado o valor de máxima deflexão da Viga da <a href="#pic-3-1">Figura 3.1</a>. Esse valor foi determinado no Apêndice <span ref="apend:max_deflex"></span>, em <span eqref="eqn:max_deflex_resultado"></span>, como
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:ex1_max_deflex_exato">
 		<div class="docs-equation-eq">
 			\[
@@ -711,7 +711,7 @@ com \(i=1, 2, 3, \dots, n\).</p>
 		</div>
 		<div class="docs-equation-num"></div>
 	</div>
-	donde, resolvendo o sistema (Veja a Seção \ref{sec:python_solve_linsys} do Apêndice \ref{apend:python}), obtem-se os valores
+	donde, resolvendo o sistema (Veja a Seção <span ref="sec:python_solve_linsys"></span> do Apêndice <span ref="apend:python"></span>), obtem-se os valores
 	<div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz_coef_v3_a2">
 		<div class="docs-equation-eq">
 			\[
@@ -915,7 +915,7 @@ de onde a derivada de \(v(x)\) em relação a \(x\) é
 	\frac{\partial I}{\partial a_j} = 0
 	\text{,}
 \]</div>
-onde \(j=1\), \(2\), \(\dots\), \(n\). Utilizando A Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}),
+onde \(j=1\), \(2\), \(\dots\), \(n\). Utilizando A Regra de Leibniz (Teorema <span ref="teorema:regra_de_leibniz"></span> do Apêndice <span ref="apend:regra_de_leibniz"></span>),
 <div class="docs-equation" data-label="eqn:cap_metodo_ray_ritz:tri_func_funcional_derivada">
 	<div class="docs-equation-eq">
 		\[
@@ -1063,7 +1063,7 @@ onde \(j=1,2,\dots,n\). Seja as matrizes \(M=[m_{j,i}]\) de ordem \(n\times n\),
 
 <p>A partir de <span eqref="eqn:cap_metodo_ray_ritz:tri_func_phi"></span> e <span eqref="eqn:cap_metodo_ray_ritz:tri_func_phi_diff"></span>, os produtos \(\phi_i(x)\phi_j(x)\) e \(\phi_i'(x)\phi_j'(x)\) são não nulos apenas quando \(i=j-1\), \(i=j\) e \(i=j+1\). Consequentemente, \(m_{j,i}\) é não nulo apenas para \(i=j-1\), \(i=j\) e \(i=j+1\).</p>
 
-<p>A construção do sistema \(M\cdot A=B\) e sua resolução, pelo <a class="anchor" name="rem-mgj-1"></a>método de Gauss-Jordan, serão implementado na linguagem de programação <i>Python</i> na Seção \ref{sec:python_triangular} do Capítulo \ref{cap:python}.</p>
+<p>A construção do sistema \(M\cdot A=B\) e sua resolução, pelo <a class="anchor" name="rem-mgj-1"></a>método de Gauss-Jordan, serão implementado na linguagem de programação <i>Python</i> na Seção <span ref="sec:python_triangular"></span> do Capítulo <span ref="cap:python"></span>.</p>
 
 <script type="text/javascript">
 window.references = [];
@@ -1082,10 +1082,49 @@ window.references['cap:calc_var'] = {
 	value: 'Capítulo 2',
 	extLink: 'part2.html#calculo-variacional'
 };
+window.references['apend:max_deflex'] = {
+	type: 'chapter',
+	value: 'Apêndice B',
+	extLink: 'apend2.html'
+};
+window.references['apend:python'] = {
+	type: 'chapter',
+	value: 'Apêndice C',
+	extLink: 'apend3.html'
+};
+window.references['sec:python_solve_linsys'] = {
+	type: 'section',
+	value: 'Seção C.4',
+	extLink: 'apend3.html#py-solve-sys'
+};
+window.references['apend:regra_de_leibniz'] = {
+	type: 'chapter',
+	value: 'Apêndice A',
+	extLink: 'apendA.html'
+};
+window.references['teorema:regra_de_leibniz'] = {
+	type: 'definition',
+	value: 'Teorema A.2',
+	extLink: 'apendA.html#teorema:regra_de_leibniz'
+};
+window.references['cap:python'] = {
+	type: 'chapter',
+	value: 'Capítulo 4',
+	extLink: 'part4.html'
+};
+window.references['sec:python_triangular'] = {
+	type: 'section',
+	value: 'Seção 4.1',
+	extLink: 'part4.html#mrr-tri-python'
+};
 window.references['ex:cond_contorno'] = {
 	type: 'example',
 	value: 'Exemplo 2.2',
 	extLink: 'part2.html#ex:cond_contorno'
+};
+window.references['eqn:max_deflex_resultado'] = {
+	type: 'equation',
+	value: 'B.4',
 };
 window.chapter = 3;
 </script>

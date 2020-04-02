@@ -7,7 +7,7 @@ chapter: C
 
 <p>Durante o trabalho, são utilizados trechos de códigos na linguagem <i>Python</i>. Para auxiliar a introdução nesse universo, é apresentado aqui, uma breve explicação sobre sua instalação e execução de programas. Na última seção, é apresentado o código utilizado para a resolução de sistemas lineares na linguagem.</p>
 
-<h2>Instalando</h2>
+<h2 id="py-install">C.1 Instalando</h2>
 	
 <p>A linguagem de programação \index[remissivo]{Python}<i>Python</i> é distribuida gratuitamente e pode ser baixada no seu site\footnote{\url{https://www.python.org/}.}. É necessário ressaltar, também, que em distribuições <i>Linux</i>, como o <i>Linux Mint</i>, a linguagem geralmente já vem instalada por padrão. Devido a isso e, também, ao fato de que usuários de ambientes <i>Linux</i> costumam ter conhecimentos avançados sobre instalação de programas, será explicado nessa seção apenas a instalação no sistema operacional <i>Windows</i>.</p>
 
@@ -79,7 +79,7 @@ chapter: C
     </div>
 </div>
 
-<h2>Executando programas</h2>
+<h2 id="py-exec">C.2 Executando programas</h2>
 	
 <p>Para executar programas, ou <i>scripts</i>, na linguagem <i>Python</i>, existem diversas formas, sendo a mais convencional delas executar via o <i>prompt</i> de comandos do <i>Windows</i> ou no terminal do <i>Linux</i>. No <i>Windows</i> pode-se utilizar o ambiente de desenvolvimento que é instalado junto a linguagem, chamado de IDLE. Ao abri-lo, deve-se ir no menu <i>File</i> e, então, em <i>New File</i> para criar um novo arquivo. O código deve ser escrito nesse novo arquivo e salvo. Para executar este código basta, então, ir no menu <i>Run</i> e, depois, em <i>Run Module</i>, como na <a href="#pic-c-5">Figura C.5</a>.</p>
 
@@ -100,7 +100,7 @@ chapter: C
 
 <p>A segunda forma, indicada para usuários que detenham um nível de conhecimento mais alto sobre sistemas operacionais, é executar, no <i>prompt</i> de comandos ou no terminal a linha <i>python arquivo.py</i>, onde <i>arquivo.py</i> representa o caminho para o arquivo no sistema. Por exemplo, como os códigos deste trabalho foram desenvolvidos em um ambiente <i>Linux</i>, todos os códigos foram executados deste modo.</p>
 
-<h2>Principais operações</h2>
+<h2 id="py-operations">C.3 Principais operações</h2>
 
 <p>Para facilitar o entendimento dos códigos ao longo do trabalho, é apresentada uma lista com algumas das principais operações aritméticas na linguagem <i>Python</i> na <a href="#table-c-1">Tabela C.1</a>.</p>
 
@@ -156,7 +156,7 @@ chapter: C
     </div>
 </div>
 
-<h2>Resolução de sistemas lineares</h2>
+<h2 id="py-solve-sys">C.4 Resolução de sistemas lineares</h2>
 	
 <p>O sistema linear com matriz aumentada <span eqref="eqn:cap_metodo_ray_ritz:matriz_sistema"></span> pode ser facilmente resolvido utilizando métodos trabalhados em Álgebra Linear, como, por exemplo, o método de Gauss-Jordan, de forma manual. Outra forma de se resolver o sistema é fazendo o uso da linguagem de programação <i>Python</i>, através do comando <i>linsolve</i> que utiliza o \index[remissivo]{Método de Gauss-Jordan}método de Gauss-Jordan.</p>
 	
@@ -225,14 +225,6 @@ from sympy.solvers import linsolve</code></pre>
 sol, = linsolve(A, [a2, a3, a4])
 print(sol)</code></pre>
 </div></div>
-
-	<!--\begin{figure}[h]
-		\caption{}
-		\centering
-		\includegraphics[scale=2]{../figuras/code/code_solve_sis_linear.png}
-		\label{}
-		\legend{\ABNTEXfontereduzida Fonte: Elaborada pelo autor, 2019.}
-    \end{figure}-->
 
 <p><a class="anchor" name="pic-c-6"></a></p>
 <div class="picture">
@@ -325,5 +317,10 @@ print(sol)</code></pre>
 </div>
 
 <script type="text/javascript">
+window.references = [];
+window.references['eqn:cap_metodo_ray_ritz:matriz_sistema'] = {
+	type: 'equation',
+	value: '3.21'
+};
 window.chapter = 'B';
 </script>

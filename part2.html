@@ -17,7 +17,7 @@ hash: calculo-variacional
 
     </div>
 </div>
-onde \(f(x, y, y')\) é uma função de classe \(C^1\) (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}), tenha valor mínimo ou máximo. Esse processo é chamado de minimizar ou maximizar o funcional. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores \(x_1\), \(x_2\), \(y_1\) e \(y_2\) são números dados.</p>
+onde \(f(x, y, y')\) é uma função de classe \(C^1\) (Ver Definição <span ref="def:cap_conceitos_analise:classe_ck"></span> no Apêndice <span ref="apend:regra_de_leibniz"></span>), tenha valor mínimo ou máximo. Esse processo é chamado de minimizar ou maximizar o funcional. Minimizar ou maximizar um funcional é o mesmo que torná-lo estacionário. Assim, dizer que o funcional é estacionário é o mesmo que dizer que ele é mínimo ou máximo. Os valores \(x_1\), \(x_2\), \(y_1\) e \(y_2\) são números dados.</p>
 
 <p>Para para encontrar a função \(y=y(x)\) procurada, são necessárias algumas ferramentas, dentre as quais a abordada neste estudo é a equação de Euler-Lagrange. Os conceitos, definições e resultados apresentados neste capítulo foram elaboradas segundo \citeonline{mefassan}, \citeonline{calcvar} e \citeonline{calcvar_campos}.</p>
 
@@ -119,7 +119,7 @@ onde \(\eta (x)\) é uma função diferenciável arbitrária para a qual \(\eta 
 
 <p>Com o intuito de que não haja confusão com as notações, é necessário deixar claro que \(I'(\varepsilon)\) é a derivada de \(I\) em relação a \(\varepsilon\), enquanto que \(y'\), \(Y'\), \(\eta'\) são derivadas em relação a \(x\).</p>
 
-<p>Utilizando a Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), a derivada de <span eqref="eqn:cap_calc_var:int_funcional_approx"></span> pode ser escrita como
+<p>Utilizando a Regra de Leibniz (Teorema <span ref="teorema:regra_de_leibniz"></span> do Apêndice <span ref="apend:regra_de_leibniz"></span>), a derivada de <span eqref="eqn:cap_calc_var:int_funcional_approx"></span> pode ser escrita como
 <div class='docs-equation-hbox'>\[
 	I'(\varepsilon)=\int_{x_1}^{x_2} \frac{\partial f}{\partial \varepsilon} (x, Y_{\varepsilon}, Y') dx \text{,}
 \]</div>
@@ -320,7 +320,7 @@ aparecem diversas condições de contorno parecidas com <span eqref="eqn:cap_cal
 	</div>
 	<div class="docs-equation-num"></div>
 </div>
-onde \(y^{(n)}\) representa a \(n\)-ésima derivada de \(y\). Pode-se aproximar \(y(x)\) através de <a class="anchor" name="rem-func-adms-2"></a>funções admissíveis \(Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)\), onde \(\eta(x_1)=\eta(x_2)=0\) e \(\eta(x)\) deve ser uma função de classe \(C^n\) (Ver Definição \ref{def:cap_conceitos_analise:classe_ck} no Apêndice \ref{apend:regra_de_leibniz}). Desse modo,
+onde \(y^{(n)}\) representa a \(n\)-ésima derivada de \(y\). Pode-se aproximar \(y(x)\) através de <a class="anchor" name="rem-func-adms-2"></a>funções admissíveis \(Y_{\varepsilon}(x)=y(x)+\varepsilon \eta (x)\), onde \(\eta(x_1)=\eta(x_2)=0\) e \(\eta(x)\) deve ser uma função de classe \(C^n\) (Ver Definição <span ref="def:cap_conceitos_analise:classe_ck"></span> no Apêndice <span ref="apend:regra_de_leibniz"></span>). Desse modo,
 <div class='docs-equation-hbox'>\[
 	Y'(x)=y'(x)+\varepsilon \eta ' (x)
 	\text{,}
@@ -345,7 +345,7 @@ onde \(y^{(n)}\) representa a \(n\)-ésima derivada de \(y\). Pode-se aproximar 
 		dx
 	\text{,}
 \]</div>
-donde, derivando em função de \(\varepsilon\), por meio da Regra de Leibniz (Teorema \ref{teorema:regra_de_leibniz} do Apêndice \ref{apend:regra_de_leibniz}), tem-se
+donde, derivando em função de \(\varepsilon\), por meio da Regra de Leibniz (Teorema <span ref="teorema:regra_de_leibniz"></span> do Apêndice <span ref="apend:regra_de_leibniz"></span>), tem-se
 <div class="docs-equation" data-label="eqn:cap_calc_var:diff_func_n_derivadas_leibniz">
 	<div class="docs-equation-eq">
 	\[
@@ -1078,6 +1078,21 @@ window.references['sec:calcvar_exemplos'] = {
 	type: 'section',
 	value: 'Seção 2.4',
 	extLink: '#exemplo'
+};
+window.references['apend:regra_de_leibniz'] = {
+	type: 'chapter',
+	value: 'Apêndice A',
+	extLink: 'apendA.html'
+};
+window.references['def:cap_conceitos_analise:classe_ck'] = {
+	type: 'definition',
+	value: 'Definição A.2',
+	extLink: 'apendA.html#def:cap_conceitos_analise:classe_ck'
+};
+window.references['teorema:regra_de_leibniz'] = {
+	type: 'definition',
+	value: 'Teorema A.2',
+	extLink: 'apendA.html#teorema:regra_de_leibniz'
 };
 window.chapter = 2;
 </script>
