@@ -144,6 +144,13 @@ main p.abstract-keyword {
     text-indent: 0;
 }
 
+main .picture-list {
+    margin-top: 50px;
+    font-size: 1.1rem;
+}
+main .picture-list li {
+    margin-bottom: 10px;
+}
 
 /*
  * Picture env
