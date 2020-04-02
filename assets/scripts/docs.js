@@ -10,30 +10,12 @@ function initialize(query, comp, options) {
     comp.init(elems, options);
 }
 
-function copyText(str) {
-    var input = document.getElementById('temp-copy');
-    input.value = str;
-    input.select();
-    input.setSelectionRange(0, 99999);
-    document.execCommand('copy');
-    M.toast({html: 'Link copiado para a área de transferência!'})
-}
-
 function makeHeadingCopyLinks() {
     var elems = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]');
     for (var i = 0; i < elems.length; i++) {
         var hash = '#' + elems[i].getAttribute('id');
-        var html = '<span class="share-link" data-hash="' + hash + '">#</span>';
+        var html = '<a class="share-link" href="' + hash + '">#</span>';
         elems[i].innerHTML += html;
-    }
-    elems = document.querySelectorAll('.share-link[data-hash]');
-    for (var i = 0; i < elems.length; i++) {
-        elems[i].addEventListener('click', function(e) {
-            var hash = e.target.getAttribute('data-hash');
-            var url = window.location.href.split('#')[0];
-            url = url + hash;
-            copyText(url);
-        });
     }
 }
 
