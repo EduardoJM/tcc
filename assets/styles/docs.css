@@ -144,6 +144,11 @@ main p.abstract-keyword {
     text-indent: 0;
 }
 
+main .highlight {
+    background-color: #64b5f6; /* blue lighten-2 */
+    border-radius: 4px;
+}
+
 main .picture-list {
     margin-top: 50px;
     font-size: 1.1rem;
@@ -159,6 +164,13 @@ main .toc {
 main .toc ul {
     margin-left: 20px;
     margin-bottom: 10px;
+}
+
+main #search-result .collection-item p{
+    text-indent: 0;
+}
+main #search-result pre {
+    background: #222;
 }
 
 /*

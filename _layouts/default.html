@@ -28,9 +28,9 @@
                         </a>
                     </li>
                 </ul>
-                <form id="search-form">
+                <form id="search-form" action="search.html" method="GET">
                     <div class="input-field">
-                        <input class="autocomplete" id="search-bar-input" type="text" required="required" />
+                        <input name="q" class="autocomplete" autocomplete="off" id="search-bar-input" type="text" required="required" />
                         <label class="label-icon" for="search-bar-input"><i class="material-icons">search</i></label>
                     </div>
                 </form>
@@ -300,6 +300,7 @@
     <script src="assets/lib/prism/prism.js"></script>
     <!-- Local -->
     <script src="assets/data/bib.js"></script>
+    <script src="assets/data/autocomplete.js"></script>
     <script src="assets/scripts/bibref.js"></script>
     <script src="assets/scripts/docs.js"></script>
 </body>

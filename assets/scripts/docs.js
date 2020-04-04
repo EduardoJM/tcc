@@ -76,18 +76,31 @@ function makeNumbersRef(command, callback) {
     }
 }
 
+function highlightSearch(){
+    var s = window.location.search;
+    // console.log(s);
+    if (s == null || s == undefined || s == '') {
+        // console.log('returning');
+        return;
+    }
+    s = decodeURIComponent(s);
+    s = s.substr(1, s.length - 1); // remove the '?'
+    // console.log("search query: '" + s + "'");
+    var main = document.querySelector('main');
+    var html = main.innerHTML;
+    html = html.replace(new RegExp(s, 'gi'), "<span class='highlight'>$&</span>");
+    main.innerHTML = html;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     initialize('.sidenav', M.Sidenav, {});
     initialize('.collapsible', M.Collapsible, {});
     initialize('.fixed-action-btn', M.FloatingActionButton, {});
     initialize('#search-bar-input', M.Autocomplete, {
-        data: {
-            'Microsoft': null,
-            'Apple': null,
-            'Apple Data': null,
-            'Apple Tools': null,
-            'Apple Microsoft': null,
-            'Google': null,
+        data: window.searchAutocompleteData,
+        onAutocomplete: function() {
+            var frm = document.getElementById('search-form');
+            frm.submit();
         }
     });
     makeCitations();
@@ -138,6 +151,8 @@ document.addEventListener('DOMContentLoaded', function() {
     makeHeadingCopyLinks();
     // katex math
     renderMathInElement(document.body, {});
+    // highlight search query
+    highlightSearch();
     // other site functions
     var reslinks = document.querySelectorAll('.f-update-link');
     for(var i = 0; i < reslinks.length; i++) {

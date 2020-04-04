@@ -1,0 +1,23 @@
+window.searchAutocompleteData = {
+    'Cálculo Variacional': null,
+    'Cálculo': null,
+    'Cálculo diferencial': null,
+    'Método de Rayleigh-Ritz': null,
+    'Rayleigh': null,
+    'Rayleigh-Ritz': null,
+    'Ritz': null,
+    'Lord Rayleigh': null,
+    'Walter Ritz': null,
+    'Deep Ritz': null,
+    'Python': null,
+    'Programação': null,
+    'Funções': null,
+    'Funções Aproximadoras': null,
+    'Condições de contorno': null,
+    'Contorno': null,
+    'Condições de contorno naturais': null,
+    'Condições de contorno essenciais': null,
+    'Dirichlet': null,
+    'Neumann': null,
+    'Funções admissíveis': null
+};
