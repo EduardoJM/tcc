@@ -173,6 +173,30 @@ main #search-result pre {
     background: #222;
 }
 
+main .item-block .item-icon .col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .item-block .item-icon .icon-container{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main .item-block .item-icon img {
+    max-width: 200px;
+}
+main .item-block .item-icon img.black-icon {
+    background: #222;
+    border: 5px solid #222;
+}
+main .item-block .item-licence .col {
+    margin-bottom: 10px;
+}
+
 /*
  * Picture env
  */
