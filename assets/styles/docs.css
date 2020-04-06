@@ -39,6 +39,9 @@
     background: #2196f3; /* blue */
 }
 
+header > nav {
+    padding-right: 10px;
+}
 header > nav .sidenav-trigger {
     margin: 0;
 }
@@ -306,7 +309,6 @@ main .item-block .item-licence .col {
 @media (min-width: 992px) {
     header > nav {
         padding-left: calc(300px + 10px);
-        padding-right: 10px;
     }
     main {
         padding-left: 300px;
