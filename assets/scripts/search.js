@@ -2,9 +2,48 @@ function stripMain(docText) {
     var reg = /<main>([\s\S]*?)<\/main>/gim;
     var match = docText.match(reg);
     if (match != null && match != undefined) {
-        return match[0];
+        var text = match[0];
+        var strip = getSearchable(text);
+        return strip;
     }
     return null;
+}
+
+function deleteNodes(el, query) {
+    var nodes = el.querySelectorAll(query);
+    for(var i = 0; i < nodes.length; i++) {
+        nodes[i].remove();
+    }
+}
+
+function deleteAttribute(el, attr, onElement) {
+    var q = '[' + attr + ']';
+    if (onElement != null && onElement != undefined) {
+        q = onElement + q;
+    }
+    var nodes = el.querySelectorAll(q);
+    for (var i = 0; i < nodes.length; i++) {
+        nodes[i].removeAttribute(attr);
+    }
+}
+
+function removeClass(el, cl) {
+    var nodes = el.querySelectorAll('.' + cl);
+    for (var i = 0; i < nodes.length; i++) {
+        nodes[i].classList.remove(cl);
+    }
+}
+
+function getSearchable(main) {
+    var div = document.createElement('div');
+    div.innerHTML = main;
+    deleteAttribute(div, 'data-label');
+    removeClass(div, 'language-python');
+    deleteNodes(div, 'div.picture');
+    deleteNodes(div, 'a.anchor');
+    deleteNodes(div, 'span[eqref]');
+    deleteNodes(div, 'span[ref]');
+    return div.innerHTML;
 }
 
 function getPageTitle(docText) {
@@ -173,7 +212,7 @@ function makeFolow(query) {
         var page = p.getAttribute('data-page');
         var html = p.innerHTML;
         html += '<li class="collection-item footer-item">';
-        html += '<a href="' + page + '?' + query + '">Ver página</a>'
+        html += '<a href="' + page + '">Ver página</a>'
         html += '</li>';
         p.innerHTML = html;
     }
