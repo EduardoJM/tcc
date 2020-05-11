@@ -292,6 +292,10 @@ main .item-block .item-licence .col {
     border: 1px solid #000;
 }
 
+ul.references li {
+    margin-bottom: 10px;
+}
+
 
 /* medium and small devices */
 @media (max-width: 992px) {
