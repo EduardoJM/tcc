@@ -14,6 +14,8 @@ O trabalho foi escrito durante os dois semestres de 2019 e no começo de 2020, l
 
 O código-fonte do site acima, se encontra no *branch* **gh-pages** desse mesmo repositório. [Clique aqui](https://github.com/EduardoJM/tcc/tree/gh-pages) para acessar.
 
+Além disso, há uma versão, não exatamente a mesma versão final que foi apresentada para a banca, gravada e enviada ao YouTube para compartilhamento com alguns amigos e aberta, futuramente, para acesso público, [disponível aqui](https://www.youtube.com/watch?v=VZlnLW3caE4).
+
 ## Gnuplot
 
 O trabalho utiliza o pacote **tkz-fct** para desenhar as funções em algumas das figuras e, provávelmente precisa do **gnuplot** para gerar, corretamente, as figuras. [Veja aqui](https://ctan.org/pkg/tkz-fct).
