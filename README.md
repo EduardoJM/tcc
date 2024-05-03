@@ -1,5 +1,7 @@
 # Uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz com aplicações em Python
 
+A versão final, em PDF está disponível em [Releases](https://github.com/EduardoJM/tcc/releases/tag/versao-final).
+
 ## Sobre
 
 Esse é o repositório utilizado para o controle de versão do código-fonte da escrita do meu trabalho de conclusão de curso em LaTeX. O trabalho tem título "**Uma introdução ao cálculo variacional e ao método de Rayleigh-Ritz com aplicações em Python**" e foi escrito sob orientação do professor mestre Tiago de Lima Bento Pereira ([Lattes](http://lattes.cnpq.br/0165990227853144)) no curso de Matemática, modalidade Licenciatura, na Universidade Estadual de Goiás ([CET](http://ccet.ueg.br/)).
