@@ -6,16 +6,6 @@ Esse é o repositório utilizado para o controle de versão do código-fonte da 
 
 Além do código-fonte do documento LaTeX do TCC, existem os programas (relativamente pequenos) escritos durante os estudos de desenvolvimento do trabalho. Esses programas estão escritos em **Python**. Em período posterior, cheguei a fazer um desses programas também na linguagem **R**. Esses programas não foram criados objetivando estarem dentro das melhores práticas para suas respectivas linguagens.
 
-## Online
-
-O trabalho foi escrito durante os dois semestres de 2019 e no começo de 2020, logo após a chegada da pandemia ao Brasil e o início da quarentena decidi criar uma versão online desse texto para treinar algumas coisas e poder relembrar meu trabalho. Essa versão pode ser vista [clicando aqui](https://eduardojm.github.io/tcc/).
-
-![Preview do tcc](.github/images/preview.png)
-
-O código-fonte do site acima, se encontra no *branch* **gh-pages** desse mesmo repositório. [Clique aqui](https://github.com/EduardoJM/tcc/tree/gh-pages) para acessar.
-
-Além disso, há uma versão, não exatamente a mesma versão final que foi apresentada para a banca, gravada e enviada ao YouTube para compartilhamento com alguns amigos e aberta, futuramente, para acesso público, [disponível aqui](https://www.youtube.com/watch?v=VZlnLW3caE4).
-
 ## Gnuplot
 
 O trabalho utiliza o pacote **tkz-fct** para desenhar as funções em algumas das figuras e, provávelmente precisa do **gnuplot** para gerar, corretamente, as figuras. [Veja aqui](https://ctan.org/pkg/tkz-fct).
